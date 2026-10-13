@@ -1,0 +1,34 @@
+[build-system]
+requires = ["setuptools>=64"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "gimbal-multidof"
+version = "0.1.0"
+description = "Modello multi-GdL del gimbal alt-azimutale: FEM torsionale, riduzione di Guyan e accoppiamento"
+requires-python = ">=3.10"
+dependencies = [
+    "numpy>=1.26",
+    "scipy>=1.11",
+    "sympy>=1.12",
+    "matplotlib>=3.7",
+    "pyyaml>=6.0",
+    # Pacchetto del modello a 2 GdL, installato in modalita' editable:
+    #   pip install -e ../gimbal_2dof
+    "gimbal-2dof",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=7.4"]
+control = ["control>=0.9"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q --strict-markers"
+filterwarnings = ["error::RuntimeWarning"]
+markers = [
+    "lento: test che richiedono simulazioni o la compilazione LaTeX",
+]

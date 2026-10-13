@@ -1,0 +1,9 @@
+# Ambiente virtuale e cache
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+*.egg-info/
+
+# I risultati sono rigenerabili con `python run_all.py`.
+results/

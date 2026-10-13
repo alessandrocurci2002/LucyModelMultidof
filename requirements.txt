@@ -1,0 +1,17 @@
+# Dipendenze del modello multi-GdL (FEM torsionale + riduzione + accoppiamento).
+# Installazione consigliata, dalla cartella gimbal_multidof/:
+#   python3 -m venv .venv
+#   .venv/bin/pip install -e ../gimbal_2dof
+#   .venv/bin/pip install -e ".[dev]"
+numpy>=1.26
+scipy>=1.11
+sympy>=1.12
+matplotlib>=3.7
+pyyaml>=6.0
+pytest>=7.4
+
+# Modello rigido a 2 GdL: dati CAD, preprocessing inerziale, convenzioni.
+-e ../gimbal_2dof
+
+# Facoltativa: solo per controlli incrociati su poli e zeri.
+# control>=0.9

@@ -1,0 +1,346 @@
+# =====================================================================
+# Configurazione del modello multi-GdL (FEM torsionale + riduzione +
+# accoppiamento) del telescopio alt-azimutale.
+# ---------------------------------------------------------------------
+# Schema: sezione 5 di SPEC_modello_gimbal_multidof.md.
+# Unita' nei file di input (sezione 2): lunghezze e diametri in mm,
+# inerzie in kg m^2, masse in kg, rigidezze in N m/rad, densita' in
+# kg/m^3, moduli in Pa. La conversione in SI avviene solo in params.py.
+#
+# !!! TUTTA LA GEOMETRIA DEGLI ALBERI E' SEGNAPOSTO !!!
+# I valori sotto servono a far girare la catena di calcolo e a mostrare
+# tutte le modalita' di input (cilindri pieni e cavi, strati portanti e
+# non portanti, segmenti in serie, elementi manuali da CAD). Vanno
+# sostituiti con i dati reali; finche' un elemento ha placeholder: true
+# ogni risultato che ne dipende porta l'avviso "risultato da parametri
+# segnaposto".
+#
+# Come descrivere un elemento in modalita' geometry
+# -------------------------------------------------
+#   segments: lista di tratti IN SERIE, ordinati dal nodo i al nodo i+1.
+#     length_mm: lunghezza del tratto
+#     layers:    strati COASSIALI del tratto, IN PARALLELO
+#       - shape: solid  -> cilindro pieno,  serve d_out_mm
+#       - shape: hollow -> cilindro cavo,   servono d_in_mm < d_out_mm
+#         material:       chiave della sezione materials
+#         carries_torque: true se lo strato porta coppia (contribuisce
+#                         alla rigidezza), false per distanziali,
+#                         mozzi calettati senza continuita', ecc.
+#                         (contribuisce solo all'inerzia)
+#   L'inerzia dell'elemento e' la somma di tutti gli strati di tutti i
+#   tratti; la cedevolezza e' la somma delle cedevolezze dei tratti
+#   (ciascuno con i soli strati portanti in parallelo) piu' 1/k_joint.
+#
+# Come descrivere un elemento in modalita' manual (dati da CAD)
+# -------------------------------------------------------------
+#   J_kgm2, k_Nm_rad, length_mm. Per il POLARE servono anche m_kg,
+#   I_t_kgm2 (momento trasversale nel proprio baricentro) e y_c_mm
+#   (baricentro dal nodo i), per il contributo all'inerzia di azimut.
+# =====================================================================
+
+# --- Sistemi di riferimento (convenzione della tesi De Donatis) -------
+# N  inerziale, origine O_N, versori x_hat, y_hat, z_hat: coincide con la
+#    terna dell'assieme Onshape (O_N = centro della base dell'albero di
+#    azimut, z_hat verticale verso l'alto lungo l'asse di azimut).
+# 1  corpo 1 (azimut, forcella), origine o_1 sull'asse di azimut, versori
+#    i_hat, j_hat, k_hat = z_hat; ruota con psi attorno a k_hat.
+# 2  corpo 2 (polare, telescopio), origine o_2 = centro di rotazione
+#    dell'albero polare, versori K_hat (puntamento, positivo verso le
+#    ottiche), I_hat (verso l'alto con il telescopio orizzontale),
+#    J_hat = K_hat x I_hat (asse polare, J_hat = -j_hat); ruota con theta
+#    attorno a J_hat: theta > 0 ALZA il puntamento (theta = elevazione).
+# O_N, o_1 e o_2 stanno su z_hat e differiscono solo per una traslazione
+# lungo z_hat. Le origini dei corpi sono sugli assi di rotazione, NON nei
+# baricentri: l'eccentricita' del baricentro e' un dato separato.
+frames:
+  o1_z_mm: 59.695               # dist(O_N, o_1) lungo z_hat
+  o2_z_mm: 548.865              # dist(O_N, o_2): centro di rotazione dell'albero polare
+  azimuth_axis_xy_mm: [0.0, 0.0]   # asse di azimut nel piano (x_hat, y_hat)
+  # Posa CAD (psi = 0, theta = theta_cad): direzioni in N dei versori dei corpi
+  pointing_cad: "+Y"            # puntamento (K_hat, e i_hat) nella posa CAD: verso +y_hat, cioe' verso le ottiche
+  polar_axis_cad: "+X"          # J_hat nella posa CAD (deve valere J_hat = K_hat x I_hat = i_hat x z_hat)
+  theta_cad_deg: 0.0            # elevazione della posa CAD (theta > 0 alza il puntamento)
+
+# --- Materiali ----------------------------------------------------------
+# DECISIONE DELL'UTENTE (2026-10-12): valori del file
+# torsional_pointing_models_azimuth_polar.m, coerenti con
+# tryout_stiffness.py (G acciaio = 77 GPa). Restano segnaposto finche'
+# non sono confermati i materiali reali di ogni pezzo.
+materials:
+  acciaio:   {rho: 8000.0, G: 77.0e9, placeholder: true}   # inox serie 300
+  alluminio: {rho: 2810.0, G: 26.9e9, placeholder: true}   # circa 7075
+
+# --- Asse di azimut -----------------------------------------------------
+# Nodo 1 in basso (encoder), nodo 9 in alto (forcella).
+azimuth:
+  n_nodes: 9
+  encoder_node: 1
+  torque_node: 5
+  load_node: 9
+  masters: [1, 5, 9]
+  elements:
+    - id: 1
+      mode: geometry
+      segments:
+        - length_mm: 29.0
+          layers:
+            - {shape: solid, d_out_mm: 16.0, material: acciaio, carries_torque: true}
+      k_joint_Nm_rad: null
+      extra_inertias: []
+      placeholder: false
+    - id: 2
+      mode: geometry
+      segments:
+        - length_mm: 20.0
+          layers:
+            - {shape: solid, d_out_mm: 36.0, material: acciaio, carries_torque: true}
+            - {shape: hollow, d_in_mm: 36.0, d_out_mm: 87.85, material: alluminio, carries_torque: true}
+      k_joint_Nm_rad: null
+      extra_inertias: []
+      placeholder: false
+    - id: 3
+      mode: geometry
+      segments:                 # esempio di composizione: due tratti in serie
+        - length_mm: 22.59
+          layers:
+            - {shape: solid, d_out_mm: 16.0, material: acciaio, carries_torque: true}
+      k_joint_Nm_rad: null
+      extra_inertias: []
+      placeholder: false
+    - id: 4
+      mode: geometry
+      segments:
+        - length_mm: 10.0
+          layers:
+            - {shape: solid, d_out_mm: 40.67, material: acciaio, carries_torque: true}
+      k_joint_Nm_rad: null
+      extra_inertias: []
+      placeholder: false
+    - id: 5
+      mode: geometry
+      segments:
+        - length_mm: 10.0
+          layers:
+            - {shape: solid, d_out_mm: 40.67, material: acciaio, carries_torque: true}
+      k_joint_Nm_rad: null
+      extra_inertias: []
+      placeholder: false
+    - id: 6
+      mode: geometry
+      segments:                 
+        - length_mm: 30.88
+          layers:
+            - {shape: solid,  d_out_mm: 16.0, material: acciaio, carries_torque: true}
+      k_joint_Nm_rad: null
+      extra_inertias: []
+      placeholder: false
+    - id: 7
+      mode: geometry
+      segments:
+        - length_mm: 35.53
+          layers:
+            - {shape: solid, d_out_mm: 25.0, material: acciaio, carries_torque: true}
+      k_joint_Nm_rad: null
+      extra_inertias: []
+      placeholder: false
+    - id: 8
+      mode: geometry              
+      segments:
+        - length_mm: 17.5
+          layers:
+            - {shape: solid, d_out_mm: 35.0, material: acciaio, carries_torque: true}
+      k_joint_Nm_rad: null
+      extra_inertias: []
+      placeholder: false
+    # - id: 8
+    #   mode: manual              
+    #   J_kgm2: 1.8e-4
+    #   k_Nm_rad: 5.0e6
+    #   length_mm: 17.5
+    #   placeholder: true
+  node_inertias:
+    # Q9 / DECISIONE DELL'UTENTE (2026-10-12): inerzia della SOLA forcella
+    # (senza albero di azimut, albero polare e telescopio) da un'esportazione
+    # Onshape. Finche' non e' disponibile si usa un segnaposto dell'ordine di
+    # J_A del modello a 2 GdL (1.04 kg m^2, che pero' include l'albero).
+    - {node: 9, name: "load (forcella)", J_kgm2: 1.0, source: "segnaposto: da esportazione Onshape della sola forcella", placeholder: true}
+  # Attrito viscoso dei cuscinetti verso terra, {elemento: b in N m s/rad}.
+  bearing_b: {}
+
+# --- Asse polare --------------------------------------------------------
+# Nodo 1 a sinistra (encoder), nodo 11 a destra (estremita').
+polar:
+  n_nodes: 11
+  encoder_node: 1
+  torque_node: 7
+  end_node: 11
+  payload_element: 3            # D1: telescopio tra nodo 3 e nodo 4
+  payload_xi: 0.5               # posizione di P lungo l'elemento 3 (con mode: telescope solo per il disegno)
+  payload_center_from_node3_mm: null   # se dato, sostituisce payload_xi
+  payload_clamp_rigid_mm: 0.0   # Q2: tratto reso rigido dal morsetto
+  bearing_elements: [2, 4]      # D2
+  masters: [1, "P", 7, 11]      # D3
+  y_node1_from_o2_mm: null      # Q7: coordinata con segno del nodo 1 lungo J_hat, da o_2
+  nodes_increase_along: "+J_hat"   # verso in cui cresce la numerazione dei nodi polari: "+J_hat" | "-J_hat"
+                                   # (nella posa CAD +J_hat = +x_hat)
+  elements:
+    - id: 1
+      mode: geometry
+      segments:
+        - length_mm: 58.29
+          layers:
+            - {shape: solid, d_out_mm: 25.0, material: acciaio, carries_torque: true}
+      k_joint_Nm_rad: null
+      extra_inertias: []
+      placeholder: false
+    - id: 2                     # su cuscinetto (D2)
+      mode: geometry
+      segments:
+        - length_mm: 15.32
+          layers:
+            - {shape: solid, d_out_mm: 84.0, material: alluminio, carries_torque: true}
+      k_joint_Nm_rad: null
+      extra_inertias: []
+      placeholder: true
+    - id: 3                     # telescopio (D1): NESSUN ALBERO sotto il telescopio
+      mode: telescope           # il telescopio rigido collega i nodi 3 e 4, che coincidono con P;
+      length_mm: 60.0           # distanza fra le flange (solo posizioni e disegno), segnaposto
+      placeholder: true         # l'inerzia del telescopio va nella sezione payload
+    - id: 4                     # su cuscinetto (D2)
+      mode: geometry
+      segments:
+        - length_mm: 17.38
+          layers:
+            - {shape: solid, d_out_mm: 84.0, material: alluminio, carries_torque: true}
+      k_joint_Nm_rad: null
+      extra_inertias: []
+      placeholder: true
+    - id: 5
+      mode: geometry
+      segments:
+        - length_mm: 47.9
+          layers:
+            - {shape: solid, d_out_mm: 16.0, material: acciaio, carries_torque: true}
+      k_joint_Nm_rad: null
+      extra_inertias: []
+      placeholder: false
+    - id: 6
+      mode: geometry
+      segments:
+        - length_mm: 10.5
+          layers:
+            - {shape: solid, d_out_mm: 40.7, material: acciaio, carries_torque: true}
+      k_joint_Nm_rad: null
+      extra_inertias: []
+      placeholder: false
+    - id: 7
+      mode: geometry
+      segments:
+        - length_mm: 10.5
+          layers:
+            - {shape: solid, d_out_mm: 40.7, material: acciaio, carries_torque: true}
+      k_joint_Nm_rad: null
+      extra_inertias: []
+      placeholder: false
+    - id: 8
+      mode: geometry
+      segments:
+        - length_mm: 38.74
+          layers:
+            - {shape: solid, d_out_mm: 16.0, material: acciaio, carries_torque: true}
+      k_joint_Nm_rad: null
+      extra_inertias: []
+      placeholder: false
+    - id: 9
+      mode: geometry
+      segments:
+        - length_mm: 27.0
+          layers:
+            - {shape: solid,  d_out_mm: 87.85, material: acciaio,   carries_torque: true}
+      k_joint_Nm_rad: null
+      extra_inertias: []
+      placeholder: false
+    - id: 10
+      mode: geometry
+      segments:
+      - length_mm: 12.084
+        layers:
+          - {shape: solid,  d_out_mm: 16.0, material: acciaio,   carries_torque: true}
+      k_joint_Nm_rad: null
+      extra_inertias: []
+      placeholder: false
+  # node_inertias:                # per il polare servono anche m_kg e I_t_kgm2
+  #   - {node: 1, name: "rotore encoder", J_kgm2: 2.0e-5, m_kg: null, I_t_kgm2: null, source: "segnaposto", placeholder: true}
+  #   - {node: 7, name: "rotore motore", J_kgm2: 8.19e-5, m_kg: null, I_t_kgm2: null, source: "TBM(S)-7646, valore del file .m da verificare sul datasheet", placeholder: true}
+  # # Attrito viscoso dei cuscinetti verso la FORCELLA, {elemento: b in N m s/rad}.
+  bearing_b: {2: 0.0, 4: 0.0}
+
+# --- Telescopio (payload, corpo 2) --------------------------------------
+# Corpo rigido collegato al nodo P. Non c'e' albero sotto il telescopio:
+# si inserisce SOLO l'inerzia del telescopio.
+#
+# frame: terna in cui e' scritto il tensore I_kgm2
+#   cad_cg   -> come l'esportazione "Mass properties" di Onshape SENZA mate
+#               connector: tensore rispetto al BARICENTRO del telescopio, con
+#               assi paralleli a x_hat, y_hat, z_hat; r_G_mm = baricentro
+#               misurato da O_N nella terna N. L'esportazione va fatta nella
+#               posa CAD di frames (pointing_cad, theta_cad_deg). Il codice
+#               trasporta il tensore in o_2 (Steiner) e lo ruota nella terna 2.
+#   body2_o2 -> tensore gia' rispetto a o_2 nella terna 2 (I_hat, J_hat,
+#               K_hat, con K_hat lungo il puntamento); al posto di r_G_mm serve
+#               d_mm = eccentricita' del baricentro rispetto a o_2, terna 2.
+# products_sign: tensor   se i fuori diagonale sono -int(x_i x_j dm)
+#                positive se sono +int(x_i x_j dm) (vengono negati)
+#
+# Valori: Onshape "Mass and section properties", istanza "Telescopio LAMERA <1>",
+# senza mate connector (2026-10-13): baricentro misurato da O_N, tensore
+# rispetto al baricentro con assi paralleli all'assieme. Inerzie convertite da
+# kg mm^2 a kg m^2 (x 1e-6).
+payload:
+  enabled: true
+  source: manual                # manual | gimbal_2dof (corpo B dal codice del 2 GdL)
+  frame: cad_cg                 # cad_cg | body2_o2
+  m_kg: 16.61
+  r_G_mm: [-4.821e-4, 67.392, 544.07495]   # baricentro in N, da O_N
+  # d_mm: [0.0, 0.0, 0.0]       # solo con frame: body2_o2
+  I_kgm2:                       # Lxx..Lzz di Onshape, kg mm^2 -> kg m^2
+    - [ 0.805643247, -1.679e-6,      0.751e-6     ]
+    - [-1.679e-6,     0.284157252,  -0.012869781  ]
+    - [ 0.751e-6,    -0.012869781,   0.79763717447]
+  products_sign: tensor
+  subtract_shaft_parts: false   # solo il telescopio: nessuna sottrazione
+  source_note: "Onshape, Telescopio LAMERA <1>, senza mate connector"
+  placeholder: false
+  config_2dof: ../gimbal_2dof/config.yaml   # solo per source: gimbal_2dof e per il confronto col 2 GdL
+
+# --- Riduzione (Q4, DECISIONE DELL'UTENTE 2026-10-12) -------------------
+reduction:
+  method: guyan                 # guyan | craig_bampton (solo verifica)
+  n_fixed_interface_modes: 0    # modi a interfaccia fissa per Craig-Bampton
+  mass_form: guyan              # guyan (tridiagonale) | guyan_lumped (diagonale)
+
+fem:
+  mass_models: [lumped, consistent]
+  consistent_shape: linear      # linear | compliance
+
+damping:
+  model: stiffness_proportional
+  zeta_first_flexible: 0.01     # Q8, segnaposto
+
+# --- Punti di lavoro ----------------------------------------------------
+# theta = elevazione (theta > 0 alza il puntamento). Il campo confermato per il
+# modello a 2 GdL (2026-09-27) e' -45..+45 deg, simmetrico: resta lo stesso.
+operating_points:
+  theta0_deg: [-45, -15, 0, 15, 45]
+  omega0_deg_s: [0, 10]         # Q11: 10 deg/s segnaposto
+  theta0_sweep_deg: {start: -45.0, stop: 45.0, step: 5.0}
+g: 9.80665
+
+frequency:
+  f_min_Hz: 0.1
+  f_max_Hz: 5000.0              # esteso in automatico a 2x la frequenza propria piu' alta
+  n_points: 4000
+
+latex:
+  language: en
+  compile: true

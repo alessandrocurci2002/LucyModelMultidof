@@ -1,0 +1,235 @@
+# =====================================================================
+# Configurazione di RIFERIMENTO della suite di test. Non modificarla per
+# l'analisi: i test verificano il codice, non i dati del progetto, e alcune
+# verifiche sfruttano proprieta' di questa geometria (elemento di azimut 3
+# non uniforme, elementi polari 6 e 7 uguali e simmetrici attorno al nodo
+# motore, telescopio dato come corpo B del CAD a 2 GdL).
+# I dati del progetto stanno in ../config.yaml.
+# =====================================================================
+
+# Origini e posa coerenti con il modello a 2 GdL (z_O = 54.9 cm), cosi' che il
+# telescopio inserito come corpo B riproduca esattamente la sorgente gimbal_2dof.
+frames:
+  o1_z_mm: 59.695
+  o2_z_mm: 549.0
+  azimuth_axis_xy_mm: [0.0, 0.0]
+  pointing_cad: "-Y"
+  polar_axis_cad: "-X"
+  theta_cad_deg: 0.0
+
+materials:
+  acciaio:   {rho: 8000.0, G: 77.0e9, placeholder: true}
+  alluminio: {rho: 2810.0, G: 26.9e9, placeholder: true}
+
+azimuth:
+  n_nodes: 9
+  encoder_node: 1
+  torque_node: 5
+  load_node: 9
+  masters: [1, 5, 9]
+  elements:
+    - id: 1
+      mode: geometry
+      segments:
+        - length_mm: 20.0
+          layers:
+            - {shape: solid, d_out_mm: 12.0, material: acciaio, carries_torque: true}
+      placeholder: true
+    - id: 2
+      mode: geometry
+      segments:
+        - length_mm: 30.0
+          layers:
+            - {shape: solid, d_out_mm: 16.0, material: acciaio, carries_torque: true}
+      placeholder: true
+    - id: 3
+      mode: geometry
+      segments:
+        - length_mm: 15.0
+          layers:
+            - {shape: solid, d_out_mm: 16.0, material: acciaio, carries_torque: true}
+        - length_mm: 17.0
+          layers:
+            - {shape: solid,  d_out_mm: 16.0, material: acciaio,   carries_torque: true}
+            - {shape: hollow, d_in_mm: 16.0, d_out_mm: 60.0, material: alluminio, carries_torque: true}
+      placeholder: true
+    - id: 4
+      mode: geometry
+      segments:
+        - length_mm: 10.0
+          layers:
+            - {shape: solid, d_out_mm: 18.0, material: acciaio, carries_torque: true}
+      placeholder: true
+    - id: 5
+      mode: geometry
+      segments:
+        - length_mm: 10.0
+          layers:
+            - {shape: solid, d_out_mm: 18.0, material: acciaio, carries_torque: true}
+      placeholder: true
+    - id: 6
+      mode: geometry
+      segments:
+        - length_mm: 30.0
+          layers:
+            - {shape: solid,  d_out_mm: 16.0, material: acciaio, carries_torque: true}
+            - {shape: hollow, d_in_mm: 16.0, d_out_mm: 30.0, material: acciaio, carries_torque: false}
+      placeholder: true
+    - id: 7
+      mode: geometry
+      segments:
+        - length_mm: 35.0
+          layers:
+            - {shape: solid, d_out_mm: 25.0, material: acciaio, carries_torque: true}
+      placeholder: true
+    - id: 8
+      mode: manual
+      J_kgm2: 1.8e-4
+      k_Nm_rad: 5.0e6
+      length_mm: 17.5
+      placeholder: true
+  node_inertias:
+    - {node: 1, name: "rotore encoder", J_kgm2: 2.0e-5, source: "segnaposto", placeholder: true}
+    - {node: 5, name: "rotore motore", J_kgm2: 8.19e-5, source: "segnaposto", placeholder: true}
+    - {node: 9, name: "load (forcella)", J_kgm2: 1.0, source: "segnaposto", placeholder: true}
+  bearing_b: {}
+
+polar:
+  n_nodes: 11
+  encoder_node: 1
+  torque_node: 7
+  end_node: 11
+  payload_element: 3
+  payload_xi: 0.5
+  payload_center_from_node3_mm: null
+  payload_clamp_rigid_mm: 0.0
+  bearing_elements: [2, 4]
+  masters: [1, "P", 7, 11]
+  y_node1_from_o2_mm: null
+  elements:
+    - id: 1
+      mode: geometry
+      segments:
+        - length_mm: 10.0
+          layers:
+            - {shape: solid, d_out_mm: 14.0, material: acciaio, carries_torque: true}
+      placeholder: true
+    - id: 2
+      mode: geometry
+      segments:
+        - length_mm: 20.0
+          layers:
+            - {shape: solid, d_out_mm: 25.0, material: acciaio, carries_torque: true}
+      placeholder: true
+    - id: 3
+      mode: geometry
+      segments:
+        - length_mm: 25.0
+          layers:
+            - {shape: solid, d_out_mm: 25.0, material: acciaio, carries_torque: true}
+        - length_mm: 35.0
+          layers:
+            - {shape: hollow, d_in_mm: 10.0, d_out_mm: 25.0, material: acciaio, carries_torque: true}
+      placeholder: true
+    - id: 4
+      mode: geometry
+      segments:
+        - length_mm: 20.0
+          layers:
+            - {shape: solid, d_out_mm: 25.0, material: acciaio, carries_torque: true}
+      placeholder: true
+    - id: 5
+      mode: geometry
+      segments:
+        - length_mm: 30.0
+          layers:
+            - {shape: solid, d_out_mm: 16.0, material: acciaio, carries_torque: true}
+      placeholder: true
+    - id: 6
+      mode: geometry
+      segments:
+        - length_mm: 8.5
+          layers:
+            - {shape: solid, d_out_mm: 18.0, material: acciaio, carries_torque: true}
+      placeholder: true
+    - id: 7
+      mode: geometry
+      segments:
+        - length_mm: 8.5
+          layers:
+            - {shape: solid, d_out_mm: 18.0, material: acciaio, carries_torque: true}
+      placeholder: true
+    - id: 8
+      mode: geometry
+      segments:
+        - length_mm: 45.0
+          layers:
+            - {shape: solid, d_out_mm: 16.0, material: acciaio, carries_torque: true}
+      placeholder: true
+    - id: 9
+      mode: geometry
+      segments:
+        - length_mm: 17.0
+          layers:
+            - {shape: solid,  d_out_mm: 16.0, material: acciaio,   carries_torque: true}
+            - {shape: hollow, d_in_mm: 16.0, d_out_mm: 88.0, material: alluminio, carries_torque: true}
+      placeholder: true
+    - id: 10
+      mode: manual
+      J_kgm2: 8.24e-7
+      k_Nm_rad: 3.10e4
+      length_mm: 16.0
+      m_kg: 0.0257
+      I_t_kgm2: 9.6e-7
+      y_c_mm: 8.0
+      placeholder: true
+  node_inertias:
+    - {node: 1, name: "rotore encoder", J_kgm2: 2.0e-5, m_kg: null, I_t_kgm2: null, source: "segnaposto", placeholder: true}
+    - {node: 7, name: "rotore motore", J_kgm2: 8.19e-5, m_kg: null, I_t_kgm2: null, source: "segnaposto", placeholder: true}
+  bearing_b: {2: 0.0, 4: 0.0}
+
+# Corpo B del CAD a 2 GdL (cad_data.CORPO_B) convertito in kg m^2 e mm:
+# deve riprodurre esattamente la sorgente gimbal_2dof (test_payload).
+payload:
+  enabled: true
+  source: manual
+  frame: cad_cg
+  m_kg: 24.057
+  r_G_mm: [13.69, -79.65, 544.60]
+  I_kgm2:
+    - [ 0.8932534, -0.0263414, -0.0010194]
+    - [-0.0263414,  0.5624207,  0.0086696]
+    - [-0.0010194,  0.0086696,  1.1222053]
+  products_sign: tensor
+  subtract_shaft_parts: true
+  source_note: "corpo B del CAD a 2 GdL"
+  placeholder: true
+  config_2dof: ../../gimbal_2dof/config.yaml
+
+reduction:
+  method: guyan
+  n_fixed_interface_modes: 0
+  mass_form: guyan
+
+fem:
+  mass_models: [lumped, consistent]
+  consistent_shape: linear
+
+damping:
+  model: stiffness_proportional
+  zeta_first_flexible: 0.01
+
+operating_points:
+  theta0_deg: [-45, -15, 0, 15, 45]
+  omega0_deg_s: [0, 10]
+  theta0_sweep_deg: {start: -45.0, stop: 45.0, step: 5.0}
+g: 9.80665
+
+frequency:
+  f_min_Hz: 0.1
+  f_max_Hz: 5000.0
+  n_points: 4000
+
+latex:
+  language: en
+  compile: true
