@@ -1,0 +1,209 @@
+r"""Comparison of the closed-loop model with step tests, with the drive parameters of the tests (nothing
+estimated).
+
+Every move of the sequences is simulated from the measured state at rest before it, with the measured commands
+of both axes (:mod:`lucy_cl.validation`), for each variant of the configuration: the variants differ in how two
+settings of the drive files are read (position gain, velocity feedforward) and, optionally, in the Coulomb level
+of the bearing friction. Fit NRMSE of the position error and of the current of the moving axis, disturbance on
+the held axis.
+
+Results in ``<results_dir>/``: ``figures/``, ``summary.md``, ``summary.json``.
+
+Usage (from this folder)::
+
+    ../.venv/bin/python -I compare.py --config config_compare_vcl.yaml
+"""
+
+from __future__ import annotations
+
+import argparse
+import json
+import multiprocessing as mp
+import sys
+import time
+from pathlib import Path
+
+import numpy as np
+import yaml
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+
+import main as mn  # noqa: E402
+from lucy_cl import AXES  # noqa: E402
+from lucy_cl import identification as idn  # noqa: E402
+from lucy_cl import output as out  # noqa: E402
+from lucy_cl.data_files import read_akd  # noqa: E402
+from lucy_cl.validation import read_sequence  # noqa: E402
+
+MDEG = out.MDEG
+
+
+def fit(meas: np.ndarray, model: np.ndarray) -> float:
+    from gimbal_mdof.sperimentale import fit_nrmse
+
+    ok = np.isfinite(model)
+    return fit_nrmse(meas[ok], model[ok]) if ok.sum() >= 10 else float("nan")
+
+
+def variant_values(cl, cfg: dict, base: Path, v: dict) -> dict[str, dict[str, float]]:
+    """Parameters of the variant for :func:`lucy_cl.identification.apply_params`."""
+    vals = {}
+    for ax in AXES:
+        p = cl.drives[ax].p
+        kpp_hz = p.Kpp_workbench / (2 * np.pi)
+        kvff = float(read_akd(base / cfg["drives"][ax]["parameters"])["AXIS1.VL.KVFF"])
+        vals[ax] = {"Kpp": 2 * np.pi * kpp_hz if v["position_gain_unit"] == "hz" else kpp_hz,
+                    "kvff": kvff if v["feedforward"] else 0.0}
+        if "Tc" in v:
+            vals[ax]["Tc"] = float(v["Tc"][ax])
+        else:
+            vals[ax]["Tc"] = idn.current_values(cl, ax)["Tc"]
+        for k in ("Kpp", "Kpv", "Kiv"):  # explicit gains (e.g. estimated on other sequences)
+            if k in v:
+                vals[ax][k] = float(v[k][ax])
+    return vals
+
+
+def figure(seq_name: str, ax_moving: str, rows: list, variants: list[dict], plot: list[str]):
+    import matplotlib.pyplot as plt
+
+    n = len(rows)
+    held = [a for a in AXES if a != ax_moving][0]
+    fig, axs = plt.subplots(n, 3, figsize=(13.5, 2.3 * n + 0.6), squeeze=False)
+    for k, (w, res) in enumerate(rows):
+        first = res[variants[0]["name"]]
+        t = first["t"]
+        for j, (axis, key, scale, unit) in enumerate(((ax_moving, "error", MDEG, "mdeg"),
+                                                      (ax_moving, "current", 1.0, "A rms"),
+                                                      (held, "error", MDEG, "mdeg"))):
+            a = axs[k, j]
+            a.plot(t, scale * first[axis][f"{key}_meas"], "k", lw=1.5, label="measured")
+            for c, v in enumerate([v for v in variants if v["name"] in plot]):
+                a.plot(t, scale * res[v["name"]][axis][key], color=f"C{c}", lw=0.9,
+                       ls="-" if c % 2 == 0 else "--", label=f"{v['name']}: {v['label']}")
+            lab = {"error": "command - encoder", "current": "current"}[key]
+            a.set_title(f"{w.move:.2f} s, {axis} {lab}" + (" (held)" if axis == held else ""), fontsize=7.5)
+            a.set_ylabel(unit)
+            if k == n - 1:
+                a.set_xlabel("time from window start [s]")
+    axs[0, 0].legend(fontsize=6)
+    fig.suptitle(f"{seq_name}: {ax_moving} moves, drive parameters of the files", fontsize=9)
+    fig.tight_layout()
+    return fig
+
+
+def main() -> None:
+    ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
+    ap.add_argument("--config", default="config_compare_vcl.yaml")
+    args = ap.parse_args()
+    cfg_path = Path(args.config).resolve()
+    base = cfg_path.parent
+    cc = yaml.safe_load(cfg_path.read_text())
+    cfg = yaml.safe_load((base / cc["base_config"]).read_text())
+    res_dir = base / cc["results_dir"]
+    fig_dir = res_dir / "figures"
+    fig_dir.mkdir(parents=True, exist_ok=True)
+    seq_dir = (base / cc["sequences_dir"]).resolve()
+    amps = float(cc.get("amps_per_A", 2.0))
+    t_start = time.time()
+
+    cl, _, _ = mn.build(cfg, base)
+    variants = cc["variants"]
+    vals = {v["name"]: variant_values(cl, cfg, base, v) for v in variants}
+    seqs = {n: read_sequence(seq_dir / f"{n}.csv", amps) for n in cc["sequences"]}
+    md = ["# Comparison with the step tests (drive parameters of the tests)", "",
+          f"Configuration `{cfg_path.name}` (model `{cc['base_config']}`: {cfg.get('label', '')}). Generated by "
+          "`compare.py`. Nothing is estimated: every move is simulated from the measured state at rest before it "
+          "with the measured commands of both axes and the drive parameters of the files; the variants differ in "
+          "the reading of PL.KP and VL.KVFF and in the bearing friction.", ""]
+    rows = []
+    for v in variants:
+        rows.append([v["name"], v["label"]] + [", ".join(f"{k} {x:.4g}" for k, x in vals[v["name"]][ax].items())
+                                               for ax in AXES])
+    md += ["## Variants", "", out.markdown_table(["variant", "description", "azimuth", "elevation"], rows), "",
+           "Kpp in 1/s, kvff velocity feedforward gain, Tc Coulomb level of the Dahl bearing friction in N m "
+           "(H6: from the ground constraint of the frequency responses).", ""]
+    rows = []
+    for n, s in seqs.items():
+        for ax in AXES:
+            mv = s.moves(ax)
+            rows.append([n, ax, len(mv), ", ".join(f"{a:.2f} s {np.rad2deg(s.cmd[ax][s.t <= b][-1] - s.cmd[ax][s.t <= a][-1]):+.1f} deg"
+                                                   for a, b in mv), f"{np.abs(s.current[ax]).max():.1f}"])
+    md += ["## Sequences", "", "2 kHz; commands with trapezoidal speed profiles, 10 deg/s.", "",
+           out.markdown_table(["sequence", "axis", "moves", "moves (start, amplitude)", "max |current| [A rms]"], rows), ""]
+
+    js: dict = {"config": cfg_path.name, "variants": {v["name"]: {"label": v["label"], "values": vals[v["name"]]}
+                                                     for v in variants}, "moves": []}
+    mc = float(cc.get("max_cpu_per_window_s", 120))
+    with mp.get_context("fork").Pool(int(cc.get("workers", 4)), initializer=idn._init_worker,
+                                     initargs=(cfg, str(base), str(seq_dir), amps)) as pool:
+        for n, s in seqs.items():
+            for ax in AXES:
+                ws = idn.windows_for_moves(s, ax, pre=cc.get("pre_s", 0.3), post=cc.get("post_s", 2.5))
+                if not ws:
+                    continue
+                res = {v["name"]: pool.map(idn.simulate_job, [(w, vals[v["name"]], mc) for w in ws]) for v in variants}
+                held = [a for a in AXES if a != ax][0]
+                fig_rows = []
+                for k, w in enumerate(ws):
+                    r = {"sequence": n, "axis": ax, "move": w.move, "window": [w.t0, w.t1]}
+                    cw = s.cmd[held][s.window(w.t0, w.t1)]
+                    static = bool(np.ptp(cw) < 1e-7)
+                    m0 = res[variants[0]["name"]][k]
+                    r["held_meas_mdeg"] = float(MDEG * np.ptp(m0[held]["error_meas"])) if static else float("nan")
+                    r["max_error_meas_mdeg"] = float(MDEG * np.max(np.abs(m0[ax]["error_meas"])))
+                    for v in variants:
+                        o = res[v["name"]][k]
+                        r[v["name"]] = {"ok": o["ok"], "fit_error": fit(o[ax]["error_meas"], o[ax]["error"]),
+                                        "fit_current": fit(o[ax]["current_meas"], o[ax]["current"]),
+                                        "max_error_mdeg": float(MDEG * np.nanmax(np.abs(o[ax]["error"]))),
+                                        "held_mdeg": float(MDEG * np.nanmax(o[held]["error"]) - MDEG * np.nanmin(o[held]["error"]))
+                                        if static else float("nan")}
+                    js["moves"].append(r)
+                    fig_rows.append((w, {v["name"]: res[v["name"]][k] for v in variants}))
+                out.save(figure(n, ax, fig_rows, variants, cc.get("plot_variants", [v["name"] for v in variants])),
+                         fig_dir, f"{n}_{ax}")
+                print(f"  {n} {ax}: {len(ws)} moves", flush=True)
+
+    # ---- tables ----------------------------------------------------------------------------------------
+    def stat(sel: list[dict], key: str, name: str | None = None) -> str:
+        x = np.array([(r[name][key] if name else r[key]) for r in sel], dtype=float)
+        x = x[np.isfinite(x)]
+        return "-" if x.size == 0 else f"{np.median(x):.1f} [{x.min():.0f}, {x.max():.0f}]"
+
+    md += ["## Fit of the position error (command - encoder) of the moving axis", "",
+           "NRMSE fit, %: median [min, max] over the moves.", ""]
+    rows = []
+    for ax in AXES:
+        sel = [r for r in js["moves"] if r["axis"] == ax]
+        rows.append([ax, len(sel)] + [stat(sel, "fit_error", v["name"]) for v in variants])
+    md += [out.markdown_table(["axis", "moves"] + [f"{v['name']}: {v['label']}" for v in variants], rows), ""]
+    md += ["## Fit of the current of the moving axis", ""]
+    rows = []
+    for ax in AXES:
+        sel = [r for r in js["moves"] if r["axis"] == ax]
+        rows.append([ax, len(sel)] + [stat(sel, "fit_current", v["name"]) for v in variants])
+    md += [out.markdown_table(["axis", "moves"] + [f"{v['name']}" for v in variants], rows), ""]
+    md += ["## Peak following error and disturbance on the held axis", "",
+           "Largest |command - encoder| of the moving axis, and peak-to-peak error of the held axis during the "
+           "move of the other one (only moves with the other axis at rest), mdeg: median [min, max].", ""]
+    rows = []
+    for ax in AXES:
+        sel = [r for r in js["moves"] if r["axis"] == ax]
+        rows.append([ax, "peak error", stat(sel, "max_error_meas_mdeg")] + [stat(sel, "max_error_mdeg", v["name"]) for v in variants])
+        rows.append([ax, "held axis", stat(sel, "held_meas_mdeg")] + [stat(sel, "held_mdeg", v["name"]) for v in variants])
+    md += [out.markdown_table(["moving axis", "quantity", "measured"] + [v["name"] for v in variants], rows), ""]
+    md += ["<details><summary>All moves</summary>", "",
+           out.markdown_table(["sequence", "axis", "move [s]"] + [f"fit err {v['name']}" for v in variants]
+                              + [f"fit cur {v['name']}" for v in variants],
+                              [[r["sequence"], r["axis"], f"{r['move']:.2f}"]
+                               + [out.fmt(r[v["name"]]["fit_error"], 3) for v in variants]
+                               + [out.fmt(r[v["name"]]["fit_current"], 3) for v in variants] for r in js["moves"]]),
+           "", "</details>", ""]
+    (res_dir / "summary.md").write_text("\n".join(md))
+    (res_dir / "summary.json").write_text(json.dumps(js, indent=2, default=float))
+    print(f"results in {res_dir} ({time.time() - t_start:.0f} s)")
+
+
+if __name__ == "__main__":
+    main()

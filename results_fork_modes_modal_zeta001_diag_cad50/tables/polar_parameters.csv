@@ -1,0 +1,21 @@
+parameter,unit,estimate,start,lower,upper,std_percent,at_bound,note
+s_J_e,,0.50365,1,0.5,1.5,3096111.1,,CAD factor: encoder disc inertia
+s_J_hp,,1.1667,1,0.5,1.5,11.7,,CAD factor: hub + telescope inertia
+s_J_m,,1.384,1,0.5,1.5,1123.1,,CAD factor: motor rotor inertia
+s_J_r,,1.5,1,0.5,1.5,nan,yes,CAD factor: rear-end inertia
+s_k_1,,1.286,1,0.5,1.5,376942.4,,CAD factor: shaft encoder - hub
+s_k_2,,0.5,1,0.5,1.5,nan,yes,CAD factor: shaft hub - motor
+s_k_3,,0.5,1,0.5,1.5,nan,yes,CAD factor: shaft motor - rear end
+k_g,N m/rad,126.76,116.71,1,1e+06,2374.2,,bearings to the stator structure (free)
+eta_g,,2.7553,3.201,0.001,30,2372.9,,hysteretic loss factor of the bearings (free)
+tau_d,s,1e-06,0.0005945,1e-06,0.002,nan,yes,equivalent drive delay
+f_1,Hz,56.367,57.743,40,80,0.3,,stator mass 1
+a_1,1/(kg m^2),-0.27095,-0.69484,-50,50,4.4,,stator mass 1: kappa/J
+f_2,Hz,98.738,100.12,80,140,0.2,,stator mass 2
+a_2,1/(kg m^2),0.30183,0.62643,-50,50,7.1,,stator mass 2: kappa/J
+zeta_1,,0.0001,0.005,0.0001,0.01,nan,yes,viscous modal damping of mode 1
+zeta_2,,0.01,0.005,0.0001,0.01,nan,yes,viscous modal damping of mode 2
+zeta_3,,0.01,0.005,0.0001,0.01,nan,yes,viscous modal damping of mode 3
+zeta_4,,0.01,0.005,0.0001,0.01,nan,yes,viscous modal damping of mode 4
+zeta_5,,0.0001,0.005,0.0001,0.01,nan,yes,viscous modal damping of mode 5
+zeta_6,,0.0001,0.005,0.0001,0.01,nan,yes,viscous modal damping of mode 6

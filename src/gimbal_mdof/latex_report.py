@@ -30,7 +30,7 @@ from .analysis import ConfrontoRiduzione
 from .coupled import Sistema
 from .geometry import ProprietaElemento
 from .linearize import ModelloLineare
-from .params import MM, NOTA_REALISMO, R_P2, Avviso, ParametriAsse, Parametri
+from .params import MM, NOTA_REALISMO, R_P2, Avviso, ParametriAsse, Parametri, in_inglese
 
 NOME_FILE = "multidof_fem_model"
 
@@ -50,7 +50,9 @@ SOSTITUZIONE_TERNA_2 = {
 
 def L(espr) -> str:
     """``sympy.latex`` con le componenti nella terna 2 del documento."""
-    if isinstance(espr, sp.Basic):
+    if isinstance(espr, sp.MatrixBase):  # le matrici mutabili non sono sp.Basic
+        espr = espr.applyfunc(lambda e: e.xreplace(SOSTITUZIONE_TERNA_2))
+    elif isinstance(espr, sp.Basic):
         espr = espr.xreplace(SOSTITUZIONE_TERNA_2)
     return sp.latex(espr)
 
@@ -84,6 +86,12 @@ def matrice_numerica(A: np.ndarray, cifre: int = 3) -> str:
     righe = [" & ".join(num(v, cifre) if abs(v) > 1e-14 * np.max(np.abs(A)) else "0" for v in r)
              for r in A]
     return r"\begin{bmatrix}" + r" \\ ".join(righe) + r"\end{bmatrix}"
+
+
+def riduci_se_serve(eq: str) -> str:
+    """Equazione centrata, ridotta alla larghezza del testo solo se la supera."""
+    return (r"\begin{center}\resizebox{\ifdim\width>\linewidth\linewidth\else\width\fi}{!}{$\displaystyle "
+            + eq + r"$}\end{center}")
 
 
 def ridimensiona(eq: str) -> str:
@@ -236,8 +244,13 @@ def tikz_geometria(a: ParametriAsse, mod: fem.ModelloAsse) -> tuple[str, bool]:
 
 
 def tabella_elementi(asse: str, props: Sequence[ProprietaElemento]) -> str:
-    """Contributi per strato e totali di ogni elemento (longtable)."""
+    """Contributi per strato e totali di ogni elemento (longtable).
+
+    13 colonne: corpo ``\\footnotesize`` e ``\\tabcolsep`` ridotto, altrimenti la
+    tabella esce dal margine destro (una longtable non si puo' scalare).
+    """
     r: list[str] = [
+        r"\begingroup\footnotesize\setlength{\tabcolsep}{3.2pt}",
         r"\begin{longtable}{llllrrrlcrrrr}",
         rf"\caption{{Element properties, {asse} axis: layer contributions and element totals "
         r"($m$ in g, inertias in kg\,m$^2$, $k$ in N\,m/rad).}\\",
@@ -251,7 +264,7 @@ def tabella_elementi(asse: str, props: Sequence[ProprietaElemento]) -> str:
         for st in p.strati:
             k_s = st.GJ_p / st.lunghezza if st.GJ_p > 0 else None
             r.append(rf"{p.etichetta} & {st.segmento} & {st.strato} & {st.forma} & {st.d_out / MM:g} & "
-                     rf"{st.d_in / MM:g} & {st.lunghezza / MM:g} & {esc(st.materiale)} & "
+                     rf"{st.d_in / MM:g} & {st.lunghezza / MM:g} & {esc(in_inglese(st.materiale))} & "
                      rf"{'yes' if st.portante else 'no'} & ${num(st.m * 1e3, 3)}$ & ${num(st.J, 3)}$ & "
                      rf"${num(st.I_t, 3)}$ & ${num(k_s, 3) if k_s else '--'}$ \\")
         for pz in p.pezzi:
@@ -262,6 +275,7 @@ def tabella_elementi(asse: str, props: Sequence[ProprietaElemento]) -> str:
                  rf"{p.lunghezza / MM:g} & & & ${num(p.m * 1e3, 4)}$ & ${num(p.J, 4)}$ & ${num(p.I_t, 4)}$ & "
                  rf"${num(p.k, 4)}$ \\ \midrule")
     r.append(r"\bottomrule\end{longtable}")
+    r.append(r"\endgroup")
     return "\n".join(r)
 
 
@@ -276,7 +290,7 @@ def tabella_validazione(confronti: Sequence[ConfrontoRiduzione]) -> str:
         n_cb = max(c.f_cb) if c.f_cb else None
         for k in range(len(c.f_red)):
             cb = num(c.f_cb[n_cb][k], 5) if n_cb is not None else "--"
-            r.append(rf"{c.asse} & {c.modello_massa} & {esc(c.forma_massa)} & {k + 1} & "
+            r.append(rf"{in_inglese(c.asse)} & {c.modello_massa} & {esc(c.forma_massa)} & {k + 1} & "
                      rf"${num(c.f_full[k], 5)}$ & ${num(c.f_red[k], 5)}$ & "
                      rf"${num(c.errore_relativo[k] * 100, 3)}\,\%$ & ${cb}$ \\")
         r.append(rf"\multicolumn{{8}}{{r}}{{\footnotesize reduced FRF valid up to "
@@ -368,6 +382,29 @@ class ContenutoLatex:
     avvisi: Sequence[Avviso]
     ml_tabella: ModelloLineare | None = None
     note: list[str] = field(default_factory=list)
+    simulazioni: Sequence = ()
+    riduzione: str = "guyan"
+    """Riduzione del modello principale (simulazioni): modal | guyan | craig_bampton."""
+    modale: object | None = None
+    """:class:`gimbal_mdof.modal_output.RisultatiModali` (sezione del troncamento modale)."""
+    s1_riferimento: object | None = None
+    """S1 sul modello a tutti i GdL del FEM (confronto)."""
+    includi_guyan: bool = True
+    """``latex.include_guyan``: con ``False`` (e il modello modale disponibile) il documento non
+    contiene la riduzione di Guyan ne' i confronti con essa."""
+    ml_principale: ModelloLineare | None = None
+    """Modello lineare principale (modale) per la tabella di poli e zeri senza Guyan."""
+    concentrato: Sistema | None = None
+    """Modello a parametri concentrati (3 + 4 GdL), sezione ``sec:lumped``."""
+    concentrato_extra: Sequence[str] = ()
+    """Sottosezioni aggiuntive della sezione del modello concentrato (FdT, simulatore)."""
+    sperimentale_tex: str = ""
+    """Sezione del confronto con le misure sperimentali (``sec:experimental``), gia' in LaTeX."""
+
+
+def _con_guyan(c: ContenutoLatex) -> bool:
+    """Guyan nel documento: se richiesto, oppure se manca il modello modale (unica riduzione)."""
+    return c.includi_guyan or c.modale is None
 
 
 PREAMBOLO = r"""\documentclass[10pt,a4paper]{article}
@@ -377,7 +414,9 @@ PREAMBOLO = r"""\documentclass[10pt,a4paper]{article}
 \usepackage[english]{babel}
 \usepackage[margin=2.2cm]{geometry}
 \usepackage{amsmath,amssymb,mathtools,bm}
-\usepackage{booktabs,longtable,array}
+\usepackage{booktabs,longtable,array,tabularx}
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
 \usepackage{graphicx}
 \usepackage{float}
 \usepackage[font=small]{caption}
@@ -391,7 +430,42 @@ PREAMBOLO = r"""\documentclass[10pt,a4paper]{article}
 """
 
 
-def _sezione_sistema(par: Parametri) -> str:
+def _sezione_sistema(par: Parametri, modale: bool = False, guyan: bool = True) -> str:
+    if modale and not guyan:
+        stadi = r"""\item reduction of each axis by modal truncation in the sense of Gawronski of the full FEM (rigid
+      mode plus the flexible modes in the band of interest; \texttt{modal.py}, Section~\ref{sec:modal});
+\item coupling of the two reduced axes through the kinetic energy of the whole system
+      (\texttt{coupled.py}, \texttt{modal.py}, Sections~\ref{sec:coupled} and~\ref{sec:modal})."""
+        coord = r"""\paragraph{Reduced coordinates.} $\boldsymbol\eta = [\eta_{\psi0}, \eta_{\psi k}, \dots,\
+\eta_{\theta0}, \eta_{\theta k}, \dots]^{\mathsf T}$, with $\eta_{a0}$ the rigid rotation of axis $a$ and $\eta_{ak}$
+the amplitudes of the retained flexible modes (Section~\ref{sec:modal}). The full FEM coordinates are the
+rotations of all nodes, $\mathbf q_\psi = [\psi_1, \dots, \psi_9]^{\mathsf T}$ and $\mathbf q_\theta$ (polar
+nodes, with P)."""
+    elif modale:
+        stadi = r"""\item reduction of each axis: by default a modal truncation in the sense of Gawronski of the full FEM
+      (rigid mode plus the flexible modes in the band of interest; \texttt{modal.py},
+      Section~\ref{sec:modal}); the Guyan reduction to a short chain on master nodes (\texttt{reduction.py},
+      Section~\ref{sec:guyan}) and Craig--Bampton are kept for comparison;
+\item coupling of the two reduced axes through the kinetic energy of the whole system
+      (\texttt{coupled.py}, \texttt{modal.py}, Sections~\ref{sec:coupled} and~\ref{sec:modal})."""
+        coord = r"""\paragraph{Reduced coordinates.} Modal model (default): $\boldsymbol\eta = [\eta_{\psi0},
+\eta_{\psi k}, \dots,\ \eta_{\theta0}, \eta_{\theta k}, \dots]^{\mathsf T}$, with $\eta_{a0}$ the rigid rotation of
+axis $a$ and $\eta_{ak}$ the amplitudes of the retained flexible modes (Section~\ref{sec:modal}). Guyan chains
+(comparison):
+\begin{gather}
+\mathbf q = [\psi_e,\ \psi_m,\ \psi_L,\ \theta_e,\ \theta_p,\ \theta_m,\ \theta_r]^{\mathsf T},
+\end{gather}
+with masters $\{1, 5, 9\}$ (azimuth) and $\{1, \mathrm P, 7, 11\}$ (polar)."""
+    else:
+        stadi = r"""\item Guyan reduction of each axis to a short chain on master nodes (\texttt{reduction.py},
+      Section~\ref{sec:guyan});
+\item coupling of the two reduced chains through the kinetic energy of the whole system
+      (\texttt{coupled.py}, Section~\ref{sec:coupled})."""
+        coord = r"""\paragraph{Reduced coordinates.}
+\begin{gather}
+\mathbf q = [\psi_e,\ \psi_m,\ \psi_L,\ \theta_e,\ \theta_p,\ \theta_m,\ \theta_r]^{\mathsf T},
+\end{gather}
+with masters $\{1, 5, 9\}$ (azimuth) and $\{1, \mathrm P, 7, 11\}$ (polar)."""
     return r"""
 \section{System, conventions and modelling chain}
 The model is the second link of the chain of increasingly complex models of the alt-azimuth mount. The rigid
@@ -403,10 +477,7 @@ implemented in a module of \texttt{src/gimbal\_mdof/}:
       (\texttt{geometry.py}, Section~\ref{sec:elements});
 \item a torsional FEM of each axis in isolation, with lumped and consistent mass (\texttt{fem.py},
       Section~\ref{sec:fem});
-\item Guyan reduction of each axis to a short chain on master nodes (\texttt{reduction.py},
-      Section~\ref{sec:guyan});
-\item coupling of the two reduced chains through the kinetic energy of the whole system
-      (\texttt{coupled.py}, Section~\ref{sec:coupled}).
+@@STADI@@
 \end{enumerate}
 
 \paragraph{Frames and angles.} The frames and sign conventions of the rigid model are kept unchanged; they are
@@ -422,12 +493,8 @@ $\theta_i$ is the rotation of polar node $i$ relative to the fork about $\hat J$
 absolute rotation about $\hat J$ because the fork only rotates about $\hat k$. The azimuth encoder reads
 $\psi_1$, the polar encoder (stator on the fork) reads $\theta_1$.
 
-\paragraph{Reduced coordinates.}
-\begin{gather}
-\mathbf q = [\psi_e,\ \psi_m,\ \psi_L,\ \theta_e,\ \theta_p,\ \theta_m,\ \theta_r]^{\mathsf T},
-\end{gather}
-with masters $\{1, 5, 9\}$ (azimuth) and $\{1, \mathrm P, 7, 11\}$ (polar).
-"""
+@@COORD@@
+""".replace("@@STADI@@", stadi).replace("@@COORD@@", coord)
 
 
 def _direzione_N(v: np.ndarray) -> str:
@@ -562,7 +629,7 @@ def _sezione_terne(par: Parametri, sistema: Sistema) -> str:
         r"\texttt{gimbal.inertia.ruota}, called by \texttt{gimbal\_mdof.payload.tensore\_da\_config}.",
         r"\begin{table}[H]\centering\small",
         r"\caption{Frames of the model.}\label{tab:frames}",
-        r"\begin{tabular}{p{0.15\linewidth}p{0.17\linewidth}p{0.34\linewidth}p{0.22\linewidth}}\toprule",
+        r"\begin{tabularx}{\linewidth}{L{0.16\linewidth}L{0.2\linewidth}YL{0.2\linewidth}}\toprule",
         r"frame & origin & unit vectors & role \\ \midrule",
         r"$N$, inertial & $O_N$, centre of the base of the azimuth shaft & $\hat x, \hat y, \hat z$: axes of "
         r"the Onshape assembly, $\hat z$ vertical upwards along the azimuth axis & reference for all CAD "
@@ -575,7 +642,18 @@ def _sezione_terne(par: Parametri, sistema: Sistema) -> str:
         r"direction (positive towards the optics), $\hat I$ upwards at $\theta = 0$, "
         r"$\hat J = \hat K\times\hat I = -\hat\jmath$ polar axis & rotates with "
         r"$\theta_p$ about $\hat J$ relative to body 1 \\ \bottomrule",
-        r"\end{tabular}\end{table}",
+        r"\end{tabularx}\end{table}",
+        r"\paragraph{Why $\hat J = -\hat\jmath$.} Body 2 is fixed by three requirements: $\hat I$ coincides "
+        r"with $\hat k = \hat z$ when the telescope is horizontal, $\hat K$ points out of the optics, and "
+        r"$\theta > 0$ raises the pointing. A right-handed frame then leaves no choice for the third axis: "
+        r"$\hat J = \hat K\times\hat I$, which at $\theta = 0$ ($\hat K = \hat\imath$, $\hat I = \hat k$) is "
+        r"$\hat\imath\times\hat k = -\hat\jmath$. A positive rotation $\theta$ about this $\hat J$ gives "
+        r"$\hat K = \cos\theta\,\hat\imath + \sin\theta\,\hat k$, i.e.\ it raises the pointing, as required. "
+        r"$\hat\jmath$ is fixed independently by body 1 ($\hat\jmath = \hat k\times\hat\imath$, with $\hat\imath$ "
+        r"the horizontal projection of the pointing), so it points the opposite way. $\hat J = +\hat\jmath$ "
+        r"would require either $\theta > 0$ to lower the pointing (the convention of the two-DOF model) or a "
+        r"left-handed frame. The sign only affects how $\theta$ and the tensor components are written; the "
+        r"physics is unchanged.",
         r"$O_N$, $o_1$ and $o_2$ all lie on $\hat z$ and differ only by a translation along $\hat z$; $o_2$ is "
         r"the intersection of the azimuth and polar axes:",
         r"\begin{gather}",
@@ -665,7 +743,10 @@ def _sezione_terne(par: Parametri, sistema: Sistema) -> str:
         (rf"\item \textbf{{Telescope:}} there is no shaft through the telescope (element {ep} in "
          r"\texttt{mode: telescope}). The rigid telescope joins the polar shaft ends at nodes "
          rf"{ep} and {ep + 1}, which therefore coincide with the telescope node P; only the telescope inertia "
-         r"(\texttt{payload}) is attached to P." if telescopio else
+         r"(\texttt{payload}) is attached to P." if telescopio and par.mozzo is None else
+         rf"\item \textbf{{Telescope (hub model):}} element {ep} has no shaft; its nodes coincide with the hub "
+         r"centre H, and the telescope is the node P joined to H by the attachment spring $k_b$ "
+         r"(Section~\ref{sec:hub}); only the telescope inertia (\texttt{payload}) is attached to P." if telescopio else
          rf"\item \textbf{{Telescope:}} clamped on the shaft element {ep}, split at P."),
         r"\item \textbf{Element data} (\texttt{mode: manual}): $J$ about the shaft's own axis; $I_t$ about a "
         r"transverse axis through the element's own centre of mass; \texttt{y\_c\_mm} measured from node $i$ in "
@@ -742,6 +823,11 @@ def _sezione_geometria(par: Parametri, sistema: Sistema) -> str:
         ep = a.elemento_payload
         if a.nome == "azimut":
             extra = " (drawn horizontally; node 1 is at the bottom)"
+        elif ep is not None and a.elemento(ep).modo == "telescope" and par.mozzo is not None:
+            pm = par.mozzo
+            extra = (rf"; elements {pm.elementi_lato[0]} and {pm.elementi_lato[1]} are the side hubs (tube and "
+                     rf"flange) and element {ep} has no shaft: its nodes coincide with the hub centre H, from "
+                     r"which the telescope hangs through $k_b$ (the support ring is in Figure~\ref{fig:hub_geometry})")
         elif ep is not None and a.elemento(ep).modo == "telescope":
             extra = (rf"; element {ep} has no shaft: the rigid telescope joins nodes {ep} and {ep + 1}, "
                      r"which coincide with the telescope node P")
@@ -754,6 +840,141 @@ def _sezione_geometria(par: Parametri, sistema: Sistema) -> str:
                    r"Vertical scale: proportional to the diameter.}")
         out.append(rf"\label{{fig:geom_{a.nome}}}\end{{figure}}")
     return "\n".join(out)
+
+
+def _testo_tratto_telescopio(pm, par: Parametri) -> str:
+    """Paragrafo sul tratto di tubo del telescopio solidale all'anello (``hub.telescope_on_ring``)."""
+    from . import mozzo as mz
+
+    t = pm.tratto_telescopio
+    m_t, J_ax, J_t = mz.inerzia_tratto(pm)
+    return (
+        r"\paragraph{Telescope section clamped in the ring.} The part of the telescope tube that sits inside "
+        rf"the support ring ({esc(in_inglese(t.materiale.nome))}, $D_o/D_i = {num(t.d_out * 1e3, 4)}/"
+        rf"{num(t.d_in * 1e3, 4)}$\,mm, length ${num(t.lunghezza * 1e3, 4)}$\,mm, centred at $o_2$, axis along "
+        r"$\hat K$) is taken as rigid with the ring: it rotates with the hub and does not oscillate on $k_b$. "
+        r"Its inertia is moved from the telescope to the hub centre H:"
+        r"\begin{gather}"
+        rf"m_t = \rho\,\tfrac{{\pi}}{{4}}(D_o^2 - D_i^2)L = {num(m_t, 3)}\ \text{{kg}},\qquad "
+        rf"J_t = m_t\Bigl[\frac{{D_o^2 + D_i^2}}{{16}} + \frac{{L^2}}{{12}}\Bigr] = {num(J_t, 3)}\ \text{{kg\,m}}^2,"
+        r"\end{gather}"
+        rf"about the polar axis (a diameter of the tube) and about $\hat z$ at $\theta = 0$; about the pointing "
+        rf"axis it carries $m_t(D_o^2 + D_i^2)/8 = {num(J_ax, 3)}$\,kg\,m$^2$. The telescope tensor loses these "
+        r"terms and the mass $m_t$ (its centre of mass moves accordingly), the hub gains them, and the total "
+        r"inertia of the polar axis is unchanged. $k_b$ is not modified."
+    )
+
+
+def _sezione_mozzo(par: Parametri, sistema: Sistema, figure: Mapping[str, str]) -> str:
+    """Modello ``hub``: geometria, rigidezze in serie e inerzia del mozzo, attacco k_b del telescopio."""
+    from . import mozzo as mz
+
+    pm = par.mozzo
+    assert pm is not None
+    rg = mz.rigidezze(pm)
+    im = mz.inerzia(pm, par.terne)
+    rt = sistema.rid_theta
+    ks = dict(zip(rt.archi, rt.k_catena))
+    a = rt.archi
+    seg = rf" \emph{{{NOTA_REALISMO.capitalize()}.}}" if par.segnaposto else ""
+    righe = [rf"{esc(p)} & {esc(g)} & ${num(k, 4)}$ \\" for p, g, k in mz.righe_tabella(pm)]
+    righe = [r.replace("acciaio", "steel").replace("alluminio", "aluminium") for r in righe]
+    I = pm.I_G_N
+    tensore = (r"\begin{bmatrix}" + r" \\ ".join(" & ".join(num(I[i, j], 4) for j in range(3)) for i in range(3))
+               + r"\end{bmatrix}")
+    fig = []
+    if "mozzo" in figure:
+        fig = [r"\begin{figure}[H]\centering",
+               rf"\includegraphics[width=\linewidth,height=0.75\textheight,keepaspectratio]{{{figure['mozzo']}}}",
+               r"\caption{Hub of the polar axis as used for the stiffness: (a) view from above, with the polar "
+               r"axis horizontal and the telescope (ring) axis vertical; (b) view along the telescope axis; "
+               r"(c) springs in series from bearing to bearing, with the telescope attached to the hub centre H "
+               r"through $k_b$. Dimensions in mm, stiffnesses in N\,m/rad." + seg + r"}\label{fig:hub_geometry}"
+               r"\end{figure}"]
+    return "\n".join([
+        r"\section{Hub and compliant telescope attachment (hub model)}\label{sec:hub}",
+        r"\paragraph{Purpose and switch.} This document is generated with \texttt{polar.hub.enabled: true} "
+        r"(file \texttt{config\_hub.yaml}, results in \texttt{results\_hub/}). The original model, with the "
+        r"telescope rigidly attached to the shaft node P, is kept in \texttt{config.yaml} and "
+        r"\texttt{results/}; the flag switches between the two. The hub model follows the antiresonance "
+        r"measured at the elevation encoder (Section~\ref{sec:experimental}): a zero at an encoder on the load "
+        r"side requires a large inertia outside the encoder--motor path, so the telescope is no longer rigid on "
+        r"the shaft but hangs from the hub through a compliance $k_b$.",
+        r"\paragraph{Topology.} The two side hubs and the support ring form the hub, which carries the torque "
+        r"between the two polar bearings; its centre H (at $o_2$) carries the inertia of the hub. The two halves "
+        rf"of the hub replace polar elements {pm.elementi_lato[0]} and {pm.elementi_lato[1]} as massless springs, "
+        rf"element {pm.elemento_centro} (no shaft) collapses into H, and the telescope is a node P off the chain:",
+        r"\begin{gather}",
+        r"1 \overset{e_1}{\longleftrightarrow} 2 \overset{\text{half hub}}{\longleftrightarrow} \mathrm H "
+        r"\overset{\text{half hub}}{\longleftrightarrow} 5 \overset{e_5}{\longleftrightarrow} 6 \cdots 11, \qquad "
+        r"\mathrm H \overset{k_b}{\longleftrightarrow} \mathrm P\ (\text{telescope}).",
+        r"\end{gather}",
+        rf"\paragraph{{Geometry.}} Each side hub is a single {in_inglese(pm.tubo.materiale.nome)} body: a solid "
+        r"flange fixed to the ring and a tube that seats the bearings. "
+        rf"The support ring ({in_inglese(pm.anello.materiale.nome)}) holds the telescope, which is slid into "
+        r"it, so its axis is the telescope axis $\hat K$, perpendicular to the polar axis; the side hubs are "
+        r"fixed to it at two diametrically opposite points. With these materials the nominal geometry gives "
+        rf"${num(im.V_geometria * 1e9, 4)}$\,mm$^3$ and ${num(im.m_geometria, 3)}$\,kg, against "
+        rf"${num(pm.m, 4)}$\,kg of the inertia data"
+        + (r" (the Onshape export, made with steel side hubs, corrected by hand for their actual material: "
+           r"placeholder until a new export is available)." if pm.inerzia_segnaposto else r" (Onshape)."),
+        *fig,
+        r"\paragraph{Stiffness.} The parts are springs in series. The tube and the flange are shafts in torsion, "
+        r"$k = G J_p/L$. The ring, loaded by a couple $M$ about $\hat J$ at each attachment point, works as two "
+        r"half rings in parallel; along each half the moment is the constant vector $\tfrac12 M\hat J$, which "
+        r"splits into an out-of-plane bending moment $\tfrac12 M\cos\varphi$ about the radius and a torque "
+        r"$\tfrac12 M\sin\varphi$ about the tangent. The complementary energy (Castigliano) gives",
+        r"\begin{gather}",
+        r"\theta = \frac{\pi R}{4}\left(\frac{1}{E I_r} + \frac{1}{G J_t}\right) M,\qquad "
+        r"k_{ring} = \frac{4}{\pi R}\left(\frac{1}{E I_r} + \frac{1}{G J_t}\right)^{-1},\\",
+        r"I_r = \frac{t\,b^3}{12},\qquad J_t = \beta\,b\,t^3,\quad "
+        r"\beta = \tfrac13\bigl(1 - 0.63\,\tfrac tb + 0.052\,(\tfrac tb)^5\bigr),\qquad E = 2G(1 + \nu),",
+        r"\end{gather}",
+        rf"with the mean radius $R = {num(rg.R_medio * 1e3, 4)}$\,mm, the wall thickness $t = {num(rg.spessore * 1e3, 3)}$\,mm, "
+        rf"the width $b = {num(pm.anello.larghezza * 1e3, 4)}$\,mm and $\nu = {num(pm.anello.poisson, 2)}$: "
+        rf"$E I_r = {num(rg.EI_r, 3)}$\,N\,m$^2$ and $G J_t = {num(rg.GJ_t, 3)}$\,N\,m$^2$. The thin wall twists "
+        r"easily, so the ring dominates the series. The ring is taken alone, without the stiffening of the "
+        r"telescope tube slid into it (user's choice): its value is a lower bound."
+        + (rf" \emph{{In this version the ring stiffness is multiplied by "
+           rf"$f_{{ring}} = {num(rg.fattore, 3)}$}} (\texttt{{ring.stiffness\_factor}}): $k_{{ring}} = "
+           rf"{num(rg.fattore, 3)} \times {num(rg.k_semianelli, 3)} = {num(rg.k_anello, 3)}$\,N\,m/rad. "
+           r"With the ring alone the model has, without the telescope, a structural mode near 175\,Hz that the "
+           r"measurement does not show (no peak below about 400\,Hz); with a much stiffer ring the hub is "
+           r"practically rigid and the first structural mode without the telescope is set by the shaft between "
+           r"hub and motor." if rg.fattore != 1.0 else ""),
+        r"\begin{table}[H]\centering\small",
+        r"\caption{Hub parts, geometry (mm) and torsional stiffness about the polar axis (N\,m/rad)." + seg
+        + r"}\label{tab:hub_parts}",
+        r"\begin{tabular}{llr}\toprule",
+        r"part & geometry & $k$ \\ \midrule",
+        *righe,
+        r"\midrule",
+        rf"half hub (tube, flange, half ring: $2k_{{ring}}$) & in series & ${num(rg.k_lato, 4)}$ \\",
+        rf"whole hub, bearing to bearing & in series & ${num(rg.k_totale, 4)}$ \\",
+        rf"telescope attachment $k_b$ & {'placeholder (see text)' if pm.k_b_segnaposto else 'given'} & "
+        rf"${num(pm.k_b, 4)}$ \\",
+        r"\bottomrule\end{tabular}\end{table}",
+        r"\paragraph{Inertia.} From the Onshape export of the three parts (" + esc(pm.fonte_inerzia) + r"), "
+        rf"mass ${num(pm.m, 4)}$\,kg, centre of mass at ${num(im.scarto_baricentro * 1e3, 3)}$\,mm from $o_2$, "
+        r"tensor about the centre of mass in the axes of N (kg\,m$^2$)",
+        r"\begin{gather}",
+        r"\mathbf I_{hub,G}|_N = " + tensore + r".",
+        r"\end{gather}",
+        rf"Transported to $o_2$ and rotated into the frame of body 2, it gives $J_{{hub}} = {num(pm.J_polare, 4)}$"
+        r"\,kg\,m$^2$ about the polar axis, at node H, and "
+        rf"${num(pm.J_azimut, 4)}$\,kg\,m$^2$ about $\hat z$ at $\theta = 0$"
+        + (r", added to $J^{ax}$ because the azimuth load exported from Onshape does not contain the hub "
+           r"(\texttt{in\_azimuth\_load: false})." if not pm.nel_load_azimut else
+           r", already contained in the azimuth load."),
+        *([_testo_tratto_telescopio(pm, par)] if pm.tratto_telescopio is not None else []),
+        r"\paragraph{Telescope attachment.} The spring $k_b$ joins H to the telescope node P, which carries "
+        r"only the telescope (payload section). Its value is not computed from a geometry: "
+        + (r"it is a placeholder, the two-mass estimate from the antiresonance and resonance measured at "
+           r"the elevation encoder." if pm.k_b_segnaposto else esc(pm.fonte_k_b) + ".")
+        + rf" With the shafts, the reduced polar tree has $k_{{\theta,1}} = {num(ks[a[0]], 4)}$ (encoder--H), "
+        rf"$k_{{\theta,2}} = {num(ks[a[1]], 4)}$ (H--motor), $k_{{\theta,3}} = {num(ks[a[2]], 4)}$ (motor--rear end) "
+        rf"and $k_{{\theta,4}} = k_b = {num(ks[a[3]], 4)}$\,N\,m/rad (H--P).",
+    ])
 
 
 def _sezione_elementi(par: Parametri, sistema: Sistema) -> str:
@@ -851,6 +1072,15 @@ def _sezione_fem(par: Parametri, sistemi: Mapping[tuple[str, str], Sistema]) -> 
 
 def _testo_nodo_P(par: Parametri, mod: fem.ModelloAsse) -> str:
     ep = par.polare.elemento_payload
+    if getattr(mod, "ramo", False):
+        pm = par.mozzo
+        return (rf"\paragraph{{Nodes H and P (hub model).}} Element {ep} has no shaft: its nodes {ep} and "
+                rf"{ep + 1} coincide with the hub centre H, which carries the hub inertia $J^n_H$. Elements "
+                rf"{pm.elementi_lato[0]} and {pm.elementi_lato[1]} are the two halves of the hub, massless "
+                r"springs (their inertia is in $J^n_H$). The telescope node P is an extra node, last in the "
+                r"ordering, joined to H by the massless spring $k_b$: it carries no inertia of its own in "
+                r"$\mathbf M$, the telescope enters through the payload (Section~\ref{sec:hub}). The matrices are "
+                r"therefore those of a tree, not of a chain.")
     if getattr(mod, "telescopio_rigido", False):
         return (rf"\paragraph{{Node P.}} There is no shaft through the telescope: element {ep} is in "
                 r"\texttt{mode: telescope}, the rigid telescope joins the shaft ends at nodes "
@@ -1044,7 +1274,7 @@ def _sezione_linearizzazione(contenuto: ContenutoLatex) -> str:
     torsione = ml.punto.q0[st.j_theta_m] - ml.punto.q0[st.j_theta_p]
     rp, rt = s.rid_psi, s.rid_theta
     fa = tf.fdt_simboliche_catena(rp.n, rp.i_motore, rp.i_encoder, "psi", rp.i_estremo, rp.ruoli)
-    fp = tf.fdt_simboliche_catena(rt.n, rt.i_motore, rt.i_encoder, "theta", rt.i_P, rt.ruoli,
+    fp = tf.fdt_simboliche_albero(rt.n, rt.archi, rt.i_motore, rt.i_encoder, "theta", rt.i_P, rt.ruoli,
                                   con_k_g=True)
     out = [r"\section{Linearisation and transfer functions}\label{sec:linear}",
            r"\paragraph{Operating point.} $\theta_p = \theta_0$, all $\dot\psi = \Omega_0$, all $\dot\theta = 0$, "
@@ -1102,8 +1332,8 @@ def _sezione_linearizzazione(contenuto: ContenutoLatex) -> str:
            r"rear branch beyond the motor.",
            ]
     for chiave, didascalia in (
-        ("bode", r"Torque$\to$encoder $2\times2$ matrix of the coupled reduced model, with poles (dotted) and "
-                 r"invariant zeros (circles)."),
+        ("bode", r"Torque$\to$encoder $2\times2$ matrix of the coupled Guyan-reduced model (comparison), "
+                 r"with poles (dotted) and invariant zeros (circles)."),
         ("confronto_azimut", r"Isolated azimuth axis: full against reduced, lumped against consistent mass."),
         ("confronto_polare", r"Isolated polar axis: full against reduced, lumped against consistent mass."),
         ("errore", r"Torque to true pointing ($\psi_L$, $\theta_p$), to the encoders and to the measurement "
@@ -1121,15 +1351,712 @@ def _sezione_linearizzazione(contenuto: ContenutoLatex) -> str:
     return "\n".join(out)
 
 
+def _sezione_accoppiato_completo(contenuto: ContenutoLatex) -> str:
+    """Modello accoppiato con tutti i GdL del FEM (riferimento del troncamento modale), senza Guyan."""
+    from . import modal as md
+
+    sm = contenuto.modale.sistema  # type: ignore[union-attr]
+    pl = sm.payload
+    fp = md.funzioni_payload()
+    _, th, dpsi, dth = fp.simboli
+    omega = cp.velocita_angolare_forma_chiusa(th, dpsi, dth)
+    Cq = (fp.C_simbolica * sp.Matrix([dpsi, dth])).applyfunc(sp.simplify)
+    n_psi, n_th = sm.ast_psi.n, sm.ast_theta.n
+    et_th = ", ".join(sm.ast_theta.etichetta(i) for i in range(n_th))
+    carico = [n for n in contenuto.par.azimut.inerzie_nodali if n.contiene_alberi_polari]
+    nota_jax = (rf" In the current data the azimuth load (node {carico[0].nodo}) is a CAD export that already "
+                r"contains the polar shafts, so their contribution about $\hat k$, including the true "
+                r"$m y_c^2$ terms, is already in the node inertia and $J^{ax}$ is \emph{not} added (the value "
+                rf"computed from the polar elements, ${num(pl.J_ax_nel_carico, 4)}$\,kg\,m$^2$, would count "
+                r"the shafts twice). The axial inertia of the shafts about $\hat J$ stays in the polar FEM."
+                if carico else "")
+    return "\n".join([
+        r"\section{Coupled model}\label{sec:coupled}",
+        r"\paragraph{Coordinates.} The coupled model is written first with \emph{all} FEM degrees of freedom: "
+        rf"$\mathbf q_\psi$ ({n_psi} azimuth nodes, absolute rotations about $\hat k$) and $\mathbf q_\theta$ "
+        rf"({n_th} polar nodes {et_th}, rotations about $\hat J$ relative to the fork). The fork rotates with "
+        r"$\psi_L = \psi_9$ (rigid fork) and the telescope with $\theta_p$, the rotation of node P: "
+        r"$\mathbf q_p = [\psi_L,\ \theta_p]^{\mathsf T} = \mathbf E\,\mathbf q$, with $\mathbf E$ selecting the "
+        r"two attachment nodes. This is the reference model (exact within the torsional FEM) of which the "
+        r"reduced model of Section~\ref{sec:modal} is the projection $\mathbf q = \boldsymbol\Phi\boldsymbol\eta$.",
+        r"\paragraph{Kinematics.} Every body of the polar axis has angular velocity $\boldsymbol\omega_j = "
+        r"\dot\psi_L\hat k + \dot\theta_j\hat J$. For the telescope, Poisson's formula $[\boldsymbol\omega]_\times "
+        r"= \mathbf R^{\mathsf T}\dot{\mathbf R}$ with $\mathbf R = \mathbf R_{N2}$ gives, with components along "
+        r"$\hat I, \hat J, \hat K$ (derived with SymPy and checked against the closed form),",
+        r"\begin{gather}",
+        r"\boldsymbol\omega_2\big|_2 = " + L(sp.Matrix(R_P2.T.astype(int)) * omega) + ".",
+        r"\end{gather}",
+        r"\paragraph{Energies and dissipation.}",
+        r"\begin{gather}",
+        r"T = \tfrac12\dot{\mathbf q}_\psi^{\mathsf T}\mathbf M_{\psi}\dot{\mathbf q}_\psi + \tfrac12 J^{ax}"
+        r"\dot\psi_L^2 + \tfrac12\dot{\mathbf q}_\theta^{\mathsf T}\mathbf M_{\theta}\dot{\mathbf q}_\theta"
+        r" + \tfrac12\boldsymbol\omega_2|_2^{\mathsf T}\,\mathbf I_{p,o_2}|_2\,\boldsymbol\omega_2|_2, \\",
+        r"V = \tfrac12\mathbf q_\psi^{\mathsf T}\mathbf K_{\psi}\mathbf q_\psi + \tfrac12\mathbf q_\theta^{\mathsf T}"
+        r"\mathbf K_{\theta}\mathbf q_\theta + m_p g\left(d_K\sin\theta_p + d_I\cos\theta_p\right),\qquad "
+        r"\mathcal D = \tfrac12\dot{\mathbf q}^{\mathsf T}\mathbf C\,\dot{\mathbf q},",
+        r"\end{gather}",
+        r"with $\mathbf M$, $\mathbf K$, $\mathbf C = \beta\mathbf K + \mathbf C_b$ the FEM matrices of "
+        r"Section~\ref{sec:fem} (the fork inertia is the concentrated inertia of azimuth node 9).",
+        r"\emph{Justification of $J^{ax}$.} Each axisymmetric part of the polar shaft has tensor "
+        r"$\operatorname{diag}(I_t, J, I_t)$ in any frame rotated about $\hat J$, and its centre of mass lies on "
+        r"$\hat J$ at distance $y_c$ from $o_2$. Since $\hat k\perp\hat J$, its kinetic energy is "
+        r"$\tfrac12(I_t + m y_c^2)\dot\psi_L^2 + \tfrac12 J\dot\theta_j^2$, without mixed terms and without "
+        r"dependence on $\theta$: the axial part is in $\mathbf M_\theta$, the transverse part is the constant "
+        rf"$J^{{ax}} = \sum(I_t + m y_c^2)$ (here ${num(pl.J_ax, 4)}$\,kg\,m$^2$). \textbf{{The polar shafts "
+        r"therefore produce no gyroscopic coupling}: the dynamic coupling comes only from the telescope." + nota_jax,
+        r"\paragraph{Generalised forces and the reaction torque.} The polar motor applies $+\tau_\theta\hat J$ "
+        r"to the rotor and $-\tau_\theta\hat J$ to the stator (fork); with $\delta\boldsymbol\phi_{rot} = "
+        r"\delta\psi_L\hat k + \delta\theta_m\hat J$ and $\delta\boldsymbol\phi_{stat} = \delta\psi_L\hat k$,",
+        r"\begin{gather}",
+        r"\delta W = \tau_\psi\,\delta\psi_m + \tau_\theta\,\hat J\cdot\left(\delta\boldsymbol\phi_{rot} - "
+        r"\delta\boldsymbol\phi_{stat}\right) = \tau_\psi\,\delta\psi_m + \tau_\theta\,\delta\theta_m,\qquad "
+        r"\mathbf Q = \mathbf B\boldsymbol\tau = \tau_\psi\,\mathbf e_{\psi_m} + \tau_\theta\,\mathbf e_{\theta_m}.",
+        r"\end{gather}",
+        r"The reaction torque on the fork is along $\hat J\perp\hat k$: it does no work on $\psi_L$ and is carried "
+        r"by the azimuth bearings as a bending moment (rigid fork, Q12).",
+        r"\paragraph{Telescope terms.} Only the telescope depends nonlinearly on the state. Its Lagrangian "
+        r"$T_p - V_g$, a function of $\mathbf q_p$ alone, is differentiated by SymPy, which also checks the "
+        r"matrix form against Lagrange's equations:",
+        riduci_se_serve(r"\mathbf M_p(\theta_p) = " + L(fp.M_simbolica) + ","),
+        riduci_se_serve(r"\mathbf C_p\dot{\mathbf q}_p = " + L(Cq) + ","),
+        r"\begin{gather}\mathbf g_p = " + L(fp.g_simbolica) + r".\end{gather}",
+        r"$J_{\psi,p}(\theta) = M_{p,11}$ is the telescope inertia about the azimuth axis. Lagrange's equations "
+        r"of the whole system are then",
+        r"\begin{gather}",
+        r"\bigl[\mathbf M_s + \mathbf E^{\mathsf T}\mathbf M_p(\theta_p)\mathbf E\bigr]\ddot{\mathbf q} + "
+        r"\mathbf C\dot{\mathbf q} + \mathbf K\mathbf q + \mathbf E^{\mathsf T}\bigl(\mathbf C_p\dot{\mathbf q}_p"
+        r" + \mathbf g_p\bigr) = \mathbf B\boldsymbol\tau,\qquad \mathbf M_s = \operatorname{blkdiag}(\mathbf M_\psi"
+        r" + J^{ax}\mathbf e_L\mathbf e_L^{\mathsf T},\ \mathbf M_\theta),\label{eq:full_eom}",
+        r"\end{gather}",
+        r"and the state dependence is only through $\theta_p$ and the velocities $\dot{\mathbf q}_p$.",
+    ])
+
+
+def _sezione_linearizzazione_modale(contenuto: ContenutoLatex) -> str:
+    """Punto di lavoro e linearizzazione del payload (senza le catene di Guyan)."""
+    sm = contenuto.modale.sistema  # type: ignore[union-attr]
+    pl = sm.payload
+    par = contenuto.par
+    righe = []
+    for th in par.theta0:
+        for Om in par.omega0:
+            ml = sm.lineare(th, Om)
+            righe.append(rf"${np.rad2deg(th):g}$ & ${np.rad2deg(Om):g}$ & ${num(ml.punto.tau0[1], 5)}$ & "
+                         rf"${num(float(pl.k_g(th)), 4)}$ & ${num(pl.k_c(th, Om), 3)}$ & "
+                         rf"${num(pl.gamma(th, Om), 3)}$ & ${num(float(pl.M_12(th)), 3)}$ \\")
+    return "\n".join([
+        r"\section{Operating point and linearisation}\label{sec:linear}",
+        r"\paragraph{Operating point.} A steady tracking motion: $\theta_p = \theta_0$, rigid azimuth rotation at "
+        r"$\dot\psi = \Omega_0$, all $\dot\theta = 0$, $\ddot{\mathbf q} = \mathbf 0$, $\psi_e = 0$ (cyclic). With "
+        r"$\theta_p$ fixed the residual of \eqref{eq:full_eom} is affine in the remaining coordinates, so the "
+        r"static torsions and the nominal torques $\boldsymbol\tau_0$ follow from a linear system "
+        r"(Section~\ref{sec:workflow}).",
+        r"\paragraph{Linearised telescope terms.} At the operating point the Jacobians of the telescope terms "
+        r"with respect to $\ddot{\mathbf q}_p$, $\dot{\mathbf q}_p$ and $\mathbf q_p$ are",
+        r"\begin{gather}",
+        r"\mathbf M_{p0} = \mathbf M_p(\theta_0),\qquad \mathbf G_{p0} = \begin{bmatrix}0 & \gamma\\ -\gamma & 0"
+        r"\end{bmatrix},\qquad \mathbf K_{p0} = \begin{bmatrix}0 & 0\\ 0 & k_c + k_g\end{bmatrix},\\",
+        r"\gamma = \Omega_0\,J_{\psi,p}'(\theta_0),\qquad k_c = -\tfrac12\Omega_0^2\,J_{\psi,p}''(\theta_0),\qquad "
+        r"k_g = -m_p g\,(d_K\sin\theta_0 + d_I\cos\theta_0),",
+        r"\end{gather}",
+        r"($\gamma$ gyroscopic, $k_c$ centrifugal, $k_g$ gravitational stiffness; $\mathbf G_{p0}$ stays purely "
+        r"skew-symmetric also with products of inertia, which enter only through $M_{p,12}$). With zero products, "
+        r"$\gamma = (I_{KK}-I_{II})\,\Omega_0\sin2\theta_0$ and $k_c = -(I_{KK}-I_{II})\,\Omega_0^2\cos2\theta_0$. "
+        r"The linear model of the full system is",
+        r"\begin{gather}",
+        r"\bigl[\mathbf M_s + \mathbf E^{\mathsf T}\mathbf M_{p0}\mathbf E\bigr]\delta\ddot{\mathbf q} + "
+        r"\bigl[\mathbf C + \mathbf E^{\mathsf T}\mathbf G_{p0}\mathbf E\bigr]\delta\dot{\mathbf q} + "
+        r"\bigl[\mathbf K + \mathbf E^{\mathsf T}\mathbf K_{p0}\mathbf E\bigr]\delta\mathbf q = \mathbf B\,"
+        r"\delta\boldsymbol\tau;",
+        r"\end{gather}",
+        r"its projection on the modal basis is the reduced linear model of Section~\ref{sec:modal}. "
+        r"Table~\ref{tab:op} lists the operating points ($k_g < 0$: the unbalanced telescope is statically "
+        r"unstable without control).",
+        r"\begin{table}[H]\centering\small",
+        r"\caption{Operating points: nominal polar torque and linearised telescope terms (N\,m, N\,m/rad, "
+        rf"N\,m\,s/rad, kg\,m$^2$). \emph{{{NOTA_REALISMO.capitalize()}.}}}}\label{{tab:op}}",
+        r"\begin{tabular}{rrrrrrr}\toprule",
+        r"$\theta_0$ [deg] & $\Omega_0$ [deg/s] & $\tau_{\theta0}$ & $k_g$ & $k_c$ & $\gamma$ & $M_{p,12}$ \\ "
+        r"\midrule",
+        *righe,
+        r"\bottomrule\end{tabular}\end{table}",
+    ])
+
+
+def _sezione_concentrato(contenuto: ContenutoLatex) -> str:
+    from . import concentrato_output as co
+
+    s_mod = contenuto.modale.sistema if contenuto.modale is not None else None  # type: ignore[union-attr]
+    return co.latex(contenuto.concentrato, contenuto.par.segnaposto, s_mod=s_mod,  # type: ignore[arg-type]
+                    extra=contenuto.concentrato_extra)
+
+
+def _sezione_modale(contenuto: ContenutoLatex) -> str:
+    from . import modal_output as mo
+
+    guyan = _con_guyan(contenuto)
+    out = [mo.latex(contenuto.modale, dict(contenuto.figure), contenuto.par.segnaposto,  # type: ignore[arg-type]
+                    guyan=guyan)]
+    if guyan:
+        return "\n".join(out)
+    # senza Guyan i risultati del modello lineare stanno qui (figure e poli/zeri del modale)
+    out.append(r"\subsection{Results of the reduced linear model}")
+    for chiave, didascalia in (
+        ("errore", r"Torque to true pointing ($\psi_L$, $\theta_p$), to the encoders and to the measurement "
+                   r"error (encoder minus true angle), modal model."),
+        ("sweep", r"Natural frequencies of the coupled modal model as a function of $\theta_0$."),
+        ("modi_modale_azimut", r"First modes of the full FEM of the azimuth axis (basis of the truncation), "
+                               r"retained or discarded."),
+        ("modi_modale_polare", r"First modes of the full FEM of the polar axis (basis of the truncation), "
+                               r"retained or discarded."),
+    ):
+        if chiave in contenuto.figure:
+            out += [r"\begin{figure}[H]\centering",
+                    rf"\includegraphics[width=\linewidth,height=0.8\textheight,keepaspectratio]"
+                    rf"{{{contenuto.figure[chiave]}}}",
+                    rf"\caption{{{didascalia} \emph{{{NOTA_REALISMO.capitalize()}.}}}}\end{{figure}}"]
+    if contenuto.ml_principale is not None:
+        out.append(tabella_poli_zeri(contenuto.ml_principale))
+    return "\n".join(out)
+
+
 def _sezione_ipotesi(avvisi: Sequence[Avviso]) -> str:
     out = [r"\section{Assumptions and placeholders}\label{sec:assumptions}",
-           r"\begin{longtable}{p{0.27\linewidth}p{0.12\linewidth}p{0.53\linewidth}}",
+           r"\begin{longtable}{p{0.31\linewidth}p{0.12\linewidth}p{0.49\linewidth}}",
            r"\toprule code & status & description \\ \midrule\endhead"]
     stato = {"segnaposto": "placeholder", "incoerenza": "inconsistency", "informazione": "note"}
     for a in avvisi:
         out.append(rf"\texttt{{{esc(a.codice)}}} & {stato[a.severita]} & {esc(a.messaggio)} \\")
     out.append(r"\bottomrule\end{longtable}")
     return "\n".join(out)
+
+
+# ---------------------------------------------------------------------------
+# Autovalori e autovettori: soluzione analitica e numerica
+# ---------------------------------------------------------------------------
+
+
+def _tabella_barra(par: Parametri) -> tuple[str, float]:
+    """Barra uniforme libera-libera: soluzione analitica contro FEM concentrato e consistente."""
+    mat = par.materiali.get("acciaio") or next(iter(par.materiali.values()))
+    rho, G, Lb, D = mat.rho, mat.G, 0.3, 0.02
+    Jp = np.pi * D**4 / 32.0
+    c = float(np.sqrt(G / rho))
+    righe = [r"\begin{table}[H]\centering\small",
+             rf"\caption{{Uniform free--free steel bar ($L = {Lb:g}$\,m, $D = {D * 1e3:g}$\,mm, "
+             rf"$\rho = {mat.rho:g}$\,kg/m$^3$, $G = {mat.G / 1e9:g}$\,GPa, $c = {c:.5g}$\,m/s): exact "
+             r"frequencies $f_n = nc/2L$ against the torsional FEM with $N$ equal elements. The errors follow the "
+             r"closed forms $\mp(n\pi/N)^2/24$.}\label{tab:bar}",
+             r"\begin{tabular}{rrrrrrr}\toprule",
+             r"$N$ & $n$ & $f_n$ [Hz] & lumped [Hz] & error & consistent [Hz] & error \\ \midrule"]
+    pic = 0.0
+    for N in (4, 16, 64):
+        h = Lb / N
+        k, J = G * Jp / h, rho * Jp * h
+        f = {m: fem.frequenze_proprie(*fem.catena_uniforme([k] * N, [J] * N, m))  # type: ignore[arg-type]
+             for m in ("lumped", "consistent")}
+        for n in (1, 2, 3):
+            fe = n * c / (2 * Lb)
+            fl, fc = f["lumped"][n], f["consistent"][n]
+            pic = max(pic, abs(fl / fe - 1), abs(fc / fe - 1))
+            righe.append(rf"{N if n == 1 else ''} & {n} & ${num(fe, 6)}$ & ${num(fl, 6)}$ & "
+                         rf"${num((fl / fe - 1) * 100, 3)}\,\%$ & ${num(fc, 6)}$ & "
+                         rf"${num((fc / fe - 1) * 100, 3)}\,\%$ \\")
+        righe.append(r"\midrule" if N != 64 else "")
+    righe.append(r"\bottomrule\end{tabular}\end{table}")
+    return "\n".join(righe), pic
+
+
+def _catena_azimut(sistemi: Mapping[tuple[str, str], Sistema]) -> str:
+    """Catena ridotta di azimut a tre inerzie: polinomio caratteristico e confronto analitico/numerico."""
+    import scipy.linalg as sla
+
+    s = sistemi.get(("consistent", "guyan_lumped"))
+    if s is None:
+        return ""
+    M, K, _ = s.isolato_ridotto("azimut", 0.0)
+    if np.max(np.abs(M - np.diag(np.diag(M)))) > 1e-12 * np.max(np.abs(M)):
+        return ""
+    Je, Jm, JL, k1, k2, lam = sp.symbols("J_e J_m J_L k_1 k_2 lambda", positive=True)
+    Ms = sp.diag(Je, Jm, JL)
+    Ks = sp.Matrix([[k1, -k1, 0], [-k1, k1 + k2, -k2], [0, -k2, k2]])
+    p = sp.factor(sp.det(Ks - lam * Ms))
+    a, b, c = sp.Poly(sp.cancel(p / lam), lam).all_coeffs()
+    valori = {Je: M[0, 0], Jm: M[1, 1], JL: M[2, 2], k1: -K[0, 1], k2: -K[1, 2]}
+    an, bn, cn = (float(v.subs(valori)) for v in (a, b, c))
+    disc = bn**2 - 4 * an * cn
+    lam_an = np.sort(np.concatenate([[0.0], np.array([(-bn - np.sqrt(disc)) / (2 * an),
+                                                      (-bn + np.sqrt(disc)) / (2 * an)])]))
+    w2, Phi = sla.eigh(K, M)
+    # modi analitici: dalle prime due righe di (K - lambda M) phi = 0
+    righe = []
+    for i, l_a in enumerate(lam_an):
+        ph = np.array([1.0, 0.0, 0.0])
+        ph[1] = 1.0 - l_a * M[0, 0] / (-K[0, 1])
+        ph[2] = ((K[1, 1] - l_a * M[1, 1]) * ph[1] + K[0, 1] * ph[0]) / (-K[1, 2])
+        pn = Phi[:, i]
+        mac = float((ph @ M @ pn) ** 2 / ((ph @ M @ ph) * (pn @ M @ pn)))
+        fa = np.sqrt(max(l_a, 0.0)) / (2 * np.pi)
+        fn = np.sqrt(max(w2[i], 0.0)) / (2 * np.pi)
+        righe.append(rf"{i + 1} & ${num(fa, 8)}$ & ${num(fn, 8)}$ & "
+                     rf"${num(abs(fa - fn) / max(fa, 1.0), 2)}$ & ${mac:.12f}$ \\")
+    return "\n".join([
+        r"\paragraph{A three-inertia chain in closed form.} The reduced azimuth chain (encoder, motor, load, "
+        r"\texttt{guyan\_lumped}) has $\mathbf M = \operatorname{diag}(J_e, J_m, J_L)$ and the chain stiffness "
+        r"matrix with springs $k_1$, $k_2$. Its characteristic polynomial, expanded with SymPy, is",
+        r"\begin{gather}",
+        r"\det(\mathbf K - \lambda\mathbf M) = " + sp.latex(p) + r",",
+        r"\end{gather}",
+        r"so one root is the rigid mode, $\lambda = 0$, and the other two solve a quadratic, "
+        r"$a\lambda^2 + b\lambda + c = 0$, with",
+        r"\begin{gather}",
+        r"a = " + sp.latex(a) + r", \qquad b = " + sp.latex(b) + r", \qquad c = " + sp.latex(c) + r",",
+        r"\end{gather}",
+        r"hence $\lambda_{\pm} = \bigl(-b \pm \sqrt{b^2 - 4ac}\bigr)/(2a)$ and $f = \sqrt\lambda/2\pi$. The mode "
+        r"shape follows from the first two rows of $(\mathbf K - \lambda\mathbf M)\boldsymbol\varphi = \mathbf 0$ "
+        r"by forward substitution,",
+        r"\begin{gather}",
+        r"\varphi_1 = 1,\qquad \varphi_2 = 1 - \frac{\lambda J_e}{k_1}\,,\qquad "
+        r"\varphi_3 = \frac{(k_1 + k_2 - \lambda J_m)\,\varphi_2 - k_1\varphi_1}{k_2}\,.",
+        r"\end{gather}",
+        r"Table~\ref{tab:chain3} compares this closed-form solution, evaluated with the current numbers, with "
+        r"the numerical solver of the next subsection; the last column is the modal assurance criterion "
+        r"$\mathrm{MAC} = (\boldsymbol\varphi_a^{\mathsf T}\mathbf M\boldsymbol\varphi_n)^2/"
+        r"[(\boldsymbol\varphi_a^{\mathsf T}\mathbf M\boldsymbol\varphi_a)(\boldsymbol\varphi_n^{\mathsf T}"
+        r"\mathbf M\boldsymbol\varphi_n)]$.",
+        r"\begin{table}[H]\centering\small",
+        r"\caption{Reduced azimuth chain at $\theta_0 = 0$: closed form against \texttt{scipy.linalg.eigh}.}"
+        r"\label{tab:chain3}",
+        r"\begin{tabular}{rrrrr}\toprule",
+        r"mode & $f$ closed form [Hz] & $f$ \texttt{eigh} [Hz] & relative difference & MAC \\ \midrule",
+        *righe,
+        r"\bottomrule\end{tabular}\end{table}",
+    ])
+
+
+def _sezione_autovalori(par: Parametri, sistemi: Mapping[tuple[str, str], Sistema],
+                        guyan: bool = True) -> str:
+    tab_barra, _ = _tabella_barra(par)
+    ridotti = (
+        r"\item \textbf{Reduced axes.} The reduced chain is solved with the same \texttt{eigh}, on "
+        r"$\mathbf K_r$ and $\mathbf M_r$. The Guyan transformation is computed by "
+        r"\texttt{numpy.linalg.solve} on $\mathbf K_{ss}\mathbf X = -\mathbf K_{sm}$ (LU with partial pivoting, "
+        r"\texttt{dgesv}), never by forming $\mathbf K_{ss}^{-1}$. Because $\mathbf T$ is a Ritz basis, the "
+        r"reduced eigenvalues are Rayleigh--Ritz approximations and bound the exact ones from above; the "
+        r"Craig--Bampton basis adds the fixed-interface modes of the slave partition, obtained with "
+        r"\texttt{eigh} on $(\mathbf K_{ss}, \mathbf M_{ss})$." if guyan else
+        r"\item \textbf{Modal basis} (\texttt{modal.modi\_con\_rigido}). The same \texttt{eigh} on the full FEM "
+        r"with the telescope frozen, $(\mathbf K, \bar{\mathbf M})$; the column of the null eigenvalue is checked to "
+        r"be proportional to $\mathbf 1$ and replaced by $\mathbf 1$, the others are kept mass-normalised. The "
+        r"retained columns are a Ritz basis that contains the exact modes, so their frequencies are exact "
+        r"(Section~\ref{sec:modal}).")
+    verifica = (r"the Rayleigh--Ritz bound of Guyan, " if guyan else
+                r"the exactness of the retained modal frequencies, ")
+    return "\n".join([
+        r"\section{Natural frequencies and mode shapes}\label{sec:eigen}",
+        r"\subsection{The eigenvalue problem}",
+        r"Free, undamped torsional vibration of an axis obeys $\mathbf M\ddot{\mathbf q} + \mathbf K\mathbf q = "
+        r"\mathbf 0$. Looking for harmonic solutions $\mathbf q = \boldsymbol\varphi\,e^{j\omega t}$ gives the "
+        r"generalised symmetric eigenvalue problem",
+        r"\begin{gather}",
+        r"\left(\mathbf K - \omega^2\mathbf M\right)\boldsymbol\varphi = \mathbf 0 \quad\Longleftrightarrow\quad "
+        r"\mathbf K\boldsymbol\varphi = \lambda\,\mathbf M\boldsymbol\varphi,\qquad \lambda = \omega^2,",
+        r"\end{gather}",
+        r"whose non-trivial solutions are the roots of the characteristic polynomial "
+        r"$\det(\mathbf K - \lambda\mathbf M) = 0$, of degree $n$ in $\lambda$. Because $\mathbf K$ is symmetric "
+        r"positive semidefinite and $\mathbf M$ symmetric positive definite, all eigenvalues are real and "
+        r"non-negative, and the eigenvectors can be chosen mass-orthonormal:",
+        r"\begin{gather}",
+        r"\boldsymbol\varphi_i^{\mathsf T}\mathbf M\boldsymbol\varphi_j = \delta_{ij},\qquad "
+        r"\boldsymbol\varphi_i^{\mathsf T}\mathbf K\boldsymbol\varphi_j = \omega_i^2\delta_{ij},\qquad "
+        r"\lambda_i = \frac{\boldsymbol\varphi_i^{\mathsf T}\mathbf K\boldsymbol\varphi_i}"
+        r"{\boldsymbol\varphi_i^{\mathsf T}\mathbf M\boldsymbol\varphi_i}\ (\text{Rayleigh quotient}).",
+        r"\end{gather}",
+        r"Since $\mathbf K\mathbf 1 = \mathbf 0$, every free axis has exactly one rigid mode, "
+        r"$\lambda_1 = 0$, $\boldsymbol\varphi_1\propto\mathbf 1$; the others are the torsional modes, with "
+        r"$f_i = \sqrt{\lambda_i}/2\pi$. When the gravitational stiffness $k_g$ is added at the telescope node "
+        r"(isolated polar axis) the matrix $\mathbf K + k_g\mathbf e_P\mathbf e_P^{\mathsf T}$ may have a "
+        r"\emph{negative} eigenvalue, reported by the code with a negative sign and interpreted as the static "
+        r"instability of the unbalanced telescope rather than as a mode. With the stiffness-proportional damping "
+        r"$\mathbf C = \beta\mathbf K$ the modal equations decouple, "
+        r"$\ddot\eta_i + 2\zeta_i\omega_i\dot\eta_i + \omega_i^2\eta_i = \boldsymbol\varphi_i^{\mathsf T}"
+        r"\mathbf Q$ with $\zeta_i = \beta\omega_i/2$, which is why $\beta$ is tuned on the first flexible mode.",
+        r"\subsection{Analytical solutions}",
+        r"\paragraph{Uniform shaft.} A uniform free--free shaft obeys the wave equation "
+        r"$\partial_t^2\vartheta = c^2\partial_x^2\vartheta$, $c = \sqrt{G/\rho}$, with free ends "
+        r"$\partial_x\vartheta = 0$ (no torque), so",
+        r"\begin{gather}",
+        r"\varphi_n(x) = \cos\frac{n\pi x}{L},\qquad \omega_n = \frac{n\pi}{L}\sqrt{\frac{G}{\rho}},\qquad "
+        r"n = 0, 1, 2,\dots",
+        r"\end{gather}",
+        r"independent of the diameter. The FEM of $N$ equal elements has the exact discrete spectrum "
+        r"$\theta_n = n\pi/N$ and",
+        r"\begin{gather}",
+        r"\omega_n^{\ell} = \frac{2c}{h}\sin\frac{\theta_n}{2},\qquad "
+        r"\omega_n^{c} = \frac{c}{h}\sqrt{\frac{6\,(1 - \cos\theta_n)}{2 + \cos\theta_n}},\qquad h = L/N,",
+        r"\end{gather}",
+        r"for lumped and consistent mass respectively; expanding, $\omega_n^{\ell,c}\approx\omega_n\,[1\mp"
+        r"(n\pi/N)^2/24]$, so the two models bound the exact frequency from below and above and converge with "
+        r"second order.",
+        tab_barra,
+        _catena_azimut(sistemi) if guyan else "",
+        r"\subsection{Numerical solution}",
+        r"The code never solves the characteristic polynomial: finding the roots of a polynomial whose "
+        r"coefficients span many decades (here $\lambda$ ranges from about $10^{0}$ to $10^{10}$\,s$^{-2}$) "
+        r"is ill-conditioned. It uses the following linear-algebra tools instead.",
+        r"\begin{enumerate}",
+        r"\item \textbf{Torsional modes of an axis} (\texttt{fem.modi}). \texttt{scipy.linalg.eigh(K, M)} calls "
+        r"the LAPACK driver \texttt{dsygvd} for the generalised symmetric-definite problem: Cholesky "
+        r"factorisation $\mathbf M = \mathbf L\mathbf L^{\mathsf T}$, reduction to the standard symmetric "
+        r"problem $\mathbf L^{-1}\mathbf K\mathbf L^{-\mathsf T}\mathbf y = \lambda\mathbf y$, Householder "
+        r"tridiagonalisation, a divide-and-conquer eigensolver, and back-transformation "
+        r"$\boldsymbol\varphi = \mathbf L^{-\mathsf T}\mathbf y$, which returns mass-orthonormal modes. The "
+        r"cost is $O(n^3)$ on matrices of size at most 12. The rigid mode comes out as $|\lambda| \sim "
+        r"10^{-16}\lambda_{max}$ and is set to zero below the threshold $10^{-12}\lambda_{max}$; "
+        r"frequencies are returned in Hz.",
+        ridotti,
+        r"\item \textbf{Coupled linearised system} (\texttt{ModelloLineare.poli}). With gyroscopic and "
+        r"centrifugal terms the problem is no longer self-adjoint, so the poles are the eigenvalues of the "
+        r"state matrix $\mathbf A = \begin{bmatrix}\mathbf 0 & \mathbf I\\ -\mathbf M_0^{-1}\mathbf K_0 & "
+        r"-\mathbf M_0^{-1}\mathbf C_0\end{bmatrix}$ computed with \texttt{numpy.linalg.eigvals} (LAPACK "
+        r"\texttt{dgeev}: balancing, Hessenberg reduction, shifted QR). A pair $\lambda = -\zeta\omega_n \pm "
+        r"j\omega_n\sqrt{1-\zeta^2}$ gives $f_n = |\lambda|/2\pi$ and $\zeta = -\mathrm{Re}\,\lambda/|\lambda|$; "
+        r"\texttt{tf.classifica} labels each root as null, real stable, real unstable or complex. The "
+        r"azimuth integrator gives a double null pole, a defective eigenvalue that \texttt{dgeev} returns "
+        r"scattered at $\sim10^{-9}|\lambda|_{max}$; the code treats anything below that threshold as zero.",
+        r"\item \textbf{Zeros.} The invariant zeros of each SISO channel are the finite generalised "
+        r"eigenvalues of the Rosenbrock pencil "
+        r"$\left(\begin{bmatrix}\mathbf A & \mathbf b_j\\ \mathbf c_i & 0\end{bmatrix}, "
+        r"\begin{bmatrix}\mathbf I & \mathbf 0\\ \mathbf 0 & 0\end{bmatrix}\right)$, computed with "
+        r"\texttt{scipy.linalg.eig} (QZ algorithm, \texttt{dggev}) in homogeneous form, discarding the infinite "
+        r"eigenvalues ($\beta \approx 0$).",
+        r"\item \textbf{Frequency response.} $\mathbf G(j\omega) = \mathbf C_q\,\mathbf P(j\omega)^{-1}"
+        r"\mathbf E$, with $\mathbf P(s) = \mathbf M_0 s^2 + \mathbf C_0 s + \mathbf K_0$, is evaluated "
+        r"directly by a batched \texttt{numpy.linalg.solve} over the whole frequency grid, not through the "
+        r"polynomial coefficients, and cross-checked against $\mathbf C(j\omega\mathbf I - \mathbf A)^{-1}"
+        r"\mathbf B$.",
+        r"\end{enumerate}",
+        r"\paragraph{Verification.} The test suite checks the numerical solution against the analytical one: "
+        r"the shaft convergence above (lumped from below, consistent from above), the "
+        r"identity $\mathbf v^{\mathsf T}(\mathbf M^{\ell} - \mathbf M^{c})\mathbf v = \sum_e J_e(v_i - "
+        r"v_{i+1})^2/6$, " + verifica + r"the equality of the poles with the roots of "
+        r"$\det\mathbf P(s)$, the alternation of poles and zeros on the collocated channels, and the "
+        r"equality of the zeros of the collocated channel with the natural frequencies of the structure with "
+        r"the motor node clamped.",
+    ])
+
+
+# ---------------------------------------------------------------------------
+# Funzionamento del modello e simulazione
+# ---------------------------------------------------------------------------
+
+
+def _tikz_flusso(modale: bool = False, guyan: bool = True) -> str:
+    box = r"draw, rounded corners=3pt, fill=#1, text width=3.5cm, align=center, minimum height=1.55cm, font=\footnotesize"
+    return "\n".join([
+        r"\begin{tikzpicture}[box/.style={" + box.replace("#1", "blue!8") + r"},"
+        r"box2/.style={" + box.replace("#1", "green!10") + r"},"
+        r"box3/.style={" + box.replace("#1", "orange!12") + r"}]",
+        r"\node[box] (cfg) at (0,0) {\textbf{Input}\\ \texttt{config.yaml}\\ \scriptsize PyYAML, validation};",
+        r"\node[box] (s1) at (4.4,0) {\textbf{1. Elements}\\ $m, J, I_t, k$ per element\\ "
+        r"\scriptsize closed formulas, NumPy};",
+        r"\node[box] (s2) at (8.8,0) {\textbf{2. Axis FEM}\\ $\mathbf K,\mathbf M$, $\mathbf K\boldsymbol\varphi = "
+        r"\lambda\mathbf M\boldsymbol\varphi$\\ \scriptsize SciPy \texttt{eigh}};",
+        (r"\node[box] (s3) at (13.2,0) {\textbf{3. Modal truncation}\\ $\boldsymbol\Phi = [\mathbf 1,"
+         r"\boldsymbol\phi_1,\dots]$, Hankel, validation\\ \scriptsize SciPy \texttt{eigh}"
+         + (r"; Guyan for comparison};" if guyan else r"};")
+         if modale else
+         r"\node[box] (s3) at (13.2,0) {\textbf{3. Guyan reduction}\\ $\mathbf T = [\mathbf I;\,-\mathbf K_{ss}^{-1}"
+         r"\mathbf K_{sm}]$\\ \scriptsize NumPy \texttt{solve}};"),
+        r"\node[box2] (s4) at (13.2,-2.7) {\textbf{4. Coupled model}\\ Lagrange: $T, V, \mathcal D\to"
+        r"\mathbf M(\mathbf q)\ddot{\mathbf q} + \dots$\\ \scriptsize SymPy, \texttt{lambdify}};"
+        if guyan else
+        r"\node[box2] (s4) at (13.2,-2.7) {\textbf{4. Coupled model}\\ telescope Lagrangian on $\mathbf E_\eta"
+        r"\boldsymbol\eta$\\ \scriptsize SymPy, \texttt{lambdify}};",
+        r"\node[box2] (s5) at (8.8,-2.7) {\textbf{5. Linear analysis}\\ equilibrium, $\mathbf M_0,\mathbf C_0,"
+        r"\mathbf K_0$, FRF, poles, zeros\\ \scriptsize "
+        + (r"SymPy Jacobians" if guyan else r"closed form (7.2)") + r", \texttt{eigvals}, QZ};",
+        r"\node[box3] (s6) at (4.4,-2.7) {\textbf{6. Time simulation}\\ $\dot{\mathbf x} = \mathbf f(\mathbf x,"
+        r"\boldsymbol\tau)$, S1--S3\\ \scriptsize SciPy \texttt{solve\_ivp}, DOP853};",
+        r"\node[box3] (out) at (0,-2.7) {\textbf{Output}\\ tables, figures, report, PDF\\ \scriptsize "
+        r"Matplotlib, \texttt{pdflatex}};",
+        r"\draw[->, thick] (cfg) -- (s1); \draw[->, thick] (s1) -- (s2); \draw[->, thick] (s2) -- (s3);",
+        r"\draw[->, thick] (s3) -- (s4); \draw[->, thick] (s4) -- (s5); \draw[->, thick] (s5) -- (s6);",
+        r"\draw[->, thick] (s6) -- (out);",
+        r"\end{tikzpicture}",
+    ])
+
+
+def _scarto_riferimento(contenuto: "ContenutoLatex") -> float:
+    """Scarto massimo (relativo al picco) di S1 fra il modello principale e quello a tutti i GdL."""
+    from .linearize import USCITE
+
+    rf_, rm_ = contenuto.s1_riferimento, contenuto.simulazioni[0]
+    n = min(rf_.t.size, rm_.t.size)  # type: ignore[union-attr]
+    out = 0.0
+    for u in ("psi_e", "psi_m", "psi_L"):
+        i = USCITE.index(u)
+        picco = float(np.max(np.abs(rf_.y_nl[:n, i])))  # type: ignore[union-attr]
+        out = max(out, float(np.max(np.abs(rm_.y_nl[:n, i] - rf_.y_nl[:n, i]))) / picco)  # type: ignore[union-attr]
+    return out
+
+
+def _blocco_equazioni(contenuto: "ContenutoLatex", guyan: bool) -> list[str]:
+    """Sottosezioni "Equations" e "Operating point" del flusso di calcolo.
+
+    ``guyan``: modello accoppiato SymPy a 7 GdL delle catene di Guyan; altrimenti il
+    modello modale (eq. ``eq:modal_eom``), integrato numericamente.
+    """
+    if not guyan:
+        return _blocco_equazioni_modale(contenuto)
+    st = contenuto.sistemi[("consistent", "guyan")].accoppiato.struttura
+    return [
+            r"\subsection{Equations of the coupled model}",
+            r"The two reduced chains are coupled in a single Lagrangian system with "
+            rf"$n = {st.n}$ coordinates, $\mathbf q = [\psi_e, \psi_m, \psi_L, \theta_e, \theta_p, \theta_m, "
+            r"\theta_r]^{\mathsf T}$ for the Guyan chains. The kinetic energy $T$, the potential energy $V$ and the dissipation function "
+            r"$\mathcal D$ of Section~\ref{sec:coupled} are written symbolically, the reduced matrices entering "
+            r"with the tridiagonal structure of a chain; SymPy differentiates "
+            r"$\mathcal L = T - V$ and returns",
+            r"\begin{gather}",
+            r"\mathbf M(\mathbf q)\,\ddot{\mathbf q} + \bigl[\mathbf C(\mathbf q,\dot{\mathbf q}) + \mathbf C_d\bigr]"
+            r"\dot{\mathbf q} + \frac{\partial V}{\partial\mathbf q} = \mathbf E\,\boldsymbol\tau,\qquad "
+            r"\boldsymbol\tau = [\tau_\psi,\ \tau_\theta]^{\mathsf T},",
+            r"\end{gather}",
+            r"where $\mathbf C(\mathbf q,\dot{\mathbf q})$ comes from the Christoffel symbols of $\mathbf M$ "
+            r"(centrifugal and gyroscopic terms), $\mathbf C_d = \partial^2\mathcal D/\partial\dot{\mathbf q}^2$ is "
+            r"the structural damping and $\mathbf E$ places $\tau_\psi$ on $\psi_m$ and $\tau_\theta$ on $\theta_m$. "
+            r"All state dependence is through $\theta_p$ (the telescope node) and the velocities: "
+            r"$\mathbf M$ differs from $\operatorname{diag}(\mathbf M_{r,\psi},\mathbf M_{r,\theta})$ only in the "
+            r"entries $(\psi_L,\psi_L)$, $(\psi_L,\theta_p)$ and $(\theta_p,\theta_p)$. SymPy also checks that "
+            r"$\dot{\mathbf M} - 2\mathbf C$ is skew-symmetric and that the matrix form equals the Lagrange "
+            r"residual. The expressions are compiled with \texttt{lambdify} (NumPy, common subexpression "
+            r"elimination), so that evaluating $\mathbf M(\mathbf q)$ and the force vector costs tens of "
+            r"microseconds. In first-order form, with $\mathbf x = [\mathbf q,\ \dot{\mathbf q}]$,",
+            r"\begin{gather}",
+            r"\dot{\mathbf x} = \mathbf f(\mathbf x,\boldsymbol\tau) = \begin{bmatrix}\dot{\mathbf q}\\ "
+            r"\mathbf M(\mathbf q)^{-1}\Bigl[\mathbf E\boldsymbol\tau - \bigl(\mathbf C + \mathbf C_d\bigr)"
+            r"\dot{\mathbf q} - \partial V/\partial\mathbf q\Bigr]\end{bmatrix},",
+            r"\end{gather}",
+            r"where the inverse is never formed: the code solves $\mathbf M\ddot{\mathbf q} = \dots$ with "
+            r"\texttt{numpy.linalg.solve} at every right-hand-side call.",
+            r"\subsection{Operating point and linearisation}",
+            r"An operating point is a steady tracking motion: $\theta_p = \theta_0$, every $\dot\psi_i = \Omega_0$, "
+            r"every $\dot\theta_i = 0$, $\ddot{\mathbf q} = \mathbf 0$ and $\psi_e = 0$ (cyclic). The residual "
+            r"$\mathbf r(\mathbf q) = \mathbf M\ddot{\mathbf q} + (\mathbf C + \mathbf C_d)\dot{\mathbf q} + "
+            r"\partial V/\partial\mathbf q$ is affine in the free coordinates once $\theta_p$ is fixed, so the "
+            r"static torsions $\mathbf q_0$ and nominal torques $\boldsymbol\tau_0$ solve the linear system "
+            r"$\mathbf K_0[:,\text{free}]\,\mathbf q_{free} - \mathbf E\boldsymbol\tau_0 = -\mathbf r_0$, "
+            r"by \texttt{numpy.linalg.solve}; the code then verifies that the residual is below $10^{-8}$ of its "
+            r"scale. Jacobians of $\mathbf r$ with respect to $\ddot{\mathbf q}$, $\dot{\mathbf q}$, $\mathbf q$ "
+            r"(symbolic, evaluated at the operating point) give $\mathbf M_0$, $\mathbf C_0$, $\mathbf K_0$ and "
+            r"the linear model",
+            r"\begin{gather}",
+            r"\mathbf M_0\,\delta\ddot{\mathbf q} + \mathbf C_0\,\delta\dot{\mathbf q} + \mathbf K_0\,"
+            r"\delta\mathbf q = \mathbf E\,\delta\boldsymbol\tau,\qquad \delta\dot{\mathbf x} = \mathbf A\,"
+            r"\delta\mathbf x + \mathbf B\,\delta\boldsymbol\tau,\qquad \mathbf y = \mathbf C_q\,\delta\mathbf q,",
+            r"\end{gather}",
+            r"with outputs $\psi_e, \theta_e$ (encoders), $\psi_m, \theta_m$ (motors), $\psi_L, \theta_p$ (true "
+            r"pointing), $\theta_r$ and the measurement errors $\psi_e - \psi_L$, $\theta_e - \theta_p$. "
+            r"Frequency responses, poles and zeros of this model are computed as in Section~\ref{sec:eigen}.",
+    ]
+
+
+def _blocco_equazioni_modale(contenuto: "ContenutoLatex") -> list[str]:
+    r = contenuto.modale
+    n = r.stati // 2 if r is not None else 0  # type: ignore[union-attr]
+    return [
+        r"\subsection{Equations of the reduced model}",
+        rf"The default model has $n = {n}$ modal coordinates $\boldsymbol\eta$ (Section~\ref{{sec:modal}}) and "
+        r"obeys \eqref{eq:modal_eom}. Its mass matrix",
+        r"\begin{gather}",
+        r"\mathbf M(\boldsymbol\eta) = \tilde{\mathbf M} + \mathbf E_\eta^{\mathsf T}\bigl[\mathbf M_p(\theta_p) - "
+        r"\bar{\mathbf M}_p\bigr]\mathbf E_\eta,\qquad \theta_p = \mathbf c_P^{\mathsf T}\boldsymbol\eta_\theta,",
+        r"\end{gather}",
+        r"depends on the state only through $\theta_p$, and the force vector is $\tilde{\mathbf D}\dot{\boldsymbol"
+        r"\eta} + \tilde{\mathbf K}\boldsymbol\eta + \mathbf E_\eta^{\mathsf T}(\mathbf C_p\dot{\mathbf q}_p + "
+        r"\mathbf g_p)$. The $2\times2$ payload blocks $\mathbf M_p$, $\mathbf C_p\dot{\mathbf q}_p$ and "
+        r"$\mathbf g_p$ of Section~\ref{sec:coupled} are derived once by SymPy (which also checks them against "
+        r"Lagrange's equations of $T_p - V_g$) and compiled with \texttt{lambdify}; the structural matrices are "
+        r"constant projections $\mathbf T^{\mathsf T}\mathbf M\mathbf T$, $\mathbf T^{\mathsf T}\mathbf K\mathbf T$, "
+        r"$\mathbf T^{\mathsf T}\mathbf C\mathbf T$ of the full FEM. In first-order form, with $\mathbf x = "
+        r"[\boldsymbol\eta,\ \dot{\boldsymbol\eta}]$,",
+        r"\begin{gather}",
+        r"\dot{\mathbf x} = \mathbf f(\mathbf x,\boldsymbol\tau) = \begin{bmatrix}\dot{\boldsymbol\eta}\\ "
+        r"\mathbf M(\boldsymbol\eta)^{-1}\Bigl[\boldsymbol\Phi^{\mathsf T}\mathbf B\boldsymbol\tau - \tilde{\mathbf D}"
+        r"\dot{\boldsymbol\eta} - \tilde{\mathbf K}\boldsymbol\eta - \mathbf E_\eta^{\mathsf T}(\mathbf C_p\dot{\mathbf q}_p"
+        r" + \mathbf g_p)\Bigr]\end{bmatrix},",
+        r"\end{gather}",
+        r"where the inverse is never formed: the code solves $\mathbf M\ddot{\boldsymbol\eta} = \dots$ with "
+        r"\texttt{numpy.linalg.solve} at every right-hand-side call. The same code, with the identity as basis, "
+        r"is the full-DOF reference model used for validation.",
+        r"\subsection{Operating point and linearisation}",
+        r"An operating point is a steady tracking motion: $\theta_p = \theta_0$, rigid azimuth rotation at "
+        r"$\Omega_0$ ($\dot\eta_{\psi0} = \Omega_0$, all other velocities zero), $\ddot{\boldsymbol\eta} = \mathbf 0$ "
+        r"and $\psi_e = 0$ (cyclic). With $\theta_p$ fixed the residual is affine in $\boldsymbol\eta$, so the "
+        r"static deformation and the nominal torques solve the square linear system",
+        r"\begin{gather}",
+        r"\begin{bmatrix}\tilde{\mathbf K} & -\boldsymbol\Phi^{\mathsf T}\mathbf B\\ \hat{\mathbf c}_P^{\mathsf T} & "
+        r"\mathbf 0\\ \hat{\mathbf c}_e^{\mathsf T} & \mathbf 0\end{bmatrix}\begin{bmatrix}\boldsymbol\eta_0\\ "
+        r"\boldsymbol\tau_0\end{bmatrix} = \begin{bmatrix}-\mathbf r_0\\ \theta_0\\ 0\end{bmatrix},",
+        r"\end{gather}",
+        r"with $\mathbf r_0$ the payload and bearing forces of the steady motion, solved by "
+        r"\texttt{numpy.linalg.solve}; the code verifies that the residual is below $10^{-8}$ of its scale. "
+        r"The linear matrices are the closed form of Section~\ref{sec:modal}, with the payload Jacobians of "
+        r"Section~\ref{sec:linear}; the test suite checks them against finite differences of the nonlinear "
+        r"residual. The linear model is",
+        r"\begin{gather}",
+        r"\mathbf M_0\,\delta\ddot{\boldsymbol\eta} + \mathbf C_0\,\delta\dot{\boldsymbol\eta} + \mathbf K_0\,"
+        r"\delta\boldsymbol\eta = \boldsymbol\Phi^{\mathsf T}\mathbf B\,\delta\boldsymbol\tau,\qquad \delta\dot{\mathbf x}"
+        r" = \mathbf A\,\delta\mathbf x + \mathbf B\,\delta\boldsymbol\tau,\qquad \mathbf y = \mathbf C_q\,"
+        r"\delta\boldsymbol\eta,",
+        r"\end{gather}",
+        r"with outputs $\psi_e, \theta_e$ (encoders), $\psi_m, \theta_m$ (motors), $\psi_L, \theta_p$ (true "
+        r"pointing), $\theta_r$ and the measurement errors $\psi_e - \psi_L$, $\theta_e - \theta_p$, all "
+        r"obtained from the rows of the modal basis at the corresponding nodes. Frequency responses, poles and "
+        r"zeros of this model are computed as in Section~\ref{sec:eigen}.",
+    ]
+
+
+def _sezione_funzionamento(contenuto: "ContenutoLatex") -> str:
+    import inspect
+    import platform
+
+    import scipy
+
+    from . import simulate as sm
+
+    modale = contenuto.modale is not None
+    guyan = _con_guyan(contenuto)
+    firma = inspect.signature(sm.S1).parameters
+    ampiezza, durata = float(firma["ampiezza"].default), float(firma["durata"].default)
+    righe_sim = []
+    for r in contenuto.simulazioni:
+        if r.nome == "S3":
+            righe_sim.append(rf"S3 & {num(np.degrees(r.theta0), 3)} & {num(np.degrees(r.Omega0), 3)} & "
+                             rf"conservation, $\mathbf C = \mathbf 0$, $\boldsymbol\tau = \mathbf 0$ & "
+                             rf"$|\Delta E|/E = {num(r.derive['energia'], 2)}$, "
+                             rf"$|\Delta p_\psi|/p_\psi = {num(r.derive['momento_psi'], 2)}$ \\")
+        else:
+            e = r.errori
+            righe_sim.append(rf"{r.nome} & {num(np.degrees(r.theta0), 3)} & {num(np.degrees(r.Omega0), 3)} & "
+                             rf"doublet on $\tau_\psi$ & $e(\psi_e) = {num(e['psi_e'], 2)}$, "
+                             rf"$e(\psi_L) = {num(e['psi_L'], 2)}$ \\")
+    fig = []
+    for chiave, didascalia in (
+        ("S1", r"S1: nonlinear (solid) and linearised (dashed) response to the $\tau_\psi$ doublet at "
+               r"$\Omega_0 = 0$."),
+        ("S2", r"S2: the same doublet while tracking at $\Omega_{max}$; the cross response on "
+               r"$\theta_e$ and $\theta_p$ is the gyroscopic coupling."),
+        ("S3", r"S3: drift of $E = T + V$ and $p_\psi$ in the conservative case."),
+    ):
+        if chiave in contenuto.figure:
+            fig += [r"\begin{figure}[H]\centering",
+                    rf"\includegraphics[width=0.9\linewidth,height=0.45\textheight,keepaspectratio]"
+                    rf"{{{contenuto.figure[chiave]}}}",
+                    rf"\caption{{{didascalia} \emph{{{NOTA_REALISMO.capitalize()}.}}}}\end{{figure}}"]
+    return "\n".join([
+        r"\section{How the model works and how it is simulated}\label{sec:workflow}",
+        r"\subsection{Computational workflow}",
+        r"Everything is computed from \texttt{config.yaml} by \texttt{run\_all.py}; Figure~\ref{fig:flow} shows "
+        r"the chain of stages, each with its module and numerical tool, and Table~\ref{tab:stages} lists the "
+        r"equations solved at each stage.",
+        r"\begin{figure}[H]\centering",
+        r"\resizebox{\linewidth}{!}{" + _tikz_flusso(modale, guyan) + "}",
+        r"\caption{Computational workflow. Blue: structural stages (Sections~\ref{sec:elements}--"
+        + (r"\ref{sec:guyan}" if guyan else r"\ref{sec:eigen} and~\ref{sec:modal}")
+        + r"); green: coupled model and its analysis; orange: simulation and output.}"
+        r"\label{fig:flow}\end{figure}",
+        r"\begin{table}[H]\centering\small",
+        r"\caption{Equations solved at each stage and numerical tools.}\label{tab:stages}",
+        r"\begin{tabular}{p{0.04\linewidth}p{0.4\linewidth}p{0.46\linewidth}}\toprule",
+        r"& equations & tool \\ \midrule",
+        r"1 & $m, J, I_t, J_p$ of every layer; $k_s$ in parallel, $1/k_e$ in series (Section~\ref{sec:elements}) "
+        r"& closed formulas in NumPy \\",
+        r"2 & assembly of $\mathbf K,\mathbf M^{\ell},\mathbf M^{c}$; $\mathbf K\boldsymbol\varphi = "
+        r"\lambda\mathbf M\boldsymbol\varphi$ (Section~\ref{sec:eigen}) & \texttt{scipy.linalg.eigh} "
+        r"(LAPACK \texttt{dsygvd}) \\",
+        (r"3 & $(\mathbf K - \omega^2\bar{\mathbf M})\boldsymbol\phi = \mathbf 0$ of the full FEM; Hankel "
+         r"norms; validation against the full model (Section~\ref{sec:modal})"
+         + (r"; Guyan $\mathbf K_{ss}\mathbf X = -\mathbf K_{sm}$ for comparison" if guyan else "")
+         + r" & \texttt{scipy.linalg.eigh}, \texttt{numpy.linalg.solve} \\" if modale else
+         r"3 & $\mathbf K_{ss}\mathbf X = -\mathbf K_{sm}$; $\mathbf M_r = \mathbf T^{\mathsf T}\mathbf M\mathbf T$ "
+         r"& \texttt{numpy.linalg.solve} (LU) \\"),
+        (r"4 & Lagrange's equations of the 7-DOF system (this section) & SymPy for the derivation; "
+         r"\texttt{lambdify} to NumPy functions \\" if guyan else
+         r"4 & Lagrange's equations of the telescope, \eqref{eq:modal_eom} (this section) & SymPy for the "
+         r"derivation; \texttt{lambdify} to NumPy functions \\"),
+        r"5 & steady state $\mathbf r(\mathbf q_0) = \mathbf E\boldsymbol\tau_0$; Jacobians; "
+        r"$\mathbf G(j\omega)$; poles; zeros & NumPy \texttt{solve}, \texttt{eigvals}; SymPy "
+        r"\texttt{jacobian}; \texttt{scipy.linalg.eig} (QZ) \\",
+        r"6 & $\dot{\mathbf x} = \mathbf f(\mathbf x,\boldsymbol\tau)$ and its linearisation & "
+        r"\texttt{scipy.integrate.solve\_ivp}, method DOP853 \\",
+        r"7 & tables (CSV), figures, \texttt{.npz}/\texttt{.mat}/JSON exports, this document & Matplotlib, "
+        r"\texttt{scipy.io.savemat}, \texttt{pdflatex} \\ \bottomrule",
+        r"\end{tabular}\end{table}",
+        *_blocco_equazioni(contenuto, guyan),
+        r"\subsection{Time-domain simulation}",
+        (r"Three scenarios are run on the default reduced model, the modal truncation of Section~\ref{sec:modal} "
+         r"with a single $\theta_{ref}$ (\texttt{reduction.modal.theta\_ref\_deg}), for which \eqref{eq:modal_eom} "
+         r"is exact for any $\theta_p$ "
+         if contenuto.riduzione == "modal" and modale else r"Three scenarios are run on the coupled reduced model ")
+        + rf"(Table~\ref{{tab:sim}}). In S1 and S2 the system starts from the equilibrium of the operating point "
+        r"with the nominal torque applied as a feedforward, so that the perturbation is only the doublet",
+        r"\begin{gather}",
+        rf"\tau_\psi(t) = \tau_{{\psi0}} + a\,\bigl[\,\chi_{{[t_i,\,t_i+T)}}(t) - "
+        rf"\chi_{{[t_i+T,\,t_i+2T)}}(t)\,\bigr],\qquad a = {num(ampiezza, 3)}\ \text{{N\,m}},\ "
+        rf"T = {num(durata * 1e3, 3)}\ \text{{ms}},\ t_i = 0.1\,T,",
+        r"\end{gather}",
+        r"of zero mean so that it excites the dynamics without shifting the operating point. The nonlinear "
+        r"system $\dot{\mathbf x} = \mathbf f(\mathbf x,\boldsymbol\tau)$ and the linear one "
+        r"$\delta\dot{\mathbf x} = \mathbf A\delta\mathbf x + \mathbf B\delta\boldsymbol\tau$ are integrated "
+        r"with the same solver and compared as $\mathbf q - \mathbf q_0$ against $\delta\mathbf q$ (the "
+        r"rigid drift $\Omega_0 t$ of the $\psi$'s is removed). In S3 all damping and torques are removed, "
+        r"the state starts from a rigid motion ($\dot\psi_i = \Omega_{max}$, $\dot\theta_i$ small, unstrained "
+        r"chains) and the conserved quantities $E = T + V$ and $p_\psi = \sum_i\partial\mathcal L/\partial"
+        r"\dot\psi_i$ are monitored.",
+        r"\paragraph{Integrator.} \texttt{scipy.integrate.solve\_ivp} with method \texttt{DOP853}: an explicit "
+        r"Runge--Kutta scheme of order 8 (Dormand--Prince 8(5,3)) with adaptive step and embedded error control, "
+        r"relative tolerance $10^{-10}$ and absolute tolerance $10^{-12}$. Since the doublet is "
+        r"discontinuous, the integration is split at $t_i$, $t_i+T$, $t_i+2T$, so that the adaptive solver never "
+        r"steps across a jump (which would degrade its order). The step is limited by the highest natural "
+        r"frequency of the reduced chains, a few kHz, which sets the cost of a run (tens of seconds); the "
+        r"explicit method is adequate because the damping is light and the horizon short. The agreement is "
+        r"measured by $e(y) = \max_t|y_{nl}(t) - y_{lin}(t)|/\max_t|y_{lin}(t)|$ for each output.",
+        *([r"\paragraph{Full-DOF reference.} S1 is also run on the coupled model with all FEM degrees of freedom. "
+           r"Its modes reach hundreds of kHz, so the explicit DOP853 step is limited by stability and "
+           r"the reference is integrated with relative tolerance $10^{-8}$ and absolute tolerance $10^{-10}$; the "
+           rf"largest difference from the modal model on $\psi_e$, $\psi_m$, $\psi_L$ is "
+           rf"${num(_scarto_riferimento(contenuto), 2)}$ of the peak response."]
+          if contenuto.s1_riferimento is not None and contenuto.simulazioni else []),
+        r"\begin{table}[H]\centering\small",
+        r"\caption{Simulation scenarios and results (relative errors of the nonlinear against the linearised "
+        r"response, and conservation drifts).}\label{tab:sim}",
+        r"\begin{tabular}{llllp{0.4\linewidth}}\toprule",
+        r"id & $\theta_0$ [deg] & $\Omega_0$ [deg/s] & forcing & result \\ \midrule",
+        *righe_sim,
+        r"\bottomrule\end{tabular}\end{table}",
+        r"In S1 the polar channels respond only through the products of inertia, so their linear response is "
+        r"of the same order as the quadratic term $\tfrac12 J_{\psi,p}'\dot\psi^2$ that the linearisation "
+        r"drops: their relative error is therefore not an index of the quality of the linearisation, and "
+        r"only the azimuth channels are used for it. Their amplitude (about $10^{-12}$\,rad) is also "
+        r"comparable with the absolute tolerance of the integrator, so the isolated spikes visible on the "
+        r"nonlinear polar curves are integration noise, not dynamics.",
+        *fig,
+        r"\subsection{Software}",
+        r"\begin{table}[H]\centering\small",
+        r"\caption{Software used to produce this document.}\label{tab:software}",
+        r"\begin{tabular}{ll}\toprule",
+        rf"Python & {platform.python_version()} \\",
+        rf"NumPy & {np.__version__} \\",
+        rf"SciPy & {scipy.__version__} (LAPACK through \texttt{{scipy.linalg}}) \\",
+        rf"SymPy & {sp.__version__} \\",
+        r"Matplotlib, PyYAML, pytest & figures, input parsing, test suite \\",
+        r"\texttt{pdflatex} & this document (TikZ for the drawings) \\ \bottomrule",
+        r"\end{tabular}\end{table}",
+        r"All results are reproducible with \texttt{python run\_all.py}; the symbolic derivation is "
+        r"deterministic and the numerical tolerances above are fixed in \texttt{simulate.py}.",
+    ])
 
 
 def genera(contenuto: ContenutoLatex, cartella: str | Path) -> Path:
@@ -1140,7 +2067,12 @@ def genera(contenuto: ContenutoLatex, cartella: str | Path) -> Path:
     s = contenuto.sistemi[("consistent", "guyan")]
     corpo = [
         PREAMBOLO,
-        r"\title{Torsional multi-DOF model of the alt-azimuth mount:\\ FEM, Guyan reduction and coupling}",
+        (r"\title{Torsional multi-DOF model of the alt-azimuth mount:\\ FEM, modal truncation and coupling"
+         if contenuto.modale is not None else
+         r"\title{Torsional multi-DOF model of the alt-azimuth mount:\\ FEM, Guyan reduction and coupling")
+        + ((r"\\ \large hub model: telescope hanging from the hub of the polar axis"
+            + (r",\\ tube section clamped in the ring rigid with the hub}" if par.mozzo.tratto_telescopio is not None
+               else "}")) if par.mozzo is not None else "}"),
         r"\author{Generated by \texttt{gimbal\_mdof.latex\_report}}",
         r"\date{\today}",
         r"\begin{document}",
@@ -1152,14 +2084,20 @@ def genera(contenuto: ContenutoLatex, cartella: str | Path) -> Path:
                      r"in this document is a \emph{" + NOTA_REALISMO + r"} and must not be read as a "
                      r"characterisation of the real mount (Section~\ref{sec:assumptions}).}")
     corpo += [r"\tableofcontents",
-              _sezione_sistema(par),
+              _sezione_sistema(par, contenuto.modale is not None, _con_guyan(contenuto)),
               _sezione_terne(par, s),
               _sezione_geometria(par, s),
               _sezione_elementi(par, s),
+              *([_sezione_mozzo(par, s, contenuto.figure)] if par.mozzo is not None else []),
               _sezione_fem(par, contenuto.sistemi),
-              _sezione_guyan(par, contenuto.sistemi, contenuto.confronti),
-              _sezione_accoppiato(s),
-              _sezione_linearizzazione(contenuto),
+              *([_sezione_guyan(par, contenuto.sistemi, contenuto.confronti)] if _con_guyan(contenuto) else []),
+              _sezione_autovalori(par, contenuto.sistemi, _con_guyan(contenuto)),
+              *([_sezione_accoppiato(s), _sezione_linearizzazione(contenuto)] if _con_guyan(contenuto) else
+                [_sezione_accoppiato_completo(contenuto), _sezione_linearizzazione_modale(contenuto)]),
+              *([_sezione_modale(contenuto)] if contenuto.modale is not None else []),
+              *([_sezione_concentrato(contenuto)] if contenuto.concentrato is not None else []),
+              *([contenuto.sperimentale_tex] if contenuto.sperimentale_tex else []),
+              _sezione_funzionamento(contenuto),
               _sezione_ipotesi(contenuto.avvisi),
               r"\end{document}"]
     percorso = cartella / f"{NOME_FILE}.tex"

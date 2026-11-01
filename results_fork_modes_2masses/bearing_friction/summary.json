@@ -1,0 +1,57 @@
+{
+ "dahl": {
+  "scale": 1.0713117236952077,
+  "Tc": 0.4072922393201249,
+  "Ts_ratio": 1.1393903475417886,
+  "sigma0": 1703.0477790473333,
+  "vs": 0.015,
+  "K_cable": 1.6605870078249125,
+  "theta0_cable_deg": -2.1564261374199716,
+  "b_{\\theta,h}": 0.0004712131948621041
+ },
+ "sigma1_lugre": 11.743691503931341,
+ "J_axis": 0.8997874401429299,
+ "excitation_A": 3.0,
+ "presliding_scale_rad": 0.00023915491058504527,
+ "f_presliding_Hz": 6.924104033207624,
+ "fit_1_30Hz": {
+  "linear hysteretic k_g(1+j eta) (fitted)": 47.7,
+  "Dahl, measured amplitude": 23.2,
+  "Dahl, self-consistent amplitude": 20.7,
+  "LuGre (sigma1 = 12), self-consistent amplitude": 36.1
+ },
+ "features": {
+  "measured": [
+   [
+    "antirisonanza",
+    6.56,
+    -46.0
+   ],
+   [
+    "risonanza",
+    6.76,
+    -45.0
+   ],
+   [
+    "antirisonanza",
+    8.08,
+    -52.1
+   ]
+  ],
+  "linear hysteretic k_g(1+j eta) (fitted)": [],
+  "Dahl, measured amplitude": [
+   [
+    "risonanza",
+    6.56,
+    -38.4
+   ],
+   [
+    "risonanza",
+    7.92,
+    -36.4
+   ]
+  ],
+  "Dahl, self-consistent amplitude": [],
+  "LuGre (sigma1 = 12), self-consistent amplitude": []
+ }
+}

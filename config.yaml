@@ -159,11 +159,29 @@ azimuth:
     #   length_mm: 17.5
     #   placeholder: true
   node_inertias:
-    # Q9 / DECISIONE DELL'UTENTE (2026-10-12): inerzia della SOLA forcella
-    # (senza albero di azimut, albero polare e telescopio) da un'esportazione
-    # Onshape. Finche' non e' disponibile si usa un segnaposto dell'ordine di
-    # J_A del modello a 2 GdL (1.04 kg m^2, che pero' include l'albero).
-    - {node: 9, name: "load (forcella)", J_kgm2: 1.0, source: "segnaposto: da esportazione Onshape della sola forcella", placeholder: true}
+    # Q9: load della forcella da Onshape, "Mass and section properties", istanza
+    # "Tavola Rotante [DEF] <1>", senza mate connector (2026-10-13). Comprende gli
+    # alberi polari (NON il telescopio): includes_polar_shafts: true, quindi J^ax
+    # non viene aggiunto una seconda volta.
+    # frame: cad_cg -> come il payload: tensore rispetto al BARICENTRO con assi
+    # paralleli a x_hat, y_hat, z_hat, baricentro r_G_mm misurato da O_N. Il codice
+    # usa J = I_zz,G + m d^2, con d la distanza del baricentro dall'asse di azimut
+    # (frames.azimuth_axis_xy_mm). Inerzie da kg mm^2 a kg m^2 (x 1e-6).
+    # Onshape mostra Lyy e Lzz con 4 cifre (1.592e+6, 1.248e+6 kg mm^2).
+    # Valore precedente (segnaposto): J_kgm2: 1.0.
+    - node: 9
+      name: "load (fork + polar shafts)"
+      frame: cad_cg
+      m_kg: 27.831
+      r_G_mm: [12.212, -2.801e-5, 465.983]
+      I_kgm2:                     # Lxx..Lzz di Onshape, kg mm^2 -> kg m^2
+        - [ 0.534260108, -0.57e-6,     -0.027998721]
+        - [-0.57e-6,      1.592,        2.44e-6    ]
+        - [-0.027998721,  2.44e-6,      1.248      ]
+      products_sign: tensor
+      includes_polar_shafts: true
+      source: "Onshape, Tavola Rotante [DEF] <1>, without mate connector"
+      placeholder: false
   # Attrito viscoso dei cuscinetti verso terra, {elemento: b in N m s/rad}.
   bearing_b: {}
 
@@ -205,7 +223,7 @@ polar:
     - id: 3                     # telescopio (D1): NESSUN ALBERO sotto il telescopio
       mode: telescope           # il telescopio rigido collega i nodi 3 e 4, che coincidono con P;
       length_mm: 60.0           # distanza fra le flange (solo posizioni e disegno), segnaposto
-      placeholder: true         # l'inerzia del telescopio va nella sezione payload
+      placeholder: false         # l'inerzia del telescopio va nella sezione payload
     - id: 4                     # su cuscinetto (D2)
       mode: geometry
       segments:
@@ -214,7 +232,7 @@ polar:
             - {shape: solid, d_out_mm: 84.0, material: alluminio, carries_torque: true}
       k_joint_Nm_rad: null
       extra_inertias: []
-      placeholder: true
+      placeholder: false
     - id: 5
       mode: geometry
       segments:
@@ -309,15 +327,26 @@ payload:
     - [ 0.751e-6,    -0.012869781,   0.79763717447]
   products_sign: tensor
   subtract_shaft_parts: false   # solo il telescopio: nessuna sottrazione
-  source_note: "Onshape, Telescopio LAMERA <1>, senza mate connector"
+  source_note: "Onshape, Telescopio LAMERA <1>, without mate connector"
   placeholder: false
   config_2dof: ../gimbal_2dof/config.yaml   # solo per source: gimbal_2dof e per il confronto col 2 GdL
 
-# --- Riduzione (Q4, DECISIONE DELL'UTENTE 2026-10-12) -------------------
+# --- Riduzione -----------------------------------------------------------
+# DECISIONE DELL'UTENTE (2026-10-13): troncamento modale alla Gawronski del FEM
+# COMPLETO di ciascun asse (modo rigido + modi flessibili scelti in banda);
+# Guyan (decisione Q4 del 2026-10-12) e Craig-Bampton restano come confronto.
 reduction:
-  method: guyan                 # guyan | craig_bampton (solo verifica)
+  method: modal                 # modal | guyan | craig_bampton
   n_fixed_interface_modes: 0    # modi a interfaccia fissa per Craig-Bampton
-  mass_form: guyan              # guyan (tridiagonale) | guyan_lumped (diagonale)
+  mass_form: guyan              # solo Guyan: guyan (tridiagonale) | guyan_lumped (diagonale)
+  modal:
+    f_band_Hz: 2000             # banda di interesse: dinamiche oltre non interessano
+    cutoff_factor: 2.0          # modi flessibili tenuti: f_i <= cutoff_factor * f_band_Hz
+    hankel_min_ratio: null      # se non null, tiene anche i modi oltre il taglio con
+                                # norma di Hankel >= hankel_min_ratio * massima dell'asse
+    n_flex: {azimut: null, polare: null}   # se non null, forza il numero di modi flessibili
+    theta_ref_deg: 0            # theta_ref della base delle simulazioni non lineari
+    static_correction: none     # none | residual_vectors
 
 fem:
   mass_models: [lumped, consistent]
@@ -338,9 +367,41 @@ g: 9.80665
 
 frequency:
   f_min_Hz: 0.1
-  f_max_Hz: 5000.0              # esteso in automatico a 2x la frequenza propria piu' alta
+  f_max_Hz: 2000.0              # griglie, Bode e tabelle fino alla banda di interesse
+                                # (prima 5000, esteso a 2x la frequenza propria piu' alta)
   n_points: 4000
+
+# --- Misure sperimentali (confronto con il modello a 7 GdL concentrato) ---
+# Esportazioni Kollmorgen WorkBench, misura "Plant": corrente iniettata (seno a passi),
+# anelli chiusi, pianta = velocita' di retroazione / corrente, in (rad/s)/A.
+# DECISIONE DELL'UTENTE (2026-10-16): non usare i dati della cartella Validation.
+# DECISIONE DELL'UTENTE (2026-10-16): la misura di elevazione estesa fino a 2 kHz
+# (Elevation_BodeMeasurement_bode_New_16_10_26.csv) sostituisce Elevation_BodeMeasurement.csv
+# (fino a ~277 Hz); Elevation_new_BodeMeasurement.csv ha gli stessi dati di quest'ultima.
+# Il feedback del drive e' l'encoder (lato carico): la pianta misurata e' encoder / corrente.
+experimental:
+  enabled: true
+  data_dir: ../LucyIdentification
+  torque_constant_Nm_per_A: 0.258   # TBM(S)-7646-A, Kt a 25 C (N m/Arms); a caldo 0.235
+  trace: Plant
+  f_min_Hz: 0.1                     # asse delle frequenze dei confronti (le misure partono da 1 Hz)
+  f_max_Hz: 2000.0
+  level_band_Hz: [15.0, 300.0]      # banda in cui confrontare il livello (sopra l'antirisonanza)
+  measurements:
+    - {file: Azimuth_BodeMeasurement_Po_0.csv, axis: azimut, theta0_deg: 0, telescope: true,
+       label: "azimuth, polar at 0 deg, 3.5 A"}
+    - {file: Azimuth_BodeMeasurement_Po_0_dep.csv, axis: azimut, theta0_deg: 0, telescope: true,
+       label: "azimuth, polar at 0 deg, 2.36 A"}
+    - {file: Azimuth_BodeMeasurement_Po_30.csv, axis: azimut, theta0_deg: 30, telescope: true,
+       label: "azimuth, polar at 30 deg, 3.5 A"}
+    - {file: Elevation_BodeMeasurement_bode_New_16_10_26.csv, axis: polare, theta0_deg: 0, telescope: true,
+       theta0_placeholder: true, label: "elevation, 3.5 A, 1-2000 Hz"}
+    - {file: BodeMeasurement_NoTelescope.csv, axis: polare, theta0_deg: 0, telescope: false,
+       label: "elevation without telescope, 2.5 A"}
 
 latex:
   language: en
   compile: true
+  include_guyan: false          # true: nel PDF anche la riduzione di Guyan e i confronti con essa
+                                # (sezione Guyan, catena a tre inerzie, modello accoppiato a 7 GdL,
+                                # colonne e curve "Guyan"); report.md e tabelle CSV li riportano sempre

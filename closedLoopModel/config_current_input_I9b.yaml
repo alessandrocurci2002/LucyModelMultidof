@@ -1,0 +1,55 @@
+# =====================================================================
+# PLANT DRIVEN BY THE MEASURED CURRENT -- ITERATION I9b (2026-10-20)
+# As I9a, with the neutral angle of the cables theta_0 one unknown per sequence (the cables may settle in a
+# different layout from one test to the next): fitted with the other parameters on the identification
+# sequences; on each validation sequence theta_0 alone is estimated, all other parameters fixed (an unknown
+# initial condition, as compare(..., InitialCondition = 'estimate') of the System Identification Toolbox).
+# Run (from this folder):
+#   ../.venv/bin/python -I current_input_study.py --config config_current_input_I9b.yaml
+# =====================================================================
+results_dir: results_current_input_I9b
+theta0_per_sequence: true
+base_config: config_vcl_fit.yaml
+first_guess: results_vcl_study/summary.json      # iteration I5 (last one)
+first_guess_current_input: results_current_input_I7/summary.json   # friction of I7 (elevation) and of the first run (azimuth)
+sequences_dir: ../../LucyIdentification/VClosedLoop
+amps_per_A: 2.0
+workers: 8
+input_lowpass_hz: 150.0
+identification_sequences: [MPCLucy_step_1deg, MPCLucy_1degAz_zeroAz_1degPol__zeroPol]
+validation_sequences: [MPCLucy_2degAz_2degPol_zeroAz_zeroPol, MPCLucy_2degPol_zeroPol_2degAz_zeroAz]
+window: {pre_s: 0.3, after_move_s: 0.5}
+threshold_position_fit: 90.0
+max_cpu_per_window_s: 60
+axes: [azimuth, elevation]
+new_parameters:
+  azimuth: {K_cable: 1.0, theta0_cable_deg: 0.0}
+  elevation: {K_cable: 1.0, theta0_cable_deg: 0.0}
+fixed:
+  elevation: {d_x_mm: 0.0}                   # no separate gravity: the constant torque K_c theta_0 contains it
+parameters:
+  azimuth: [scale, sigma0, Tc, Ts_ratio, vs, K_cable, theta0_cable_deg]
+  elevation: [scale, sigma0, Tc, Ts_ratio, vs, "b_{\\theta,h}", K_cable, theta0_cable_deg]
+always_fit:
+  azimuth: [K_cable, theta0_cable_deg]
+  elevation: [K_cable, theta0_cable_deg]
+start: {scale: 1.0, Ts_ratio: 1.2, vs: 1.0e-3}
+bounds:
+  scale: [0.5, 2.0]
+  sigma0: [100.0, 1.0e+6]
+  Tc: [0.01, 3.0]
+  Ts_ratio: [1.0, 30.0]
+  vs: [1.0e-5, 1.0e-1]
+  k_b: [1.0e+4, 1.0e+7]
+  ring: [1.0, 1.0e+4]
+  d_x_mm: [-100.0, 100.0]
+  "b_{\\theta,h}": [1.0e-4, 100.0]
+  K_cable: [1.0e-2, 200.0]
+  theta0_cable_deg: [-30.0, 30.0]
+  damper_factor: [1.0e-3, 1.0e+3]
+screening:
+  step: 0.3
+  min_relative_change: 0.02
+  signed_step: {theta0_cable_deg: 0.5}
+grid: {K_cable: [1.0, 5.0, 20.0], theta0_cable_deg: [-1.0, 0.5, 2.0], scale: [0.9, 1.0, 1.1]}
+max_nfev: 40

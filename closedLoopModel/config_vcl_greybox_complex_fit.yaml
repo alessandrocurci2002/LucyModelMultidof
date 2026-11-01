@@ -1,0 +1,60 @@
+# Closed-loop configuration with the plant estimated by greybox_fit.py from config_vcl_greybox_complex.yaml.
+results_dir: results_vcl_greybox_complex_closed_loop
+label: H7 (9 DOF) estimated on the VClosedLoop plant responses (20 Oct 2026), complex
+  error, estimated values (greybox_fit.py)
+plant:
+  config: ../config_hub_telescopeonring_alhub_fit_ground_aztel.yaml
+  theta0_deg: 0.0
+  balanced_telescope: true
+  zeta_first_flexible: null
+  bearing_friction:
+    model: none
+  parameter_overrides:
+    J_{\psi,e}: 0.00018655696092232418
+    J_{\psi,m}: 0.00029743834637825254
+    J_{\psi,L}: 1.002037905704096
+    J_{\psi,p}: 0.0
+    k_{\psi,1}: 9660.160220661117
+    k_{\psi,2}: 15063.928340927312
+    k_{\psi,3}: 55193.167674946184
+    c_{\psi,1}: 0.18715928844532073
+    c_{\psi,2}: 0.2712654120991749
+    c_{\psi,3}: 5.377123053290742
+    J^{ax}: 0.04264995532582591
+    I_zz: 1.029381852878145
+    J_{\theta,e}: 9.109253139702083e-06
+    J_{\theta,h}: 0.03293944044721199
+    J_{\theta,m}: 0.0008863134591798759
+    J_{\theta,r}: 0.0007729770252386743
+    J_{\theta,p}: 0.0
+    k_{\theta,1}: 48228.13253937503
+    k_{\theta,2}: 8120.499867597636
+    k_{\theta,3}: 7755.351745612343
+    k_{\theta,4}: 212822260.99641687
+    c_{\theta,1}: 0.13254509978860213
+    c_{\theta,2}: 0.5981584418786873
+    c_{\theta,3}: 0.20880987685950808
+    c_{\theta,4}: 0.28468159823458417
+    I_yy: 0.987663025397924
+  ground_override:
+    azimuth:
+      k: 147.02923552269783
+      eta: 1.833393205557588
+    elevation:
+      k: 173.06414854588516
+      eta: 2.498334861277587
+motor:
+  file: data/motor_TBM7646A.yaml
+  temperature: cold
+  cogging: false
+drives:
+  azimuth:
+    parameters: ../../LucyIdentification/VClosedLoop/Parameters_azimuth.akd
+    measurement: ../../LucyIdentification/VClosedLoop/BodeMeasurement_azimuth.csv
+  elevation:
+    parameters: ../../LucyIdentification/VClosedLoop/Parameters_elevation.akd
+    measurement: ../../LucyIdentification/VClosedLoop/BodeMeasurement_elevation.csv
+  feedforward: false
+  observer: from_parameters
+  delay_s: 0.0
+  position_gain_unit: hz

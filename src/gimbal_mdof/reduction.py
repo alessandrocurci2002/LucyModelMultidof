@@ -34,8 +34,12 @@ FORME_MASSA: Final[tuple[FormaMassa, ...]] = ("guyan", "guyan_lumped")
 RUOLI: Final[dict[str, tuple[str, ...]]] = {
     "azimut": ("e", "m", "L"),
     "polare": ("e", "p", "m", "r"),
+    "polare_mozzo": ("e", "h", "m", "r", "p"),
+    "azimut_telescopio": ("e", "m", "L", "p"),
 }
-"""Ruoli dei master nella topologia di riferimento (sezione 4.2)."""
+"""Ruoli dei master nella topologia di riferimento (sezione 4.2); ``polare_mozzo``: modello ``hub``
+(centro del mozzo h sulla catena, telescopio p appeso a h); ``azimut_telescopio``: telescopio p appeso al
+load L (forcella + mozzo + anello)."""
 
 
 # ---------------------------------------------------------------------------
@@ -92,8 +96,20 @@ class ModelloRidotto:
         return len(self.etichette)
 
     @property
+    def archi(self) -> tuple[tuple[int, int], ...]:
+        """Molle fra master (indici ridotti): master consecutivi della catena e, nel modello ``hub``,
+        il ramo h-p (ultimo)."""
+        mod = self.completo
+        if not mod.ramo:
+            return tuple((i, i + 1) for i in range(self.n - 1))
+        i_p = mod.masters.index(mod.i_P)
+        catena = [c for c in range(self.n) if c != i_p]
+        return tuple(zip(catena[:-1], catena[1:])) + ((mod.masters.index(mod.i_H), i_p),)
+
+    @property
     def k_catena(self) -> np.ndarray:
-        return np.array([-self.K_r[i, i + 1] for i in range(self.n - 1)])
+        """Rigidezze equivalenti delle molle, nell'ordine di :attr:`archi`."""
+        return np.array([-self.K_r[i, j] for i, j in self.archi])
 
     def indice_ruolo(self, ruolo: str) -> int:
         return self.ruoli.index(ruolo)
@@ -111,6 +127,13 @@ class ModelloRidotto:
         return self.completo.masters.index(self.completo.i_estremo)
 
     @property
+    def i_H(self) -> int | None:
+        """Centro del mozzo (modello ``hub``), indice ridotto."""
+        if not self.completo.ramo:
+            return None
+        return self.completo.masters.index(self.completo.i_H)
+
+    @property
     def i_P(self) -> int | None:
         if self.completo.i_P is None:
             return None
@@ -124,11 +147,16 @@ class ModelloRidotto:
 
 def _ruoli(mod: ModelloAsse) -> tuple[str, ...]:
     """Ruoli dei master; se i master non sono quelli di riferimento, etichette."""
-    attesi = RUOLI[mod.nome]
+    ramo = getattr(mod, "ramo", False)
+    attesi = RUOLI[(mod.nome + "_mozzo" if mod.nome == "polare" else mod.nome + "_telescopio") if ramo else mod.nome]
     if len(mod.masters) != len(attesi):
         return tuple(mod.etichetta(i) for i in mod.masters)
-    if mod.nome == "azimut":
+    if mod.nome == "azimut" and ramo:
+        ordine = (mod.i_encoder, mod.i_motore, mod.i_estremo, mod.i_P)  # type: ignore[assignment]
+    elif mod.nome == "azimut":
         ordine = (mod.i_encoder, mod.i_motore, mod.i_estremo)
+    elif mod.ramo:
+        ordine = (mod.i_encoder, mod.i_H, mod.i_motore, mod.i_estremo, mod.i_P)  # type: ignore[assignment]
     else:
         ordine = (mod.i_encoder, mod.i_P, mod.i_motore, mod.i_estremo)  # type: ignore[assignment]
     if tuple(mod.masters) != tuple(ordine):
@@ -158,17 +186,19 @@ def riduci(mod: ModelloAsse, modello_massa: ModelloMassa, forma_massa: FormaMass
 
 
 def matrici_ridotte_isolate(
-    rid: ModelloRidotto, *, J_aggiunta: float = 0.0, k_aggiunta: float = 0.0
+    rid: ModelloRidotto, *, J_aggiunta: float = 0.0, k_aggiunta: float = 0.0, J_telescopio: float = 0.0
 ) -> tuple[np.ndarray, np.ndarray]:
     """Catena ridotta isolata, con telescopio (polare) o load completo (azimut).
 
     Le aggiunte stanno su un master, quindi coincidono con quelle del modello
-    completo isolato (:func:`gimbal_mdof.fem.matrici_isolate`).
+    completo isolato (:func:`gimbal_mdof.fem.matrici_isolate`, anche per ``J_telescopio``).
     """
     M, K = rid.M_r.copy(), rid.K_r.copy()
     i = rid.i_P if rid.asse == "polare" else rid.i_estremo
-    assert i is not None
+    i_tel = rid.i_P if rid.asse == "azimut" and rid.completo.ramo else i
+    assert i is not None and i_tel is not None
     M[i, i] += J_aggiunta
+    M[i_tel, i_tel] += J_telescopio
     K[i, i] += k_aggiunta
     return M, K
 

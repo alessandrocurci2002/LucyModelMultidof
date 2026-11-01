@@ -1,0 +1,53 @@
+azimuth: BodeMeasurement_azimuth.csv, 131 points
+  azimuth: start {'k_{\\psi,3}': 30000.0} -> loss 14.777, fit 56.9 %, 600 evaluations, 21 s
+  azimuth: start {'k_{\\psi,3}': 60000.0} -> loss 13.01, fit 53.8 %, 68 evaluations, 2 s
+  azimuth: start {'k_{\\psi,3}': 120000.0} -> loss 20.621, fit 48.1 %, 600 evaluations, 21 s
+  azimuth: start {'k_{\\psi,3}': 300000.0} -> loss 21.844, fit 43.5 %, 600 evaluations, 31 s
+greyest: trf, converged (`xtol` termination condition is satisfied.), 68 evaluations
+fit [%]: 53.8
+MSE 0.1513  FPE 0.2052  AIC 107.6  AICc 112.7  BIC 139.5
+loss 1.424e+04 -> 13.01, data 86, free parameters 13, Jacobian condition 1.98e+07
+       parameter        value        std std/|value|      initial  free
+      J_{\psi,e}   0.00014795       0.27  182713.88%   0.00018494  yes (at bound)
+      J_{\psi,m}   0.00023532      0.153   64836.98%   0.00029414  yes (at bound)
+      J_{\psi,L}       1.4945       1.23      82.30%       1.2522  yes
+          J^{ax}      0.06366      0.419     657.81%     0.053312  yes
+            I_zz       1.0294       1.07     104.06%      0.85782  yes
+      k_{\psi,1}        11457    2.8e+07  244009.30%       9547.6  yes (at bound)
+      k_{\psi,2}        15207   1.76e+03      11.56%        13091  yes
+      k_{\psi,3}        73978   2.48e+04      33.48%        60000  yes
+      c_{\psi,1}   1.3183e-06   1.12e-08       0.85%      0.40341  yes
+      c_{\psi,2}        0.729       2.58     354.45%      0.55312  yes
+      c_{\psi,3}       1.5266       2.82     184.71%       4.9013  yes
+           kg_az       214.73       12.3       5.74%         1418  yes
+          eta_az       1.2207      0.074       6.06%         0.32  yes
+elevation: BodeMeasurement_elevation.csv, 131 points
+  elevation: start {'k_{\\theta,4}': 60000.0, 'ring': 1.0} -> loss 110.63, fit 44.4 %, 60 evaluations, 2 s
+  elevation: start {'k_{\\theta,4}': 60000.0, 'ring': 1000.0} -> loss 139.17, fit 40.6 %, 104 evaluations, 5 s
+  elevation: start {'k_{\\theta,4}': 150000.0, 'ring': 1.0} -> loss 139.06, fit 40.4 %, 162 evaluations, 8 s
+  elevation: start {'k_{\\theta,4}': 150000.0, 'ring': 1000.0} -> loss 139.06, fit 40.4 %, 168 evaluations, 10 s
+  elevation: start {'k_{\\theta,4}': 400000.0, 'ring': 1.0} -> loss 149.05, fit 42.5 %, 600 evaluations, 41 s
+  elevation: start {'k_{\\theta,4}': 400000.0, 'ring': 1000.0} -> loss 110.48, fit 44.4 %, 74 evaluations, 4 s
+  elevation: start {'k_{\\theta,4}': 1000000.0, 'ring': 1.0} -> loss 196.75, fit 30.2 %, 166 evaluations, 9 s
+  elevation: start {'k_{\\theta,4}': 1000000.0, 'ring': 1000.0} -> loss 110.61, fit 44.5 %, 131 evaluations, 6 s
+greyest: trf, converged (`ftol` termination condition is satisfied.), 74 evaluations
+fit [%]: 44.4
+MSE 1.285  FPE 1.872  AIC 297.6  AICc 305.5  BIC 336.9
+loss 8.483e+04 -> 110.5, data 86, free parameters 16, Jacobian condition 1.11e+08
+       parameter        value        std std/|value|      initial  free
+    J_{\theta,e}   1.0729e-05       3.85 35898689.02%   8.9416e-06  yes
+    J_{\theta,h}      0.02999   2.11e+04 70371780.41%      0.03227  yes
+    J_{\theta,m}   0.00088422         75 8480998.77%   0.00073859  yes
+    J_{\theta,r}   0.00076995         70 9093737.07%   0.00064415  yes
+            I_yy      0.72008   2.11e+04 2930720.76%      0.86621  yes
+k_{\theta,1}^{geo}        45255   7.16e+08 1582275.92%        47978  yes
+k_{\theta,2}^{geo}       8146.2   8.65e+08 10623888.82%        10173  yes
+    k_{\theta,3}       7832.9   1.05e+09 13426476.19%       9694.2  yes
+    k_{\theta,4}   1.0745e+07   6.27e+11 5835751.75%        4e+05  yes
+            ring       1.1506   3.25e+04 2822098.34%         1000  yes
+    c_{\theta,1}   1.0687e-06    8.7e-06     813.72%      0.50533  yes
+    c_{\theta,2}      0.18214        345  189473.60%      0.10938  yes
+    c_{\theta,3}      0.32475   4.42e+04 13625169.61%      0.10482  yes
+    c_{\theta,4}        30.39   1.72e+07 56659203.61%       1.2542  yes
+           kg_el       128.94       45.9      35.61%          164  yes
+          eta_el        4.139       1.51      36.41%         3.11  yes

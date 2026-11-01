@@ -1,0 +1,139 @@
+\relax 
+\providecommand\babel@aux[2]{}
+\@nameuse{bbl@beforestart}
+\providecommand\hyper@newdestlabel[2]{}
+\providecommand\HyField@AuxAddToFields[1]{}
+\providecommand\HyField@AuxAddToCoFields[2]{}
+\citation{hilkert2011}
+\citation{attorrese2026}
+\citation{adis16507}
+\citation{hilkert2011}
+\babel@aux{english}{}
+\@writefile{toc}{\contentsline {paragraph}{Purpose.}{1}{section*.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Main results}{1}{section*.2}\protected@file@percent }
+\citation{attorrese2026}
+\@writefile{toc}{\contentsline {section}{\numberline {1}Task and model}{2}{section.1}\protected@file@percent }
+\newlabel{sec:task}{{1}{2}{Task and model}{section.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.1}Tracking task}{2}{subsection.1.1}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Reference: top view of the circle [m], pointing angles [deg] and rates [deg/s] against time [s].}}{2}{figure.caption.4}\protected@file@percent }
+\providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
+\newlabel{fig:reference}{{1}{2}{Reference: top view of the circle [m], pointing angles [deg] and rates [deg/s] against time [s]}{figure.caption.4}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.2}Model of the pointer}{2}{subsection.1.2}\protected@file@percent }
+\citation{hilkert2008}
+\citation{hilkert2011}
+\citation{hilkert2011}
+\citation{hilkert2011}
+\citation{hilkert2011}
+\citation{hilkert2011}
+\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Parameters of the model per axis: drive gains (I5), torque scale, friction (Coulomb level, break-away level, Stribeck speed, pre-sliding stiffness), cable spring (V2), and the rigid inertia $J'=\mathbf  r^T\mathbf  M\mathbf  r$ used by the observer.}}{3}{table.caption.5}\protected@file@percent }
+\newlabel{tab:model}{{1}{3}{Parameters of the model per axis: drive gains (I5), torque scale, friction (Coulomb level, break-away level, Stribeck speed, pre-sliding stiffness), cable spring (V2), and the rigid inertia $J'=\mathbf r^T\mathbf M\mathbf r$ used by the observer}{table.caption.5}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {2}Control architectures}{3}{section.2}\protected@file@percent }
+\newlabel{sec:arch}{{2}{3}{Control architectures}{section.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.1}Current structure}{3}{subsection.2.1}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Current structure, one axis: position P and velocity PI of the drive closed on the encoder ($\theta _{enc}$), velocity feedforward $K_{vff}$ (off in the tests), forward notches on the velocity error, current loop, motor torque $\kappa _iK_ti$ on the plant, which is also loaded by the bearing friction and the cable spring. The pointing error is measured on the line of sight $\theta _{LOS}$ (telescope).}}{3}{figure.caption.6}\protected@file@percent }
+\newlabel{fig:bd_current}{{2}{3}{Current structure, one axis: position P and velocity PI of the drive closed on the encoder ($\theta _{enc}$), velocity feedforward $K_{vff}$ (off in the tests), forward notches on the velocity error, current loop, motor torque $\kappa _iK_ti$ on the plant, which is also loaded by the bearing friction and the cable spring. The pointing error is measured on the line of sight $\theta _{LOS}$ (telescope)}{figure.caption.6}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.2}Proposed structure: gyro and reduced-order disturbance observer (Hilkert)}{3}{subsection.2.2}\protected@file@percent }
+\newlabel{eq:obs}{{2.1}{3}{Proposed structure: gyro and reduced-order disturbance observer (Hilkert)}{equation.2.1}{}}
+\newlabel{eq:rej}{{2.2}{3}{Proposed structure: gyro and reduced-order disturbance observer (Hilkert)}{equation.2.2}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Single-state disturbance observer of Hilkert and Pautler~\cite  [fig.~3]{hilkert2011}: the model of the rigid axis ($1/J's$) is driven by the motor torque measured through the current, $T_m'=K_t'i_m$, and closed on the gyro rate by the gain $K_o$; the correction is the estimate $\hat  T_d$ of the disturbance.}}{4}{figure.caption.7}\protected@file@percent }
+\newlabel{fig:bd_obs}{{3}{4}{Single-state disturbance observer of Hilkert and Pautler~\cite [fig.~3]{hilkert2011}: the model of the rigid axis ($1/J's$) is driven by the motor torque measured through the current, $T_m'=K_t'i_m$, and closed on the gyro rate by the gain $K_o$; the correction is the estimate $\hat T_d$ of the disturbance}{figure.caption.7}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Proposed structure, one axis: the loops of the drive on the encoder are unchanged; a rate gyro on the telescope and the observer of Figure~\ref {fig:bd_obs} give the disturbance estimate, which (through a notch on the structural mode in elevation) is subtracted from the current command.}}{4}{figure.caption.8}\protected@file@percent }
+\newlabel{fig:bd_proposed}{{4}{4}{Proposed structure, one axis: the loops of the drive on the encoder are unchanged; a rate gyro on the telescope and the observer of Figure~\ref {fig:bd_obs} give the disturbance estimate, which (through a notch on the structural mode in elevation) is subtracted from the current command}{figure.caption.8}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.3}Signal constraints: EtherCAT and the MEMS gyro}{4}{subsection.2.3}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Sampled-data structure: the master sends each cycle the position target (interpolated by the drive) and the feedforward current computed in the previous cycle (RxPDO), reads the actual current and position (TxPDO) and the gyro over SPI; the drive loops run inside the drive.}}{4}{figure.caption.9}\protected@file@percent }
+\newlabel{fig:bd_ecat}{{5}{4}{Sampled-data structure: the master sends each cycle the position target (interpolated by the drive) and the feedforward current computed in the previous cycle (RxPDO), reads the actual current and position (TxPDO) and the gyro over SPI; the drive loops run inside the drive}{figure.caption.9}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {3}Implementation step by step}{4}{section.3}\protected@file@percent }
+\newlabel{sec:impl}{{3}{4}{Implementation step by step}{section.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Step 1: closed loop with the identified disturbances}{4}{subsection.3.1}\protected@file@percent }
+\citation{hilkert2011}
+\citation{hilkert2011}
+\citation{hilkert2011}
+\citation{attorrese2026}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Step 2: reference and commands}{5}{subsection.3.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3}Step 3: gyro and observer in the continuous loop}{5}{subsection.3.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.4}Step 4: stability and the notch on the structural mode}{5}{subsection.3.4}\protected@file@percent }
+\newlabel{sec:stab}{{3.4}{5}{Step 4: stability and the notch on the structural mode}{subsection.3.4}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces Stability of the linearised loop with the observer on one axis, against the observer bandwidth: stable, or the frequency of the unstable mode.}}{5}{table.caption.10}\protected@file@percent }
+\newlabel{tab:stab}{{2}{5}{Stability of the linearised loop with the observer on one axis, against the observer bandwidth: stable, or the frequency of the unstable mode}{table.caption.10}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.5}Step 5: metrics}{5}{subsection.3.5}\protected@file@percent }
+\citation{ieee952}
+\citation{adis16507}
+\citation{adis16507}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.6}Step 6: EtherCAT at 1\,ms}{6}{subsection.3.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.7}Step 7: the MEMS gyro (ADIS16507)}{6}{subsection.3.7}\protected@file@percent }
+\newlabel{sec:gyro}{{3.7}{6}{Step 7: the MEMS gyro (ADIS16507)}{subsection.3.7}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {3}{\ignorespaces Gyro model: ADIS16507-1, x and y axes~\cite  {adis16507}.}}{6}{table.caption.11}\protected@file@percent }
+\newlabel{tab:gyro}{{3}{6}{Gyro model: ADIS16507-1, x and y axes~\cite {adis16507}}{table.caption.11}{}}
+\citation{hilkert2011}
+\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Gyro model. Left: Allan deviation [deg/h] against the averaging time [s]: simulated noise (one hour at 2000\,SPS), model terms, data-sheet points. Right: magnitude [dB] and phase [deg] of the second-order dynamics with the latency.}}{7}{figure.caption.12}\protected@file@percent }
+\newlabel{fig:gyro}{{6}{7}{Gyro model. Left: Allan deviation [deg/h] against the averaging time [s]: simulated noise (one hour at 2000\,SPS), model terms, data-sheet points. Right: magnitude [dB] and phase [deg] of the second-order dynamics with the latency}{figure.caption.12}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {4}Results with the continuous loop and an ideal gyro}{7}{section.4}\protected@file@percent }
+\newlabel{sec:cont}{{4}{7}{Results with the continuous loop and an ideal gyro}{section.4}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {4}{\ignorespaces Continuous loop, ideal gyro: pointing error [mdeg], jitter [$\mu $rad], rms of the LOS error components [mdeg]; one orbit.}}{7}{table.caption.13}\protected@file@percent }
+\newlabel{tab:cont}{{4}{7}{Continuous loop, ideal gyro: pointing error [mdeg], jitter [$\mu $rad], rms of the LOS error components [mdeg]; one orbit}{table.caption.13}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces Continuous loop, ideal gyro: pointing error [mdeg, log scale] against time [s], without (top) and with (middle) the velocity feedforward, and with an alternative azimuth friction (bottom).}}{8}{figure.caption.14}\protected@file@percent }
+\newlabel{fig:contpe}{{7}{8}{Continuous loop, ideal gyro: pointing error [mdeg, log scale] against time [s], without (top) and with (middle) the velocity feedforward, and with an alternative azimuth friction (bottom)}{figure.caption.14}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces Disturbance torque on each axis [N\,m] against time [s]: bearing friction plus cable spring of the model, and the observer estimate $\hat  T_d$ (20\,Hz).}}{8}{figure.caption.15}\protected@file@percent }
+\newlabel{fig:dist}{{8}{8}{Disturbance torque on each axis [N\,m] against time [s]: bearing friction plus cable spring of the model, and the observer estimate $\hat T_d$ (20\,Hz)}{figure.caption.15}{}}
+\citation{hilkert2011}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Disturbance rejection: definition and reading of the transfer function}{9}{subsection.4.1}\protected@file@percent }
+\newlabel{sec:rejection}{{4.1}{9}{Disturbance rejection: definition and reading of the transfer function}{subsection.4.1}{}}
+\@writefile{toc}{\contentsline {paragraph}{Definition.}{9}{section*.16}\protected@file@percent }
+\newlabel{eq:gd}{{4.1}{9}{Definition}{equation.4.1}{}}
+\@writefile{toc}{\contentsline {paragraph}{Why ``sliding friction''.}{9}{section*.17}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Meaning.}{9}{section*.18}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Rigid-body model.}{9}{section*.19}\protected@file@percent }
+\newlabel{eq:gdrigid}{{4.2}{9}{Rigid-body model}{equation.4.2}{}}
+\@writefile{toc}{\contentsline {paragraph}{Asymptotes.}{9}{section*.20}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Features.}{10}{section*.21}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Compliance floor in azimuth.}{10}{section*.22}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Check against the simulations.}{10}{section*.23}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Validity.}{10}{section*.24}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {5}{\ignorespaces $|G_d|$ [$\mu $rad/(N\,m)] at selected frequencies, full linearised model; in brackets: ratio to the current structure; ratio predicted by Hilkert, $|s/(s+\omega _o)|$.}}{10}{table.caption.25}\protected@file@percent }
+\newlabel{tab:rejection}{{5}{10}{$|G_d|$ [$\mu $rad/(N\,m)] at selected frequencies, full linearised model; in brackets: ratio to the current structure; ratio predicted by Hilkert, $|s/(s+\omega _o)|$}{table.caption.25}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces Disturbance rejection, bearing torque to line of sight}}{11}{figure.caption.26}\protected@file@percent }
+\newlabel{fig:rej}{{9}{11}{Disturbance rejection, bearing torque to line of sight}{figure.caption.26}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {5}Focus: pointing error and jitter, current structure against the observer with the noisy gyro}{11}{section.5}\protected@file@percent }
+\newlabel{sec:focus}{{5}{11}{Focus: pointing error and jitter, current structure against the observer with the noisy gyro}{section.5}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {6}{\ignorespaces Pointing error [mdeg], miss at the drone [mm] and jitter by band [$\mu $rad]; one orbit.}}{11}{table.caption.27}\protected@file@percent }
+\newlabel{tab:focus}{{6}{11}{Pointing error [mdeg], miss at the drone [mm] and jitter by band [$\mu $rad]; one orbit}{table.caption.27}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {7}{\ignorespaces The same in degrees.}}{11}{table.caption.28}\protected@file@percent }
+\newlabel{tab:focusdeg}{{7}{11}{The same in degrees}{table.caption.28}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.1}Pointing error}{11}{subsection.5.1}\protected@file@percent }
+\citation{hilkert2011}
+\@writefile{lof}{\contentsline {figure}{\numberline {10}{\ignorespaces EtherCAT and ADIS16507: pointing error [mdeg, log scale] against time [s], current structure and observer, without (top) and with (bottom) the velocity feedforward; dashed: the observer in the continuous loop with an ideal gyro.}}{12}{figure.caption.29}\protected@file@percent }
+\newlabel{fig:ecatpe}{{10}{12}{EtherCAT and ADIS16507: pointing error [mdeg, log scale] against time [s], current structure and observer, without (top) and with (bottom) the velocity feedforward; dashed: the observer in the continuous loop with an ideal gyro}{figure.caption.29}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.2}Jitter}{12}{subsection.5.2}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {11}{\ignorespaces Jitter by frequency band [$\mu $rad, log scale]: rms of the LOS error in 1--10\,Hz, 10--100\,Hz, above 100\,Hz and in total above 1\,Hz; current structure, observer with an ideal gyro, observer with the ADIS16507.}}{13}{figure.caption.30}\protected@file@percent }
+\newlabel{fig:bands}{{11}{13}{Jitter by frequency band [$\mu $rad, log scale]: rms of the LOS error in 1--10\,Hz, 10--100\,Hz, above 100\,Hz and in total above 1\,Hz; current structure, observer with an ideal gyro, observer with the ADIS16507}{figure.caption.30}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {12}{\ignorespaces Rms of the LOS error above each frequency [$\mu $rad] against frequency [Hz], cross-elevation and elevation: where the jitter comes from.}}{13}{figure.caption.31}\protected@file@percent }
+\newlabel{fig:cum}{{12}{13}{Rms of the LOS error above each frequency [$\mu $rad] against frequency [Hz], cross-elevation and elevation: where the jitter comes from}{figure.caption.31}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {13}{\ignorespaces EtherCAT and ADIS16507, velocity feedforward: LOS error components [mdeg] against time [s] (top), error above 1\,Hz [$\mu $rad] (middle) and amplitude spectral density [$\mu $rad/$\sqrt  {\mathrm  {Hz}}$] (bottom); current structure, observer with the noisy gyro, observer with an ideal gyro.}}{14}{figure.caption.32}\protected@file@percent }
+\newlabel{fig:ecatcomp}{{13}{14}{EtherCAT and ADIS16507, velocity feedforward: LOS error components [mdeg] against time [s] (top), error above 1\,Hz [$\mu $rad] (middle) and amplitude spectral density [$\mu $rad/$\sqrt {\mathrm {Hz}}$] (bottom); current structure, observer with the noisy gyro, observer with an ideal gyro}{figure.caption.32}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {14}{\ignorespaces Feedforward current of the observer [A] against time [s] (top) and its amplitude spectral density [A/$\sqrt  {\mathrm  {Hz}}$] (bottom), noisy and ideal gyro.}}{14}{figure.caption.33}\protected@file@percent }
+\newlabel{fig:iff}{{14}{14}{Feedforward current of the observer [A] against time [s] (top) and its amplitude spectral density [A/$\sqrt {\mathrm {Hz}}$] (bottom), noisy and ideal gyro}{figure.caption.33}{}}
+\citation{gawronski2008}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.3}Required motor torque}{15}{subsection.5.3}\protected@file@percent }
+\newlabel{sec:torque}{{5.3}{15}{Required motor torque}{subsection.5.3}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {8}{\ignorespaces Motor torque $\kappa _iK_ti$ over one orbit, EtherCAT and velocity feedforward: rms and peak [N\,m], rms of its parts below and above 10\,Hz [N\,m], rms against the continuous stall torque and peak against the peak torque of the motor [\%].}}{15}{table.caption.34}\protected@file@percent }
+\newlabel{tab:torque}{{8}{15}{Motor torque $\kappa _iK_ti$ over one orbit, EtherCAT and velocity feedforward: rms and peak [N\,m], rms of its parts below and above 10\,Hz [N\,m], rms against the continuous stall torque and peak against the peak torque of the motor [\%]}{table.caption.34}{}}
+\citation{hilkert2011}
+\@writefile{lof}{\contentsline {figure}{\numberline {15}{\ignorespaces Motor torque [N\,m] of the current structure and of the observer at 20\,Hz with an ideal and with the ADIS16507 gyro, EtherCAT and velocity feedforward: over one orbit against time [s] (top), around the first velocity reversal of each axis (8.4\ and 15.7\,s, middle), and amplitude spectral density [N\,m/$\sqrt  {\mathrm  {Hz}}$] against frequency [Hz] (bottom).}}{16}{figure.caption.35}\protected@file@percent }
+\newlabel{fig:torque}{{15}{16}{Motor torque [N\,m] of the current structure and of the observer at 20\,Hz with an ideal and with the ADIS16507 gyro, EtherCAT and velocity feedforward: over one orbit against time [s] (top), around the first velocity reversal of each axis (\revAz \ and \revEl \,s, middle), and amplitude spectral density [N\,m/$\sqrt {\mathrm {Hz}}$] against frequency [Hz] (bottom)}{figure.caption.35}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.4}Choice of the observer bandwidth}{16}{subsection.5.4}\protected@file@percent }
+\bibcite{hilkert2011}{1}
+\@writefile{lof}{\contentsline {figure}{\numberline {16}{\ignorespaces EtherCAT, velocity feedforward: pointing error rms [mdeg] and jitter above 1, 10 and 100\,Hz [$\mu $rad] against the observer bandwidth [Hz], noisy and ideal gyro, and the current structure.}}{17}{figure.caption.36}\protected@file@percent }
+\newlabel{fig:sweep}{{16}{17}{EtherCAT, velocity feedforward: pointing error rms [mdeg] and jitter above 1, 10 and 100\,Hz [$\mu $rad] against the observer bandwidth [Hz], noisy and ideal gyro, and the current structure}{figure.caption.36}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.5}Overall table}{17}{subsection.5.5}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {9}{\ignorespaces EtherCAT and ADIS16507, all cases: pointing error [mdeg], jitter [$\mu $rad], feedforward current rms azimuth / elevation [A]; one orbit.}}{17}{table.caption.37}\protected@file@percent }
+\newlabel{tab:ecat}{{9}{17}{EtherCAT and ADIS16507, all cases: pointing error [mdeg], jitter [$\mu $rad], feedforward current rms azimuth / elevation [A]; one orbit}{table.caption.37}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {6}Limits and next steps}{17}{section.6}\protected@file@percent }
+\newlabel{sec:next}{{6}{17}{Limits and next steps}{section.6}{}}
+\@writefile{toc}{\contentsline {paragraph}{Limits.}{17}{section*.38}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Next steps.}{17}{section*.39}\protected@file@percent }
+\bibcite{hilkert2008}{2}
+\bibcite{gawronski2008}{3}
+\bibcite{attorrese2026}{4}
+\bibcite{adis16507}{5}
+\bibcite{ieee952}{6}
+\gdef \@abspage@last{18}

@@ -1,0 +1,736 @@
+{
+  "config": "config_validation.yaml",
+  "base_config": "config_zeta10.yaml",
+  "current_scale": {
+    "MPCLucy_pos_dist_dataset/azimuth": {
+      "slope": 16.294510667561305,
+      "coulomb_units": 2.2921019198925623,
+      "offset_units": -0.9423520619561635,
+      "torque_per_unit": 0.13279258297184005,
+      "coulomb_Nm": 0.3043741343772469,
+      "R2": 0.9941865645653765
+    },
+    "MPCLucy_pos_dist_dataset/elevation": {
+      "slope": 5.968461218019555,
+      "coulomb_units": 2.6854293069727904,
+      "offset_units": 0.4855704731989756,
+      "torque_per_unit": 0.15077074429605208,
+      "coulomb_Nm": 0.40488417536671895,
+      "R2": 0.9717717403735068
+    },
+    "MPCLucy_pos_dist_test/azimuth": {
+      "slope": 15.570115173219076,
+      "coulomb_units": 0.5240583679528584,
+      "offset_units": 0.5240583679528584,
+      "torque_per_unit": 0.13897072280681852,
+      "coulomb_Nm": 0.07282877018737038,
+      "R2": 0.9957247696316096
+    },
+    "MPCLucy_pos_dist_test/elevation": {
+      "slope": 6.1284167937947815,
+      "coulomb_units": 2.424741687105792,
+      "offset_units": 0.05326560816069497,
+      "torque_per_unit": 0.14683553198504326,
+      "coulomb_Nm": 0.35603823555249026,
+      "R2": 0.9641464729098517
+    },
+    "MPCLucy_scotched/azimuth": {
+      "slope": 16.705810401379466,
+      "coulomb_units": 2.434398952092196,
+      "offset_units": -1.270108378683137,
+      "torque_per_unit": 0.1295232082622579,
+      "coulomb_Nm": 0.3153111624652599,
+      "R2": 0.9928631094736253
+    },
+    "MPCLucy_scotched/elevation": {
+      "slope": 6.237181814795578,
+      "coulomb_units": 2.4662169830942484,
+      "offset_units": -0.4088411803007082,
+      "torque_per_unit": 0.14427498938836414,
+      "coulomb_Nm": 0.35581342906532615,
+      "R2": 0.9758919854711269
+    }
+  },
+  "estimate": {
+    "azimuth": {
+      "start": {
+        "Kpp": 7.431984934077304,
+        "Kpv": 197.86293722714532,
+        "Kiv": 0.14515668433490012,
+        "Tc": 0.30275334864112086
+      },
+      "values": {
+        "Kpp": 7.43041917281519,
+        "Kpv": 197.96315899770428,
+        "Kiv": 0.1477074105720247,
+        "Tc": 0.30189892822154046
+      },
+      "cost_start": 1.1745244481820984,
+      "cost": 1.1745124729404088,
+      "n_eval": 5,
+      "windows": [
+        "MPCLucy_pos_dist_dataset azimuth move at 57.78 s (window 57.48-60.37 s)",
+        "MPCLucy_pos_dist_dataset azimuth move at 71.06 s (window 70.76-74.06 s)",
+        "MPCLucy_pos_dist_dataset azimuth move at 75.47 s (window 75.17-78.47 s)",
+        "MPCLucy_pos_dist_dataset azimuth move at 90.04 s (window 89.74-93.04 s)"
+      ]
+    },
+    "elevation": {
+      "start": {
+        "Kpp": 8.548492598924145,
+        "Kpv": 61.3833669611008,
+        "Kiv": 0.7168265730181388,
+        "Tc": 0.29088990141978627
+      },
+      "values": {
+        "Kpp": 8.574804204311665,
+        "Kpv": 61.39021332796687,
+        "Kiv": 0.7267262276014067,
+        "Tc": 0.2948482167670364
+      },
+      "cost_start": 1.554687364536603,
+      "cost": 1.554487219941744,
+      "n_eval": 5,
+      "windows": [
+        "MPCLucy_pos_dist_dataset elevation move at 3.09 s (window 2.79-5.59 s)",
+        "MPCLucy_pos_dist_dataset elevation move at 14.20 s (window 13.90-16.70 s)",
+        "MPCLucy_pos_dist_dataset elevation move at 24.33 s (window 24.03-26.83 s)",
+        "MPCLucy_pos_dist_dataset elevation move at 60.42 s (window 60.12-62.92 s)"
+      ]
+    }
+  },
+  "validation": {
+    "MPCLucy_pos_dist_test/azimuth": [
+      {
+        "window": "MPCLucy_pos_dist_test azimuth move at 7.49 s (window 7.19-8.03 s)",
+        "ok": [
+          true,
+          true
+        ],
+        "fit_error_akd": -16.85155622822254,
+        "fit_current_akd": -129.12212208471328,
+        "held_max_akd_mdeg": 0.1807542530495035,
+        "fit_error_estimate": 92.91197231394659,
+        "fit_current_estimate": 37.01071966092311,
+        "held_max_estimate_mdeg": 0.1432916539533664,
+        "held_max_meas_mdeg": 6.523131999999854,
+        "held_static": true,
+        "amplitude_deg": 6.068618763
+      }
+    ],
+    "MPCLucy_pos_dist_test/elevation": [
+      {
+        "window": "MPCLucy_pos_dist_test elevation move at 13.74 s (window 13.44-16.24 s)",
+        "ok": [
+          true,
+          true
+        ],
+        "fit_error_akd": -10.176258097536838,
+        "fit_current_akd": -113.81031100733799,
+        "held_max_akd_mdeg": 8.681864175959025e-06,
+        "fit_error_estimate": 79.69715999079945,
+        "fit_current_estimate": 34.96028198835637,
+        "held_max_estimate_mdeg": 2.2851191609542525e-05,
+        "held_max_meas_mdeg": 0.343323,
+        "held_static": true,
+        "amplitude_deg": 0.99999994
+      },
+      {
+        "window": "MPCLucy_pos_dist_test elevation move at 16.84 s (window 16.54-19.34 s)",
+        "ok": [
+          true,
+          true
+        ],
+        "fit_error_akd": -3.78344418471932,
+        "fit_current_akd": -51.54316229107629,
+        "held_max_akd_mdeg": 9.631559496382993e-06,
+        "fit_error_estimate": 89.02312334610119,
+        "fit_current_estimate": 36.50430062963091,
+        "held_max_estimate_mdeg": 2.0449211794972473e-05,
+        "held_max_meas_mdeg": 0.343323,
+        "held_static": true,
+        "amplitude_deg": 0.9999999410000002
+      },
+      {
+        "window": "MPCLucy_pos_dist_test elevation move at 20.70 s (window 20.40-23.20 s)",
+        "ok": [
+          true,
+          true
+        ],
+        "fit_error_akd": -9.242284446822957,
+        "fit_current_akd": -113.40314547585115,
+        "held_max_akd_mdeg": 8.326654897295876e-06,
+        "fit_error_estimate": 79.13028211255241,
+        "fit_current_estimate": 27.02427624879925,
+        "held_max_estimate_mdeg": 2.155001145835513e-05,
+        "held_max_meas_mdeg": 0.686646,
+        "held_static": true,
+        "amplitude_deg": 1.000000108
+      },
+      {
+        "window": "MPCLucy_pos_dist_test elevation move at 24.50 s (window 24.20-27.00 s)",
+        "ok": [
+          true,
+          true
+        ],
+        "fit_error_akd": -3.9430498254627633,
+        "fit_current_akd": -62.981868702324874,
+        "held_max_akd_mdeg": 9.050555610817721e-06,
+        "fit_error_estimate": 89.23157988978778,
+        "fit_current_estimate": 33.18815990153083,
+        "held_max_estimate_mdeg": 1.9288385395811014e-05,
+        "held_max_meas_mdeg": 0.343323,
+        "held_static": true,
+        "amplitude_deg": 0.9999999399999998
+      },
+      {
+        "window": "MPCLucy_pos_dist_test elevation move at 27.83 s (window 27.53-30.33 s)",
+        "ok": [
+          true,
+          true
+        ],
+        "fit_error_akd": -8.978803038540883,
+        "fit_current_akd": -119.53064727710716,
+        "held_max_akd_mdeg": 7.93857469027843e-06,
+        "fit_error_estimate": 80.67109091174768,
+        "fit_current_estimate": 31.99941945752626,
+        "held_max_estimate_mdeg": 2.0126714453073058e-05,
+        "held_max_meas_mdeg": 0.686646,
+        "held_static": true,
+        "amplitude_deg": 0.9999999409999997
+      },
+      {
+        "window": "MPCLucy_pos_dist_test elevation move at 32.54 s (window 32.24-35.04 s)",
+        "ok": [
+          true,
+          true
+        ],
+        "fit_error_akd": -3.205674891734822,
+        "fit_current_akd": -29.203589205466507,
+        "held_max_akd_mdeg": 8.484144930961489e-06,
+        "fit_error_estimate": 89.16737050546486,
+        "fit_current_estimate": 44.88363714890517,
+        "held_max_estimate_mdeg": 1.7934870582286465e-05,
+        "held_max_meas_mdeg": 0.686646,
+        "held_static": true,
+        "amplitude_deg": 1.0000001080000007
+      },
+      {
+        "window": "MPCLucy_pos_dist_test elevation move at 35.94 s (window 35.64-38.44 s)",
+        "ok": [
+          true,
+          true
+        ],
+        "fit_error_akd": -8.784865947847154,
+        "fit_current_akd": -104.15711657934162,
+        "held_max_akd_mdeg": 7.170380165959778e-06,
+        "fit_error_estimate": 78.77766096773333,
+        "fit_current_estimate": 7.249102301471588,
+        "held_max_estimate_mdeg": 1.8865617916256438e-05,
+        "held_max_meas_mdeg": 0.686646,
+        "held_static": true,
+        "amplitude_deg": 0.9999999400000006
+      },
+      {
+        "window": "MPCLucy_pos_dist_test elevation move at 39.42 s (window 39.12-41.92 s)",
+        "ok": [
+          true,
+          true
+        ],
+        "fit_error_akd": -2.9304751231340687,
+        "fit_current_akd": -14.181906855985261,
+        "held_max_akd_mdeg": 7.802103690833295e-06,
+        "fit_error_estimate": 91.0754685453934,
+        "fit_current_estimate": 40.35846152616308,
+        "held_max_estimate_mdeg": 1.6991957153341097e-05,
+        "held_max_meas_mdeg": 0.686646,
+        "held_static": true,
+        "amplitude_deg": 0.999999939999999
+      },
+      {
+        "window": "MPCLucy_pos_dist_test elevation move at 43.20 s (window 42.90-45.70 s)",
+        "ok": [
+          true,
+          true
+        ],
+        "fit_error_akd": -8.752078303369593,
+        "fit_current_akd": -90.22339752182029,
+        "held_max_akd_mdeg": 6.437017321041478e-06,
+        "fit_error_estimate": 79.19655920819746,
+        "fit_current_estimate": -1.482895297681286,
+        "held_max_estimate_mdeg": 1.748356508735597e-05,
+        "held_max_meas_mdeg": 0.686646,
+        "held_static": true,
+        "amplitude_deg": 1.0000001080000007
+      },
+      {
+        "window": "MPCLucy_pos_dist_test elevation move at 48.45 s (window 48.15-50.95 s)",
+        "ok": [
+          true,
+          true
+        ],
+        "fit_error_akd": -2.9643490508173276,
+        "fit_current_akd": -6.4985962543889775,
+        "held_max_akd_mdeg": 7.173625215733516e-06,
+        "fit_error_estimate": 91.38801274643559,
+        "fit_current_estimate": 37.39486563809259,
+        "held_max_estimate_mdeg": 1.5751490982060217e-05,
+        "held_max_meas_mdeg": 0.686646,
+        "held_static": true,
+        "amplitude_deg": 0.9999999409999997
+      },
+      {
+        "window": "MPCLucy_pos_dist_test elevation move at 51.87 s (window 51.57-54.37 s)",
+        "ok": [
+          true,
+          true
+        ],
+        "fit_error_akd": -98.59298941329722,
+        "fit_current_akd": -37.45610363927048,
+        "held_max_akd_mdeg": 6.127165814002537e-06,
+        "fit_error_estimate": 84.87592994714596,
+        "fit_current_estimate": 40.663289357264965,
+        "held_max_estimate_mdeg": 2.742998622494544e-05,
+        "held_max_meas_mdeg": 0.686646,
+        "held_static": true,
+        "amplitude_deg": -9.999999907000001
+      },
+      {
+        "window": "MPCLucy_pos_dist_test elevation move at 56.06 s (window 55.76-58.56 s)",
+        "ok": [
+          true,
+          true
+        ],
+        "fit_error_akd": -9.805350978332461,
+        "fit_current_akd": -142.92994491838692,
+        "held_max_akd_mdeg": 9.14595699415582e-06,
+        "fit_error_estimate": 82.37204935110076,
+        "fit_current_estimate": 40.375709941666194,
+        "held_max_estimate_mdeg": 2.3027650806411398e-05,
+        "held_max_meas_mdeg": 0.686646,
+        "held_static": true,
+        "amplitude_deg": -0.99999994
+      },
+      {
+        "window": "MPCLucy_pos_dist_test elevation move at 61.15 s (window 60.85-63.65 s)",
+        "ok": [
+          true,
+          true
+        ],
+        "fit_error_akd": -4.84990338474629,
+        "fit_current_akd": -98.20387637368376,
+        "held_max_akd_mdeg": 1.0294440495795577e-05,
+        "fit_error_estimate": 88.36859463490872,
+        "fit_current_estimate": 12.248302551696755,
+        "held_max_estimate_mdeg": 2.1891549728775993e-05,
+        "held_max_meas_mdeg": 0.686646,
+        "held_static": true,
+        "amplitude_deg": -0.9999999410000002
+      },
+      {
+        "window": "MPCLucy_pos_dist_test elevation move at 65.31 s (window 65.01-67.81 s)",
+        "ok": [
+          true,
+          true
+        ],
+        "fit_error_akd": -7.725181418942939,
+        "fit_current_akd": -126.63469901649749,
+        "held_max_akd_mdeg": 1.0037208830446114e-05,
+        "fit_error_estimate": 88.06770703896998,
+        "fit_current_estimate": 44.32696653728936,
+        "held_max_estimate_mdeg": 2.3798214202768863e-05,
+        "held_max_meas_mdeg": 0.686646,
+        "held_static": true,
+        "amplitude_deg": -1.000000108
+      },
+      {
+        "window": "MPCLucy_pos_dist_test elevation move at 68.89 s (window 68.59-71.39 s)",
+        "ok": [
+          true,
+          true
+        ],
+        "fit_error_akd": -4.677740146184384,
+        "fit_current_akd": -75.93758297975664,
+        "held_max_akd_mdeg": 1.0749189834209058e-05,
+        "fit_error_estimate": 90.09366844054392,
+        "fit_current_estimate": 30.054454090662265,
+        "held_max_estimate_mdeg": 2.3381667699873305e-05,
+        "held_max_meas_mdeg": 0.686646,
+        "held_static": true,
+        "amplitude_deg": -0.9999999399999998
+      },
+      {
+        "window": "MPCLucy_pos_dist_test elevation move at 73.13 s (window 72.83-75.63 s)",
+        "ok": [
+          true,
+          true
+        ],
+        "fit_error_akd": -8.12840646871804,
+        "fit_current_akd": -113.02071820642254,
+        "held_max_akd_mdeg": 1.0190034109153167e-05,
+        "fit_error_estimate": 81.84244090241769,
+        "fit_current_estimate": 11.345406222397514,
+        "held_max_estimate_mdeg": 2.5469924123677653e-05,
+        "held_max_meas_mdeg": 0.686646,
+        "held_static": true,
+        "amplitude_deg": -0.9999999409999997
+      },
+      {
+        "window": "MPCLucy_pos_dist_test elevation move at 76.83 s (window 76.53-79.33 s)",
+        "ok": [
+          true,
+          true
+        ],
+        "fit_error_akd": -4.64477392776943,
+        "fit_current_akd": -85.17785835609031,
+        "held_max_akd_mdeg": 1.1232985376493515e-05,
+        "fit_error_estimate": 90.08920473821667,
+        "fit_current_estimate": 22.64453926047272,
+        "held_max_estimate_mdeg": 2.463167354210979e-05,
+        "held_max_meas_mdeg": 0.686646,
+        "held_static": true,
+        "amplitude_deg": -1.0000001080000007
+      },
+      {
+        "window": "MPCLucy_pos_dist_test elevation move at 80.96 s (window 80.66-83.46 s)",
+        "ok": [
+          true,
+          true
+        ],
+        "fit_error_akd": -16.72611320224311,
+        "fit_current_akd": -64.33349521388307,
+        "held_max_akd_mdeg": 8.751370842486205e-06,
+        "fit_error_estimate": 85.93803290107508,
+        "fit_current_estimate": -17.771349516023662,
+        "held_max_estimate_mdeg": 3.313050135939384e-05,
+        "held_max_meas_mdeg": 1.029968,
+        "held_static": true,
+        "amplitude_deg": -1.9999998799999996
+      },
+      {
+        "window": "MPCLucy_pos_dist_test elevation move at 85.14 s (window 84.84-87.64 s)",
+        "ok": [
+          true,
+          true
+        ],
+        "fit_error_akd": -7.500017226501066,
+        "fit_current_akd": -131.2463821308267,
+        "held_max_akd_mdeg": 1.1883204410205647e-05,
+        "fit_error_estimate": 89.88467287480883,
+        "fit_current_estimate": -6.90102980579721,
+        "held_max_estimate_mdeg": 2.601751213048309e-05,
+        "held_max_meas_mdeg": 0.686646,
+        "held_static": true,
+        "amplitude_deg": 0.999999939999999
+      },
+      {
+        "window": "MPCLucy_pos_dist_test elevation move at 89.06 s (window 88.76-91.56 s)",
+        "ok": [
+          true,
+          true
+        ],
+        "fit_error_akd": -16.115177994059128,
+        "fit_current_akd": -39.892451508252044,
+        "held_max_akd_mdeg": 9.709729919482036e-06,
+        "fit_error_estimate": 87.83573501638126,
+        "fit_current_estimate": -40.39375608487883,
+        "held_max_estimate_mdeg": 3.42529188569548e-05,
+        "held_max_meas_mdeg": 1.3732910000000003,
+        "held_static": true,
+        "amplitude_deg": -2.000000048
+      },
+      {
+        "window": "MPCLucy_pos_dist_test elevation move at 92.90 s (window 92.60-95.40 s)",
+        "ok": [
+          true,
+          true
+        ],
+        "fit_error_akd": -9.738986801233995,
+        "fit_current_akd": -102.34020894980476,
+        "held_max_akd_mdeg": 1.061474548597559e-05,
+        "fit_error_estimate": 79.4532798568154,
+        "fit_current_estimate": 21.60716803511632,
+        "held_max_estimate_mdeg": 2.8662334389366095e-05,
+        "held_max_meas_mdeg": 1.029968,
+        "held_static": true,
+        "amplitude_deg": -0.9999999409999997
+      },
+      {
+        "window": "MPCLucy_pos_dist_test elevation move at 95.82 s (window 95.52-98.32 s)",
+        "ok": [
+          true,
+          true
+        ],
+        "fit_error_akd": -100.53798954432924,
+        "fit_current_akd": -39.36037287909049,
+        "held_max_akd_mdeg": 0.025801901084939956,
+        "fit_error_estimate": 82.88937478538507,
+        "fit_current_estimate": 44.60604502346334,
+        "held_max_estimate_mdeg": 0.011895699980174588,
+        "held_max_meas_mdeg": 0.686646,
+        "held_static": true,
+        "amplitude_deg": 9.999999907000001
+      }
+    ],
+    "MPCLucy_scotched/azimuth": [
+      {
+        "window": "MPCLucy_scotched azimuth move at 5.34 s (window 5.04-6.10 s)",
+        "ok": [
+          true,
+          true
+        ],
+        "fit_error_akd": -4.289563023238041,
+        "fit_current_akd": -48.47386140334182,
+        "held_max_akd_mdeg": 0.04659514730887219,
+        "fit_error_estimate": 91.90733162052601,
+        "fit_current_estimate": 51.82095083699245,
+        "held_max_estimate_mdeg": 0.14355460937532571,
+        "held_max_meas_mdeg": 12.359618999999665,
+        "held_static": true,
+        "amplitude_deg": 2.9999999880000003
+      },
+      {
+        "window": "MPCLucy_scotched azimuth move at 12.82 s (window 12.52-13.77 s)",
+        "ok": [
+          true,
+          true
+        ],
+        "fit_error_akd": 12.949619211273511,
+        "fit_current_akd": -61.93517548958103,
+        "held_max_akd_mdeg": 0.37265457088190773,
+        "fit_error_estimate": 90.0949386082604,
+        "fit_current_estimate": 29.310232999498144,
+        "held_max_estimate_mdeg": 0.44364163976360554,
+        "held_max_meas_mdeg": 17.852782999999956,
+        "held_static": true,
+        "amplitude_deg": 2.0000000490000005
+      },
+      {
+        "window": "MPCLucy_scotched azimuth move at 15.03 s (window 14.73-15.54 s)",
+        "ok": [
+          true,
+          true
+        ],
+        "fit_error_akd": -6.109330076971853,
+        "fit_current_akd": -43.172020453871895,
+        "held_max_akd_mdeg": 1.2111202633689495,
+        "fit_error_estimate": 95.77700325544302,
+        "fit_current_estimate": 38.82726064896544,
+        "held_max_estimate_mdeg": 1.0478295845327303,
+        "held_max_meas_mdeg": 8.239745999999247,
+        "held_static": true,
+        "amplitude_deg": -7.068218049
+      },
+      {
+        "window": "MPCLucy_scotched azimuth move at 21.82 s (window 21.52-24.32 s)",
+        "ok": [
+          true,
+          true
+        ],
+        "fit_error_akd": 8.119182472500386,
+        "fit_current_akd": -52.96216411939272,
+        "held_max_akd_mdeg": 0.1901972715574628,
+        "fit_error_estimate": 94.68932720737403,
+        "fit_current_estimate": 55.496868904477395,
+        "held_max_estimate_mdeg": 0.024452601264912135,
+        "held_max_meas_mdeg": 15.106201,
+        "held_static": true,
+        "amplitude_deg": -2.9999999890000004
+      },
+      {
+        "window": "MPCLucy_scotched azimuth move at 32.47 s (window 32.17-33.39 s)",
+        "ok": [
+          true,
+          true
+        ],
+        "fit_error_akd": 14.053198409917588,
+        "fit_current_akd": -42.58993086049661,
+        "held_max_akd_mdeg": 0.21798708010507228,
+        "fit_error_estimate": 92.46487375902306,
+        "fit_current_estimate": 31.162534779457328,
+        "held_max_estimate_mdeg": 0.26257585188955435,
+        "held_max_meas_mdeg": 21.629333000000063,
+        "held_static": true,
+        "amplitude_deg": -1.9999998809999995
+      },
+      {
+        "window": "MPCLucy_scotched azimuth move at 43.75 s (window 43.45-46.25 s)",
+        "ok": [
+          true,
+          true
+        ],
+        "fit_error_akd": 8.352634502249511,
+        "fit_current_akd": -49.53333751385456,
+        "held_max_akd_mdeg": 7.5643697821422355,
+        "fit_error_estimate": 95.07201627633772,
+        "fit_current_estimate": 57.17295343654821,
+        "held_max_estimate_mdeg": 8.714949746333765,
+        "held_max_meas_mdeg": 28.83911099999895,
+        "held_static": true,
+        "amplitude_deg": -2.9999999880000003
+      },
+      {
+        "window": "MPCLucy_scotched azimuth move at 51.65 s (window 51.35-52.29 s)",
+        "ok": [
+          true,
+          true
+        ],
+        "fit_error_akd": 10.502293766190396,
+        "fit_current_akd": -48.35442339981577,
+        "held_max_akd_mdeg": 0.12559384411861046,
+        "fit_error_estimate": 92.18206149028367,
+        "fit_current_estimate": 29.988200848872836,
+        "held_max_estimate_mdeg": 0.18179883620994802,
+        "held_max_meas_mdeg": 17.852782999999956,
+        "held_static": true,
+        "amplitude_deg": -2.0000000490000005
+      },
+      {
+        "window": "MPCLucy_scotched azimuth move at 55.68 s (window 55.38-56.73 s)",
+        "ok": [
+          true,
+          true
+        ],
+        "fit_error_akd": -23.235056807342147,
+        "fit_current_akd": -49.712693791468475,
+        "held_max_akd_mdeg": 0.36712120036594303,
+        "fit_error_estimate": 91.92214678857508,
+        "fit_current_estimate": 45.620489823825785,
+        "held_max_estimate_mdeg": 0.044752561837026014,
+        "held_max_meas_mdeg": 5.836487000000606,
+        "held_static": true,
+        "amplitude_deg": 9.999999907000001
+      },
+      {
+        "window": "MPCLucy_scotched azimuth move at 82.81 s (window 82.51-83.70 s)",
+        "ok": [
+          true,
+          true
+        ],
+        "fit_error_akd": -42.390081325859356,
+        "fit_current_akd": -47.15983856327539,
+        "held_max_akd_mdeg": 0.16692382662378014,
+        "fit_error_estimate": 94.45146366507242,
+        "fit_current_estimate": 38.519107246898464,
+        "held_max_estimate_mdeg": 0.0524429971886179,
+        "held_max_meas_mdeg": 7.2097780000004805,
+        "held_static": true,
+        "amplitude_deg": -12.738187295000001
+      },
+      {
+        "window": "MPCLucy_scotched azimuth move at 89.38 s (window 89.08-91.17 s)",
+        "ok": [
+          true,
+          true
+        ],
+        "fit_error_akd": -2.9109868922527538,
+        "fit_current_akd": -52.9308916658946,
+        "held_max_akd_mdeg": 0.2118215362765171,
+        "fit_error_estimate": 92.38982928512173,
+        "fit_current_estimate": 44.782438524774356,
+        "held_max_estimate_mdeg": 0.30950668685625304,
+        "held_max_meas_mdeg": 5.149842000001358,
+        "held_static": true,
+        "amplitude_deg": 9.999999907000001
+      }
+    ],
+    "MPCLucy_scotched/elevation": [
+      {
+        "window": "MPCLucy_scotched elevation move at 13.82 s (window 13.52-14.98 s)",
+        "ok": [
+          true,
+          true
+        ],
+        "fit_error_akd": -17.632628105446123,
+        "fit_current_akd": 0.5575096809011582,
+        "held_max_akd_mdeg": 6.104199345689995,
+        "fit_error_estimate": 85.65892019523305,
+        "fit_current_estimate": 35.18997550834394,
+        "held_max_estimate_mdeg": 3.831556779299531,
+        "held_max_meas_mdeg": 2.4032600000000186,
+        "held_static": true,
+        "amplitude_deg": 2.0000000490000005
+      },
+      {
+        "window": "MPCLucy_scotched elevation move at 26.24 s (window 25.94-28.74 s)",
+        "ok": [
+          true,
+          true
+        ],
+        "fit_error_akd": -22.96398927770438,
+        "fit_current_akd": -36.75605738172825,
+        "held_max_akd_mdeg": 0.32305000006348217,
+        "fit_error_estimate": 81.68013613539442,
+        "fit_current_estimate": -6.671648481905512,
+        "held_max_estimate_mdeg": 0.07794932860218007,
+        "held_max_meas_mdeg": 1.716614000000585,
+        "held_static": true,
+        "amplitude_deg": -2.9999999890000004
+      },
+      {
+        "window": "MPCLucy_scotched elevation move at 33.44 s (window 33.14-35.94 s)",
+        "ok": [
+          true,
+          true
+        ],
+        "fit_error_akd": -13.332281019810832,
+        "fit_current_akd": -26.98607812887841,
+        "held_max_akd_mdeg": 6.905206040023808,
+        "fit_error_estimate": 81.29671141765212,
+        "fit_current_estimate": -15.95290817238455,
+        "held_max_estimate_mdeg": 5.28227376386429,
+        "held_max_meas_mdeg": 4.806517999998872,
+        "held_static": true,
+        "amplitude_deg": -1.9999998809999995
+      },
+      {
+        "window": "MPCLucy_scotched elevation move at 42.63 s (window 42.33-43.70 s)",
+        "ok": [
+          true,
+          true
+        ],
+        "fit_error_akd": -28.542812926151196,
+        "fit_current_akd": 13.059242232327595,
+        "held_max_akd_mdeg": 0.16697159721926336,
+        "fit_error_estimate": 82.11579753392502,
+        "fit_current_estimate": 14.094690433983992,
+        "held_max_estimate_mdeg": 0.027045797656275978,
+        "held_max_meas_mdeg": 2.0599359999991225,
+        "held_static": true,
+        "amplitude_deg": -2.9999999880000003
+      },
+      {
+        "window": "MPCLucy_scotched elevation move at 68.56 s (window 68.26-69.22 s)",
+        "ok": [
+          true,
+          true
+        ],
+        "fit_error_akd": -46.076626855238835,
+        "fit_current_akd": 48.21403937243883,
+        "held_max_akd_mdeg": 9.318146702954309e-06,
+        "fit_error_estimate": 79.20869154606189,
+        "fit_current_estimate": 48.71545521608972,
+        "held_max_estimate_mdeg": 3.626156626162494e-05,
+        "held_max_meas_mdeg": 1.029968,
+        "held_static": true,
+        "amplitude_deg": -9.408205356
+      },
+      {
+        "window": "MPCLucy_scotched elevation move at 91.22 s (window 90.92-93.72 s)",
+        "ok": [
+          true,
+          true
+        ],
+        "fit_error_akd": -81.76137192369772,
+        "fit_current_akd": -16.31035138227852,
+        "held_max_akd_mdeg": 1.463240435906702,
+        "fit_error_estimate": 83.76724435028812,
+        "fit_current_estimate": 41.80150208339081,
+        "held_max_estimate_mdeg": 0.8110407310502774,
+        "held_max_meas_mdeg": 3.433227,
+        "held_static": true,
+        "amplitude_deg": -9.999999907000001
+      }
+    ]
+  }
+}

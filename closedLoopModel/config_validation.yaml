@@ -1,0 +1,33 @@
+# =====================================================================
+# VALIDATION OF THE CLOSED-LOOP MODEL ON THE TIME SEQUENCES (2026-10-19)
+# Sequences: sim/LucyIdentification/Validation/MPCLucy_*.csv (2 kHz, step responses of both axes with the
+# command position, the current and the torque estimated by the drives). Position_dist_FF*.csv are not
+# used (user, 2026-10-19).
+# The drive configuration of the sequences is not available: the effective gains are estimated from the
+# "dataset" sequence starting from the .akd files, and validated on the "test" and "scotched" sequences.
+# Run (from this folder):
+#   ../.venv/bin/python -I validate.py --config config_validation.yaml
+# =====================================================================
+base_config: config_zeta10.yaml      # plant, motors, drives; H6 as identified (zeta_1 = 0.01) has an unstable
+                                     # elevation loop at ~306 Hz, so the time domain uses zeta_1 = 0.10
+results_dir: results_validation_H6_zeta10
+sequences_dir: ../../LucyIdentification/Validation
+amps_per_A: 2.0                      # AXIS*_AMPS = 2 x current (A rms): saturation at 36 = 2 x IL.LIMITP,
+                                     # rigid-body balance of the moves (estimate confirmed by the user)
+workers: 8
+
+identification:
+  sequence: MPCLucy_pos_dist_dataset
+  parameters: [Kpp, Kpv, Kiv, Tc]
+  windows:
+    azimuth: {starts: [57.78, 71.06, 75.47, 90.04], pre_s: 0.3, post_s: 3.0}
+    elevation: {starts: [3.09, 14.20, 24.33, 60.42], pre_s: 0.3, post_s: 2.5}
+  weights: {error: 1.0, current: 1.0}
+  max_nfev: 40
+  max_cpu_per_window_s: 120
+
+validation:
+  sequences: [MPCLucy_pos_dist_test, MPCLucy_scotched]
+  pre_s: 0.3
+  post_s: 2.5
+  max_cpu_per_window_s: 120

@@ -1,0 +1,65 @@
+# =====================================================================
+# PLANT DRIVEN BY THE MEASURED CURRENT, FIT ON THE ENCODER POSITION -- ITERATION I8 (2026-10-20)
+# Request of the user after the steady-state offsets of I7 (position_validation):
+#   - azimuth: a two-level hysteresis (relay hysteron) on the bearing, torque -H s with s -> +/-1 after a
+#     displacement of a few delta in either direction, kept at rest (memory of the direction of the last move);
+#   - elevation: a torque a sin(theta) + b cos(theta) + c of the absolute angle on the bearing, in place of the
+#     torsional spring: the pre-sliding stiffness sigma0 of the friction is made stiff and fixed (Coulomb
+#     friction with break-away), gravity is removed (contained in a and b).
+# First guess: values of I7 (elevation) and of the first run (azimuth), new terms from zero.
+# Over the 0-2 deg of the sequences cos(theta) = 1 within 6e-4: only a and b + c are separately identifiable;
+# a weak prior keeps b and c from drifting along that direction.
+# Run (from this folder):
+#   ../.venv/bin/python -I current_input_study.py --config config_current_input_I8.yaml
+# =====================================================================
+base_config: config_vcl_fit.yaml
+first_guess: results_vcl_study/summary.json      # iteration I5 (last one)
+first_guess_current_input: results_current_input_I7/summary.json   # values of I7
+results_dir: results_current_input_I8
+sequences_dir: ../../LucyIdentification/VClosedLoop
+amps_per_A: 2.0
+workers: 8
+input_lowpass_hz: 150.0
+identification_sequences: [MPCLucy_step_1deg, MPCLucy_1degAz_zeroAz_1degPol__zeroPol]
+validation_sequences: [MPCLucy_2degAz_2degPol_zeroAz_zeroPol, MPCLucy_2degPol_zeroPol_2degAz_zeroAz]
+window: {pre_s: 0.3, after_move_s: 0.5}
+threshold_position_fit: 90.0
+max_cpu_per_window_s: 60
+axes: [azimuth, elevation]
+
+new_parameters:
+  azimuth: {H_hyst: 0.0, delta_hyst: 1.0e-3}
+  elevation: {trig_a: 0.0, trig_b: 0.0, trig_c: 0.0}
+fixed:
+  elevation: {sigma0: 2.0e+4, d_x_mm: 0.0}   # stiff pre-sliding (no torsional spring), no separate gravity
+parameters:
+  azimuth: [scale, sigma0, Tc, Ts_ratio, vs, H_hyst, delta_hyst]
+  elevation: [scale, Tc, Ts_ratio, vs, "b_{\\theta,h}", trig_a, trig_b, trig_c]
+always_fit:
+  azimuth: [H_hyst, delta_hyst]
+  elevation: [trig_a, trig_b, trig_c]
+prior:                                        # {parameter: [value, scale, weight]}
+  elevation: {trig_b: [0.0, 1.0, 0.05], trig_c: [0.0, 1.0, 0.05]}
+start: {scale: 1.0, Ts_ratio: 1.2, vs: 1.0e-3}
+bounds:
+  scale: [0.5, 2.0]
+  sigma0: [100.0, 1.0e+6]
+  Tc: [0.01, 3.0]
+  Ts_ratio: [1.0, 30.0]
+  vs: [1.0e-5, 1.0e-1]
+  k_b: [1.0e+4, 1.0e+7]
+  ring: [1.0, 1.0e+4]
+  d_x_mm: [-100.0, 100.0]
+  "b_{\\theta,h}": [1.0e-4, 100.0]
+  H_hyst: [-2.0, 2.0]
+  delta_hyst: [1.0e-5, 1.0e-2]
+  trig_a: [-30.0, 30.0]
+  trig_b: [-3.0, 3.0]
+  trig_c: [-3.0, 3.0]
+  damper_factor: [1.0e-3, 1.0e+3]
+screening:
+  step: 0.3
+  min_relative_change: 0.02
+  signed_step: {H_hyst: 0.05, trig_a: 2.0, trig_b: 0.05, trig_c: 0.05, d_x_mm: 1.5}
+grid: {scale: [0.9, 1.0, 1.1], Ts_ratio: [1.5, 4.0]}
+max_nfev: 40

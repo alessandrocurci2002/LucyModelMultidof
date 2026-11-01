@@ -14,7 +14,7 @@ avvertenza.
 
 from __future__ import annotations
 
-from dataclasses import dataclass, field
+from dataclasses import dataclass, field, replace
 from pathlib import Path
 from typing import Any, Final, Literal, Mapping, Sequence
 
@@ -33,7 +33,10 @@ __all__ = [
     "InerziaNodale",
     "ParametriAsse",
     "ParametriPayload",
+    "ParametriModali",
     "ParametriRiduzione",
+    "ParametriSperimentali",
+    "VoceMisura",
     "ParametriFEM",
     "Parametri",
     "parametri_da_config",
@@ -46,8 +49,20 @@ MM: Final[float] = 1e-3
 RADICE: Final[Path] = Path(__file__).resolve().parents[2]
 """Radice del progetto ``gimbal_multidof/``."""
 
-NOTA_REALISMO: Final[str] = "risultato da parametri segnaposto"
-"""Avviso da riportare su ogni figura, tabella o frequenza da dati segnaposto."""
+NOTA_REALISMO: Final[str] = "result from placeholder parameters"
+"""Avviso da riportare su ogni figura, tabella o frequenza da dati segnaposto (in inglese,
+come tutti i testi del report e delle figure)."""
+
+NOME_ASSE: Final[dict[str, str]] = {"azimut": "azimuth", "polare": "polar"}
+"""Nome inglese degli assi per report e figure (le chiavi restano quelle del codice)."""
+
+NOME_MATERIALE: Final[dict[str, str]] = {"acciaio": "steel", "alluminio": "aluminium"}
+"""Nome inglese dei materiali di ``config.yaml`` per report e figure."""
+
+
+def in_inglese(nome: str) -> str:
+    """Nome di asse o materiale da mostrare nel report (invariato se non mappato)."""
+    return NOME_ASSE.get(nome, NOME_MATERIALE.get(nome, nome))
 
 Forma = Literal["solid", "hollow"]
 ModoElemento = Literal["geometry", "manual", "telescope"]
@@ -146,13 +161,104 @@ class Elemento:
 
 @dataclass(frozen=True)
 class InerziaNodale:
-    """Inerzia concentrata a un nodo (rotori, forcella)."""
+    """Inerzia concentrata a un nodo (rotori, forcella).
+
+    Con ``frame: cad_cg`` (esportazione Onshape: tensore rispetto al baricentro,
+    assi paralleli a N, baricentro da :math:`O_N`) ``J`` e' il momento attorno
+    all'asse di azimut, :math:`J = I_{zz,G} + m\\,[(x_G - x_a)^2 + (y_G - y_a)^2]`
+    (Huygens-Steiner), e ``J_G`` il momento baricentrico di partenza.
+    """
 
     nodo: int
     nome: str
     J: float
     m: float | None
     I_t: float | None
+    fonte: str
+    segnaposto: bool
+    J_G: float | None = None
+    """Momento baricentrico :math:`I_{zz,G}` dell'esportazione CAD (solo ``frame: cad_cg``)."""
+    distanza_asse: float | None = None
+    """Distanza del baricentro dall'asse di azimut, m (solo ``frame: cad_cg``)."""
+    contiene_alberi_polari: bool = False
+    """``True`` se l'esportazione comprende gli alberi polari (non il telescopio): il loro
+    contributo attorno all'asse di azimut, :math:`J^{ax}`, e' gia' qui e non va aggiunto."""
+
+
+@dataclass(frozen=True)
+class TrattoMozzo:
+    """Tratto assialsimmetrico di un mozzo laterale, coassiale all'asse polare (SI)."""
+
+    d_out: float
+    d_in: float
+    lunghezza: float
+    materiale: Materiale
+
+
+@dataclass(frozen=True)
+class AnelloMozzo:
+    """Anello di supporto del telescopio: asse lungo il telescopio (K_hat), perpendicolare
+    all'asse polare; i due mozzi laterali vi sono fissati in punti diametralmente opposti (SI)."""
+
+    d_out: float
+    d_in: float
+    larghezza: float
+    """Estensione lungo l'asse dell'anello (``width_mm``)."""
+    materiale: Materiale
+    poisson: float
+    fattore_rigidezza: float = 1.0
+    """``stiffness_factor``: moltiplica la rigidezza dei semianelli (1 = anello da solo, limite inferiore)."""
+
+
+@dataclass(frozen=True)
+class ParametriMozzo:
+    """Mozzo dell'asse polare e attacco del telescopio (modello ``hub``, richiesta 2026-10-17).
+
+    Il mozzo (due mozzi laterali tubo + flangia, anello di supporto) sta sul percorso fra i
+    cuscinetti: le sue due meta' sostituiscono gli elementi ``elementi_lato`` e il suo centro H
+    e' il nodo dell'elemento ``elemento_centro`` (nodi coincidenti). Il telescopio non e' piu'
+    rigido in H: e' un nodo P fuori dalla catena, collegato a H dalla molla ``k_b``.
+    """
+
+    elementi_lato: tuple[int, int]
+    elemento_centro: int
+    m: float
+    r_G_N: np.ndarray
+    """Baricentro in N da O_N, m (esportazione Onshape senza mate connector)."""
+    I_G_N: np.ndarray
+    """Tensore rispetto al baricentro, assi paralleli a N, kg m^2."""
+    nel_load_azimut: bool
+    """``True`` se l'inerzia del mozzo attorno a z_hat e' gia' nel load di azimut."""
+    fonte_inerzia: str
+    inerzia_segnaposto: bool
+    tubo: TrattoMozzo
+    flangia: TrattoMozzo
+    anello: AnelloMozzo
+    geometria_segnaposto: bool
+    k_b: float
+    fonte_k_b: str
+    k_b_segnaposto: bool
+    tratto_telescopio: TrattoMozzo | None = None
+    """``telescope_on_ring``: tratto del tubo del telescopio stretto nell'anello, solidale al mozzo
+    (asse lungo il telescopio, centrato in o_2); la sua inerzia passa dal telescopio al nodo H."""
+    tratto_segnaposto: bool = False
+    J_polare: float = 0.0
+    """Inerzia del mozzo attorno all'asse polare, kg m^2 (da ``I_G_N`` e dalle terne; comprende il
+    tratto di telescopio solidale all'anello, se presente)."""
+    J_azimut: float = 0.0
+    """Inerzia del mozzo attorno a z_hat a theta = 0, kg m^2."""
+
+
+@dataclass(frozen=True)
+class AttaccoAzimut:
+    """Attacco cedevole del telescopio sull'asse di azimut (``azimuth.telescope_attachment``, 2026-10-25).
+
+    Il load di azimut non e' piu' un corpo unico: (forcella + mozzo + anello) ruota con il nodo L e il
+    telescopio e' un nodo P fuori dalla catena, collegato a L dalla molla ``k`` attorno a z_hat (a theta = 0
+    e' il ribaltamento del tubo nell'anello attorno a I_hat, cioe' lo stesso giunto a viti di k_b).
+    """
+
+    k: float
     fonte: str
     segnaposto: bool
 
@@ -179,6 +285,10 @@ class ParametriAsse:
     y_nodo1_da_O: float | None = None
     verso_numerazione: float = 1.0
     """+1 se l'indice dei nodi polari cresce lungo +y_A, -1 se lungo -y_A."""
+    mozzo: ParametriMozzo | None = None
+    """Mozzo e attacco cedevole del telescopio (solo polare, ``polar.hub.enabled: true``)."""
+    attacco_telescopio: AttaccoAzimut | None = None
+    """Telescopio appeso al load con una molla (solo azimut, ``azimuth.telescope_attachment.enabled: true``)."""
 
     @property
     def n_elementi(self) -> int:
@@ -290,11 +400,112 @@ class ParametriTerne:
         return np.array([self.asse_az_xy[0], self.asse_az_xy[1], self.z_o2])
 
 
+MetodoRiduzione = Literal["guyan", "craig_bampton", "modal"]
+CorrezioneStatica = Literal["none", "residual_vectors"]
+
+
+@dataclass(frozen=True)
+class ParametriModali:
+    """Troncamento modale alla Gawronski (``reduction.modal``), unita' SI.
+
+    Attributes
+    ----------
+    f_banda
+        Banda di interesse, Hz.
+    fattore_taglio
+        Si tengono i modi flessibili con :math:`f_i \\le` ``fattore_taglio * f_banda``.
+    hankel_min
+        Se non ``None``: si tengono anche i modi sopra soglia con norma di Hankel
+        :math:`\\ge` ``hankel_min`` volte la massima dell'asse.
+    n_flessibili
+        Numero di modi flessibili forzato per asse (``None`` = criterio automatico).
+    theta_ref
+        :math:`\\theta_{ref}` della base delle simulazioni non lineari, rad.
+    correzione_statica
+        ``none`` oppure ``residual_vectors`` (vettori statici residui).
+    """
+
+    f_banda: float = 2000.0
+    fattore_taglio: float = 2.0
+    hankel_min: float | None = None
+    n_flessibili: Mapping[str, int | None] = field(
+        default_factory=lambda: {"azimut": None, "polare": None})
+    theta_ref: float = 0.0
+    correzione_statica: CorrezioneStatica = "none"
+
+    @property
+    def f_taglio(self) -> float:
+        return self.fattore_taglio * self.f_banda
+
+
 @dataclass(frozen=True)
 class ParametriRiduzione:
-    metodo: Literal["guyan", "craig_bampton"]
+    metodo: MetodoRiduzione
     n_modi_interfaccia: int
     forma_massa: Literal["guyan", "guyan_lumped"]
+    modale: ParametriModali = field(default_factory=ParametriModali)
+
+
+@dataclass(frozen=True)
+class VoceMisura:
+    """Una misura sperimentale da confrontare con il modello (sezione ``experimental``)."""
+
+    file: str
+    asse: NomeAsse
+    theta0: float
+    """Elevazione durante la prova, rad (theta > 0 alza il puntamento)."""
+    telescopio: bool
+    etichetta: str
+    theta0_segnaposto: bool = False
+
+
+@dataclass(frozen=True)
+class ParametriSperimentali:
+    """Misure di risposta in frequenza (Kollmorgen WorkBench) per il confronto con il modello."""
+
+    cartella: Path
+    Kt: float
+    """Costante di coppia del motore, N m/A (corrente delle misure)."""
+    traccia: str
+    f_min: float
+    f_max: float
+    banda_livello: tuple[float, float]
+    misure: tuple[VoceMisura, ...]
+
+
+@dataclass(frozen=True)
+class VincoloTerra:
+    """Rigidezza equivalente verso terra di un asse (sezione ``ground_constraint``).
+
+    Equivalente lineare, nel dominio della frequenza, dell'attrito di pre-scorrimento dei
+    cuscinetti sotto pochi hertz: coppia :math:`k(1 + j\eta)\,\theta + c\,\dot\theta` sul nodo
+    dei cuscinetti (azimut: verso la base; polare: verso la forcella). Vale per l'ampiezza
+    della prova su cui e' stimato (l'attrito non e' lineare) e non entra nel simulatore nel tempo.
+    """
+
+    k: float
+    """Rigidezza, N m/rad."""
+    eta: float = 0.0
+    """Fattore di perdita isteretico (perdita indipendente dalla frequenza)."""
+    c: float = 0.0
+    """Smorzamento viscoso, N m s/rad."""
+    fonte: str = ""
+    segnaposto: bool = True
+
+
+@dataclass(frozen=True)
+class ParametriVincoloTerra:
+    """Vincoli verso terra per asse; per il polare un valore distinto per la prova senza telescopio
+    (a parita' di corrente l'asse leggero si muove molto meno: l'attrito e' piu' rigido)."""
+
+    azimut: VincoloTerra | None = None
+    polare: VincoloTerra | None = None
+    polare_senza_telescopio: VincoloTerra | None = None
+
+    def per(self, asse: str, telescopio: bool = True) -> VincoloTerra | None:
+        if asse == "azimut":
+            return self.azimut
+        return self.polare if telescopio else self.polare_senza_telescopio
 
 
 @dataclass(frozen=True)
@@ -328,6 +539,19 @@ class Parametri:
     latex_compila: bool
     sorgente: Path | None
     avvisi: tuple[Avviso, ...] = field(default_factory=tuple)
+    latex_guyan: bool = True
+    """``latex.include_guyan``: nel PDF anche la riduzione di Guyan e i confronti con essa."""
+    sperimentale: ParametriSperimentali | None = None
+    """Sezione ``experimental`` (``None`` se assente o disabilitata)."""
+    cartella_risultati: str = "results"
+    """``results_dir``: cartella dei risultati, relativa alla radice del progetto."""
+    vincolo_terra: ParametriVincoloTerra | None = None
+    """Sezione ``ground_constraint`` (``None`` se assente o disabilitata)."""
+
+    @property
+    def mozzo(self) -> ParametriMozzo | None:
+        """Modello ``hub`` attivo (``polar.hub.enabled: true``), altrimenti ``None``."""
+        return self.polare.mozzo
 
     @property
     def omega_max(self) -> float:
@@ -554,7 +778,10 @@ def _leggi_asse(
     nome: NomeAsse,
     materiali: Mapping[str, Materiale],
     avvisi: list[Avviso],
+    asse_xy: np.ndarray | None = None,
 ) -> ParametriAsse:
+    """``asse_xy``: posizione dell'asse di azimut nel piano (x, y) di N, m; serve alle
+    inerzie nodali date come esportazione CAD (``frame: cad_cg``)."""
     chiave_cfg = "azimuth" if nome == "azimut" else "polar"
     ctx = chiave_cfg
     n_nodi = int(_richiedi(d, "n_nodes", ctx))
@@ -589,6 +816,32 @@ def _leggi_asse(
         nodo = int(_richiedi(n, "node", c))
         if not 1 <= nodo <= n_nodi:
             raise ErroreConfigurazione(f"{c}: nodo {nodo} fuori da 1..{n_nodi}")
+        alberi_polari = bool(n.get("includes_polar_shafts", False))
+        if alberi_polari and not (nome == "azimut" and nodo == nodo_estremo):
+            raise ErroreConfigurazione(
+                f"{c}: includes_polar_shafts ha senso solo per il load di azimut (nodo {nodo_estremo})")
+        if str(n.get("frame", "axis")).strip() == "cad_cg":
+            if nome != "azimut":
+                raise ErroreConfigurazione(f"{c}: frame: cad_cg e' previsto solo per l'asse di azimut")
+            if n.get("J_kgm2") is not None:
+                raise ErroreConfigurazione(f"{c}: con frame: cad_cg non si da' J_kgm2 (lo si calcola)")
+            segno = str(n.get("products_sign", "tensor")).strip().lower()
+            if segno not in ("tensor", "positive"):
+                raise ErroreConfigurazione(f"{c}.products_sign = '{segno}': ammessi 'tensor' e 'positive'")
+            m_c = _positivo(_richiedi(n, "m_kg", c), "m_kg", c)
+            I_G = _tensore(_richiedi(n, "I_kgm2", c), c)
+            r_G = _vettore3(_richiedi(n, "r_G_mm", c), "r_G_mm", c) * MM
+            r_ax = asse_xy if asse_xy is not None else np.zeros(2)
+            dist = float(np.hypot(r_G[0] - r_ax[0], r_G[1] - r_ax[1]))
+            J_G = float(I_G[2, 2])  # momento diagonale: indipendente dal segno dei prodotti
+            if J_G <= 0.0:
+                raise ErroreConfigurazione(f"{c}: I_zz del baricentro non positivo")
+            nodali.append(InerziaNodale(
+                nodo=nodo, nome=str(n.get("name", f"nodo {nodo}")), J=J_G + m_c * dist**2,
+                m=m_c, I_t=None, fonte=str(n.get("source", "")),
+                segnaposto=bool(n.get("placeholder", False)), J_G=J_G, distanza_asse=dist,
+                contiene_alberi_polari=alberi_polari))
+            continue
         J_raw = n.get("J_kgm2")
         if J_raw is None:
             if nome == "azimut" and nodo == nodo_estremo:
@@ -607,6 +860,7 @@ def _leggi_asse(
                 I_t=_opzionale(n.get("I_t_kgm2"), "I_t_kgm2", c),
                 fonte=str(n.get("source", "")),
                 segnaposto=bool(n.get("placeholder", False)),
+                contiene_alberi_polari=alberi_polari,
             )
         )
     if nome == "azimut" and not any(n.nodo == nodo_estremo for n in nodali):
@@ -654,10 +908,10 @@ def _leggi_asse(
             xi = 0.5 if centro is None else float(centro) * MM / L_p
             avvisi.append(Avviso(
                 "TELESCOPIO_SENZA_ALBERO", "informazione",
-                f"Elemento polare {el_payload} in mode: telescope: nessun albero sotto il "
-                "telescopio. Il telescopio rigido collega direttamente i nodi "
-                f"{el_payload} e {el_payload + 1}, che coincidono con il nodo P; la sua "
-                "inerzia entra solo dalla sezione payload."))
+                f"Polar element {el_payload} in mode: telescope: no shaft under the "
+                "telescope. The rigid telescope directly joins nodes "
+                f"{el_payload} and {el_payload + 1}, which coincide with node P; its "
+                "inertia enters only through the payload section."))
         elif centro is not None:
             x_c = float(centro) * MM
             if not 0.0 <= x_c <= L_p:
@@ -673,10 +927,10 @@ def _leggi_asse(
             if xi == 0.5:
                 avvisi.append(Avviso(
                     "Q1_XI_DEFAULT", "segnaposto",
-                    "Q1: nodo P del telescopio nella mezzeria dell'elemento polare "
-                    f"{el_payload} (xi_p = 0.5), cioe' telescopio esteso su tutto "
-                    "l'elemento. Ipotesi di default: fornire "
-                    "payload_center_from_node3_mm se il centro del telescopio e' noto."))
+                    "Q1: telescope node P at the midpoint of polar element "
+                    f"{el_payload} (xi_p = 0.5), i.e. telescope spread over the whole "
+                    "element. Default assumption: give "
+                    "payload_center_from_node3_mm if the centre of the telescope is known."))
         tratto_rigido = float(d.get("payload_clamp_rigid_mm", 0.0) or 0.0) * MM
         if tratto_rigido < 0.0:
             raise ErroreConfigurazione(f"{ctx}: payload_clamp_rigid_mm negativo")
@@ -685,8 +939,8 @@ def _leggi_asse(
         elif tratto_rigido == 0.0:
             avvisi.append(Avviso(
                 "Q2_MORSETTO", "segnaposto",
-                "Q2: il morsetto del telescopio non irrigidisce l'albero "
-                "(payload_clamp_rigid_mm = 0, ipotesi conservativa)."))
+                "Q2: the telescope clamp does not stiffen the shaft "
+                "(payload_clamp_rigid_mm = 0, conservative assumption)."))
         el_cusc = tuple(int(e) for e in d.get("bearing_elements", []) or [])
         for e in el_cusc:
             if not 1 <= e <= n_nodi - 1:
@@ -727,8 +981,131 @@ def _leggi_asse(
         inerzie_nodali=tuple(nodali), attrito_cuscinetti=tuple(attrito),
         elemento_payload=el_payload, xi_payload=xi, tratto_rigido=tratto_rigido,
         elementi_cuscinetto=el_cusc, y_nodo1_da_O=y1, verso_numerazione=verso,
+        mozzo=_leggi_mozzo(d.get("hub"), materiali, avvisi, ctx, elementi, el_payload)
+        if nome == "polare" else None,
+        attacco_telescopio=_leggi_attacco_azimut(d.get("telescope_attachment"), avvisi, ctx)
+        if nome == "azimut" else None,
     )
 
+
+def _leggi_attacco_azimut(d: Any, avvisi: list[Avviso], ctx_asse: str) -> AttaccoAzimut | None:
+    """Sezione ``azimuth.telescope_attachment``; ``None`` se assente o con ``enabled: false``."""
+    if not d or not bool(d.get("enabled", False)):
+        return None
+    ctx = f"{ctx_asse}.telescope_attachment"
+    at = AttaccoAzimut(k=_positivo(_richiedi(d, "k_Nm_rad", ctx), "k_Nm_rad", ctx), fonte=str(d.get("source", "")),
+                       segnaposto=bool(d.get("placeholder", True)))
+    avvisi.append(Avviso(
+        "AZIMUT_TELESCOPIO", "segnaposto" if at.segnaposto else "informazione",
+        f"Azimuth telescope node (azimuth.telescope_attachment): the azimuth load (fork + hub + ring) turns with "
+        f"node L and the telescope is a node P off the chain, attached to L by k = {at.k:.4g} N m/rad about z_hat"
+        + (f" ({at.fonte})" if at.fonte else "") + ". The spring does not depend on theta (tilt of the tube in "
+        "the ring at theta = 0)."))
+    return at
+
+
+
+def _tratto(d: Mapping[str, Any], materiali: Mapping[str, Materiale], ctx: str,
+            pieno: bool = False) -> TrattoMozzo:
+    mat = str(_richiedi(d, "material", ctx))
+    if mat not in materiali:
+        raise ErroreConfigurazione(f"{ctx}: materiale '{mat}' non definito in materials")
+    d_out = _positivo(_richiedi(d, "d_out_mm", ctx), "d_out_mm", ctx) * MM
+    d_in = 0.0 if pieno else float(_richiedi(d, "d_in_mm", ctx)) * MM
+    if not 0.0 <= d_in < d_out:
+        raise ErroreConfigurazione(f"{ctx}: serve 0 <= d_in_mm < d_out_mm")
+    return TrattoMozzo(d_out=d_out, d_in=d_in,
+                       lunghezza=_positivo(_richiedi(d, "length_mm", ctx), "length_mm", ctx) * MM,
+                       materiale=materiali[mat])
+
+
+def _leggi_mozzo(d: Any, materiali: Mapping[str, Materiale], avvisi: list[Avviso], ctx_asse: str,
+                 elementi: Sequence[Elemento], el_payload: int | None) -> ParametriMozzo | None:
+    """Sezione ``polar.hub``; ``None`` se assente o con ``enabled: false`` (modello originale)."""
+    if not d or not bool(d.get("enabled", False)):
+        return None
+    ctx = f"{ctx_asse}.hub"
+    lato = tuple(int(e) for e in _richiedi(d, "side_elements", ctx))
+    centro = int(_richiedi(d, "center_element", ctx))
+    if len(lato) != 2:
+        raise ErroreConfigurazione(f"{ctx}: side_elements deve avere due elementi")
+    if centro != el_payload or elementi[centro - 1].modo != "telescope":
+        raise ErroreConfigurazione(f"{ctx}: center_element deve essere l'elemento del telescopio "
+                                   f"(payload_element = {el_payload}) in mode: telescope")
+    if sorted(lato) != [centro - 1, centro + 1]:
+        raise ErroreConfigurazione(f"{ctx}: side_elements devono essere gli elementi adiacenti a {centro}")
+    inz_d = _richiedi(d, "inertia", ctx)
+    ci = f"{ctx}.inertia"
+    if str(inz_d.get("frame", "cad_cg")) != "cad_cg":
+        raise ErroreConfigurazione(f"{ci}: e' ammessa solo frame: cad_cg (esportazione Onshape)")
+    I_G = np.array(_richiedi(inz_d, "I_kgm2", ci), dtype=float)
+    if I_G.shape != (3, 3) or not np.allclose(I_G, I_G.T, atol=1e-9):
+        raise ErroreConfigurazione(f"{ci}: I_kgm2 deve essere una matrice 3x3 simmetrica")
+    r_G = np.array(_richiedi(inz_d, "r_G_mm", ci), dtype=float) * MM
+    an = _richiedi(d, "ring", ctx)
+    cr = f"{ctx}.ring"
+    mat_an = str(_richiedi(an, "material", cr))
+    if mat_an not in materiali:
+        raise ErroreConfigurazione(f"{cr}: materiale '{mat_an}' non definito in materials")
+    anello = AnelloMozzo(
+        d_out=_positivo(_richiedi(an, "d_out_mm", cr), "d_out_mm", cr) * MM,
+        d_in=_positivo(_richiedi(an, "d_in_mm", cr), "d_in_mm", cr) * MM,
+        larghezza=_positivo(_richiedi(an, "width_mm", cr), "width_mm", cr) * MM,
+        materiale=materiali[mat_an], poisson=float(an.get("poisson", 0.33)),
+        fattore_rigidezza=_positivo(an.get("stiffness_factor", 1.0), "stiffness_factor", cr))
+    if anello.d_in >= anello.d_out:
+        raise ErroreConfigurazione(f"{cr}: serve d_in_mm < d_out_mm")
+    lat = _richiedi(d, "side", ctx)
+    att = _richiedi(d, "telescope_attachment", ctx)
+    tr_d = d.get("telescope_on_ring")
+    tratto = None
+    if tr_d and bool(tr_d.get("enabled", False)):
+        tratto = _tratto(tr_d, materiali, f"{ctx}.telescope_on_ring")
+    ca = f"{ctx}.telescope_attachment"
+    mz = ParametriMozzo(
+        elementi_lato=(lato[0], lato[1]), elemento_centro=centro,
+        m=_positivo(_richiedi(inz_d, "m_kg", ci), "m_kg", ci), r_G_N=r_G, I_G_N=I_G,
+        nel_load_azimut=bool(inz_d.get("in_azimuth_load", False)),
+        fonte_inerzia=str(inz_d.get("source", "")), inerzia_segnaposto=bool(inz_d.get("placeholder", False)),
+        tubo=_tratto(_richiedi(lat, "tube", f"{ctx}.side"), materiali, f"{ctx}.side.tube"),
+        flangia=_tratto(_richiedi(lat, "flange", f"{ctx}.side"), materiali, f"{ctx}.side.flange", pieno=True),
+        anello=anello, geometria_segnaposto=bool(d.get("geometry_placeholder", False)),
+        k_b=_positivo(_richiedi(att, "k_b_Nm_rad", ca), "k_b_Nm_rad", ca),
+        fonte_k_b=str(att.get("source", "")), k_b_segnaposto=bool(att.get("placeholder", True)),
+        tratto_telescopio=tratto, tratto_segnaposto=bool(tr_d.get("placeholder", True)) if tratto else False)
+    if tratto is not None:
+        avvisi.append(Avviso(
+            "MOZZO_TRATTO_TELESCOPIO", "segnaposto" if mz.tratto_segnaposto else "informazione",
+            f"hub.telescope_on_ring: the section of the telescope tube clamped in the support ring "
+            f"({tratto.d_out / MM:g}/{tratto.d_in / MM:g} x {tratto.lunghezza / MM:g} mm, {tratto.materiale.nome}) "
+            "is assumed rigid with the ring: its inertia is moved from the telescope to the hub centre H."))
+    avvisi[:] = [Avviso(a.codice, a.severita,
+                        f"Polar element {centro} in mode: telescope: no shaft under the telescope. In the hub "
+                        f"model its nodes {centro} and {centro + 1} coincide with the hub centre H; the telescope "
+                        "is the node P attached to H by k_b, and its inertia enters only through the payload "
+                        "section.") if a.codice == "TELESCOPIO_SENZA_ALBERO" else a for a in avvisi]
+    avvisi.append(Avviso(
+        "MOZZO_TELESCOPIO", "informazione",
+        f"Hub model (polar.hub.enabled: true): the hub (two side hubs, tube + flange, and the support ring) "
+        f"replaces polar elements {list(lato)} and its centre H takes the nodes of element {centro}; the "
+        f"telescope is a node P off the chain, attached to H by k_b = {mz.k_b:.4g} N m/rad."))
+    if anello.fattore_rigidezza != 1.0:
+        avvisi.append(Avviso(
+            "MOZZO_ANELLO_IRRIGIDITO", "segnaposto",
+            f"hub.ring.stiffness_factor = {anello.fattore_rigidezza:g}: the stiffness of the support ring from the "
+            "half-ring model (ring alone, lower bound) is multiplied by this factor, chosen from the test without "
+            "the telescope (no structural mode below ~400 Hz)."))
+    if mz.k_b_segnaposto:
+        avvisi.append(Avviso(
+            "MOZZO_K_B", "segnaposto",
+            f"k_b = {mz.k_b:.4g} N m/rad (telescope to hub) is a placeholder"
+            + (f" ({mz.fonte_k_b})" if mz.fonte_k_b else "") + ": it sets the antiresonance at the encoder."))
+    if not mz.nel_load_azimut:
+        avvisi.append(Avviso(
+            "MOZZO_INERZIA_AZIMUT", "segnaposto",
+            "hub.inertia.in_azimuth_load = false: the inertia of the hub about z_hat is added to J^ax. "
+            "Check whether the azimuth load exported from Onshape already contains the hub parts."))
+    return mz
 
 def _avvisi_asse(asse: ParametriAsse, avvisi: list[Avviso]) -> None:
     """Avvisi sui segnaposto e sui dati incompleti di un asse."""
@@ -736,45 +1113,56 @@ def _avvisi_asse(asse: ParametriAsse, avvisi: list[Avviso]) -> None:
     if seg:
         avvisi.append(Avviso(
             f"GEOMETRIA_{asse.nome.upper()}", "segnaposto",
-            f"Asse {asse.nome}: elementi {seg} marcati placeholder. Inerzie e "
-            "rigidezze degli alberi, e quindi ogni frequenza e FdT, sono "
+            f"{in_inglese(asse.nome).capitalize()} axis: elements {seg} marked placeholder. Shaft "
+            "inertias and stiffnesses, and therefore every frequency and transfer function, are a "
             f"{NOTA_REALISMO}."))
+    nodi_con_inerzia = {n.nodo for n in asse.inerzie_nodali}
+    senza = [f"{ruolo} (node {nodo})" for ruolo, nodo in (("encoder", asse.nodo_encoder),
+                                                          ("motor", asse.nodo_coppia))
+             if nodo not in nodi_con_inerzia]
+    if senza:
+        avvisi.append(Avviso(
+            f"NODI_SENZA_INERZIA_{asse.nome.upper()}", "segnaposto",
+            f"{in_inglese(asse.nome).capitalize()} axis: no concentrated inertia at {', '.join(senza)} "
+            f"({'node_inertias entirely commented out' if not asse.inerzie_nodali else 'rotor/disc missing'}): "
+            "those nodes carry only the shaft mass and are almost inertia-free. This affects "
+            "the zeros and the high modes (typically strongly) and the choice of the truncation modes."))
     for n in asse.inerzie_nodali:
         if n.segnaposto:
             avvisi.append(Avviso(
                 f"INERZIA_NODALE_{asse.nome.upper()}_{n.nodo}", "segnaposto",
-                f"Asse {asse.nome}, nodo {n.nodo} ({n.nome}): J = {n.J:.4g} kg m^2 "
-                f"segnaposto ({n.fonte or 'fonte non indicata'})."))
+                f"{in_inglese(asse.nome).capitalize()} axis, node {n.nodo} ({n.nome}): J = {n.J:.4g} kg m^2 "
+                f"placeholder ({n.fonte or 'source not given'})."))
     if all(e.k_joint is None for e in asse.elementi):
         avvisi.append(Avviso(
             f"Q5_GIUNZIONI_{asse.nome.upper()}", "segnaposto",
-            f"Q5: asse {asse.nome} senza cedevolezze di giunzione (calettamenti, "
-            "chiavette, flange): le rigidezze sono quelle dei soli alberi e "
-            "sovrastimano probabilmente quella reale."))
+            f"Q5: {in_inglese(asse.nome)} axis without joint compliances (shrink fits, "
+            "keys, flanges): the stiffnesses are those of the shafts alone and "
+            "probably overestimate the real one."))
     if asse.nome == "polare":
         for e in asse.elementi:
             if e.modo == "manual" and None in (e.m_manuale, e.I_t_manuale, e.y_c_manuale):
                 avvisi.append(Avviso(
                     f"MANUALE_POLARE_{e.id}", "incoerenza",
-                    f"Elemento polare {e.id} in modalita' manual senza m_kg, I_t_kgm2 "
-                    "o y_c_mm: il suo contributo all'inerzia di azimut si pone a zero."))
+                    f"Polar element {e.id} in manual mode without m_kg, I_t_kgm2 "
+                    "or y_c_mm: its contribution to the azimuth inertia is set to zero."))
         for n in asse.inerzie_nodali:
             if n.m is None or n.I_t is None:
                 avvisi.append(Avviso(
                     f"NODALE_POLARE_{n.nodo}", "incoerenza",
-                    f"Inerzia nodale polare al nodo {n.nodo} ({n.nome}) senza m_kg o "
-                    "I_t_kgm2: il suo contributo all'inerzia di azimut si pone a zero."))
+                    f"Polar node inertia at node {n.nodo} ({n.nome}) without m_kg or "
+                    "I_t_kgm2: its contribution to the azimuth inertia is set to zero."))
         if asse.y_nodo1_da_O is None:
             avvisi.append(Avviso(
                 "Q7_POSIZIONE_POLARE", "segnaposto",
-                "Q7: y_node1_from_o2_mm = null. Il contributo dell'albero polare "
-                "all'inerzia di azimut (J^ax) si calcola con i soli momenti trasversali "
-                "propri dei pezzi, senza Steiner rispetto a o_2."))
+                "Q7: y_node1_from_o2_mm = null. The contribution of the polar shaft "
+                "to the azimuth inertia (J^ax) is computed from the transverse moments "
+                "of the parts about their own centres only, without Steiner terms about o_2."))
     b = asse.b_cuscinetti
     if not b or all(v == 0.0 for v in b.values()):
         avvisi.append(Avviso(
             f"Q8_CUSCINETTI_{asse.nome.upper()}", "segnaposto",
-            f"Q8: attrito viscoso dei cuscinetti nullo sull'asse {asse.nome}."))
+            f"Q8: zero viscous bearing friction on the {in_inglese(asse.nome)} axis."))
 
 
 def _vettore3(v: Any, nome: str, ctx: str) -> np.ndarray:
@@ -834,7 +1222,7 @@ def _leggi_payload(pl: Mapping[str, Any], base: Path, avvisi: list[Avviso]) -> P
     if segnaposto:
         avvisi.append(Avviso(
             "PAYLOAD_SEGNAPOSTO", "segnaposto",
-            f"Tensore, massa e baricentro del telescopio in config.yaml marcati placeholder"
+            f"Telescope tensor, mass and centre of mass in config.yaml marked placeholder"
             + (f" ({nota})" if nota else "") + "."))
     return ParametriPayload(
         abilitato=abilitato, sorgente="manual", config_2dof=cfg2,
@@ -842,6 +1230,105 @@ def _leggi_payload(pl: Mapping[str, Any], base: Path, avvisi: list[Avviso]) -> P
         m=m, I=I, r_G_N=r_G_N, d=d, segno_prodotti=segno, nota=nota,  # type: ignore[arg-type]
         segnaposto=segnaposto,
     )
+
+
+def _leggi_sperimentale(d: Mapping[str, Any] | None, base: Path,
+                        avvisi: list[Avviso]) -> ParametriSperimentali | None:
+    """Sezione ``experimental``: misure da confrontare con il modello (cartella ``Validation`` esclusa)."""
+    if not d or not bool(d.get("enabled", True)):
+        return None
+    ctx = "experimental"
+    cartella = Path(str(_richiedi(d, "data_dir", ctx)))
+    if not cartella.is_absolute():
+        cartella = (base / cartella).resolve()
+    Kt = _positivo(_richiedi(d, "torque_constant_Nm_per_A", ctx), "torque_constant_Nm_per_A", ctx)
+    banda = [float(v) for v in d.get("level_band_Hz", [15.0, 300.0])]
+    if len(banda) != 2 or not 0 < banda[0] < banda[1]:
+        raise ErroreConfigurazione(f"{ctx}.level_band_Hz deve essere [f_a, f_b] con 0 < f_a < f_b")
+    voci = []
+    for k, m in enumerate(_richiedi(d, "measurements", ctx)):
+        c = f"{ctx}.measurements[{k}]"
+        file = str(_richiedi(m, "file", c))
+        percorso = (cartella / file).resolve()
+        if "Validation" in percorso.relative_to(cartella).parts:
+            raise ErroreConfigurazione(f"{c}: i dati della cartella Validation non vanno usati")
+        if not percorso.exists():
+            raise ErroreConfigurazione(f"{c}: file {percorso} inesistente")
+        asse = str(_richiedi(m, "axis", c))
+        if asse not in ("azimut", "polare"):
+            raise ErroreConfigurazione(f"{c}.axis = '{asse}': ammessi azimut, polare")
+        th_seg = bool(m.get("theta0_placeholder", False))
+        voci.append(VoceMisura(file=file, asse=asse, theta0=float(np.deg2rad(float(m.get("theta0_deg", 0.0)))),  # type: ignore[arg-type]
+                               telescopio=bool(m.get("telescope", True)), etichetta=str(m.get("label", file)),
+                               theta0_segnaposto=th_seg))
+        if th_seg:
+            avvisi.append(Avviso(
+                f"MISURA_THETA0_{k}", "segnaposto",
+                f"{file}: elevation during the test not recorded in the file; theta0 = "
+                f"{float(m.get('theta0_deg', 0.0)):g} deg assumed."))
+    avvisi.append(Avviso(
+        "MISURE_SPERIMENTALI", "informazione",
+        f"Comparison with {len(voci)} plant measurements (Kollmorgen WorkBench, {cartella.name}); K_t = {Kt:g} N m/A. "
+        "The Validation folder is not used."))
+    return ParametriSperimentali(cartella=cartella, Kt=Kt, traccia=str(d.get("trace", "Plant")),
+                                 f_min=_positivo(d.get("f_min_Hz", 0.1), "f_min_Hz", ctx),
+                                 f_max=_positivo(d.get("f_max_Hz", 2000.0), "f_max_Hz", ctx),
+                                 banda_livello=(banda[0], banda[1]), misure=tuple(voci))
+
+
+def _leggi_vincolo_terra(d: Mapping[str, Any] | None, avvisi: list[Avviso]) -> ParametriVincoloTerra | None:
+    """Sezione ``ground_constraint``: ``azimuth``, ``polar``, ``polar_without_telescope``, ciascuna con
+    ``k_Nm_rad`` e facoltativi ``eta``, ``c_Nms_rad``, ``source``, ``placeholder``."""
+    if not d or not d.get("enabled", True):
+        return None
+    out: dict[str, VincoloTerra | None] = {}
+    for chiave, nome in (("azimuth", "azimut"), ("polar", "polare"),
+                         ("polar_without_telescope", "polare_senza_telescopio")):
+        v = d.get(chiave)
+        if not v:
+            out[nome] = None
+            continue
+        ctx = f"ground_constraint.{chiave}"
+        k = _positivo(_richiedi(v, "k_Nm_rad", ctx), "k_Nm_rad", ctx)
+        eta, c = float(v.get("eta", 0.0)), float(v.get("c_Nms_rad", 0.0))
+        if eta < 0 or c < 0:
+            raise ErroreConfigurazione(f"{ctx}: eta e c_Nms_rad devono essere non negativi")
+        out[nome] = VincoloTerra(k=k, eta=eta, c=c, fonte=str(v.get("source", "")),
+                                 segnaposto=bool(v.get("placeholder", True)))
+    avvisi.append(Avviso(
+        "VINCOLO_TERRA", "segnaposto",
+        "ground_constraint: linear equivalent of the bearing friction below a few hertz, "
+        + ", ".join(f"{in_inglese(n) if n != 'polare_senza_telescopio' else 'polar without telescope'} "
+                    f"k = {v.k:.4g} N m/rad, eta = {v.eta:g}" for n, v in out.items() if v)
+        + ". It holds for the amplitude of the test it was fitted on, it acts in the frequency "
+          "responses only (hysteretic loss) and it is not in the time-domain simulator."))
+    return ParametriVincoloTerra(**out)
+
+
+def _leggi_modale(d: Mapping[str, Any]) -> ParametriModali:
+    """Sezione ``reduction.modal`` (troncamento modale alla Gawronski)."""
+    ctx = "reduction.modal"
+    f_banda = _positivo(d.get("f_band_Hz", 2000.0), "f_band_Hz", ctx)
+    fattore = float(d.get("cutoff_factor", 2.0))
+    if fattore < 1.0:
+        raise ErroreConfigurazione(f"{ctx}.cutoff_factor = {fattore} < 1: il taglio sarebbe dentro la banda")
+    h = d.get("hankel_min_ratio")
+    hankel = None if h is None else float(h)
+    if hankel is not None and not 0.0 < hankel <= 1.0:
+        raise ErroreConfigurazione(f"{ctx}.hankel_min_ratio = {hankel} fuori da (0, 1]")
+    nf_raw = d.get("n_flex", {}) or {}
+    nf: dict[str, int | None] = {}
+    for chiave, nome in (("azimut", "azimut"), ("polare", "polare")):
+        v = nf_raw.get(chiave, nf_raw.get({"azimut": "azimuth", "polare": "polar"}[chiave]))
+        if v is not None and int(v) < 0:
+            raise ErroreConfigurazione(f"{ctx}.n_flex.{chiave} negativo")
+        nf[nome] = None if v is None else int(v)
+    corr = str(d.get("static_correction", "none")).strip()
+    if corr not in ("none", "residual_vectors"):
+        raise ErroreConfigurazione(f"{ctx}.static_correction = '{corr}': ammessi none, residual_vectors")
+    return ParametriModali(f_banda=f_banda, fattore_taglio=fattore, hankel_min=hankel,
+                           n_flessibili=nf, theta_ref=float(np.deg2rad(float(d.get("theta_ref_deg", 0.0)))),
+                           correzione_statica=corr)  # type: ignore[arg-type]
 
 
 def _leggi_terne(f: Mapping[str, Any], avvisi: list[Avviso]) -> ParametriTerne:
@@ -871,9 +1358,9 @@ def _leggi_terne(f: Mapping[str, Any], avvisi: list[Avviso]) -> ParametriTerne:
     J0_calc = -j0_calc
     avvisi.append(Avviso(
         "TERNE_ORIGINI", "informazione",
-        f"Origini su z_hat: dist(O_N, o_1) = {z_o1 / MM:g} mm, dist(O_N, o_2) = {z_o2 / MM:g} mm "
-        "(o_2 = centro di rotazione dell'albero polare). O_N e' l'origine dell'assieme Onshape "
-        "(centro della base dell'albero di azimut) e x_hat, y_hat, z_hat sono i suoi assi."))
+        f"Origins on z_hat: dist(O_N, o_1) = {z_o1 / MM:g} mm, dist(O_N, o_2) = {z_o2 / MM:g} mm "
+        "(o_2 = centre of rotation of the polar shaft). O_N is the origin of the Onshape assembly "
+        "(centre of the base of the azimuth shaft) and x_hat, y_hat, z_hat are its axes."))
     return ParametriTerne(asse_az_xy=xy, z_o1=z_o1, z_o2=z_o2, i_hat_0=I0, J_hat_0=J0_calc,
                           theta_cad=theta_cad, R_N1_0=R1, R_N2_0=R2 @ R_P2, R_NP_0=R2)
 
@@ -924,36 +1411,66 @@ def parametri_da_config(
     if mat_seg:
         avvisi.append(Avviso(
             "Q6_MATERIALI", "segnaposto",
-            f"Q6: materiali {mat_seg} segnaposto (" + ", ".join(
-                f"{m.nome}: rho = {m.rho:g} kg/m^3, G = {m.G / 1e9:g} GPa"
+            f"Q6: placeholder materials {[in_inglese(n) for n in mat_seg]} (" + ", ".join(
+                f"{in_inglese(m.nome)}: rho = {m.rho:g} kg/m^3, G = {m.G / 1e9:g} GPa"
                 for m in materiali.values() if m.segnaposto) + ")."))
 
-    azimut = _leggi_asse(_richiedi(dati, "azimuth", "config"), "azimut", materiali, avvisi)
+    asse_xy = np.array([float(v) for v in (dati.get("frames", {}) or {}).get(
+        "azimuth_axis_xy_mm", [0.0, 0.0])]) * MM
+    azimut = _leggi_asse(_richiedi(dati, "azimuth", "config"), "azimut", materiali, avvisi, asse_xy)
     polare = _leggi_asse(_richiedi(dati, "polar", "config"), "polare", materiali, avvisi)
     _avvisi_asse(azimut, avvisi)
     _avvisi_asse(polare, avvisi)
+    if azimut.attacco_telescopio is not None and polare.mozzo is None:
+        raise ErroreConfigurazione("azimuth.telescope_attachment richiede il modello hub (polar.hub.enabled: true): "
+                                   "il telescopio e' appeso al mozzo su entrambi gli assi")
+    if any(n.contiene_alberi_polari for n in azimut.inerzie_nodali):
+        # J^ax non si aggiunge (e' gia' nel load di azimut): la posizione del nodo 1 polare non conta
+        avvisi = [Avviso(a.codice, "informazione",
+                         a.messaggio + " Irrelevant: the azimuth load includes the polar shafts "
+                         "(includes_polar_shafts: true), so J^ax is not added.")
+                  if a.codice == "Q7_POSIZIONE_POLARE" else a for a in avvisi]
 
     # --- payload ---------------------------------------------------------------
     terne = _leggi_terne(_richiedi(dati, "frames", "config"), avvisi)
+    if polare.mozzo is not None:
+        from .mozzo import inerzia as _inerzia_mozzo
+
+        from .mozzo import inerzia_tratto as _inerzia_tratto
+
+        im = _inerzia_mozzo(polare.mozzo, terne)
+        it = _inerzia_tratto(polare.mozzo)
+        dJ = it[2] if it is not None else 0.0
+        polare = replace(polare, mozzo=replace(polare.mozzo, J_polare=im.J_polare + dJ,
+                                                J_azimut=im.J_azimut + dJ))
     payload = _leggi_payload(dati.get("payload", {}) or {}, base, avvisi)
 
     # --- riduzione e FEM --------------------------------------------------------
     rd = dati.get("reduction", {}) or {}
-    metodo = str(rd.get("method", "guyan"))
+    metodo = str(rd.get("method", "modal"))
     forma_massa = str(rd.get("mass_form", "guyan"))
-    if metodo not in ("guyan", "craig_bampton"):
-        raise ErroreConfigurazione(f"reduction.method = '{metodo}' non ammesso")
+    if metodo not in ("guyan", "craig_bampton", "modal"):
+        raise ErroreConfigurazione(
+            f"reduction.method = '{metodo}' non ammesso (guyan | craig_bampton | modal)")
     if forma_massa not in ("guyan", "guyan_lumped"):
         raise ErroreConfigurazione(f"reduction.mass_form = '{forma_massa}' non ammesso")
     n_modi = int(rd.get("n_fixed_interface_modes", 0))
     if n_modi < 0:
         raise ErroreConfigurazione("reduction.n_fixed_interface_modes negativo")
     riduzione = ParametriRiduzione(metodo=metodo, n_modi_interfaccia=n_modi,  # type: ignore[arg-type]
-                                   forma_massa=forma_massa)  # type: ignore[arg-type]
-    avvisi.append(Avviso(
-        "Q4_RIDUZIONE", "informazione",
-        "Q4 (decisione dell'utente, 2026-10-12): riduzione di Guyan sui nodi master, "
-        "con Craig-Bampton solo come verifica di convergenza."))
+                                   forma_massa=forma_massa,  # type: ignore[arg-type]
+                                   modale=_leggi_modale(rd.get("modal", {}) or {}))
+    if metodo == "modal":
+        avvisi.append(Avviso(
+            "RIDUZIONE_MODALE", "informazione",
+            "Reduction: Gawronski modal truncation of the full FEM of each axis "
+            f"(band {riduzione.modale.f_banda:g} Hz, cut-off {riduzione.modale.f_taglio:g} Hz, "
+            f"static correction: {riduzione.modale.correzione_statica})."))
+    else:
+        avvisi.append(Avviso(
+            "Q4_RIDUZIONE", "informazione",
+            f"Reduction: {metodo} on the master nodes (user decision 2026-10-12, Q4); "
+            "modal truncation (method: modal) is the default method since 2026-10-13."))
 
     fm = dati.get("fem", {}) or {}
     modelli = tuple(str(m) for m in fm.get("mass_models", ["lumped", "consistent"]))
@@ -974,9 +1491,9 @@ def parametri_da_config(
         raise ErroreConfigurazione(f"damping.zeta_first_flexible = {zeta} fuori da [0, 1)")
     avvisi.append(Avviso(
         "Q8_SMORZAMENTO", "segnaposto",
-        f"Q8: smorzamento proporzionale alla rigidezza, C = beta K, con zeta = {zeta:g} "
-        "sul primo modo flessibile di ciascun asse. Segnaposto: ampiezza di picchi e "
-        "valli delle FRF non rappresentativa."))
+        f"Q8: stiffness-proportional damping, C = beta K, with zeta = {zeta:g} "
+        "on the first flexible mode of each axis. Placeholder: the height of the FRF peaks and "
+        "notches is not representative."))
 
     # --- punti di lavoro --------------------------------------------------------
     op = dati.get("operating_points", {}) or {}
@@ -985,18 +1502,19 @@ def parametri_da_config(
     omega0 = tuple(float(np.deg2rad(v)) for v in omega0_deg)
     avvisi.append(Avviso(
         "Q11_OMEGA_MAX", "segnaposto",
-        f"Q11: velocita' di inseguimento {list(omega0_deg)} deg/s; Omega_max = "
-        f"{max(omega0_deg):g} deg/s segnaposto. Condiziona l'accoppiamento giroscopico."))
+        f"Q11: tracking rates {list(omega0_deg)} deg/s; Omega_max = "
+        f"{max(omega0_deg):g} deg/s placeholder. It sets the gyroscopic coupling."))
     sweep = np.deg2rad(_griglia(op.get("theta0_sweep_deg",
                                        {"start": -45.0, "stop": 45.0, "step": 5.0}),
                                 "theta0_sweep_deg"))
     avvisi.append(Avviso(
         "Q12_FORCELLA_RIGIDA", "informazione",
-        "Q12: forcella rigida tra il nodo 9 di azimut e i cuscinetti polari. La "
-        "reazione di tau_theta non compie lavoro su psi_L (sezione 9.4)."))
+        "Q12: rigid fork between azimuth node 9 and the polar bearings. The "
+        "reaction of tau_theta does no work on psi_L (section 9.4)."))
 
     fr = dati.get("frequency", {}) or {}
     lt = dati.get("latex", {}) or {}
+    vincolo_terra = _leggi_vincolo_terra(dati.get("ground_constraint"), avvisi)
 
     return Parametri(
         materiali=materiali,
@@ -1016,6 +1534,10 @@ def parametri_da_config(
         n_punti=int(fr.get("n_points", 4000)),
         latex_lingua=str(lt.get("language", "en")),
         latex_compila=bool(lt.get("compile", True)),
+        latex_guyan=bool(lt.get("include_guyan", True)),
+        sperimentale=_leggi_sperimentale(dati.get("experimental"), base, avvisi),
         sorgente=Path(percorso) if percorso is not None else None,
         avvisi=tuple(avvisi),
+        cartella_risultati=str(dati.get("results_dir", "results")),
+        vincolo_terra=vincolo_terra,
     )

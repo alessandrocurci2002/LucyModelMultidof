@@ -1,0 +1,15 @@
+parameter,unit,estimate,start,lower,upper,std_percent,at_bound,note
+s_J_e,,0.5,1,0.5,1.5,nan,yes,CAD factor: encoder inertia
+s_J_m,,0.5,1,0.5,1.5,nan,yes,CAD factor: motor rotor inertia
+s_J_L,,1.4125,1,0.5,1.5,2.8,,CAD factor: load and telescope inertia
+s_k_1,,1.5,1,0.5,1.5,nan,yes,CAD factor: shaft encoder - motor
+s_k_2,,1.5,1,0.5,1.5,nan,yes,CAD factor: shaft motor - fork base
+alpha,,0.48285,0.65904,0.02,0.98,3.1,,share of the CAD load inertia in the fork top
+k_LA,N m/rad,82002,41792,1000,1e+08,2.2,,fork base - fork top (free)
+k_g,N m/rad,1192.6,914.37,1,1e+06,3.1,,bearings to ground (free)
+eta_g,,0.49181,0.64489,0.001,30,3.9,,hysteretic loss factor of the bearings (free)
+tau_d,s,0.00052014,0.00045339,1e-06,0.002,4.3,,equivalent drive delay
+zeta_1,,0.0001,0.005,0.0001,0.01,nan,yes,viscous modal damping of mode 1
+zeta_2,,0.01,0.005,0.0001,0.01,nan,yes,viscous modal damping of mode 2
+zeta_3,,0.0001,0.005,0.0001,0.01,nan,yes,viscous modal damping of mode 3
+zeta_4,,0.01,0.005,0.0001,0.01,nan,yes,viscous modal damping of mode 4

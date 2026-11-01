@@ -1,0 +1,35 @@
+\babel@toc {english}{}\relax 
+\contentsline {paragraph}{Purpose.}{1}{section*.1}%
+\contentsline {paragraph}{Two parts.}{1}{section*.2}%
+\contentsline {paragraph}{Main results.}{1}{section*.3}%
+\contentsline {section}{\numberline {1}Data and model}{2}{section.1}%
+\contentsline {paragraph}{Data (VClosedLoop).}{2}{section*.5}%
+\contentsline {paragraph}{Split of the sequences.}{2}{section*.6}%
+\contentsline {paragraph}{Model.}{2}{section*.7}%
+\contentsline {section}{\numberline {2}Part A: closed-loop study}{2}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Steps 1--2: controller transfer functions}{2}{subsection.2.1}%
+\contentsline {paragraph}{Structure.}{2}{section*.8}%
+\contentsline {paragraph}{Units of the files.}{3}{section*.9}%
+\contentsline {subsection}{\numberline {2.2}Steps 3--5: plant parameters on the frequency responses}{4}{subsection.2.2}%
+\contentsline {paragraph}{Parameters.}{4}{section*.14}%
+\contentsline {paragraph}{Method.}{4}{section*.15}%
+\contentsline {paragraph}{Results.}{4}{section*.17}%
+\contentsline {paragraph}{Limits.}{4}{section*.18}%
+\contentsline {subsection}{\numberline {2.3}Step 6: validation of the closed loop, iterations I1--I5}{5}{subsection.2.3}%
+\contentsline {paragraph}{Procedure.}{5}{section*.20}%
+\contentsline {subsection}{\numberline {2.4}Imbalance of the telescope}{6}{subsection.2.4}%
+\contentsline {paragraph}{Question.}{6}{section*.24}%
+\contentsline {paragraph}{Answer.}{6}{section*.25}%
+\contentsline {section}{\numberline {3}Part B: plant driven by the measured current}{7}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Method}{7}{subsection.3.1}%
+\contentsline {paragraph}{Model.}{7}{section*.27}%
+\contentsline {paragraph}{Elements needed with respect to Part~A.}{7}{section*.28}%
+\contentsline {paragraph}{Fitting.}{7}{section*.29}%
+\contentsline {paragraph}{What the screening shows.}{7}{section*.30}%
+\contentsline {subsection}{\numberline {3.2}Runs and what changed}{8}{subsection.3.2}%
+\contentsline {section}{\numberline {4}Role of the parameters}{11}{section.4}%
+\contentsline {section}{\numberline {5}Identifiability analysis}{11}{section.5}%
+\contentsline {paragraph}{Method}{11}{section*.39}%
+\contentsline {paragraph}{What it shows.}{12}{section*.42}%
+\contentsline {section}{\numberline {6}Next steps}{13}{section.6}%
+\contentsline {section}{\numberline {A}Configurations and results}{13}{appendix.A}%

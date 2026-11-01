@@ -1,0 +1,113 @@
+# AVVISO: result from placeholder parameters
+voce,theta0_deg,Omega0_deg_s,grandezza,valore
+confronto_completo,-45,0,err_dB_max,2.6308e+01
+confronto_completo,-45,0,err_deg_max,1.6855e+02
+confronto_completo,-45,0,err_rel_2x2,1.8668e+01
+confronto_completo,-45,0,passa_T5,no
+confronto_completo,-45,0,zero tau_psi -> psi_e 0.483785 Hz,0.483785 (3.56e-07)
+confronto_completo,-45,0,zero tau_psi -> psi_e 13.3162 Hz,13.3162 (5.73e-07)
+confronto_completo,-45,0,zero tau_psi -> psi_e 286.839 Hz,294.395 (2.63e-02)
+confronto_completo,-45,0,zero tau_psi -> psi_e 357.994 Hz,403.161 (1.26e-01)
+confronto_completo,-45,0,zero tau_theta -> theta_e 58.2414 Hz,58.2443 (4.99e-05)
+confronto_completo,-45,0,zero tau_theta -> theta_e 504.496 Hz,617.424 (2.24e-01)
+confronto_completo,-45,0,zero tau_theta -> theta_e 752.196 Hz,774.056 (2.91e-02)
+confronto_completo,-45,10,err_dB_max,2.6308e+01
+confronto_completo,-45,10,err_deg_max,1.6855e+02
+confronto_completo,-45,10,err_rel_2x2,1.8668e+01
+confronto_completo,-45,10,passa_T5,no
+confronto_completo,-45,10,zero tau_psi -> psi_e 0.483799 Hz,0.483798 (1.44e-06)
+confronto_completo,-45,10,zero tau_psi -> psi_e 13.3162 Hz,13.3162 (5.74e-07)
+confronto_completo,-45,10,zero tau_psi -> psi_e 286.839 Hz,294.395 (2.63e-02)
+confronto_completo,-45,10,zero tau_psi -> psi_e 357.994 Hz,403.161 (1.26e-01)
+confronto_completo,-45,10,zero tau_theta -> theta_e 58.2412 Hz,58.2443 (5.42e-05)
+confronto_completo,-45,10,zero tau_theta -> theta_e 504.487 Hz,617.424 (2.24e-01)
+confronto_completo,-45,10,zero tau_theta -> theta_e 752.196 Hz,774.056 (2.91e-02)
+confronto_completo,-15,0,err_dB_max,2.6308e+01
+confronto_completo,-15,0,err_deg_max,1.6855e+02
+confronto_completo,-15,0,err_rel_2x2,1.8668e+01
+confronto_completo,-15,0,passa_T5,no
+confronto_completo,-15,0,zero tau_psi -> psi_e 0.318118 Hz,0.318118 (1.37e-06)
+confronto_completo,-15,0,zero tau_psi -> psi_e 12.4866 Hz,12.4866 (5.04e-07)
+confronto_completo,-15,0,zero tau_psi -> psi_e 286.839 Hz,294.395 (2.63e-02)
+confronto_completo,-15,0,zero tau_psi -> psi_e 357.994 Hz,403.161 (1.26e-01)
+confronto_completo,-15,0,zero tau_theta -> theta_e 58.2431 Hz,58.2431 (4.45e-12)
+confronto_completo,-15,0,zero tau_theta -> theta_e 504.488 Hz,617.424 (2.24e-01)
+confronto_completo,-15,0,zero tau_theta -> theta_e 752.186 Hz,774.047 (2.91e-02)
+confronto_completo,-15,10,err_dB_max,2.6308e+01
+confronto_completo,-15,10,err_deg_max,1.6855e+02
+confronto_completo,-15,10,err_rel_2x2,1.8668e+01
+confronto_completo,-15,10,passa_T5,no
+confronto_completo,-15,10,zero tau_psi -> psi_e 0.31883 Hz,0.31883 (2.88e-06)
+confronto_completo,-15,10,zero tau_psi -> psi_e 12.4866 Hz,12.4866 (5.52e-07)
+confronto_completo,-15,10,zero tau_psi -> psi_e 286.839 Hz,294.395 (2.63e-02)
+confronto_completo,-15,10,zero tau_psi -> psi_e 357.994 Hz,403.161 (1.26e-01)
+confronto_completo,-15,10,zero tau_theta -> theta_e 58.2425 Hz,58.2431 (1.08e-05)
+confronto_completo,-15,10,zero tau_theta -> theta_e 504.488 Hz,617.424 (2.24e-01)
+confronto_completo,-15,10,zero tau_theta -> theta_e 752.186 Hz,774.047 (2.91e-02)
+confronto_completo,0,0,err_dB_max,2.6308e+01
+confronto_completo,0,0,err_deg_max,1.6855e+02
+confronto_completo,0,0,err_rel_2x2,1.8668e+01
+confronto_completo,0,0,passa_T5,no
+confronto_completo,0,0,zero tau_psi -> psi_e 0.148206 Hz,0.148206 (2.68e-06)
+confronto_completo,0,0,zero tau_psi -> psi_e 12.3806 Hz,12.3806 (4.96e-07)
+confronto_completo,0,0,zero tau_psi -> psi_e 286.839 Hz,294.395 (2.63e-02)
+confronto_completo,0,0,zero tau_psi -> psi_e 357.994 Hz,403.161 (1.26e-01)
+confronto_completo,0,0,zero tau_theta -> theta_e 58.2423 Hz,58.2424 (1.83e-06)
+confronto_completo,0,0,zero tau_theta -> theta_e 504.489 Hz,617.424 (2.24e-01)
+confronto_completo,0,0,zero tau_theta -> theta_e 752.185 Hz,774.046 (2.91e-02)
+confronto_completo,0,10,err_dB_max,2.6308e+01
+confronto_completo,0,10,err_deg_max,1.6855e+02
+confronto_completo,0,10,err_rel_2x2,1.8668e+01
+confronto_completo,0,10,passa_T5,no
+confronto_completo,0,10,zero tau_psi -> psi_e 0.149936 Hz,0.149936 (5.06e-06)
+confronto_completo,0,10,zero tau_psi -> psi_e 12.3806 Hz,12.3806 (4.88e-07)
+confronto_completo,0,10,zero tau_psi -> psi_e 286.839 Hz,294.395 (2.63e-02)
+confronto_completo,0,10,zero tau_psi -> psi_e 357.994 Hz,403.161 (1.26e-01)
+confronto_completo,0,10,zero tau_theta -> theta_e 58.2415 Hz,58.2424 (1.63e-05)
+confronto_completo,0,10,zero tau_theta -> theta_e 504.488 Hz,617.424 (2.24e-01)
+confronto_completo,0,10,zero tau_theta -> theta_e 752.185 Hz,774.046 (2.91e-02)
+confronto_completo,15,0,err_dB_max,2.6308e+01
+confronto_completo,15,0,err_deg_max,1.6855e+02
+confronto_completo,15,0,err_rel_2x2,1.8668e+01
+confronto_completo,15,0,passa_T5,no
+confronto_completo,15,0,zero tau_psi -> psi_e 12.5087 Hz,12.5087 (5.06e-07)
+confronto_completo,15,0,zero tau_psi -> psi_e 286.839 Hz,294.395 (2.63e-02)
+confronto_completo,15,0,zero tau_psi -> psi_e 357.994 Hz,403.161 (1.26e-01)
+confronto_completo,15,0,zero tau_theta -> theta_e 58.2417 Hz,58.2417 (1.58e-11)
+confronto_completo,15,0,zero tau_theta -> theta_e 504.488 Hz,617.424 (2.24e-01)
+confronto_completo,15,0,zero tau_theta -> theta_e 752.186 Hz,774.047 (2.91e-02)
+confronto_completo,15,10,err_dB_max,2.6308e+01
+confronto_completo,15,10,err_deg_max,1.6855e+02
+confronto_completo,15,10,err_rel_2x2,1.8668e+01
+confronto_completo,15,10,passa_T5,no
+confronto_completo,15,10,zero tau_psi -> psi_e 12.5087 Hz,12.5087 (5.64e-07)
+confronto_completo,15,10,zero tau_psi -> psi_e 286.839 Hz,294.395 (2.63e-02)
+confronto_completo,15,10,zero tau_psi -> psi_e 357.994 Hz,403.161 (1.26e-01)
+confronto_completo,15,10,zero tau_theta -> theta_e 58.2334 Hz,58.2417 (1.42e-04)
+confronto_completo,15,10,zero tau_theta -> theta_e 504.495 Hz,617.424 (2.24e-01)
+confronto_completo,15,10,zero tau_theta -> theta_e 752.186 Hz,774.047 (2.91e-02)
+confronto_completo,45,0,err_dB_max,2.6308e+01
+confronto_completo,45,0,err_deg_max,1.6855e+02
+confronto_completo,45,0,err_rel_2x2,1.8668e+01
+confronto_completo,45,0,passa_T5,no
+confronto_completo,45,0,zero tau_psi -> psi_e 13.37 Hz,13.37 (5.78e-07)
+confronto_completo,45,0,zero tau_psi -> psi_e 286.839 Hz,294.395 (2.63e-02)
+confronto_completo,45,0,zero tau_psi -> psi_e 357.994 Hz,403.161 (1.26e-01)
+confronto_completo,45,0,zero tau_theta -> theta_e 58.24 Hz,58.2404 (7.71e-06)
+confronto_completo,45,0,zero tau_theta -> theta_e 504.488 Hz,617.424 (2.24e-01)
+confronto_completo,45,0,zero tau_theta -> theta_e 752.196 Hz,774.057 (2.91e-02)
+confronto_completo,45,10,err_dB_max,2.6308e+01
+confronto_completo,45,10,err_deg_max,1.6855e+02
+confronto_completo,45,10,err_rel_2x2,1.8668e+01
+confronto_completo,45,10,passa_T5,no
+confronto_completo,45,10,zero tau_psi -> psi_e 13.37 Hz,13.37 (6.44e-07)
+confronto_completo,45,10,zero tau_psi -> psi_e 286.839 Hz,294.395 (2.63e-02)
+confronto_completo,45,10,zero tau_psi -> psi_e 357.994 Hz,403.161 (1.26e-01)
+confronto_completo,45,10,zero tau_theta -> theta_e 58.2404 Hz,58.2404 (8.09e-08)
+confronto_completo,45,10,zero tau_theta -> theta_e 504.488 Hz,617.424 (2.24e-01)
+confronto_completo,45,10,zero tau_theta -> theta_e 752.196 Hz,774.057 (2.91e-02)
+zero_forma_chiusa,,,psi_e/tau_psi,13.3162 Hz (lineare 13.3162 Hz)
+zero_forma_chiusa,,,psi_m/tau_psi (1),1143.53 Hz (lineare 1143.53 Hz)
+zero_forma_chiusa,,,psi_m/tau_psi (2),13.3162 Hz (lineare 13.3162 Hz)
+zero_forma_chiusa,,,theta_e/tau_theta,617.424 Hz (lineare 617.424 Hz)
+zero_forma_chiusa,,,theta_e/tau_theta (tel),58.2443 Hz (lineare 58.2443 Hz)

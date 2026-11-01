@@ -1,0 +1,81 @@
+{
+  "theta0_validation": {
+    "azimuth/MPCLucy_2degAz_2degPol_zeroAz_zeroPol": 0.9140434401187211,
+    "azimuth/MPCLucy_2degPol_zeroPol_2degAz_zeroAz": 0.9035085899450152,
+    "elevation/MPCLucy_2degAz_2degPol_zeroAz_zeroPol": 5.68425528755685,
+    "elevation/MPCLucy_2degPol_zeroPol_2degAz_zeroAz": 3.5252133280660627
+  },
+  "values": {
+    "azimuth": {
+      "scale": 0.8997602349640036,
+      "sigma0": 1697.055361312631,
+      "Tc": 0.1805170370121157,
+      "Ts_ratio": 1.0159801972940334,
+      "vs": 0.001,
+      "K_cable": 14.79946744774479,
+      "theta0_cable_deg": 0.0,
+      "c_{\\psi,1}": 0.3696234205543212,
+      "c_{\\psi,2}": 6.58668033054929,
+      "d_x_mm": 0.0,
+      "theta0_by_seq": {
+        "MPCLucy_step_1deg": 0.6016873258044151,
+        "MPCLucy_1degAz_zeroAz_1degPol__zeroPol": 0.4695610679696066,
+        "MPCLucy_2degAz_2degPol_zeroAz_zeroPol": 0.9140434401187211,
+        "MPCLucy_2degPol_zeroPol_2degAz_zeroAz": 0.9035085899450152
+      }
+    },
+    "elevation": {
+      "scale": 1.0265055981598703,
+      "sigma0": 1766.3592044024147,
+      "Tc": 0.26094025813244137,
+      "Ts_ratio": 9.201561227240205,
+      "vs": 0.014165690290703711,
+      "b_{\\theta,h}": 0.03586454991597133,
+      "K_cable": 0.8335416879329511,
+      "theta0_cable_deg": 0.0,
+      "d_x_mm": 0.0,
+      "k_b": 197179.61979178208,
+      "ring": 1.9230199443460287,
+      "c_{\\theta,1}": 5.039685119431714,
+      "c_{\\theta,2}": 0.07975334021841715,
+      "c_{\\theta,3}": 0.8986583599715091,
+      "c_{\\theta,4}": 24.601148606563704,
+      "theta0_by_seq": {
+        "MPCLucy_step_1deg": 4.484652876435954,
+        "MPCLucy_1degAz_zeroAz_1degPol__zeroPol": 3.2944848440616163,
+        "MPCLucy_2degAz_2degPol_zeroAz_zeroPol": 5.68425528755685,
+        "MPCLucy_2degPol_zeroPol_2degAz_zeroAz": 3.5252133280660627
+      }
+    }
+  },
+  "fits": {
+    "validation/azimuth": {
+      "fitted": [
+        94.69727355319604,
+        94.27731794445783,
+        95.47999647783861,
+        95.19683280769188
+      ],
+      "moves": [
+        "MPCLucy_2degAz_2degPol_zeroAz_zeroPol azimuth 18.31 s",
+        "MPCLucy_2degAz_2degPol_zeroAz_zeroPol azimuth 37.70 s",
+        "MPCLucy_2degPol_zeroPol_2degAz_zeroAz azimuth 19.95 s",
+        "MPCLucy_2degPol_zeroPol_2degAz_zeroAz azimuth 22.95 s"
+      ]
+    },
+    "validation/elevation": {
+      "fitted": [
+        87.9428178729744,
+        88.05181450771497,
+        86.05030886524277,
+        81.18115316048696
+      ],
+      "moves": [
+        "MPCLucy_2degAz_2degPol_zeroAz_zeroPol elevation 23.56 s",
+        "MPCLucy_2degAz_2degPol_zeroAz_zeroPol elevation 40.79 s",
+        "MPCLucy_2degPol_zeroPol_2degAz_zeroAz elevation 8.19 s",
+        "MPCLucy_2degPol_zeroPol_2degAz_zeroAz elevation 14.17 s"
+      ]
+    }
+  }
+}

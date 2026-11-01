@@ -79,6 +79,11 @@ class Payload:
     sottratto: dict[str, float]
     par_2dof: pr2.Parametri | None
     avvisi: tuple[Avviso, ...] = field(default_factory=tuple)
+    J_ax_nel_carico: float = 0.0
+    """:math:`J^{ax}` calcolato dagli elementi polari ma gia' contenuto nell'esportazione CAD
+    del load di azimut (``includes_polar_shafts: true``): in quel caso ``J_ax = 0``, cioe'
+    gli alberi polari vengono sottratti dal load e riaggiunti come :math:`J^{ax}` con il
+    valore del CAD, che comprende gli Steiner :math:`m y_c^2` reali."""
 
     @property
     def I_2(self) -> np.ndarray:
@@ -219,9 +224,9 @@ def tensore_da_config(par: Parametri) -> tuple[np.ndarray, float, np.ndarray, li
         I_G_2 = inz.ruota(I_in, tr.R_NP_0)
         avvisi.append(Avviso(
             "PAYLOAD_SEGNO_PRODOTTI", "segnaposto",
-            f"payload.products_sign = '{pp.segno_prodotti}': la convenzione di segno dei prodotti "
-            "d'inerzia di Onshape non e' verificata con un corpo di prova; influenza i prodotti "
-            "I_IJ, I_IK, I_JK, non i momenti diagonali."))
+            f"payload.products_sign = '{pp.segno_prodotti}': the sign convention of the Onshape products "
+            "of inertia is not verified on a test body; it affects the products "
+            "I_IJ, I_IK, I_JK, not the diagonal moments."))
     else:
         assert pp.d is not None
         # input nella terna 2 (K_hat puntamento): si passa alla terna interna P
@@ -237,10 +242,10 @@ def tensore_da_config(par: Parametri) -> tuple[np.ndarray, float, np.ndarray, li
     if int(np.argmin(diag)) != 0:
         avvisi.append(Avviso(
             "PAYLOAD_ASSE_SOSPETTO", "incoerenza",
-            f"Momenti baricentrici del telescopio in terna 2: {np.array2string(diag, precision=5)} "
-            "kg m^2 (lungo K_hat, J_hat, -I_hat). Il minimo non e' attorno a K_hat (puntamento): "
-            "verificare payload.frame, gli "
-            "assi del tensore inserito e la posa CAD (frames.pointing_cad, theta_cad_deg)."))
+            f"Central moments of the telescope in frame 2: {np.array2string(diag, precision=5)} "
+            "kg m^2 (along K_hat, J_hat, -I_hat). The minimum is not about K_hat (pointing): "
+            "check payload.frame, the "
+            "axes of the entered tensor and the CAD pose (frames.pointing_cad, theta_cad_deg)."))
     return I_2, m, np.asarray(d, dtype=float), avvisi
 
 
@@ -276,54 +281,88 @@ def costruisci_payload(par: Parametri, mod_polare: ModelloAsse) -> Payload:
     pp = par.payload
     pezzi = posizioni_polari(mod_polare, par.polare.y_nodo1_da_O, par.polare.verso_numerazione)
     Jax = float(sum(I_t + m * y**2 for _, m, _, I_t, y in pezzi))
+    Jax_nel_carico = 0.0
+    carico = [n for n in par.azimut.inerzie_nodali if n.contiene_alberi_polari]
+    if carico:
+        # J_nodo9 + J^ax = (J_CAD - J^ax_alberi) + J^ax_alberi = J_CAD: aggiungere J^ax
+        # contera' gli alberi due volte. Vale per qualunque y_c (anche con Q7 aperta).
+        Jax_nel_carico, Jax = Jax, 0.0
+        avvisi.append(Avviso(
+            "JAX_NEL_CARICO", "informazione",
+            f"The azimuth load '{carico[0].nome}' (node {carico[0].nodo}) includes the polar shafts "
+            f"(includes_polar_shafts: true): J^ax = {Jax_nel_carico:.4e} kg m^2 computed from the "
+            "polar elements is not added, because their moment about the azimuth axis, "
+            "with the real distances from the axis, is already in the CAD value."))
+    pm = par.polare.mozzo
+    if pm is not None and not pm.nel_load_azimut:
+        # modello hub: il mozzo ruota con l'asse polare; la sua inerzia attorno a z_hat (a theta = 0,
+        # varia di Lyy - Lzz con theta) si somma a J^ax come costante
+        Jax += pm.J_azimut
     par2 = pr2.parametri_da_config(pp.config_2dof) if pp.config_2dof.exists() else None
 
     if not pp.abilitato:
         avvisi.append(Avviso("PAYLOAD_DISABILITATO", "informazione",
-                             "payload.enabled = false: nessun telescopio al nodo P."))
+                             "payload.enabled = false: no telescope at node P."))
         return Payload(abilitato=False, I=np.zeros((3, 3)), m=0.0, d=np.zeros(3), g=par.g,
-                       J_ax=Jax, sottratto={}, par_2dof=par2, avvisi=tuple(avvisi))
+                       J_ax=Jax, sottratto={}, par_2dof=par2, avvisi=tuple(avvisi),
+                       J_ax_nel_carico=Jax_nel_carico)
 
     if pp.sorgente == "manual":
         I, m, d, avv = tensore_da_config(par)
         avvisi.extend(avv)
-        origine = (f"tensore inserito in config.yaml (frame: {pp.terna}"
+        origine = (f"tensor entered in config.yaml (frame: {pp.terna}"
                    + (f", {pp.nota}" if pp.nota else "") + ")")
     else:
         if par2 is None:
             raise ValueError(f"payload.source = gimbal_2dof ma {pp.config_2dof} non esiste")
         mi = inz.costruisci_modello_inerziale(par2)
-        avvisi.extend(Avviso(f"2DOF_{a.codice}", a.severita, f"(dal modello a 2 GdL) {a.messaggio}")
+        avvisi.extend(Avviso(f"2DOF_{a.codice}", a.severita, f"(from the 2-DOF model) {a.messaggio}")
                       for a in mi.avvisi if a.codice not in AVVISI_2DOF_ESCLUSI)
         I, m, d = mi.I_B_O_B.copy(), float(mi.m_B), mi.d.copy()
-        origine = "corpo B del CAD del modello a 2 GdL"
+        origine = "body B of the CAD of the 2-DOF model"
         scarto = abs(float(mi.r_O_W[2]) - par.terne.z_o2)
         if scarto > 1e-6:
             avvisi.append(Avviso(
                 "PAYLOAD_O2_2DOF", "incoerenza",
-                f"Con source: gimbal_2dof il tensore e' trasportato nel punto O del 2 GdL "
-                f"(z = {mi.r_O_W[2] * 1e3:.3f} mm), non in o_2 di frames (z = "
-                f"{par.terne.z_o2 * 1e3:.3f} mm): scarto {scarto * 1e3:.3f} mm."))
+                f"With source: gimbal_2dof the tensor is transported to point O of the 2-DOF model "
+                f"(z = {mi.r_O_W[2] * 1e3:.3f} mm), not to o_2 of frames (z = "
+                f"{par.terne.z_o2 * 1e3:.3f} mm): offset {scarto * 1e3:.3f} mm."))
 
+    pm = par.polare.mozzo
+    if pm is not None and pm.tratto_telescopio is not None:
+        # modello hub: il tratto di tubo stretto nell'anello ruota con il mozzo; si toglie dal telescopio
+        # (tubo centrato in o_2 con l'asse lungo il puntamento x_P: nessun termine di Steiner)
+        from .mozzo import inerzia_tratto
+
+        m_t, J_ax_t, J_t = inerzia_tratto(pm)  # type: ignore[misc]
+        I = I - np.diag([J_ax_t, J_t, J_t])
+        d = m * np.asarray(d, dtype=float) / (m - m_t)
+        m = m - m_t
+        avvisi.append(Avviso(
+            "PAYLOAD_TRATTO_SU_MOZZO", "informazione",
+            f"Telescope tensor without the tube section clamped in the support ring: m - {m_t:.3f} kg, "
+            f"I about the pointing axis - {J_ax_t:.4e}, about the polar axis and z - {J_t:.4e} kg m^2 "
+            "(moved to the hub centre H)."))
     sottratto = {"m": 0.0, "J": 0.0, "trasversale": 0.0}
     if pp.sottrai_alberi:
         m_in = m
         I, m, d, sottratto = _sottrai_pezzi(I, m, d, pezzi)
         avvisi.append(Avviso(
             "Q3_SOTTRAZIONE_ALBERI", "segnaposto",
-            f"Q3: dal {origine} (m = {m_in:.3f} kg) sono stati sottratti gli elementi e le "
-            f"inerzie nodali polari del FEM: massa {sottratto['m']:.4f} kg, sum J = "
+            f"Q3: the polar elements and node inertias of the FEM were subtracted from the {origine} "
+            f"(m = {m_in:.3f} kg): mass {sottratto['m']:.4f} kg, sum J = "
             f"{sottratto['J']:.3e} kg m^2, sum(I_t + m y_c^2) = {sottratto['trasversale']:.3e} "
-            "kg m^2. Si assume che il tensore inserito contenga esattamente questi pezzi."))
+            "kg m^2. The entered tensor is assumed to contain exactly these parts."))
     else:
         avvisi.append(Avviso(
             "Q3_TELESCOPIO", "informazione",
-            f"Q3: telescopio dal {origine}, senza sottrazioni (subtract_shaft_parts: false): "
-            "il tensore deve comprendere il solo telescopio, non le parti dell'asse polare "
-            "gia' modellate negli elementi."))
+            f"Q3: telescope from the {origine}, without subtractions (subtract_shaft_parts: false): "
+            "the tensor must contain the telescope only, not the parts of the polar axis "
+            "already modelled in the elements."))
 
     return Payload(abilitato=True, I=I, m=m, d=np.asarray(d, dtype=float), g=par.g, J_ax=Jax,
-                   sottratto=sottratto, par_2dof=par2, avvisi=tuple(avvisi))
+                   sottratto=sottratto, par_2dof=par2, avvisi=tuple(avvisi),
+                   J_ax_nel_carico=Jax_nel_carico)
 
 
 def modello_2dof_equivalente(pl: Payload, J_azimut: float, J_polare: float) -> ModelloInerziale:

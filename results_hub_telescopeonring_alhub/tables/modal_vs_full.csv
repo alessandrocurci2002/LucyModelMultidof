@@ -1,0 +1,296 @@
+# AVVISO: result from placeholder parameters
+voce,asse_o_modello,theta0_deg_o_vuoto,grandezza,valore
+modale,-45,0,err_dB tau_psi->psi_e,8.5345e-03
+modale,-45,0,err_dB tau_theta->theta_e,1.7283e-05
+modale,-45,0,err_deg tau_psi->psi_e,6.2093e-04
+modale,-45,0,err_deg tau_theta->theta_e,1.5095e-04
+modale,-45,0,err_rel_2x2,2.2038e-04
+modale,-45,0,passa_T5,si
+modale,-45,0,zero tau_psi -> psi_e 0.483785 Hz: f ridotto,0.483785 (3.90e-09)
+modale,-45,0,zero tau_psi -> psi_e 13.3162 Hz: f ridotto,13.3165 (2.25e-05)
+modale,-45,0,zero tau_psi -> psi_e 86.9826 Hz: f ridotto,86.9825 (1.58e-08)
+modale,-45,0,zero tau_psi -> psi_e 167.613 Hz: f ridotto,167.613 (4.59e-09)
+modale,-45,0,zero tau_psi -> psi_e 1591.2 Hz: f ridotto,1591.2 (2.96e-09)
+modale,-45,0,zero tau_theta -> theta_e 16.9357 Hz: f ridotto,16.9358 (9.33e-06)
+modale,-45,0,zero tau_theta -> theta_e 504.488 Hz: f ridotto,504.488 (1.71e-07)
+modale,-45,0,zero tau_theta -> theta_e 752.196 Hz: f ridotto,752.196 (1.70e-11)
+modale,-45,10,err_dB tau_psi->psi_e,8.5343e-03
+modale,-45,10,err_dB tau_theta->theta_e,1.7283e-05
+modale,-45,10,err_deg tau_psi->psi_e,6.2093e-04
+modale,-45,10,err_deg tau_theta->theta_e,1.5095e-04
+modale,-45,10,err_rel_2x2,2.2038e-04
+modale,-45,10,passa_T5,si
+modale,-45,10,zero tau_psi -> psi_e 0.483798 Hz: f ridotto,0.483798 (4.25e-07)
+modale,-45,10,zero tau_psi -> psi_e 13.3162 Hz: f ridotto,13.3165 (2.25e-05)
+modale,-45,10,zero tau_psi -> psi_e 86.9826 Hz: f ridotto,86.9825 (6.32e-07)
+modale,-45,10,zero tau_psi -> psi_e 167.613 Hz: f ridotto,167.613 (1.77e-07)
+modale,-45,10,zero tau_psi -> psi_e 1591.2 Hz: f ridotto,1591.2 (1.27e-10)
+modale,-45,10,zero tau_theta -> theta_e 16.9356 Hz: f ridotto,16.9358 (1.27e-05)
+modale,-45,10,zero tau_theta -> theta_e 504.488 Hz: f ridotto,504.488 (1.68e-07)
+modale,-45,10,zero tau_theta -> theta_e 752.196 Hz: f ridotto,752.196 (1.75e-10)
+modale,-15,0,err_dB tau_psi->psi_e,9.0552e-03
+modale,-15,0,err_dB tau_theta->theta_e,1.7283e-05
+modale,-15,0,err_deg tau_psi->psi_e,6.2093e-04
+modale,-15,0,err_deg tau_theta->theta_e,1.5095e-04
+modale,-15,0,err_rel_2x2,2.2038e-04
+modale,-15,0,passa_T5,si
+modale,-15,0,zero tau_psi -> psi_e 0.318118 Hz: f ridotto,0.318118 (5.53e-08)
+modale,-15,0,zero tau_psi -> psi_e 12.4866 Hz: f ridotto,12.4868 (2.25e-05)
+modale,-15,0,zero tau_psi -> psi_e 86.9825 Hz: f ridotto,86.9825 (4.26e-09)
+modale,-15,0,zero tau_psi -> psi_e 167.613 Hz: f ridotto,167.613 (1.50e-09)
+modale,-15,0,zero tau_psi -> psi_e 1591.2 Hz: f ridotto,1591.2 (3.40e-11)
+modale,-15,0,zero tau_theta -> theta_e 16.9317 Hz: f ridotto,16.9317 (7.11e-10)
+modale,-15,0,zero tau_theta -> theta_e 504.488 Hz: f ridotto,504.488 (1.75e-07)
+modale,-15,0,zero tau_theta -> theta_e 752.186 Hz: f ridotto,752.186 (5.54e-11)
+modale,-15,10,err_dB tau_psi->psi_e,9.0553e-03
+modale,-15,10,err_dB tau_theta->theta_e,1.7283e-05
+modale,-15,10,err_deg tau_psi->psi_e,6.2093e-04
+modale,-15,10,err_deg tau_theta->theta_e,1.5095e-04
+modale,-15,10,err_rel_2x2,2.2038e-04
+modale,-15,10,passa_T5,si
+modale,-15,10,zero tau_psi -> psi_e 0.318828 Hz: f ridotto,0.318829 (5.30e-06)
+modale,-15,10,zero tau_psi -> psi_e 12.4866 Hz: f ridotto,12.4868 (2.25e-05)
+modale,-15,10,zero tau_psi -> psi_e 86.9832 Hz: f ridotto,86.9825 (7.33e-06)
+modale,-15,10,zero tau_psi -> psi_e 167.613 Hz: f ridotto,167.613 (2.01e-06)
+modale,-15,10,zero tau_psi -> psi_e 1591.2 Hz: f ridotto,1591.2 (2.48e-10)
+modale,-15,10,zero tau_theta -> theta_e 16.9318 Hz: f ridotto,16.9318 (5.58e-10)
+modale,-15,10,zero tau_theta -> theta_e 504.488 Hz: f ridotto,504.488 (1.75e-07)
+modale,-15,10,zero tau_theta -> theta_e 752.186 Hz: f ridotto,752.186 (3.30e-11)
+modale,0,0,err_dB tau_psi->psi_e,8.6030e-03
+modale,0,0,err_dB tau_theta->theta_e,1.7283e-05
+modale,0,0,err_deg tau_psi->psi_e,6.2093e-04
+modale,0,0,err_deg tau_theta->theta_e,1.5095e-04
+modale,0,0,err_rel_2x2,2.2038e-04
+modale,0,0,passa_T5,si
+modale,0,0,zero tau_psi -> psi_e 0.148206 Hz: f ridotto,0.148206 (3.71e-08)
+modale,0,0,zero tau_psi -> psi_e 12.3806 Hz: f ridotto,12.3809 (2.25e-05)
+modale,0,0,zero tau_psi -> psi_e 86.9825 Hz: f ridotto,86.9825 (2.02e-08)
+modale,0,0,zero tau_psi -> psi_e 167.613 Hz: f ridotto,167.613 (5.65e-09)
+modale,0,0,zero tau_psi -> psi_e 1591.2 Hz: f ridotto,1591.2 (5.06e-11)
+modale,0,0,zero tau_theta -> theta_e 16.9293 Hz: f ridotto,16.9293 (7.23e-10)
+modale,0,0,zero tau_theta -> theta_e 504.488 Hz: f ridotto,504.488 (1.75e-07)
+modale,0,0,zero tau_theta -> theta_e 752.238 Hz: f ridotto,752.185 (7.11e-05)
+modale,0,10,err_dB tau_psi->psi_e,8.6030e-03
+modale,0,10,err_dB tau_theta->theta_e,1.7283e-05
+modale,0,10,err_deg tau_psi->psi_e,6.2093e-04
+modale,0,10,err_deg tau_theta->theta_e,1.5095e-04
+modale,0,10,err_rel_2x2,2.2038e-04
+modale,0,10,passa_T5,si
+modale,0,10,zero tau_psi -> psi_e 0.149936 Hz: f ridotto,0.149936 (1.03e-06)
+modale,0,10,zero tau_psi -> psi_e 12.3806 Hz: f ridotto,12.3809 (2.25e-05)
+modale,0,10,zero tau_psi -> psi_e 86.9825 Hz: f ridotto,86.9825 (3.86e-08)
+modale,0,10,zero tau_psi -> psi_e 167.613 Hz: f ridotto,167.613 (2.24e-09)
+modale,0,10,zero tau_psi -> psi_e 1591.2 Hz: f ridotto,1591.2 (3.28e-11)
+modale,0,10,zero tau_theta -> theta_e 16.9293 Hz: f ridotto,16.9293 (7.25e-10)
+modale,0,10,zero tau_theta -> theta_e 504.488 Hz: f ridotto,504.488 (1.75e-07)
+modale,0,10,zero tau_theta -> theta_e 752.185 Hz: f ridotto,752.185 (1.68e-11)
+modale,15,0,err_dB tau_psi->psi_e,9.8258e-03
+modale,15,0,err_dB tau_theta->theta_e,1.7283e-05
+modale,15,0,err_deg tau_psi->psi_e,6.2093e-04
+modale,15,0,err_deg tau_theta->theta_e,1.5095e-04
+modale,15,0,err_rel_2x2,2.2038e-04
+modale,15,0,passa_T5,si
+modale,15,0,zero tau_psi -> psi_e 12.5087 Hz: f ridotto,12.5089 (2.25e-05)
+modale,15,0,zero tau_psi -> psi_e 86.9825 Hz: f ridotto,86.9825 (1.46e-08)
+modale,15,0,zero tau_psi -> psi_e 167.613 Hz: f ridotto,167.613 (6.06e-09)
+modale,15,0,zero tau_psi -> psi_e 1591.2 Hz: f ridotto,1591.2 (7.87e-13)
+modale,15,0,zero tau_theta -> theta_e 16.9268 Hz: f ridotto,16.9268 (7.28e-10)
+modale,15,0,zero tau_theta -> theta_e 504.488 Hz: f ridotto,504.488 (1.75e-07)
+modale,15,0,zero tau_theta -> theta_e 752.186 Hz: f ridotto,752.186 (4.30e-11)
+modale,15,10,err_dB tau_psi->psi_e,9.8258e-03
+modale,15,10,err_dB tau_theta->theta_e,1.7283e-05
+modale,15,10,err_deg tau_psi->psi_e,6.2093e-04
+modale,15,10,err_deg tau_theta->theta_e,1.5095e-04
+modale,15,10,err_rel_2x2,2.2038e-04
+modale,15,10,passa_T5,si
+modale,15,10,zero tau_psi -> psi_e 12.5087 Hz: f ridotto,12.5089 (2.25e-05)
+modale,15,10,zero tau_psi -> psi_e 86.9822 Hz: f ridotto,86.9825 (2.74e-06)
+modale,15,10,zero tau_psi -> psi_e 167.613 Hz: f ridotto,167.613 (6.67e-07)
+modale,15,10,zero tau_psi -> psi_e 1591.2 Hz: f ridotto,1591.2 (7.86e-11)
+modale,15,10,zero tau_theta -> theta_e 16.9269 Hz: f ridotto,16.9269 (7.31e-10)
+modale,15,10,zero tau_theta -> theta_e 504.488 Hz: f ridotto,504.488 (1.75e-07)
+modale,15,10,zero tau_theta -> theta_e 752.186 Hz: f ridotto,752.186 (1.79e-10)
+modale,45,0,err_dB tau_psi->psi_e,1.0081e-02
+modale,45,0,err_dB tau_theta->theta_e,1.7283e-05
+modale,45,0,err_deg tau_psi->psi_e,6.2093e-04
+modale,45,0,err_deg tau_theta->theta_e,1.5095e-04
+modale,45,0,err_rel_2x2,2.2038e-04
+modale,45,0,passa_T5,si
+modale,45,0,zero tau_psi -> psi_e 13.37 Hz: f ridotto,13.3703 (2.25e-05)
+modale,45,0,zero tau_psi -> psi_e 86.9824 Hz: f ridotto,86.9825 (1.25e-07)
+modale,45,0,zero tau_psi -> psi_e 167.613 Hz: f ridotto,167.613 (9.21e-09)
+modale,45,0,zero tau_psi -> psi_e 1591.2 Hz: f ridotto,1591.2 (4.99e-12)
+modale,45,0,zero tau_theta -> theta_e 16.9224 Hz: f ridotto,16.9224 (6.97e-10)
+modale,45,0,zero tau_theta -> theta_e 504.488 Hz: f ridotto,504.488 (1.75e-07)
+modale,45,0,zero tau_theta -> theta_e 752.196 Hz: f ridotto,752.196 (1.29e-09)
+modale,45,10,err_dB tau_psi->psi_e,1.0081e-02
+modale,45,10,err_dB tau_theta->theta_e,1.7283e-05
+modale,45,10,err_deg tau_psi->psi_e,6.2093e-04
+modale,45,10,err_deg tau_theta->theta_e,1.5095e-04
+modale,45,10,err_rel_2x2,2.2038e-04
+modale,45,10,passa_T5,si
+modale,45,10,zero tau_psi -> psi_e 13.37 Hz: f ridotto,13.3703 (2.25e-05)
+modale,45,10,zero tau_psi -> psi_e 86.9826 Hz: f ridotto,86.9825 (1.66e-06)
+modale,45,10,zero tau_psi -> psi_e 167.613 Hz: f ridotto,167.613 (4.86e-07)
+modale,45,10,zero tau_psi -> psi_e 1591.2 Hz: f ridotto,1591.2 (1.64e-10)
+modale,45,10,zero tau_theta -> theta_e 16.9213 Hz: f ridotto,16.9224 (6.53e-05)
+modale,45,10,zero tau_theta -> theta_e 504.488 Hz: f ridotto,504.488 (1.32e-07)
+modale,45,10,zero tau_theta -> theta_e 752.196 Hz: f ridotto,752.196 (5.57e-11)
+guyan,-45,0,err_dB tau_psi->psi_e,2.2147e+01
+guyan,-45,0,err_dB tau_theta->theta_e,8.6690e+00
+guyan,-45,0,err_deg tau_psi->psi_e,1.5676e+02
+guyan,-45,0,err_deg tau_theta->theta_e,9.4700e+01
+guyan,-45,0,err_rel_2x2,1.2547e+01
+guyan,-45,0,passa_T5,no
+guyan,-45,0,zero tau_psi -> psi_e 0.483785 Hz: f ridotto,0.483785 (6.99e-09)
+guyan,-45,0,zero tau_psi -> psi_e 13.3162 Hz: f ridotto,13.3162 (8.72e-13)
+guyan,-45,0,zero tau_psi -> psi_e 86.9826 Hz: f ridotto,87.0033 (2.39e-04)
+guyan,-45,0,zero tau_psi -> psi_e 167.613 Hz: f ridotto,169.619 (1.20e-02)
+guyan,-45,0,zero tau_psi -> psi_e 1591.2 Hz: f ridotto,1597.95 (4.25e-03)
+guyan,-45,0,zero tau_theta -> theta_e 16.9357 Hz: f ridotto,16.9358 (9.33e-06)
+guyan,-45,0,zero tau_theta -> theta_e 504.488 Hz: f ridotto,577.35 (1.44e-01)
+guyan,-45,0,zero tau_theta -> theta_e 752.196 Hz: f ridotto,834.281 (1.09e-01)
+guyan,-45,10,err_dB tau_psi->psi_e,2.2147e+01
+guyan,-45,10,err_dB tau_theta->theta_e,8.6690e+00
+guyan,-45,10,err_deg tau_psi->psi_e,1.5676e+02
+guyan,-45,10,err_deg tau_theta->theta_e,9.4700e+01
+guyan,-45,10,err_rel_2x2,1.2547e+01
+guyan,-45,10,passa_T5,no
+guyan,-45,10,zero tau_psi -> psi_e 0.483798 Hz: f ridotto,0.483798 (4.23e-07)
+guyan,-45,10,zero tau_psi -> psi_e 13.3162 Hz: f ridotto,13.3162 (1.81e-10)
+guyan,-45,10,zero tau_psi -> psi_e 86.9826 Hz: f ridotto,87.0033 (2.38e-04)
+guyan,-45,10,zero tau_psi -> psi_e 167.613 Hz: f ridotto,169.619 (1.20e-02)
+guyan,-45,10,zero tau_psi -> psi_e 1591.2 Hz: f ridotto,1597.95 (4.25e-03)
+guyan,-45,10,zero tau_theta -> theta_e 16.9356 Hz: f ridotto,16.9358 (1.27e-05)
+guyan,-45,10,zero tau_theta -> theta_e 504.488 Hz: f ridotto,577.35 (1.44e-01)
+guyan,-45,10,zero tau_theta -> theta_e 752.196 Hz: f ridotto,834.281 (1.09e-01)
+guyan,-15,0,err_dB tau_psi->psi_e,2.2146e+01
+guyan,-15,0,err_dB tau_theta->theta_e,8.6690e+00
+guyan,-15,0,err_deg tau_psi->psi_e,1.5675e+02
+guyan,-15,0,err_deg tau_theta->theta_e,9.4700e+01
+guyan,-15,0,err_rel_2x2,1.2545e+01
+guyan,-15,0,passa_T5,no
+guyan,-15,0,zero tau_psi -> psi_e 0.318118 Hz: f ridotto,0.318118 (5.09e-08)
+guyan,-15,0,zero tau_psi -> psi_e 12.4866 Hz: f ridotto,12.4866 (2.04e-12)
+guyan,-15,0,zero tau_psi -> psi_e 86.9825 Hz: f ridotto,87.0033 (2.39e-04)
+guyan,-15,0,zero tau_psi -> psi_e 167.613 Hz: f ridotto,169.619 (1.20e-02)
+guyan,-15,0,zero tau_psi -> psi_e 1591.2 Hz: f ridotto,1597.95 (4.25e-03)
+guyan,-15,0,zero tau_theta -> theta_e 16.9317 Hz: f ridotto,16.9317 (1.66e-11)
+guyan,-15,0,zero tau_theta -> theta_e 504.488 Hz: f ridotto,577.35 (1.44e-01)
+guyan,-15,0,zero tau_theta -> theta_e 752.186 Hz: f ridotto,834.271 (1.09e-01)
+guyan,-15,10,err_dB tau_psi->psi_e,2.2146e+01
+guyan,-15,10,err_dB tau_theta->theta_e,8.6690e+00
+guyan,-15,10,err_deg tau_psi->psi_e,1.5675e+02
+guyan,-15,10,err_deg tau_theta->theta_e,9.4700e+01
+guyan,-15,10,err_rel_2x2,1.2545e+01
+guyan,-15,10,passa_T5,no
+guyan,-15,10,zero tau_psi -> psi_e 0.318828 Hz: f ridotto,0.318829 (5.29e-06)
+guyan,-15,10,zero tau_psi -> psi_e 12.4866 Hz: f ridotto,12.4866 (2.39e-11)
+guyan,-15,10,zero tau_psi -> psi_e 86.9832 Hz: f ridotto,87.0033 (2.31e-04)
+guyan,-15,10,zero tau_psi -> psi_e 167.613 Hz: f ridotto,169.619 (1.20e-02)
+guyan,-15,10,zero tau_psi -> psi_e 1591.2 Hz: f ridotto,1597.95 (4.25e-03)
+guyan,-15,10,zero tau_theta -> theta_e 16.9318 Hz: f ridotto,16.9318 (1.34e-09)
+guyan,-15,10,zero tau_theta -> theta_e 504.488 Hz: f ridotto,577.35 (1.44e-01)
+guyan,-15,10,zero tau_theta -> theta_e 752.186 Hz: f ridotto,834.271 (1.09e-01)
+guyan,0,0,err_dB tau_psi->psi_e,2.2146e+01
+guyan,0,0,err_dB tau_theta->theta_e,8.6690e+00
+guyan,0,0,err_deg tau_psi->psi_e,1.5675e+02
+guyan,0,0,err_deg tau_theta->theta_e,9.4700e+01
+guyan,0,0,err_rel_2x2,1.2544e+01
+guyan,0,0,passa_T5,no
+guyan,0,0,zero tau_psi -> psi_e 0.148206 Hz: f ridotto,0.148206 (2.77e-08)
+guyan,0,0,zero tau_psi -> psi_e 12.3806 Hz: f ridotto,12.3806 (1.05e-12)
+guyan,0,0,zero tau_psi -> psi_e 86.9825 Hz: f ridotto,87.0033 (2.39e-04)
+guyan,0,0,zero tau_psi -> psi_e 167.613 Hz: f ridotto,169.619 (1.20e-02)
+guyan,0,0,zero tau_psi -> psi_e 1591.2 Hz: f ridotto,1597.95 (4.25e-03)
+guyan,0,0,zero tau_theta -> theta_e 16.9293 Hz: f ridotto,16.9293 (4.06e-13)
+guyan,0,0,zero tau_theta -> theta_e 504.488 Hz: f ridotto,577.35 (1.44e-01)
+guyan,0,0,zero tau_theta -> theta_e 752.238 Hz: f ridotto,834.269 (1.09e-01)
+guyan,0,10,err_dB tau_psi->psi_e,2.2146e+01
+guyan,0,10,err_dB tau_theta->theta_e,8.6690e+00
+guyan,0,10,err_deg tau_psi->psi_e,1.5675e+02
+guyan,0,10,err_deg tau_theta->theta_e,9.4700e+01
+guyan,0,10,err_rel_2x2,1.2544e+01
+guyan,0,10,passa_T5,no
+guyan,0,10,zero tau_psi -> psi_e 0.149936 Hz: f ridotto,0.149936 (1.02e-06)
+guyan,0,10,zero tau_psi -> psi_e 12.3806 Hz: f ridotto,12.3806 (2.93e-10)
+guyan,0,10,zero tau_psi -> psi_e 86.9825 Hz: f ridotto,87.0033 (2.39e-04)
+guyan,0,10,zero tau_psi -> psi_e 167.613 Hz: f ridotto,169.619 (1.20e-02)
+guyan,0,10,zero tau_psi -> psi_e 1591.2 Hz: f ridotto,1597.95 (4.25e-03)
+guyan,0,10,zero tau_theta -> theta_e 16.9293 Hz: f ridotto,16.9293 (6.05e-11)
+guyan,0,10,zero tau_theta -> theta_e 504.488 Hz: f ridotto,577.35 (1.44e-01)
+guyan,0,10,zero tau_theta -> theta_e 752.185 Hz: f ridotto,834.269 (1.09e-01)
+guyan,15,0,err_dB tau_psi->psi_e,2.2146e+01
+guyan,15,0,err_dB tau_theta->theta_e,8.6690e+00
+guyan,15,0,err_deg tau_psi->psi_e,1.5675e+02
+guyan,15,0,err_deg tau_theta->theta_e,9.4700e+01
+guyan,15,0,err_rel_2x2,1.2545e+01
+guyan,15,0,passa_T5,no
+guyan,15,0,zero tau_psi -> psi_e 12.5087 Hz: f ridotto,12.5087 (7.58e-13)
+guyan,15,0,zero tau_psi -> psi_e 86.9825 Hz: f ridotto,87.0032 (2.39e-04)
+guyan,15,0,zero tau_psi -> psi_e 167.613 Hz: f ridotto,169.619 (1.20e-02)
+guyan,15,0,zero tau_psi -> psi_e 1591.2 Hz: f ridotto,1597.95 (4.25e-03)
+guyan,15,0,zero tau_theta -> theta_e 16.9268 Hz: f ridotto,16.9268 (1.78e-12)
+guyan,15,0,zero tau_theta -> theta_e 504.488 Hz: f ridotto,577.35 (1.44e-01)
+guyan,15,0,zero tau_theta -> theta_e 752.186 Hz: f ridotto,834.271 (1.09e-01)
+guyan,15,10,err_dB tau_psi->psi_e,2.2146e+01
+guyan,15,10,err_dB tau_theta->theta_e,8.6690e+00
+guyan,15,10,err_deg tau_psi->psi_e,1.5675e+02
+guyan,15,10,err_deg tau_theta->theta_e,9.4700e+01
+guyan,15,10,err_rel_2x2,1.2545e+01
+guyan,15,10,passa_T5,no
+guyan,15,10,zero tau_psi -> psi_e 12.5087 Hz: f ridotto,12.5087 (4.02e-11)
+guyan,15,10,zero tau_psi -> psi_e 86.9822 Hz: f ridotto,87.0032 (2.41e-04)
+guyan,15,10,zero tau_psi -> psi_e 167.613 Hz: f ridotto,169.619 (1.20e-02)
+guyan,15,10,zero tau_psi -> psi_e 1591.2 Hz: f ridotto,1597.95 (4.25e-03)
+guyan,15,10,zero tau_theta -> theta_e 16.9269 Hz: f ridotto,16.9268 (4.16e-07)
+guyan,15,10,zero tau_theta -> theta_e 504.488 Hz: f ridotto,577.35 (1.44e-01)
+guyan,15,10,zero tau_theta -> theta_e 752.186 Hz: f ridotto,834.271 (1.09e-01)
+guyan,45,0,err_dB tau_psi->psi_e,2.2147e+01
+guyan,45,0,err_dB tau_theta->theta_e,8.6690e+00
+guyan,45,0,err_deg tau_psi->psi_e,1.5676e+02
+guyan,45,0,err_deg tau_theta->theta_e,9.4700e+01
+guyan,45,0,err_rel_2x2,1.2547e+01
+guyan,45,0,passa_T5,no
+guyan,45,0,zero tau_psi -> psi_e 13.37 Hz: f ridotto,13.37 (1.90e-12)
+guyan,45,0,zero tau_psi -> psi_e 86.9824 Hz: f ridotto,87.0032 (2.39e-04)
+guyan,45,0,zero tau_psi -> psi_e 167.613 Hz: f ridotto,169.619 (1.20e-02)
+guyan,45,0,zero tau_psi -> psi_e 1591.2 Hz: f ridotto,1597.95 (4.25e-03)
+guyan,45,0,zero tau_theta -> theta_e 16.9224 Hz: f ridotto,16.9224 (3.21e-11)
+guyan,45,0,zero tau_theta -> theta_e 504.488 Hz: f ridotto,577.35 (1.44e-01)
+guyan,45,0,zero tau_theta -> theta_e 752.196 Hz: f ridotto,834.282 (1.09e-01)
+guyan,45,10,err_dB tau_psi->psi_e,2.2147e+01
+guyan,45,10,err_dB tau_theta->theta_e,8.6690e+00
+guyan,45,10,err_deg tau_psi->psi_e,1.5676e+02
+guyan,45,10,err_deg tau_theta->theta_e,9.4700e+01
+guyan,45,10,err_rel_2x2,1.2547e+01
+guyan,45,10,passa_T5,no
+guyan,45,10,zero tau_psi -> psi_e 13.37 Hz: f ridotto,13.37 (1.19e-11)
+guyan,45,10,zero tau_psi -> psi_e 86.9826 Hz: f ridotto,87.0032 (2.37e-04)
+guyan,45,10,zero tau_psi -> psi_e 167.613 Hz: f ridotto,169.619 (1.20e-02)
+guyan,45,10,zero tau_psi -> psi_e 1591.2 Hz: f ridotto,1597.95 (4.25e-03)
+guyan,45,10,zero tau_theta -> theta_e 16.9213 Hz: f ridotto,16.9224 (6.53e-05)
+guyan,45,10,zero tau_theta -> theta_e 504.488 Hz: f ridotto,577.35 (1.44e-01)
+guyan,45,10,zero tau_theta -> theta_e 752.196 Hz: f ridotto,834.282 (1.09e-01)
+flessibilita,azimut,,F_collocata_scartati_rad_Nm,7.144334e-08
+flessibilita,azimut,,F_non_collocata_scartati_rad_Nm,3.442407e-09
+flessibilita,azimut,,F_collocata_totale_rad_Nm,7.636198e-05
+flessibilita,azimut,,F_non_collocata_totale_rad_Nm,7.635454e-05
+zero_asse_isolato,azimut,,tau -> encoder completo 12.3806 Hz,puro 12.3809 (+2.25e-05); con correzione 12.3806 (+4.03e-12)
+zero_asse_isolato,azimut,,tau -> motore completo 12.3806 Hz,puro 12.3864 (+4.68e-04); con correzione 12.3806 (+2.13e-11)
+zero_asse_isolato,azimut,,tau -> motore completo 1257.06 Hz,puro 1258.03 (+7.78e-04); con correzione 1257.06 (+3.66e-07)
+flessibilita,polare,,F_collocata_scartati_rad_Nm,1.171011e-07
+flessibilita,polare,,F_non_collocata_scartati_rad_Nm,-1.503760e-13
+flessibilita,polare,,F_collocata_totale_rad_Nm,7.446519e-04
+flessibilita,polare,,F_non_collocata_totale_rad_Nm,9.360553e-05
+zero_asse_isolato,polare,,tau -> encoder completo 16.9286 Hz,puro 16.9286 (-7.30e-10); con correzione 16.9286 (-6.66e-16)
+zero_asse_isolato,polare,,tau -> encoder completo 504.488 Hz,puro 504.488 (+1.75e-07); con correzione 504.488 (+1.23e-10)
+zero_asse_isolato,polare,,tau -> motore completo 6.14222 Hz,puro 6.1427 (+7.83e-05); con correzione 6.14222 (+3.39e-12)
+zero_asse_isolato,polare,,tau -> motore completo 95.6365 Hz,puro 95.6376 (+1.15e-05); con correzione 95.6365 (+1.21e-10)
+zero_asse_isolato,polare,,tau -> motore completo 504.488 Hz,puro 504.864 (+7.45e-04); con correzione 504.488 (+2.17e-07)
+vettori_residui,azimut,,spostamento_max_modi_tenuti,3.022e-13
+vettori_residui,polare,,spostamento_max_modi_tenuti,5.047e-11
+ciclo_validazione,,,modi_aggiunti,1
+ciclo_validazione,azimut,,aggiunto modo 2,4595.13 Hz
+stati,,,modale,16
+stati,,,guyan,16

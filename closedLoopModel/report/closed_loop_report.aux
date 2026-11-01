@@ -1,0 +1,81 @@
+\relax 
+\providecommand\babel@aux[2]{}
+\@nameuse{bbl@beforestart}
+\providecommand\hyper@newdestlabel[2]{}
+\providecommand\HyField@AuxAddToFields[1]{}
+\providecommand\HyField@AuxAddToCoFields[2]{}
+\babel@aux{english}{}
+\@writefile{toc}{\contentsline {paragraph}{Purpose.}{1}{section*.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Main results.}{1}{section*.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {1}The closed-loop model}{2}{section.1}\protected@file@percent }
+\newlabel{sec:model}{{1}{2}{The closed-loop model}{section.1}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Closed loop of one axis in the model. The drive acts on the measured current and the motor on the applied voltage, so there is no algebraic loop. The feedback is the load-side encoder.}}{2}{figure.caption.4}\protected@file@percent }
+\providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
+\newlabel{fig:loop}{{1}{2}{Closed loop of one axis in the model. The drive acts on the measured current and the motor on the applied voltage, so there is no algebraic loop. The feedback is the load-side encoder}{figure.caption.4}{}}
+\@writefile{toc}{\contentsline {paragraph}{Assumptions specific to the comparison.}{2}{section*.5}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Damping sensitivity (October drive parameters, position gain $2\pi $\,\texttt  {PL.KP}): phase margin [deg] / smallest gain margin [dB] at frequency [Hz] of the loop at the current command, and largest real part of the closed-loop eigenvalues of the linearised time model [1/s].}}{3}{table.caption.6}\protected@file@percent }
+\newlabel{tab:zeta}{{1}{3}{Damping sensitivity (October drive parameters, position gain $2\pi $\,\texttt {PL.KP}): phase margin [deg] / smallest gain margin [dB] at frequency [Hz] of the loop at the current command, and largest real part of the closed-loop eigenvalues of the linearised time model [1/s]}{table.caption.6}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Elevation loop at the current command for three values of $\zeta _1$. With $\zeta _1=0.01$ the magnitude exceeds 0\,dB near 300\,Hz, where the phase crosses $-180^\circ $. The gain margin is then negative ($-5.8$\,dB) and the loop is unstable.}}{3}{figure.caption.7}\protected@file@percent }
+\newlabel{fig:zeta}{{2}{3}{Elevation loop at the current command for three values of $\zeta _1$. With $\zeta _1=0.01$ the magnitude exceeds 0\,dB near 300\,Hz, where the phase crosses $-180^\circ $. The gain margin is then negative ($-5.8$\,dB) and the loop is unstable}{figure.caption.7}{}}
+\@writefile{toc}{\contentsline {paragraph}{Checks of the implementation.}{3}{section*.8}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Controller trace (velocity feedback to current command, position loop included) of the October WorkBench exports, against the model of the drive built from the parameters of the test.}}{4}{figure.caption.9}\protected@file@percent }
+\newlabel{fig:controller}{{3}{4}{Controller trace (velocity feedback to current command, position loop included) of the October WorkBench exports, against the model of the drive built from the parameters of the test}{figure.caption.9}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {2}Measurements}{4}{section.2}\protected@file@percent }
+\newlabel{sec:data}{{2}{4}{Measurements}{section.2}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces Time sequences: campaign, file, duration [s], number of moves (azimuth / elevation), amplitudes of the moves [deg], use. The September files \texttt  {Position\_dist\_FF*.csv} are not used, at the user's request.}}{4}{table.caption.10}\protected@file@percent }
+\newlabel{tab:seq}{{2}{4}{Time sequences: campaign, file, duration [s], number of moves (azimuth / elevation), amplitudes of the moves [deg], use. The September files \texttt {Position\_dist\_FF*.csv} are not used, at the user's request}{table.caption.10}{}}
+\@writefile{toc}{\contentsline {paragraph}{Scale of the current channel.}{5}{section*.11}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Current channel against the encoder acceleration during the moves of \texttt  {MPCLucy\_pos\_dist\_dataset}, separated by the sign of the speed. The parallel lines are $a\ddot  q\pm b+c$; their vertical distance $2b$ is twice the Coulomb friction.}}{5}{figure.caption.12}\protected@file@percent }
+\newlabel{fig:scale}{{4}{5}{Current channel against the encoder acceleration during the moves of \texttt {MPCLucy\_pos\_dist\_dataset}, separated by the sign of the speed. The parallel lines are $a\ddot q\pm b+c$; their vertical distance $2b$ is twice the Coulomb friction}{figure.caption.12}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {3}{\ignorespaces Rigid-body balance of the moves: slope $a$ [units/(rad/s$^2$)], torque per unit $J/a$ [N\,m], torque per A$_\mathrm  {rms}$ with 2 units per ampere [N\,m/A] (datasheet $K_t=0.258$), Coulomb friction [N\,m], coefficient of determination.}}{5}{table.caption.13}\protected@file@percent }
+\newlabel{tab:scale}{{3}{5}{Rigid-body balance of the moves: slope $a$ [units/(rad/s$^2$)], torque per unit $J/a$ [N\,m], torque per A$_\mathrm {rms}$ with 2 units per ampere [N\,m/A] (datasheet $K_t=0.258$), Coulomb friction [N\,m], coefficient of determination}{table.caption.13}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {4}{\ignorespaces Drive parameters in the files: September (\texttt  {Validation/*\_Parameters.akd}) and October (\texttt  {VClosedLoop/Parameters\_*.akd}).}}{5}{table.caption.14}\protected@file@percent }
+\newlabel{tab:files}{{4}{5}{Drive parameters in the files: September (\texttt {Validation/*\_Parameters.akd}) and October (\texttt {VClosedLoop/Parameters\_*.akd})}{table.caption.14}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {3}Comparison method}{5}{section.3}\protected@file@percent }
+\newlabel{sec:method}{{3}{5}{Comparison method}{section.3}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {4}September sequences: why the drive gains had to be estimated}{6}{section.4}\protected@file@percent }
+\newlabel{sec:sep}{{4}{6}{September sequences: why the drive gains had to be estimated}{section.4}{}}
+\@writefile{toc}{\contentsline {paragraph}{The parameters of the files do not reproduce the sequences.}{6}{section*.15}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Estimate.}{6}{section*.16}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {5}{\ignorespaces Parameters of the model from the files and from H6 (position gain $2\pi $\,\texttt  {PL.KP}), start of the estimate, estimate, ratio.}}{6}{table.caption.17}\protected@file@percent }
+\newlabel{tab:est}{{5}{6}{Parameters of the model from the files and from H6 (position gain $2\pi $\,\texttt {PL.KP}), start of the estimate, estimate, ratio}{table.caption.17}{}}
+\@writefile{toc}{\contentsline {paragraph}{Validation on the other sequences.}{7}{section*.18}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {6}{\ignorespaces Validation on the September sequences. Median [min, max] over the moves of the fit [\%] of the position error and of the current, with the parameters of the files (.akd) and with the estimate. Last two columns: error of the held axis while the other one moves [mdeg] (only moves with the other axis at rest).}}{7}{table.caption.19}\protected@file@percent }
+\newlabel{tab:sepfit}{{6}{7}{Validation on the September sequences. Median [min, max] over the moves of the fit [\%] of the position error and of the current, with the parameters of the files (.akd) and with the estimate. Last two columns: error of the held axis while the other one moves [mdeg] (only moves with the other axis at rest)}{table.caption.19}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Median fit over the moves of each validation sequence and axis. Bars below $-100\,\%$ are cut and their value is written.}}{7}{figure.caption.20}\protected@file@percent }
+\newlabel{fig:sepfit}{{5}{7}{Median fit over the moves of each validation sequence and axis. Bars below $-100\,\%$ are cut and their value is written}{figure.caption.20}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces September validation moves: position error and current of the moving axis, measured and simulated with the parameters of the files and with the estimated parameters.}}{8}{figure.caption.21}\protected@file@percent }
+\newlabel{fig:sepmoves}{{6}{8}{September validation moves: position error and current of the moving axis, measured and simulated with the parameters of the files and with the estimated parameters}{figure.caption.21}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {5}October tests: comparison with the parameters of the tests}{8}{section.5}\protected@file@percent }
+\newlabel{sec:oct}{{5}{8}{October tests: comparison with the parameters of the tests}{section.5}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.1}Frequency responses}{8}{subsection.5.1}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces Plant (encoder velocity over current command, current loop included): September and October measurements against the model.}}{9}{figure.caption.22}\protected@file@percent }
+\newlabel{fig:bode}{{7}{9}{Plant (encoder velocity over current command, current loop included): September and October measurements against the model}{figure.caption.22}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {7}{\ignorespaces Fit [\%] of the model against the October frequency responses (complex response), per band.}}{9}{table.caption.23}\protected@file@percent }
+\newlabel{tab:bodefit}{{7}{9}{Fit [\%] of the model against the October frequency responses (complex response), per band}{table.caption.23}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {8}{\ignorespaces Margins of the WorkBench open loop, measured and model: crossover [Hz], phase margin [deg] at [Hz], gain margin [dB] at [Hz].}}{9}{table.caption.24}\protected@file@percent }
+\newlabel{tab:margins}{{8}{9}{Margins of the WorkBench open loop, measured and model: crossover [Hz], phase margin [deg] at [Hz], gain margin [dB] at [Hz]}{table.caption.24}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.2}Step tests: configurations tested and why}{9}{subsection.5.2}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {9}{\ignorespaces Variants of the comparison with the October step tests: $K_{pp}$ [1/s] (azimuth, elevation), $K_{pv}$ [A/(rad/s)] / $K_{iv}$ [Hz] (azimuth, elevation), velocity feedforward gain, Coulomb level $T_c$ [N\,m] (azimuth / elevation).}}{10}{table.caption.25}\protected@file@percent }
+\newlabel{tab:var}{{9}{10}{Variants of the comparison with the October step tests: $K_{pp}$ [1/s] (azimuth, elevation), $K_{pv}$ [A/(rad/s)] / $K_{iv}$ [Hz] (azimuth, elevation), velocity feedforward gain, Coulomb level $T_c$ [N\,m] (azimuth / elevation)}{table.caption.25}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.3}Results}{10}{subsection.5.3}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {10}{\ignorespaces Fit [\%] of the position error and of the current of the moving axis, median [min, max] over the 12\ azimuth and 14\ elevation moves of the October tests.}}{10}{table.caption.26}\protected@file@percent }
+\newlabel{tab:octfit}{{10}{10}{Fit [\%] of the position error and of the current of the moving axis, median [min, max] over the \NmovesOctAz \ azimuth and \NmovesOctEl \ elevation moves of the October tests}{table.caption.26}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {11}{\ignorespaces Peak position error of the moving axis [mdeg], median over the moves: measured and per variant.}}{10}{table.caption.27}\protected@file@percent }
+\newlabel{tab:octpeak}{{11}{10}{Peak position error of the moving axis [mdeg], median over the moves: measured and per variant}{table.caption.27}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces Median fit over the October moves for each variant, with the range over the moves. Bars below $-100\,\%$ are cut and their value is written.}}{10}{figure.caption.28}\protected@file@percent }
+\newlabel{fig:octfit}{{8}{10}{Median fit over the October moves for each variant, with the range over the moves. Bars below $-100\,\%$ are cut and their value is written}{figure.caption.28}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces October azimuth moves of 1 and 2\,deg: position error and current, measured and simulated with variants A, B, F and H.}}{11}{figure.caption.29}\protected@file@percent }
+\newlabel{fig:octaz}{{9}{11}{October azimuth moves of 1 and 2\,deg: position error and current, measured and simulated with variants A, B, F and H}{figure.caption.29}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {10}{\ignorespaces October elevation moves of 1 and 2\,deg: position error and current, measured and simulated with variants A, B, F and H.}}{11}{figure.caption.30}\protected@file@percent }
+\newlabel{fig:octel}{{10}{11}{October elevation moves of 1 and 2\,deg: position error and current, measured and simulated with variants A, B, F and H}{figure.caption.30}{}}
+\@writefile{toc}{\contentsline {paragraph}{Azimuth.}{11}{section*.31}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Elevation.}{12}{section*.32}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Coupling between the axes.}{12}{section*.33}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {11}{\ignorespaces Error of the held elevation while the azimuth moves, measured and simulated (change from the start of the window).}}{12}{figure.caption.34}\protected@file@percent }
+\newlabel{fig:held}{{11}{12}{Error of the held elevation while the azimuth moves, measured and simulated (change from the start of the window)}{figure.caption.34}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {6}Conclusions and open points}{12}{section.6}\protected@file@percent }
+\newlabel{sec:concl}{{6}{12}{Conclusions and open points}{section.6}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {A}Configurations and results}{13}{appendix.A}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {12}{\ignorespaces Configuration files (folder \texttt  {sim/gimbal\_multidof/closedLoopModel}) and results used in this report.}}{13}{table.caption.35}\protected@file@percent }
+\gdef \@abspage@last{13}

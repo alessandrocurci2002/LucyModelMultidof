@@ -1,0 +1,2693 @@
+{
+  "config": "config_vcl_study.yaml",
+  "controllers": {
+    "azimuth": {
+      "C_p": {
+        "num": [
+          62.83185307179586
+        ],
+        "den": [
+          1.0
+        ]
+      },
+      "C_v": {
+        "num": [
+          250.0,
+          1570.7963267948965
+        ],
+        "den": [
+          1.0,
+          0.0
+        ]
+      },
+      "H_fwd": {
+        "num": [
+          6.074545712830969e-13,
+          6.802420488907159e-10,
+          6.14285682274832e-06,
+          0.0005415217122935796,
+          1.0
+        ],
+        "den": [
+          7.748145041876235e-10,
+          4.0513460079638304e-08,
+          0.00013575330814992264,
+          0.0039270947948178,
+          1.0
+        ]
+      },
+      "H_AR34": {
+        "num": [
+          1.0
+        ],
+        "den": [
+          1.0
+        ]
+      },
+      "H_obs": {
+        "num": [
+          1.0
+        ],
+        "den": [
+          1.0
+        ]
+      },
+      "H_fb": {
+        "num": [
+          1.0
+        ],
+        "den": [
+          1.0
+        ]
+      },
+      "C_i": {
+        "num": [
+          5.937610115284709,
+          3647.3890708177496
+        ],
+        "den": [
+          1.0,
+          0.0
+        ]
+      },
+      "C_e": {
+        "num": [
+          12.31504320207199,
+          13868.055414963828,
+          124621965.6567163,
+          11760852156.980722,
+          20342171233905.656,
+          127380222591953.5
+        ],
+        "den": [
+          1.0,
+          52.28794745152042,
+          175207.49471805137,
+          5068432.216476479,
+          1290631492.5641186,
+          0.0
+        ]
+      },
+      "C_fb": {
+        "num": [
+          0.196,
+          233.0320002384539,
+          1997288.2406244457,
+          311801741.23236245,
+          335516562666.76526,
+          22369490441671.19,
+          127380222591953.5
+        ],
+        "den": [
+          1.0,
+          52.28794745152042,
+          175207.49471805137,
+          5068432.216476479,
+          1290631492.5641186,
+          0.0
+        ]
+      },
+      "C_WB": {
+        "num": [
+          0.196,
+          233.0320002384539,
+          1997288.2406244457,
+          311801741.23236245,
+          335516562666.76526,
+          22369490441671.19,
+          127380222591953.5
+        ],
+        "den": [
+          1.0,
+          52.28794745152042,
+          175207.49471805137,
+          5068432.216476479,
+          1290631492.5641186,
+          0.0,
+          0.0
+        ]
+      },
+      "check": {
+        "controller_dB": 0.0007902864377409955,
+        "controller_deg": 0.2466754426164622,
+        "feedback_dB": 0.0,
+        "feedback_deg": 0.0
+      }
+    },
+    "elevation": {
+      "C_p": {
+        "num": [
+          2.5132741228718345
+        ],
+        "den": [
+          1.0
+        ]
+      },
+      "C_v": {
+        "num": [
+          25.0,
+          2356.194490192345
+        ],
+        "den": [
+          1.0,
+          0.0
+        ]
+      },
+      "H_fwd": {
+        "num": [
+          2.7848259154417142e-11,
+          2.133926818765538e-09,
+          1.29174524548977e-05,
+          0.00040437145962414657,
+          1.0
+        ],
+        "den": [
+          2.7848259154417142e-11,
+          8.495316893068965e-09,
+          1.3464206324949227e-05,
+          0.0016098320063324591,
+          1.0
+        ]
+      },
+      "H_AR34": {
+        "num": [
+          1.0265982254684335e-18,
+          9.122108657727753e-14,
+          4.052846091544729e-09,
+          9.003160375552517e-05,
+          1.0
+        ],
+        "den": [
+          1.5664645774359644e-15,
+          2.2270773090155644e-11,
+          1.5831430045096595e-07,
+          0.0005626975234720322,
+          1.0
+        ]
+      },
+      "H_obs": {
+        "num": [
+          1256.6370614359173
+        ],
+        "den": [
+          1.0,
+          1256.6370614359173
+        ]
+      },
+      "H_fb": {
+        "num": [
+          1.2900613773279797e-15,
+          1.1463179817746143e-10,
+          5.092956602930811e-06,
+          0.11313704997970604,
+          1256.6370614359173
+        ],
+        "den": [
+          1.5664645774359644e-15,
+          2.423925053358823e-11,
+          1.8630057930288525e-07,
+          0.000761641140774017,
+          1.7071065623731627,
+          1256.6370614359173
+        ]
+      },
+      "C_i": {
+        "num": [
+          5.937610115284709,
+          3647.3890708177496
+        ],
+        "den": [
+          1.0,
+          0.0
+        ]
+      },
+      "C_e": {
+        "num": [
+          62.83185307179587,
+          10736.375130403238,
+          29598406.070943046,
+          3659169319.429486,
+          2342209059197.111,
+          212643907391760.12
+        ],
+        "den": [
+          1.0,
+          305.0573770504963,
+          483484.66775933484,
+          57807276.1175492,
+          35908887318.77466,
+          0.0
+        ]
+      },
+      "C_fb": {
+        "num": [
+          83.42059468636194,
+          2815972.457490174,
+          89271739044.11266,
+          1852651696830059.2,
+          2.047950845700727e+19,
+          4.359289547964899e+21,
+          9.59863857865539e+24,
+          1.2644502775067907e+27,
+          7.593120772227059e+29,
+          6.998451659500532e+31,
+          1.7058554579920358e+32
+        ],
+        "den": [
+          1.0,
+          15778.915441089042,
+          124134503.836911,
+          530036476943.19324,
+          1296538567818691.2,
+          1.377167597797813e+18,
+          8.03991688917176e+20,
+          4.683142083287759e+23,
+          8.550660175068392e+25,
+          2.880654902108254e+28,
+          0.0
+        ]
+      },
+      "C_WB": {
+        "num": [
+          25.0,
+          4334.699785303214,
+          11787567.959709778,
+          1485535618.0644662,
+          935594543134.0243,
+          86950531508631.73,
+          212643907391760.12
+        ],
+        "den": [
+          1.0,
+          305.0573770504963,
+          483484.66775933484,
+          57807276.1175492,
+          35908887318.77466,
+          0.0,
+          0.0
+        ]
+      },
+      "check": {
+        "controller_dB": 2.031310881906485e-06,
+        "controller_deg": 0.05268641014112193,
+        "feedback_dB": 0.02583710725259613,
+        "feedback_deg": 18.430610144190403
+      }
+    }
+  },
+  "plant_fit": {
+    "start": {
+      "elevation": {
+        "k_b": 116000.0,
+        "ring": 1000.0000000000016,
+        "kg_el": 164.0,
+        "eta_el": 3.11,
+        "c_{\\theta,1}": 5.053259071609039,
+        "c_{\\theta,2}": 1.0938180237648252,
+        "c_{\\theta,3}": 1.0481674955183602,
+        "c_{\\theta,4}": 12.542299404941275
+      },
+      "azimuth": {
+        "kg_az": 1418.0,
+        "eta_az": 0.32,
+        "c_{\\psi,1}": 0.3926227531469896,
+        "c_{\\psi,2}": 0.5383296855791752
+      }
+    },
+    "stages": {
+      "elevation": [
+        {
+          "stage": "A: stiffness and ground (steps 3-4)",
+          "band": [
+            1,
+            200
+          ],
+          "values": {
+            "k_b": 195107.46886617836,
+            "ring": 2.7264414700860877,
+            "kg_el": 188.42279620620573,
+            "eta_el": 2.7591213896871203
+          },
+          "cost": [
+            209.31062171973247,
+            171.2717565428603
+          ],
+          "n_eval": 20,
+          "fits": {
+            "all": 27.26992461964832,
+            "1-5 Hz": 47.58825709209464,
+            "5-100 Hz": 26.687618464569585,
+            ">100 Hz": -44.24295156775171
+          }
+        },
+        {
+          "stage": "B: dampers (step 5)",
+          "band": [
+            1,
+            200
+          ],
+          "values": {
+            "c_{\\theta,1}": 4.96439833012284,
+            "c_{\\theta,2}": 0.15921862746558654,
+            "c_{\\theta,3}": 0.9450689633731696,
+            "c_{\\theta,4}": 24.987055682976226
+          },
+          "cost": [
+            171.2717565428603,
+            167.92295214091297
+          ],
+          "n_eval": 10,
+          "fits": {
+            "all": 1.1148373256407162,
+            "1-5 Hz": 47.58782136236256,
+            "5-100 Hz": 26.700663825223327,
+            ">100 Hz": -117.00769560045762
+          }
+        },
+        {
+          "stage": "C: joint refinement",
+          "band": [
+            1,
+            200
+          ],
+          "values": {
+            "k_b": 197179.61979178208,
+            "ring": 1.9230199443460287,
+            "kg_el": 188.49929319368533,
+            "eta_el": 2.7579815813689024,
+            "c_{\\theta,1}": 5.039685119431714,
+            "c_{\\theta,2}": 0.07975334021841715,
+            "c_{\\theta,3}": 0.8986583599715091,
+            "c_{\\theta,4}": 24.601148606563704
+          },
+          "cost": [
+            167.92295214091297,
+            167.3480843501055
+          ],
+          "n_eval": 20,
+          "fits": {
+            "all": -1.1147548534835128,
+            "1-5 Hz": 47.5798155082005,
+            "5-100 Hz": 26.72748170842224,
+            ">100 Hz": -122.94770902834134
+          }
+        }
+      ],
+      "azimuth": [
+        {
+          "stage": "A: stiffness and ground (steps 3-4)",
+          "band": [
+            1,
+            20
+          ],
+          "values": {
+            "kg_az": 146.6440260249113,
+            "eta_az": 1.831158297512729
+          },
+          "cost": [
+            139.54448820915664,
+            8.32085845202229
+          ],
+          "n_eval": 17,
+          "fits": {
+            "all": -96.07440426011935,
+            "1-5 Hz": 75.25112811068678,
+            "5-100 Hz": 4.734194670054959,
+            ">100 Hz": -96.78979373702671
+          }
+        },
+        {
+          "stage": "B: dampers (step 5)",
+          "band": [
+            1,
+            300
+          ],
+          "values": {
+            "c_{\\psi,1}": 0.3696780058105166,
+            "c_{\\psi,2}": 6.57762128501114
+          },
+          "cost": [
+            32.80453427196415,
+            25.9046617441579
+          ],
+          "n_eval": 10,
+          "fits": {
+            "all": -2.9892147822402793,
+            "1-5 Hz": 75.2154988359705,
+            "5-100 Hz": 15.401846555228893,
+            ">100 Hz": -3.3385989055351173
+          }
+        },
+        {
+          "stage": "C: joint refinement",
+          "band": [
+            1,
+            300
+          ],
+          "values": {
+            "kg_az": 149.01664648630097,
+            "eta_az": 1.7622387927662015,
+            "c_{\\psi,1}": 0.3696234205543212,
+            "c_{\\psi,2}": 6.58668033054929
+          },
+          "cost": [
+            25.9046617441579,
+            25.90872470687098
+          ],
+          "n_eval": 5,
+          "fits": {
+            "all": -2.9767097755829086,
+            "1-5 Hz": 75.23354250538844,
+            "5-100 Hz": 15.417101457149872,
+            ">100 Hz": -3.32605972130402
+          }
+        }
+      ]
+    },
+    "final": {
+      "kg_az": 149.01664648630097,
+      "eta_az": 1.7622387927662015,
+      "c_{\\psi,1}": 0.3696234205543212,
+      "c_{\\psi,2}": 6.58668033054929,
+      "k_b": 197179.61979178208,
+      "ring": 1.9230199443460287,
+      "kg_el": 188.49929319368533,
+      "eta_el": 2.7579815813689024,
+      "c_{\\theta,1}": 5.039685119431714,
+      "c_{\\theta,2}": 0.07975334021841715,
+      "c_{\\theta,3}": 0.8986583599715091,
+      "c_{\\theta,4}": 24.601148606563704
+    }
+  },
+  "friction": {
+    "azimuth": [
+      1504.4166295540342,
+      0.5443991976986287,
+      0.002206695627762919
+    ],
+    "elevation": [
+      5825.642080553581,
+      0.7637082939205541,
+      0.0017285564033228287
+    ]
+  },
+  "eig_max_real": {
+    "hz": 6.495206165827381e-13,
+    "per_s": 1.1171973922416661e-13
+  },
+  "iterations": [
+    {
+      "name": "I1",
+      "label": "controller as WorkBench defines it (K_pp = 2 pi PL.KP), no feedforward",
+      "values": {
+        "azimuth": {
+          "Kpp": 62.83185307179586,
+          "Kpv": 250.0,
+          "Kiv": 1.0,
+          "kvff": 0.0,
+          "Tc": 0.5443991976986287
+        },
+        "elevation": {
+          "Kpp": 2.5132741228718345,
+          "Kpv": 25.0,
+          "Kiv": 15.0,
+          "kvff": 0.0,
+          "Tc": 0.7637082939205541
+        }
+      },
+      "identified": {},
+      "test_sequences": [
+        "MPCLucy_step_1deg",
+        "MPCLucy_1degAz_zeroAz_1degPol__zeroPol",
+        "MPCLucy_2degAz_2degPol_zeroAz_zeroPol",
+        "MPCLucy_2degPol_zeroPol_2degAz_zeroAz"
+      ],
+      "medians": {
+        "azimuth/fit_error": [
+          -6.081510522478051,
+          -8.844684340907394,
+          12.568542335213584,
+          12
+        ],
+        "azimuth/fit_current": [
+          -145.7342683820856,
+          -150.90368293158133,
+          -112.99739331447319,
+          12
+        ],
+        "azimuth/fit_position": [
+          57.57596901304874,
+          54.6359891757995,
+          70.01434784382184,
+          12
+        ],
+        "elevation/fit_error": [
+          -10.063104946583145,
+          -23.358125770324744,
+          -4.465568808014875,
+          14
+        ],
+        "elevation/fit_current": [
+          -7.774045781328976,
+          -142.81783910390348,
+          15.872416380479393,
+          14
+        ],
+        "elevation/fit_position": [
+          53.29420769712311,
+          39.81626989288694,
+          57.018794708723334,
+          14
+        ]
+      },
+      "adequate": {
+        "azimuth": false,
+        "elevation": false
+      },
+      "moves": [
+        {
+          "sequence": "MPCLucy_step_1deg",
+          "axis": "azimuth",
+          "move": 5.761,
+          "fit_error": -6.770330681343739,
+          "fit_current": -149.9541258857131,
+          "fit_position": 56.89486769452328,
+          "ok": true
+        },
+        {
+          "sequence": "MPCLucy_step_1deg",
+          "axis": "azimuth",
+          "move": 8.038,
+          "fit_error": -6.519761719918127,
+          "fit_current": -148.00617915113597,
+          "fit_position": 57.107353298927734,
+          "ok": true
+        },
+        {
+          "sequence": "MPCLucy_step_1deg",
+          "axis": "azimuth",
+          "move": 10.368,
+          "fit_error": -8.844684340907394,
+          "fit_current": -149.7906048795191,
+          "fit_position": 54.6359891757995,
+          "ok": true
+        },
+        {
+          "sequence": "MPCLucy_step_1deg",
+          "axis": "azimuth",
+          "move": 12.011,
+          "fit_error": -6.0926090192330085,
+          "fit_current": -150.90368293158133,
+          "fit_position": 57.574844169403775,
+          "ok": true
+        },
+        {
+          "sequence": "MPCLucy_step_1deg",
+          "axis": "elevation",
+          "move": 15.766,
+          "fit_error": -9.07685423870559,
+          "fit_current": -142.81783910390348,
+          "fit_position": 49.44841818892365,
+          "ok": true
+        },
+        {
+          "sequence": "MPCLucy_step_1deg",
+          "axis": "elevation",
+          "move": 18.9485,
+          "fit_error": -9.526375698357615,
+          "fit_current": 15.872416380479393,
+          "fit_position": 47.16448294061456,
+          "ok": true
+        },
+        {
+          "sequence": "MPCLucy_step_1deg",
+          "axis": "elevation",
+          "move": 20.1575,
+          "fit_error": -12.341720477542584,
+          "fit_current": -9.72882775570001,
+          "fit_position": 44.77598376050378,
+          "ok": true
+        },
+        {
+          "sequence": "MPCLucy_step_1deg",
+          "axis": "elevation",
+          "move": 21.303,
+          "fit_error": -10.599834194808677,
+          "fit_current": 9.975528408309753,
+          "fit_position": 46.21397602176513,
+          "ok": true
+        },
+        {
+          "sequence": "MPCLucy_step_1deg",
+          "axis": "elevation",
+          "move": 22.502,
+          "fit_error": -12.014236675769174,
+          "fit_current": -5.819263806957942,
+          "fit_position": 39.81626989288694,
+          "ok": true
+        },
+        {
+          "sequence": "MPCLucy_step_1deg",
+          "axis": "elevation",
+          "move": 23.325,
+          "fit_error": -6.565337994107856,
+          "fit_current": -5.496456089793722,
+          "fit_position": 52.811418144720434,
+          "ok": true
+        },
+        {
+          "sequence": "MPCLucy_1degAz_zeroAz_1degPol__zeroPol",
+          "axis": "azimuth",
+          "move": 3.5685,
+          "fit_error": -6.186282176887237,
+          "fit_current": -145.23095874778886,
+          "fit_position": 57.51291570884859,
+          "ok": true
+        },
+        {
+          "sequence": "MPCLucy_1degAz_zeroAz_1degPol__zeroPol",
+          "axis": "azimuth",
+          "move": 10.287,
+          "fit_error": -6.070412025723093,
+          "fit_current": -146.23757801638232,
+          "fit_position": 57.6017052291651,
+          "ok": true
+        },
+        {
+          "sequence": "MPCLucy_1degAz_zeroAz_1degPol__zeroPol",
+          "axis": "azimuth",
+          "move": 27.9445,
+          "fit_error": -6.241602076222086,
+          "fit_current": -149.9987488756223,
+          "fit_position": 57.53263494377392,
+          "ok": true
+        },
+        {
+          "sequence": "MPCLucy_1degAz_zeroAz_1degPol__zeroPol",
+          "axis": "azimuth",
+          "move": 33.2995,
+          "fit_error": -6.067457733904336,
+          "fit_current": -144.55599189590717,
+          "fit_position": 57.57709385669371,
+          "ok": true
+        },
+        {
+          "sequence": "MPCLucy_1degAz_zeroAz_1degPol__zeroPol",
+          "axis": "elevation",
+          "move": 16.9995,
+          "fit_error": -5.957473088613097,
+          "fit_current": -24.904842951708716,
+          "fit_position": 53.29494738524252,
+          "ok": true
+        },
+        {
+          "sequence": "MPCLucy_1degAz_zeroAz_1degPol__zeroPol",
+          "axis": "elevation",
+          "move": 21.8735,
+          "fit_error": -4.465568808014875,
+          "fit_current": 0.5058168154875697,
+          "fit_position": 53.878727420353144,
+          "ok": true
+        },
+        {
+          "sequence": "MPCLucy_1degAz_zeroAz_1degPol__zeroPol",
+          "axis": "elevation",
+          "move": 37.854,
+          "fit_error": -6.179404583601977,
+          "fit_current": -26.17426147022124,
+          "fit_position": 53.293468009003696,
+          "ok": true
+        },
+        {
+          "sequence": "MPCLucy_1degAz_zeroAz_1degPol__zeroPol",
+          "axis": "elevation",
+          "move": 58.7535,
+          "fit_error": -5.093615702977083,
+          "fit_current": -3.7225259878145733,
+          "fit_position": 53.85764349008335,
+          "ok": true
+        },
+        {
+          "sequence": "MPCLucy_2degAz_2degPol_zeroAz_zeroPol",
+          "axis": "azimuth",
+          "move": 18.3095,
+          "fit_error": 12.521325563538333,
+          "fit_current": -118.92559222410455,
+          "fit_position": 69.98034120457966,
+          "ok": true
+        },
+        {
+          "sequence": "MPCLucy_2degAz_2degPol_zeroAz_zeroPol",
+          "axis": "azimuth",
+          "move": 37.7035,
+          "fit_error": 12.565003779915395,
+          "fit_current": -114.42739428787729,
+          "fit_position": 70.01434784382184,
+          "ok": true
+        },
+        {
+          "sequence": "MPCLucy_2degAz_2degPol_zeroAz_zeroPol",
+          "axis": "elevation",
+          "move": 23.556,
+          "fit_error": -23.358125770324744,
+          "fit_current": -65.36662542676348,
+          "fit_position": 56.63571975102888,
+          "ok": true
+        },
+        {
+          "sequence": "MPCLucy_2degAz_2degPol_zeroAz_zeroPol",
+          "axis": "elevation",
+          "move": 40.7915,
+          "fit_error": -20.978751383748385,
+          "fit_current": -14.439546171682437,
+          "fit_position": 57.018794708723334,
+          "ok": true
+        },
+        {
+          "sequence": "MPCLucy_2degPol_zeroPol_2degAz_zeroAz",
+          "axis": "azimuth",
+          "move": 19.945,
+          "fit_error": 12.525456622165098,
+          "fit_current": -116.14235769761567,
+          "fit_position": 69.98608265913879,
+          "ok": true
+        },
+        {
+          "sequence": "MPCLucy_2degPol_zeroPol_2degAz_zeroAz",
+          "axis": "azimuth",
+          "move": 22.945,
+          "fit_error": 12.568542335213584,
+          "fit_current": -112.99739331447319,
+          "fit_position": 70.00777932139034,
+          "ok": true
+        },
+        {
+          "sequence": "MPCLucy_2degPol_zeroPol_2degAz_zeroAz",
+          "axis": "elevation",
+          "move": 8.19,
+          "fit_error": -20.04224656190834,
+          "fit_current": -21.654433818575637,
+          "fit_position": 56.7820599871115,
+          "ok": true
+        },
+        {
+          "sequence": "MPCLucy_2degPol_zeroPol_2degAz_zeroAz",
+          "axis": "elevation",
+          "move": 14.1695,
+          "fit_error": -18.503029412257433,
+          "fit_current": 3.7558798402180016,
+          "fit_position": 56.92654487010622,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "name": "I2",
+      "label": "PL.KP in 1/s, the unit of the AKD position loop ((velocity unit)/(position unit))",
+      "values": {
+        "azimuth": {
+          "Kpp": 10.0,
+          "Kpv": 250.0,
+          "Kiv": 1.0,
+          "kvff": 0.0,
+          "Tc": 0.5443991976986287
+        },
+        "elevation": {
+          "Kpp": 0.4,
+          "Kpv": 25.0,
+          "Kiv": 15.0,
+          "kvff": 0.0,
+          "Tc": 0.7637082939205541
+        }
+      },
+      "identified": {},
+      "test_sequences": [
+        "MPCLucy_step_1deg",
+        "MPCLucy_1degAz_zeroAz_1degPol__zeroPol",
+        "MPCLucy_2degAz_2degPol_zeroAz_zeroPol",
+        "MPCLucy_2degPol_zeroPol_2degAz_zeroAz"
+      ],
+      "medians": {
+        "azimuth/fit_error": [
+          70.58948071456345,
+          70.0503684229331,
+          70.99201167938953,
+          12
+        ],
+        "azimuth/fit_current": [
+          -5.33303885305042,
+          -10.277676574352125,
+          12.706810927104872,
+          12
+        ],
+        "azimuth/fit_position": [
+          88.37118578768352,
+          87.61099749575459,
+          89.87521289160655,
+          12
+        ],
+        "elevation/fit_error": [
+          -277.86866427440407,
+          -334.1387452870837,
+          -156.53712531716738,
+          14
+        ],
+        "elevation/fit_current": [
+          -24.82628258183263,
+          -141.08902421723982,
+          -8.107100335289097,
+          14
+        ],
+        "elevation/fit_position": [
+          -54.52513154580614,
+          -74.47447040829691,
+          -37.83391799770099,
+          14
+        ]
+      },
+      "adequate": {
+        "azimuth": false,
+        "elevation": false
+      },
+      "moves": [
+        {
+          "sequence": "MPCLucy_step_1deg",
+          "axis": "azimuth",
+          "move": 5.761,
+          "fit_error": 70.99201167938953,
+          "fit_current": -10.277676574352125,
+          "fit_position": 88.2889453793354,
+          "ok": true
+        },
+        {
+          "sequence": "MPCLucy_step_1deg",
+          "axis": "azimuth",
+          "move": 8.038,
+          "fit_error": 70.66630126383802,
+          "fit_current": -3.1895842087907633,
+          "fit_position": 88.18810748343408,
+          "ok": true
+        },
+        {
+          "sequence": "MPCLucy_step_1deg",
+          "axis": "azimuth",
+          "move": 10.368,
+          "fit_error": 70.2742980090745,
+          "fit_current": -5.938612845086566,
+          "fit_position": 87.61099749575459,
+          "ok": true
+        },
+        {
+          "sequence": "MPCLucy_step_1deg",
+          "axis": "azimuth",
+          "move": 12.011,
+          "fit_error": 70.75988353874949,
+          "fit_current": -4.727464861014274,
+          "fit_position": 88.30722979818087,
+          "ok": true
+        },
+        {
+          "sequence": "MPCLucy_step_1deg",
+          "axis": "elevation",
+          "move": 15.766,
+          "fit_error": -276.46945348268486,
+          "fit_current": -141.08902421723982,
+          "fit_position": -74.47447040829691,
+          "ok": true
+        },
+        {
+          "sequence": "MPCLucy_step_1deg",
+          "axis": "elevation",
+          "move": 18.9485,
+          "fit_error": -208.68295949929623,
+          "fit_current": -8.107100335289097,
+          "fit_position": -48.90864112479907,
+          "ok": true
+        },
+        {
+          "sequence": "MPCLucy_step_1deg",
+          "axis": "elevation",
+          "move": 20.1575,
+          "fit_error": -201.83395316291498,
+          "fit_current": -20.624363781571176,
+          "fit_position": -48.373044851420424,
+          "ok": true
+        },
+        {
+          "sequence": "MPCLucy_step_1deg",
+          "axis": "elevation",
+          "move": 21.303,
+          "fit_error": -204.54089283844695,
+          "fit_current": -9.784404115457956,
+          "fit_position": -48.101883549935856,
+          "ok": true
+        },
+        {
+          "sequence": "MPCLucy_step_1deg",
+          "axis": "elevation",
+          "move": 22.502,
+          "fit_error": -156.53712531716738,
+          "fit_current": -17.454362461242567,
+          "fit_position": -37.83391799770099,
+          "ok": true
+        },
+        {
+          "sequence": "MPCLucy_step_1deg",
+          "axis": "elevation",
+          "move": 23.325,
+          "fit_error": -271.88235783134587,
+          "fit_current": -20.91047427882988,
+          "fit_position": -64.67456879861923,
+          "ok": true
+        },
+        {
+          "sequence": "MPCLucy_1degAz_zeroAz_1degPol__zeroPol",
+          "axis": "azimuth",
+          "move": 3.5685,
+          "fit_error": 70.94674850986856,
+          "fit_current": -8.543573263300352,
+          "fit_position": 88.37525978226672,
+          "ok": true
+        },
+        {
+          "sequence": "MPCLucy_1degAz_zeroAz_1degPol__zeroPol",
+          "axis": "azimuth",
+          "move": 10.287,
+          "fit_error": 70.89729075604684,
+          "fit_current": -9.374045561167632,
+          "fit_position": 88.36711179310029,
+          "ok": true
+        },
+        {
+          "sequence": "MPCLucy_1degAz_zeroAz_1degPol__zeroPol",
+          "axis": "azimuth",
+          "move": 27.9445,
+          "fit_error": 70.51266016528886,
+          "fit_current": -9.255476575776633,
+          "fit_position": 88.21318955262686,
+          "ok": true
+        },
+        {
+          "sequence": "MPCLucy_1degAz_zeroAz_1degPol__zeroPol",
+          "axis": "azimuth",
+          "move": 33.2995,
+          "fit_error": 70.99088061045629,
+          "fit_current": -9.173596370137528,
+          "fit_position": 88.39746727738151,
+          "ok": true
+        },
+        {
+          "sequence": "MPCLucy_1degAz_zeroAz_1degPol__zeroPol",
+          "axis": "elevation",
+          "move": 16.9995,
+          "fit_error": -280.3348890399875,
+          "fit_current": -37.48057909007094,
+          "fit_position": -67.64802411798505,
+          "ok": true
+        },
+        {
+          "sequence": "MPCLucy_1degAz_zeroAz_1degPol__zeroPol",
+          "axis": "elevation",
+          "move": 21.8735,
+          "fit_error": -277.3141963685346,
+          "fit_current": -17.619287771532033,
+          "fit_position": -66.58322064818398,
+          "ok": true
+        },
+        {
+          "sequence": "MPCLucy_1degAz_zeroAz_1degPol__zeroPol",
+          "axis": "elevation",
+          "move": 37.854,
+          "fit_error": -280.80679308986186,
+          "fit_current": -38.3131484503358,
+          "fit_position": -67.51049540719671,
+          "ok": true
+        },
+        {
+          "sequence": "MPCLucy_1degAz_zeroAz_1degPol__zeroPol",
+          "axis": "elevation",
+          "move": 58.7535,
+          "fit_error": -278.42313218027357,
+          "fit_current": -22.067870197203867,
+          "fit_position": -66.15029333477247,
+          "ok": true
+        },
+        {
+          "sequence": "MPCLucy_2degAz_2degPol_zeroAz_zeroPol",
+          "axis": "azimuth",
+          "move": 18.3095,
+          "fit_error": 70.0503684229331,
+          "fit_current": 11.533863415380363,
+          "fit_position": 89.72232116245519,
+          "ok": true
+        },
+        {
+          "sequence": "MPCLucy_2degAz_2degPol_zeroAz_zeroPol",
+          "axis": "azimuth",
+          "move": 37.7035,
+          "fit_error": 70.27801393650567,
+          "fit_current": 9.887683204699604,
+          "fit_position": 89.80690599851606,
+          "ok": true
+        },
+        {
+          "sequence": "MPCLucy_2degAz_2degPol_zeroAz_zeroPol",
+          "axis": "elevation",
+          "move": 23.556,
+          "fit_error": -334.1387452870837,
+          "fit_current": -78.1645225673748,
+          "fit_position": -52.6134910043732,
+          "ok": true
+        },
+        {
+          "sequence": "MPCLucy_2degAz_2degPol_zeroAz_zeroPol",
+          "axis": "elevation",
+          "move": 40.7915,
+          "fit_error": -330.54099244300954,
+          "fit_current": -38.38064920408182,
+          "fit_position": -52.96215716265753,
+          "ok": true
+        },
+        {
+          "sequence": "MPCLucy_2degPol_zeroPol_2degAz_zeroAz",
+          "axis": "azimuth",
+          "move": 19.945,
+          "fit_error": 70.05949587987426,
+          "fit_current": 12.706810927104872,
+          "fit_position": 89.72693333277952,
+          "ok": true
+        },
+        {
+          "sequence": "MPCLucy_2degPol_zeroPol_2degAz_zeroAz",
+          "axis": "azimuth",
+          "move": 22.945,
+          "fit_error": 70.48484989096468,
+          "fit_current": 10.277059903840769,
+          "fit_position": 89.87521289160655,
+          "ok": true
+        },
+        {
+          "sequence": "MPCLucy_2degPol_zeroPol_2degAz_zeroAz",
+          "axis": "elevation",
+          "move": 8.19,
+          "fit_error": -328.9701624021862,
+          "fit_current": -45.55561668397014,
+          "fit_position": -54.43901857048017,
+          "ok": true
+        },
+        {
+          "sequence": "MPCLucy_2degPol_zeroPol_2degAz_zeroAz",
+          "axis": "elevation",
+          "move": 14.1695,
+          "fit_error": -325.3640856462825,
+          "fit_current": -27.584694966461388,
+          "fit_position": -54.61124452113211,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "name": "I3",
+      "label": "gains of the axes not reproduced, identified within the AKD2G structure on half of the sequences",
+      "values": {
+        "azimuth": {
+          "Kpp": 9.718827730346318,
+          "Kpv": 124.68262073567138,
+          "Kiv": 0.24964677340056243,
+          "kvff": 0.0,
+          "Tc": 0.5443991976986287
+        },
+        "elevation": {
+          "Kpp": 20.965026595811256,
+          "Kpv": 36.03545061545735,
+          "Kiv": 0.15008977742141144,
+          "kvff": 0.0,
+          "Tc": 0.7637082939205541
+        }
+      },
+      "identified": {
+        "azimuth": {
+          "grid": {
+            "points": [
+              {
+                "Kpp": 5.0,
+                "Kpv": 60.0,
+                "Kiv": 0.1
+              },
+              {
+                "Kpp": 5.0,
+                "Kpv": 125.0,
+                "Kiv": 0.1
+              },
+              {
+                "Kpp": 5.0,
+                "Kpv": 250.0,
+                "Kiv": 0.1
+              },
+              {
+                "Kpp": 10.0,
+                "Kpv": 60.0,
+                "Kiv": 0.1
+              },
+              {
+                "Kpp": 10.0,
+                "Kpv": 125.0,
+                "Kiv": 0.1
+              },
+              {
+                "Kpp": 10.0,
+                "Kpv": 250.0,
+                "Kiv": 0.1
+              },
+              {
+                "Kpp": 20.0,
+                "Kpv": 60.0,
+                "Kiv": 0.1
+              },
+              {
+                "Kpp": 20.0,
+                "Kpv": 125.0,
+                "Kiv": 0.1
+              },
+              {
+                "Kpp": 20.0,
+                "Kpv": 250.0,
+                "Kiv": 0.1
+              },
+              {
+                "Kpp": 5.0,
+                "Kpv": 60.0,
+                "Kiv": 0.3
+              },
+              {
+                "Kpp": 5.0,
+                "Kpv": 125.0,
+                "Kiv": 0.3
+              },
+              {
+                "Kpp": 5.0,
+                "Kpv": 250.0,
+                "Kiv": 0.3
+              },
+              {
+                "Kpp": 10.0,
+                "Kpv": 60.0,
+                "Kiv": 0.3
+              },
+              {
+                "Kpp": 10.0,
+                "Kpv": 125.0,
+                "Kiv": 0.3
+              },
+              {
+                "Kpp": 10.0,
+                "Kpv": 250.0,
+                "Kiv": 0.3
+              },
+              {
+                "Kpp": 20.0,
+                "Kpv": 60.0,
+                "Kiv": 0.3
+              },
+              {
+                "Kpp": 20.0,
+                "Kpv": 125.0,
+                "Kiv": 0.3
+              },
+              {
+                "Kpp": 20.0,
+                "Kpv": 250.0,
+                "Kiv": 0.3
+              },
+              {
+                "Kpp": 5.0,
+                "Kpv": 60.0,
+                "Kiv": 1.0
+              },
+              {
+                "Kpp": 5.0,
+                "Kpv": 125.0,
+                "Kiv": 1.0
+              },
+              {
+                "Kpp": 5.0,
+                "Kpv": 250.0,
+                "Kiv": 1.0
+              },
+              {
+                "Kpp": 10.0,
+                "Kpv": 60.0,
+                "Kiv": 1.0
+              },
+              {
+                "Kpp": 10.0,
+                "Kpv": 125.0,
+                "Kiv": 1.0
+              },
+              {
+                "Kpp": 10.0,
+                "Kpv": 250.0,
+                "Kiv": 1.0
+              },
+              {
+                "Kpp": 20.0,
+                "Kpv": 60.0,
+                "Kiv": 1.0
+              },
+              {
+                "Kpp": 20.0,
+                "Kpv": 125.0,
+                "Kiv": 1.0
+              },
+              {
+                "Kpp": 20.0,
+                "Kpv": 250.0,
+                "Kiv": 1.0
+              }
+            ],
+            "costs": [
+              42.37055375229712,
+              18.729270383256374,
+              11.858746070220779,
+              8.470966764512452,
+              5.646959587430631,
+              8.401901511706258,
+              10.510462895357051,
+              17.270841203368626,
+              15.888277519118585,
+              24.170362085796018,
+              13.833329388036521,
+              10.307040183421257,
+              10.362938493985887,
+              5.753555516899378,
+              8.514237403432297,
+              11.137109246458841,
+              18.34434941545985,
+              16.126030756869138,
+              13.819816356431495,
+              10.722687138441435,
+              9.169718113024913,
+              12.172212865768499,
+              12.165925590596718,
+              9.944273263619309,
+              28.452225640942817,
+              26.00122040347943,
+              17.710534994967873
+            ]
+          },
+          "start": {
+            "Kpp": 10.0,
+            "Kpv": 125.0,
+            "Kiv": 0.1
+          },
+          "values": {
+            "Kpp": 9.718827730346318,
+            "Kpv": 124.68262073567138,
+            "Kiv": 0.24964677340056243
+          },
+          "cost": [
+            5.646959214755329,
+            5.442454769496484
+          ],
+          "windows": [
+            "MPCLucy_step_1deg azimuth move at 5.76 s (window 5.46-7.99 s)",
+            "MPCLucy_step_1deg azimuth move at 8.04 s (window 7.74-10.32 s)",
+            "MPCLucy_step_1deg azimuth move at 10.37 s (window 10.07-11.96 s)",
+            "MPCLucy_step_1deg azimuth move at 12.01 s (window 11.71-14.51 s)",
+            "MPCLucy_1degAz_zeroAz_1degPol__zeroPol azimuth move at 3.57 s (window 3.27-6.07 s)",
+            "MPCLucy_1degAz_zeroAz_1degPol__zeroPol azimuth move at 10.29 s (window 9.99-12.79 s)",
+            "MPCLucy_1degAz_zeroAz_1degPol__zeroPol azimuth move at 27.94 s (window 27.64-30.44 s)",
+            "MPCLucy_1degAz_zeroAz_1degPol__zeroPol azimuth move at 33.30 s (window 33.00-35.80 s)"
+          ]
+        },
+        "elevation": {
+          "grid": {
+            "points": [
+              {
+                "Kpp": 2.0,
+                "Kpv": 15.0,
+                "Kiv": 0.3
+              },
+              {
+                "Kpp": 2.0,
+                "Kpv": 30.0,
+                "Kiv": 0.3
+              },
+              {
+                "Kpp": 2.0,
+                "Kpv": 60.0,
+                "Kiv": 0.3
+              },
+              {
+                "Kpp": 2.0,
+                "Kpv": 120.0,
+                "Kiv": 0.3
+              },
+              {
+                "Kpp": 4.0,
+                "Kpv": 15.0,
+                "Kiv": 0.3
+              },
+              {
+                "Kpp": 4.0,
+                "Kpv": 30.0,
+                "Kiv": 0.3
+              },
+              {
+                "Kpp": 4.0,
+                "Kpv": 60.0,
+                "Kiv": 0.3
+              },
+              {
+                "Kpp": 4.0,
+                "Kpv": 120.0,
+                "Kiv": 0.3
+              },
+              {
+                "Kpp": 8.0,
+                "Kpv": 15.0,
+                "Kiv": 0.3
+              },
+              {
+                "Kpp": 8.0,
+                "Kpv": 30.0,
+                "Kiv": 0.3
+              },
+              {
+                "Kpp": 8.0,
+                "Kpv": 60.0,
+                "Kiv": 0.3
+              },
+              {
+                "Kpp": 8.0,
+                "Kpv": 120.0,
+                "Kiv": 0.3
+              },
+              {
+                "Kpp": 16.0,
+                "Kpv": 15.0,
+                "Kiv": 0.3
+              },
+              {
+                "Kpp": 16.0,
+                "Kpv": 30.0,
+                "Kiv": 0.3
+              },
+              {
+                "Kpp": 16.0,
+                "Kpv": 60.0,
+                "Kiv": 0.3
+              },
+              {
+                "Kpp": 16.0,
+                "Kpv": 120.0,
+                "Kiv": 0.3
+              },
+              {
+                "Kpp": 2.0,
+                "Kpv": 15.0,
+                "Kiv": 1.5
+              },
+              {
+                "Kpp": 2.0,
+                "Kpv": 30.0,
+                "Kiv": 1.5
+              },
+              {
+                "Kpp": 2.0,
+                "Kpv": 60.0,
+                "Kiv": 1.5
+              },
+              {
+                "Kpp": 2.0,
+                "Kpv": 120.0,
+                "Kiv": 1.5
+              },
+              {
+                "Kpp": 4.0,
+                "Kpv": 15.0,
+                "Kiv": 1.5
+              },
+              {
+                "Kpp": 4.0,
+                "Kpv": 30.0,
+                "Kiv": 1.5
+              },
+              {
+                "Kpp": 4.0,
+                "Kpv": 60.0,
+                "Kiv": 1.5
+              },
+              {
+                "Kpp": 4.0,
+                "Kpv": 120.0,
+                "Kiv": 1.5
+              },
+              {
+                "Kpp": 8.0,
+                "Kpv": 15.0,
+                "Kiv": 1.5
+              },
+              {
+                "Kpp": 8.0,
+                "Kpv": 30.0,
+                "Kiv": 1.5
+              },
+              {
+                "Kpp": 8.0,
+                "Kpv": 60.0,
+                "Kiv": 1.5
+              },
+              {
+                "Kpp": 8.0,
+                "Kpv": 120.0,
+                "Kiv": 1.5
+              },
+              {
+                "Kpp": 16.0,
+                "Kpv": 15.0,
+                "Kiv": 1.5
+              },
+              {
+                "Kpp": 16.0,
+                "Kpv": 30.0,
+                "Kiv": 1.5
+              },
+              {
+                "Kpp": 16.0,
+                "Kpv": 60.0,
+                "Kiv": 1.5
+              },
+              {
+                "Kpp": 16.0,
+                "Kpv": 120.0,
+                "Kiv": 1.5
+              },
+              {
+                "Kpp": 2.0,
+                "Kpv": 15.0,
+                "Kiv": 15.0
+              },
+              {
+                "Kpp": 2.0,
+                "Kpv": 30.0,
+                "Kiv": 15.0
+              },
+              {
+                "Kpp": 2.0,
+                "Kpv": 60.0,
+                "Kiv": 15.0
+              },
+              {
+                "Kpp": 2.0,
+                "Kpv": 120.0,
+                "Kiv": 15.0
+              },
+              {
+                "Kpp": 4.0,
+                "Kpv": 15.0,
+                "Kiv": 15.0
+              },
+              {
+                "Kpp": 4.0,
+                "Kpv": 30.0,
+                "Kiv": 15.0
+              },
+              {
+                "Kpp": 4.0,
+                "Kpv": 60.0,
+                "Kiv": 15.0
+              },
+              {
+                "Kpp": 4.0,
+                "Kpv": 120.0,
+                "Kiv": 15.0
+              },
+              {
+                "Kpp": 8.0,
+                "Kpv": 15.0,
+                "Kiv": 15.0
+              },
+              {
+                "Kpp": 8.0,
+                "Kpv": 30.0,
+                "Kiv": 15.0
+              },
+              {
+                "Kpp": 8.0,
+                "Kpv": 60.0,
+                "Kiv": 15.0
+              },
+              {
+                "Kpp": 8.0,
+                "Kpv": 120.0,
+                "Kiv": 15.0
+              },
+              {
+                "Kpp": 16.0,
+                "Kpv": 15.0,
+                "Kiv": 15.0
+              },
+              {
+                "Kpp": 16.0,
+                "Kpv": 30.0,
+                "Kiv": 15.0
+              },
+              {
+                "Kpp": 16.0,
+                "Kpv": 60.0,
+                "Kiv": 15.0
+              },
+              {
+                "Kpp": 16.0,
+                "Kpv": 120.0,
+                "Kiv": 15.0
+              }
+            ],
+            "costs": [
+              227.65460462764676,
+              209.2848034462836,
+              135.80549175534304,
+              80.70697097982779,
+              205.4644697486766,
+              122.669046397747,
+              62.41964475192414,
+              32.967762409155064,
+              114.99399403465114,
+              51.384585663567414,
+              22.786994662264213,
+              17.9408166810508,
+              45.18534005524995,
+              15.438659092488976,
+              11.634519404871513,
+              25.228571950895024,
+              130.99016531093224,
+              84.23448764286852,
+              57.9925341312667,
+              42.376563105860875,
+              70.40676499860172,
+              43.86134377629098,
+              27.320074507562214,
+              20.93531305353454,
+              79.07541772040682,
+              35.04252125746933,
+              14.057621292835536,
+              16.987835105025887,
+              58.96811434540545,
+              53.009807833021064,
+              90.70651699858666,
+              27.48673545425471,
+              43.37063344036998,
+              34.205083849022124,
+              32.878876109533046,
+              32.70098873905299,
+              18.011149073133147,
+              15.617097555006762,
+              23.962326614147468,
+              22.447623629401303,
+              33.69356943489701,
+              20.113214023240694,
+              31.579421283955607,
+              26.121459512873322,
+              1102.3095296187148,
+              634.4431397733553,
+              60.705067517044704,
+              36.16270078032708
+            ]
+          },
+          "start": {
+            "Kpp": 16.0,
+            "Kpv": 60.0,
+            "Kiv": 0.3
+          },
+          "values": {
+            "Kpp": 20.965026595811256,
+            "Kpv": 36.03545061545735,
+            "Kiv": 0.15008977742141144
+          },
+          "cost": [
+            11.6347098513882,
+            8.225634253405072
+          ],
+          "windows": [
+            "MPCLucy_step_1deg elevation move at 15.77 s (window 15.47-18.27 s)",
+            "MPCLucy_step_1deg elevation move at 18.95 s (window 18.65-20.11 s)",
+            "MPCLucy_step_1deg elevation move at 20.16 s (window 19.86-21.25 s)",
+            "MPCLucy_step_1deg elevation move at 21.30 s (window 21.00-22.45 s)",
+            "MPCLucy_step_1deg elevation move at 22.50 s (window 22.20-23.27 s)",
+            "MPCLucy_step_1deg elevation move at 23.32 s (window 23.02-25.82 s)",
+            "MPCLucy_1degAz_zeroAz_1degPol__zeroPol elevation move at 17.00 s (window 16.70-19.50 s)",
+            "MPCLucy_1degAz_zeroAz_1degPol__zeroPol elevation move at 21.87 s (window 21.57-24.37 s)",
+            "MPCLucy_1degAz_zeroAz_1degPol__zeroPol elevation move at 37.85 s (window 37.55-40.35 s)",
+            "MPCLucy_1degAz_zeroAz_1degPol__zeroPol elevation move at 58.75 s (window 58.45-61.25 s)"
+          ]
+        }
+      },
+      "test_sequences": [
+        "MPCLucy_2degAz_2degPol_zeroAz_zeroPol",
+        "MPCLucy_2degPol_zeroPol_2degAz_zeroAz"
+      ],
+      "medians": {
+        "azimuth/fit_error": [
+          84.45020038985456,
+          83.86717430709305,
+          86.30815012286007,
+          4
+        ],
+        "azimuth/fit_current": [
+          4.5167920014317575,
+          0.9148856127360494,
+          10.480452119429206,
+          4
+        ],
+        "azimuth/fit_position": [
+          94.665481984232,
+          94.46456902632859,
+          95.30318956149615,
+          4
+        ],
+        "elevation/fit_error": [
+          43.45500442885546,
+          30.90804846384222,
+          53.811395227313255,
+          4
+        ],
+        "elevation/fit_current": [
+          -198.2208195757193,
+          -264.32228244936505,
+          -145.63260490011828,
+          4
+        ],
+        "elevation/fit_position": [
+          79.79214084484289,
+          75.71199521188709,
+          83.21137607151388,
+          4
+        ]
+      },
+      "adequate": {
+        "azimuth": false,
+        "elevation": false
+      },
+      "moves": [
+        {
+          "sequence": "MPCLucy_2degAz_2degPol_zeroAz_zeroPol",
+          "axis": "azimuth",
+          "move": 18.3095,
+          "fit_error": 83.94341493234869,
+          "fit_current": 0.9148856127360494,
+          "fit_position": 94.48993473831575,
+          "ok": true
+        },
+        {
+          "sequence": "MPCLucy_2degAz_2degPol_zeroAz_zeroPol",
+          "axis": "azimuth",
+          "move": 37.7035,
+          "fit_error": 84.95698584736044,
+          "fit_current": 7.691180637178063,
+          "fit_position": 94.84102923014824,
+          "ok": true
+        },
+        {
+          "sequence": "MPCLucy_2degAz_2degPol_zeroAz_zeroPol",
+          "axis": "elevation",
+          "move": 23.556,
+          "fit_error": 30.90804846384222,
+          "fit_current": -264.32228244936505,
+          "fit_position": 75.71199521188709,
+          "ok": true
+        },
+        {
+          "sequence": "MPCLucy_2degAz_2degPol_zeroAz_zeroPol",
+          "axis": "elevation",
+          "move": 40.7915,
+          "fit_error": 36.917193975173745,
+          "fit_current": -225.65596832633744,
+          "fit_position": 77.58800611603046,
+          "ok": true
+        },
+        {
+          "sequence": "MPCLucy_2degPol_zeroPol_2degAz_zeroAz",
+          "axis": "azimuth",
+          "move": 19.945,
+          "fit_error": 83.86717430709305,
+          "fit_current": 1.3424033656854517,
+          "fit_position": 94.46456902632859,
+          "ok": true
+        },
+        {
+          "sequence": "MPCLucy_2degPol_zeroPol_2degAz_zeroAz",
+          "axis": "azimuth",
+          "move": 22.945,
+          "fit_error": 86.30815012286007,
+          "fit_current": 10.480452119429206,
+          "fit_position": 95.30318956149615,
+          "ok": true
+        },
+        {
+          "sequence": "MPCLucy_2degPol_zeroPol_2degAz_zeroAz",
+          "axis": "elevation",
+          "move": 8.19,
+          "fit_error": 49.99281488253718,
+          "fit_current": -170.78567082510114,
+          "fit_position": 81.99627557365532,
+          "ok": true
+        },
+        {
+          "sequence": "MPCLucy_2degPol_zeroPol_2degAz_zeroAz",
+          "axis": "elevation",
+          "move": 14.1695,
+          "fit_error": 53.811395227313255,
+          "fit_current": -145.63260490011828,
+          "fit_position": 83.21137607151388,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "name": "I4",
+      "label": "as I3, with the ground spring in the time domain (Coulomb level Tc of the Dahl friction) fitted with the gains",
+      "values": {
+        "azimuth": {
+          "Kpp": 6.967931988639867,
+          "Kpv": 378.5691206316566,
+          "Kiv": 0.27974084882007366,
+          "kvff": 0.0,
+          "Tc": 0.17146569734229636
+        },
+        "elevation": {
+          "Kpp": 17.280683670631365,
+          "Kpv": 29.016657555094213,
+          "Kiv": 0.12739962964786625,
+          "kvff": 0.0,
+          "Tc": 0.09543938035630935
+        }
+      },
+      "identified": {
+        "azimuth": {
+          "grid": {
+            "points": [],
+            "costs": []
+          },
+          "start": {
+            "Kpp": 9.718827730346318,
+            "Kpv": 124.68262073567138,
+            "Kiv": 0.24964677340056243,
+            "Tc": 0.1725693661887015
+          },
+          "values": {
+            "Kpp": 6.967931988639867,
+            "Kpv": 378.5691206316566,
+            "Kiv": 0.27974084882007366,
+            "Tc": 0.17146569734229636
+          },
+          "cost": [
+            6.827810612558331,
+            4.606635618686402
+          ],
+          "windows": [
+            "MPCLucy_step_1deg azimuth move at 5.76 s (window 5.46-7.99 s)",
+            "MPCLucy_step_1deg azimuth move at 8.04 s (window 7.74-10.32 s)",
+            "MPCLucy_step_1deg azimuth move at 10.37 s (window 10.07-11.96 s)",
+            "MPCLucy_step_1deg azimuth move at 12.01 s (window 11.71-14.51 s)",
+            "MPCLucy_1degAz_zeroAz_1degPol__zeroPol azimuth move at 3.57 s (window 3.27-6.07 s)",
+            "MPCLucy_1degAz_zeroAz_1degPol__zeroPol azimuth move at 10.29 s (window 9.99-12.79 s)",
+            "MPCLucy_1degAz_zeroAz_1degPol__zeroPol azimuth move at 27.94 s (window 27.64-30.44 s)",
+            "MPCLucy_1degAz_zeroAz_1degPol__zeroPol azimuth move at 33.30 s (window 33.00-35.80 s)"
+          ]
+        },
+        "elevation": {
+          "grid": {
+            "points": [],
+            "costs": []
+          },
+          "start": {
+            "Kpp": 20.965026595811256,
+            "Kpv": 36.03545061545735,
+            "Kiv": 0.15008977742141144,
+            "Tc": 0.3378814382503311
+          },
+          "values": {
+            "Kpp": 17.280683670631365,
+            "Kpv": 29.016657555094213,
+            "Kiv": 0.12739962964786625,
+            "Tc": 0.09543938035630935
+          },
+          "cost": [
+            32.42339808440052,
+            13.695026094201179
+          ],
+          "windows": [
+            "MPCLucy_step_1deg elevation move at 15.77 s (window 15.47-18.27 s)",
+            "MPCLucy_step_1deg elevation move at 18.95 s (window 18.65-20.11 s)",
+            "MPCLucy_step_1deg elevation move at 20.16 s (window 19.86-21.25 s)",
+            "MPCLucy_step_1deg elevation move at 21.30 s (window 21.00-22.45 s)",
+            "MPCLucy_step_1deg elevation move at 22.50 s (window 22.20-23.27 s)",
+            "MPCLucy_step_1deg elevation move at 23.32 s (window 23.02-25.82 s)",
+            "MPCLucy_1degAz_zeroAz_1degPol__zeroPol elevation move at 17.00 s (window 16.70-19.50 s)",
+            "MPCLucy_1degAz_zeroAz_1degPol__zeroPol elevation move at 21.87 s (window 21.57-24.37 s)",
+            "MPCLucy_1degAz_zeroAz_1degPol__zeroPol elevation move at 37.85 s (window 37.55-40.35 s)",
+            "MPCLucy_1degAz_zeroAz_1degPol__zeroPol elevation move at 58.75 s (window 58.45-61.25 s)"
+          ]
+        }
+      },
+      "test_sequences": [
+        "MPCLucy_2degAz_2degPol_zeroAz_zeroPol",
+        "MPCLucy_2degPol_zeroPol_2degAz_zeroAz"
+      ],
+      "medians": {
+        "azimuth/fit_error": [
+          83.44576691883663,
+          83.40337247833017,
+          83.47701521878518,
+          4
+        ],
+        "azimuth/fit_current": [
+          44.69137067909552,
+          44.10786583429389,
+          45.48372665127146,
+          4
+        ],
+        "azimuth/fit_position": [
+          94.32022452853293,
+          94.30822072002185,
+          94.33069919204232,
+          4
+        ],
+        "elevation/fit_error": [
+          42.35543502204363,
+          35.09342519712845,
+          43.32908580733545,
+          4
+        ],
+        "elevation/fit_current": [
+          -14.640071941276423,
+          -35.17658223385753,
+          0.22912162802354308,
+          4
+        ],
+        "elevation/fit_position": [
+          79.28679521754785,
+          77.18328742288962,
+          79.59718149067609,
+          4
+        ]
+      },
+      "adequate": {
+        "azimuth": false,
+        "elevation": false
+      },
+      "moves": [
+        {
+          "sequence": "MPCLucy_2degAz_2degPol_zeroAz_zeroPol",
+          "axis": "azimuth",
+          "move": 18.3095,
+          "fit_error": 83.47354874755945,
+          "fit_current": 44.42614370552103,
+          "fit_position": 94.32869289694418,
+          "ok": true
+        },
+        {
+          "sequence": "MPCLucy_2degAz_2degPol_zeroAz_zeroPol",
+          "axis": "azimuth",
+          "move": 37.7035,
+          "fit_error": 83.40337247833017,
+          "fit_current": 45.48372665127146,
+          "fit_position": 94.30822072002185,
+          "ok": true
+        },
+        {
+          "sequence": "MPCLucy_2degAz_2degPol_zeroAz_zeroPol",
+          "axis": "elevation",
+          "move": 23.556,
+          "fit_error": 35.09342519712845,
+          "fit_current": -35.17658223385753,
+          "fit_position": 77.18328742288962,
+          "ok": true
+        },
+        {
+          "sequence": "MPCLucy_2degAz_2degPol_zeroAz_zeroPol",
+          "axis": "elevation",
+          "move": 40.7915,
+          "fit_error": 41.60849590094138,
+          "fit_current": -27.61736409518132,
+          "fit_position": 79.25472699757748,
+          "ok": true
+        },
+        {
+          "sequence": "MPCLucy_2degPol_zeroPol_2degAz_zeroAz",
+          "axis": "azimuth",
+          "move": 19.945,
+          "fit_error": 83.47701521878518,
+          "fit_current": 44.10786583429389,
+          "fit_position": 94.33069919204232,
+          "ok": true
+        },
+        {
+          "sequence": "MPCLucy_2degPol_zeroPol_2degAz_zeroAz",
+          "axis": "azimuth",
+          "move": 22.945,
+          "fit_error": 83.41798509011382,
+          "fit_current": 44.95659765267001,
+          "fit_position": 94.31175616012169,
+          "ok": true
+        },
+        {
+          "sequence": "MPCLucy_2degPol_zeroPol_2degAz_zeroAz",
+          "axis": "elevation",
+          "move": 8.19,
+          "fit_error": 43.32908580733545,
+          "fit_current": 0.22912162802354308,
+          "fit_position": 79.59718149067609,
+          "ok": true
+        },
+        {
+          "sequence": "MPCLucy_2degPol_zeroPol_2degAz_zeroAz",
+          "axis": "elevation",
+          "move": 14.1695,
+          "fit_error": 43.10237414314588,
+          "fit_current": -1.6627797873715267,
+          "fit_position": 79.31886343751823,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "name": "I5",
+      "label": "back to 1: gains searched on a grid with the friction level of the moves, then gains and Tc fitted together",
+      "values": {
+        "azimuth": {
+          "Kpp": 6.984468570223303,
+          "Kpv": 378.72622454621444,
+          "Kiv": 0.2604918763568792,
+          "kvff": 0.0,
+          "Tc": 0.17260674958681926
+        },
+        "elevation": {
+          "Kpp": 6.784056579188558,
+          "Kpv": 53.83123603900217,
+          "Kiv": 2.875717800254564,
+          "kvff": 0.0,
+          "Tc": 0.3849994745028063
+        }
+      },
+      "identified": {
+        "azimuth": {
+          "grid": {
+            "points": [
+              {
+                "Kpp": 5.0,
+                "Kpv": 125.0,
+                "Kiv": 0.1,
+                "Tc": 0.1725693661887015
+              },
+              {
+                "Kpp": 5.0,
+                "Kpv": 250.0,
+                "Kiv": 0.1,
+                "Tc": 0.1725693661887015
+              },
+              {
+                "Kpp": 5.0,
+                "Kpv": 400.0,
+                "Kiv": 0.1,
+                "Tc": 0.1725693661887015
+              },
+              {
+                "Kpp": 7.0,
+                "Kpv": 125.0,
+                "Kiv": 0.1,
+                "Tc": 0.1725693661887015
+              },
+              {
+                "Kpp": 7.0,
+                "Kpv": 250.0,
+                "Kiv": 0.1,
+                "Tc": 0.1725693661887015
+              },
+              {
+                "Kpp": 7.0,
+                "Kpv": 400.0,
+                "Kiv": 0.1,
+                "Tc": 0.1725693661887015
+              },
+              {
+                "Kpp": 10.0,
+                "Kpv": 125.0,
+                "Kiv": 0.1,
+                "Tc": 0.1725693661887015
+              },
+              {
+                "Kpp": 10.0,
+                "Kpv": 250.0,
+                "Kiv": 0.1,
+                "Tc": 0.1725693661887015
+              },
+              {
+                "Kpp": 10.0,
+                "Kpv": 400.0,
+                "Kiv": 0.1,
+                "Tc": 0.1725693661887015
+              },
+              {
+                "Kpp": 14.0,
+                "Kpv": 125.0,
+                "Kiv": 0.1,
+                "Tc": 0.1725693661887015
+              },
+              {
+                "Kpp": 14.0,
+                "Kpv": 250.0,
+                "Kiv": 0.1,
+                "Tc": 0.1725693661887015
+              },
+              {
+                "Kpp": 14.0,
+                "Kpv": 400.0,
+                "Kiv": 0.1,
+                "Tc": 0.1725693661887015
+              },
+              {
+                "Kpp": 5.0,
+                "Kpv": 125.0,
+                "Kiv": 0.3,
+                "Tc": 0.1725693661887015
+              },
+              {
+                "Kpp": 5.0,
+                "Kpv": 250.0,
+                "Kiv": 0.3,
+                "Tc": 0.1725693661887015
+              },
+              {
+                "Kpp": 5.0,
+                "Kpv": 400.0,
+                "Kiv": 0.3,
+                "Tc": 0.1725693661887015
+              },
+              {
+                "Kpp": 7.0,
+                "Kpv": 125.0,
+                "Kiv": 0.3,
+                "Tc": 0.1725693661887015
+              },
+              {
+                "Kpp": 7.0,
+                "Kpv": 250.0,
+                "Kiv": 0.3,
+                "Tc": 0.1725693661887015
+              },
+              {
+                "Kpp": 7.0,
+                "Kpv": 400.0,
+                "Kiv": 0.3,
+                "Tc": 0.1725693661887015
+              },
+              {
+                "Kpp": 10.0,
+                "Kpv": 125.0,
+                "Kiv": 0.3,
+                "Tc": 0.1725693661887015
+              },
+              {
+                "Kpp": 10.0,
+                "Kpv": 250.0,
+                "Kiv": 0.3,
+                "Tc": 0.1725693661887015
+              },
+              {
+                "Kpp": 10.0,
+                "Kpv": 400.0,
+                "Kiv": 0.3,
+                "Tc": 0.1725693661887015
+              },
+              {
+                "Kpp": 14.0,
+                "Kpv": 125.0,
+                "Kiv": 0.3,
+                "Tc": 0.1725693661887015
+              },
+              {
+                "Kpp": 14.0,
+                "Kpv": 250.0,
+                "Kiv": 0.3,
+                "Tc": 0.1725693661887015
+              },
+              {
+                "Kpp": 14.0,
+                "Kpv": 400.0,
+                "Kiv": 0.3,
+                "Tc": 0.1725693661887015
+              },
+              {
+                "Kpp": 5.0,
+                "Kpv": 125.0,
+                "Kiv": 1.0,
+                "Tc": 0.1725693661887015
+              },
+              {
+                "Kpp": 5.0,
+                "Kpv": 250.0,
+                "Kiv": 1.0,
+                "Tc": 0.1725693661887015
+              },
+              {
+                "Kpp": 5.0,
+                "Kpv": 400.0,
+                "Kiv": 1.0,
+                "Tc": 0.1725693661887015
+              },
+              {
+                "Kpp": 7.0,
+                "Kpv": 125.0,
+                "Kiv": 1.0,
+                "Tc": 0.1725693661887015
+              },
+              {
+                "Kpp": 7.0,
+                "Kpv": 250.0,
+                "Kiv": 1.0,
+                "Tc": 0.1725693661887015
+              },
+              {
+                "Kpp": 7.0,
+                "Kpv": 400.0,
+                "Kiv": 1.0,
+                "Tc": 0.1725693661887015
+              },
+              {
+                "Kpp": 10.0,
+                "Kpv": 125.0,
+                "Kiv": 1.0,
+                "Tc": 0.1725693661887015
+              },
+              {
+                "Kpp": 10.0,
+                "Kpv": 250.0,
+                "Kiv": 1.0,
+                "Tc": 0.1725693661887015
+              },
+              {
+                "Kpp": 10.0,
+                "Kpv": 400.0,
+                "Kiv": 1.0,
+                "Tc": 0.1725693661887015
+              },
+              {
+                "Kpp": 14.0,
+                "Kpv": 125.0,
+                "Kiv": 1.0,
+                "Tc": 0.1725693661887015
+              },
+              {
+                "Kpp": 14.0,
+                "Kpv": 250.0,
+                "Kiv": 1.0,
+                "Tc": 0.1725693661887015
+              },
+              {
+                "Kpp": 14.0,
+                "Kpv": 400.0,
+                "Kiv": 1.0,
+                "Tc": 0.1725693661887015
+              }
+            ],
+            "costs": [
+              9.557814920144526,
+              6.912557253391628,
+              6.205549184755715,
+              5.7896400548010565,
+              4.835796037669838,
+              4.6516789186894725,
+              6.56327322241835,
+              5.899160497055458,
+              6.01516892145582,
+              9.096728502091002,
+              11.412860373123246,
+              10.420640811371033,
+              8.09397002829613,
+              6.3562908463429055,
+              5.899059568195607,
+              5.532482516881695,
+              4.727893377902493,
+              4.609893805624599,
+              6.928360018318843,
+              6.237909789601996,
+              6.22978622160121,
+              9.847585036194019,
+              12.451944202308418,
+              10.899043491641427,
+              6.68033866125548,
+              5.909364228620596,
+              5.629270233274432,
+              5.342996940087651,
+              5.151754365731955,
+              4.8314596447887155,
+              7.711777938422515,
+              8.030230419371708,
+              7.079852419066281,
+              15.379311214001167,
+              13.965588826395843,
+              12.466643831362335
+            ]
+          },
+          "start": {
+            "Kpp": 7.0,
+            "Kpv": 400.0,
+            "Kiv": 0.3,
+            "Tc": 0.1725693661887015
+          },
+          "values": {
+            "Kpp": 6.984468570223303,
+            "Kpv": 378.72622454621444,
+            "Kiv": 0.2604918763568792,
+            "Tc": 0.17260674958681926
+          },
+          "cost": [
+            4.609893055290191,
+            4.6066836440987124
+          ],
+          "windows": [
+            "MPCLucy_step_1deg azimuth move at 5.76 s (window 5.46-7.99 s)",
+            "MPCLucy_step_1deg azimuth move at 8.04 s (window 7.74-10.32 s)",
+            "MPCLucy_step_1deg azimuth move at 10.37 s (window 10.07-11.96 s)",
+            "MPCLucy_step_1deg azimuth move at 12.01 s (window 11.71-14.51 s)",
+            "MPCLucy_1degAz_zeroAz_1degPol__zeroPol azimuth move at 3.57 s (window 3.27-6.07 s)",
+            "MPCLucy_1degAz_zeroAz_1degPol__zeroPol azimuth move at 10.29 s (window 9.99-12.79 s)",
+            "MPCLucy_1degAz_zeroAz_1degPol__zeroPol azimuth move at 27.94 s (window 27.64-30.44 s)",
+            "MPCLucy_1degAz_zeroAz_1degPol__zeroPol azimuth move at 33.30 s (window 33.00-35.80 s)"
+          ]
+        },
+        "elevation": {
+          "grid": {
+            "points": [
+              {
+                "Kpp": 4.0,
+                "Kpv": 30.0,
+                "Kiv": 0.3,
+                "Tc": 0.3378814382503311
+              },
+              {
+                "Kpp": 4.0,
+                "Kpv": 60.0,
+                "Kiv": 0.3,
+                "Tc": 0.3378814382503311
+              },
+              {
+                "Kpp": 4.0,
+                "Kpv": 120.0,
+                "Kiv": 0.3,
+                "Tc": 0.3378814382503311
+              },
+              {
+                "Kpp": 8.0,
+                "Kpv": 30.0,
+                "Kiv": 0.3,
+                "Tc": 0.3378814382503311
+              },
+              {
+                "Kpp": 8.0,
+                "Kpv": 60.0,
+                "Kiv": 0.3,
+                "Tc": 0.3378814382503311
+              },
+              {
+                "Kpp": 8.0,
+                "Kpv": 120.0,
+                "Kiv": 0.3,
+                "Tc": 0.3378814382503311
+              },
+              {
+                "Kpp": 16.0,
+                "Kpv": 30.0,
+                "Kiv": 0.3,
+                "Tc": 0.3378814382503311
+              },
+              {
+                "Kpp": 16.0,
+                "Kpv": 60.0,
+                "Kiv": 0.3,
+                "Tc": 0.3378814382503311
+              },
+              {
+                "Kpp": 16.0,
+                "Kpv": 120.0,
+                "Kiv": 0.3,
+                "Tc": 0.3378814382503311
+              },
+              {
+                "Kpp": 4.0,
+                "Kpv": 30.0,
+                "Kiv": 0.75,
+                "Tc": 0.3378814382503311
+              },
+              {
+                "Kpp": 4.0,
+                "Kpv": 60.0,
+                "Kiv": 0.75,
+                "Tc": 0.3378814382503311
+              },
+              {
+                "Kpp": 4.0,
+                "Kpv": 120.0,
+                "Kiv": 0.75,
+                "Tc": 0.3378814382503311
+              },
+              {
+                "Kpp": 8.0,
+                "Kpv": 30.0,
+                "Kiv": 0.75,
+                "Tc": 0.3378814382503311
+              },
+              {
+                "Kpp": 8.0,
+                "Kpv": 60.0,
+                "Kiv": 0.75,
+                "Tc": 0.3378814382503311
+              },
+              {
+                "Kpp": 8.0,
+                "Kpv": 120.0,
+                "Kiv": 0.75,
+                "Tc": 0.3378814382503311
+              },
+              {
+                "Kpp": 16.0,
+                "Kpv": 30.0,
+                "Kiv": 0.75,
+                "Tc": 0.3378814382503311
+              },
+              {
+                "Kpp": 16.0,
+                "Kpv": 60.0,
+                "Kiv": 0.75,
+                "Tc": 0.3378814382503311
+              },
+              {
+                "Kpp": 16.0,
+                "Kpv": 120.0,
+                "Kiv": 0.75,
+                "Tc": 0.3378814382503311
+              },
+              {
+                "Kpp": 4.0,
+                "Kpv": 30.0,
+                "Kiv": 1.5,
+                "Tc": 0.3378814382503311
+              },
+              {
+                "Kpp": 4.0,
+                "Kpv": 60.0,
+                "Kiv": 1.5,
+                "Tc": 0.3378814382503311
+              },
+              {
+                "Kpp": 4.0,
+                "Kpv": 120.0,
+                "Kiv": 1.5,
+                "Tc": 0.3378814382503311
+              },
+              {
+                "Kpp": 8.0,
+                "Kpv": 30.0,
+                "Kiv": 1.5,
+                "Tc": 0.3378814382503311
+              },
+              {
+                "Kpp": 8.0,
+                "Kpv": 60.0,
+                "Kiv": 1.5,
+                "Tc": 0.3378814382503311
+              },
+              {
+                "Kpp": 8.0,
+                "Kpv": 120.0,
+                "Kiv": 1.5,
+                "Tc": 0.3378814382503311
+              },
+              {
+                "Kpp": 16.0,
+                "Kpv": 30.0,
+                "Kiv": 1.5,
+                "Tc": 0.3378814382503311
+              },
+              {
+                "Kpp": 16.0,
+                "Kpv": 60.0,
+                "Kiv": 1.5,
+                "Tc": 0.3378814382503311
+              },
+              {
+                "Kpp": 16.0,
+                "Kpv": 120.0,
+                "Kiv": 1.5,
+                "Tc": 0.3378814382503311
+              },
+              {
+                "Kpp": 4.0,
+                "Kpv": 30.0,
+                "Kiv": 5.0,
+                "Tc": 0.3378814382503311
+              },
+              {
+                "Kpp": 4.0,
+                "Kpv": 60.0,
+                "Kiv": 5.0,
+                "Tc": 0.3378814382503311
+              },
+              {
+                "Kpp": 4.0,
+                "Kpv": 120.0,
+                "Kiv": 5.0,
+                "Tc": 0.3378814382503311
+              },
+              {
+                "Kpp": 8.0,
+                "Kpv": 30.0,
+                "Kiv": 5.0,
+                "Tc": 0.3378814382503311
+              },
+              {
+                "Kpp": 8.0,
+                "Kpv": 60.0,
+                "Kiv": 5.0,
+                "Tc": 0.3378814382503311
+              },
+              {
+                "Kpp": 8.0,
+                "Kpv": 120.0,
+                "Kiv": 5.0,
+                "Tc": 0.3378814382503311
+              },
+              {
+                "Kpp": 16.0,
+                "Kpv": 30.0,
+                "Kiv": 5.0,
+                "Tc": 0.3378814382503311
+              },
+              {
+                "Kpp": 16.0,
+                "Kpv": 60.0,
+                "Kiv": 5.0,
+                "Tc": 0.3378814382503311
+              },
+              {
+                "Kpp": 16.0,
+                "Kpv": 120.0,
+                "Kiv": 5.0,
+                "Tc": 0.3378814382503311
+              }
+            ],
+            "costs": [
+              60.25362597936213,
+              23.313421219390396,
+              11.978865369353347,
+              13.742805551421021,
+              3.9169475498258413,
+              4.5483219338664735,
+              26.527050197792597,
+              30.37337987644341,
+              15.134079781728124,
+              29.925154165645495,
+              13.358205715896146,
+              8.434457258817515,
+              12.351311006800785,
+              2.021875396026763,
+              4.435599596942475,
+              33.99222334585078,
+              41.23152666499002,
+              17.745834112595887,
+              18.194102995843235,
+              8.43809023662611,
+              6.666132730698857,
+              32.5516941735673,
+              1.6662855753668429,
+              5.272999854714466,
+              15.410222425249888,
+              23.250254101599168,
+              21.346261431345347,
+              6.858148818824145,
+              4.562125778091614,
+              7.605285509908708,
+              6.902721389546575,
+              6.381525558554698,
+              11.460632857571813,
+              305.29610932088883,
+              64.74097445603417,
+              32.70183951438688
+            ]
+          },
+          "start": {
+            "Kpp": 8.0,
+            "Kpv": 60.0,
+            "Kiv": 1.5,
+            "Tc": 0.3378814382503311
+          },
+          "values": {
+            "Kpp": 6.784056579188558,
+            "Kpv": 53.83123603900217,
+            "Kiv": 2.875717800254564,
+            "Tc": 0.3849994745028063
+          },
+          "cost": [
+            1.6662760798580458,
+            1.0410660234944202
+          ],
+          "windows": [
+            "MPCLucy_step_1deg elevation move at 15.77 s (window 15.47-18.27 s)",
+            "MPCLucy_step_1deg elevation move at 18.95 s (window 18.65-20.11 s)",
+            "MPCLucy_step_1deg elevation move at 20.16 s (window 19.86-21.25 s)",
+            "MPCLucy_step_1deg elevation move at 21.30 s (window 21.00-22.45 s)",
+            "MPCLucy_step_1deg elevation move at 22.50 s (window 22.20-23.27 s)",
+            "MPCLucy_step_1deg elevation move at 23.32 s (window 23.02-25.82 s)",
+            "MPCLucy_1degAz_zeroAz_1degPol__zeroPol elevation move at 17.00 s (window 16.70-19.50 s)",
+            "MPCLucy_1degAz_zeroAz_1degPol__zeroPol elevation move at 21.87 s (window 21.57-24.37 s)",
+            "MPCLucy_1degAz_zeroAz_1degPol__zeroPol elevation move at 37.85 s (window 37.55-40.35 s)",
+            "MPCLucy_1degAz_zeroAz_1degPol__zeroPol elevation move at 58.75 s (window 58.45-61.25 s)"
+          ]
+        }
+      },
+      "test_sequences": [
+        "MPCLucy_2degAz_2degPol_zeroAz_zeroPol",
+        "MPCLucy_2degPol_zeroPol_2degAz_zeroAz"
+      ],
+      "medians": {
+        "azimuth/fit_error": [
+          83.46494995569252,
+          83.42240008958342,
+          83.50248638964092,
+          4
+        ],
+        "azimuth/fit_current": [
+          44.714471834741246,
+          44.13526691864086,
+          45.49602819724126,
+          4
+        ],
+        "azimuth/fit_position": [
+          94.32680626425685,
+          94.31474620017362,
+          94.33943875885933,
+          4
+        ],
+        "elevation/fit_error": [
+          81.41384377809894,
+          78.88566245185469,
+          82.74656687850243,
+          4
+        ],
+        "elevation/fit_current": [
+          68.31570191262324,
+          53.46881126949563,
+          74.73256692131262,
+          4
+        ],
+        "elevation/fit_position": [
+          93.35411878572042,
+          92.57764298061826,
+          93.72872591459186,
+          4
+        ]
+      },
+      "adequate": {
+        "azimuth": false,
+        "elevation": true
+      },
+      "moves": [
+        {
+          "sequence": "MPCLucy_2degAz_2degPol_zeroAz_zeroPol",
+          "axis": "azimuth",
+          "move": 18.3095,
+          "fit_error": 83.49292998538887,
+          "fit_current": 44.45809068968022,
+          "fit_position": 94.33534386817139,
+          "ok": true
+        },
+        {
+          "sequence": "MPCLucy_2degAz_2degPol_zeroAz_zeroPol",
+          "axis": "azimuth",
+          "move": 37.7035,
+          "fit_error": 83.42240008958342,
+          "fit_current": 45.49602819724126,
+          "fit_position": 94.31474620017362,
+          "ok": true
+        },
+        {
+          "sequence": "MPCLucy_2degAz_2degPol_zeroAz_zeroPol",
+          "axis": "elevation",
+          "move": 23.556,
+          "fit_error": 78.88566245185469,
+          "fit_current": 53.46881126949563,
+          "fit_position": 92.57764298061826,
+          "ok": true
+        },
+        {
+          "sequence": "MPCLucy_2degAz_2degPol_zeroAz_zeroPol",
+          "axis": "elevation",
+          "move": 40.7915,
+          "fit_error": 80.79261201284349,
+          "fit_current": 64.26295321598158,
+          "fit_position": 93.17601912118862,
+          "ok": true
+        },
+        {
+          "sequence": "MPCLucy_2degPol_zeroPol_2degAz_zeroAz",
+          "axis": "azimuth",
+          "move": 19.945,
+          "fit_error": 83.50248638964092,
+          "fit_current": 44.13526691864086,
+          "fit_position": 94.33943875885933,
+          "ok": true
+        },
+        {
+          "sequence": "MPCLucy_2degPol_zeroPol_2degAz_zeroAz",
+          "axis": "azimuth",
+          "move": 22.945,
+          "fit_error": 83.43696992599617,
+          "fit_current": 44.97085297980227,
+          "fit_position": 94.31826866034231,
+          "ok": true
+        },
+        {
+          "sequence": "MPCLucy_2degPol_zeroPol_2degAz_zeroAz",
+          "axis": "elevation",
+          "move": 8.19,
+          "fit_error": 82.03507554335437,
+          "fit_current": 72.36845060926488,
+          "fit_position": 93.53221845025222,
+          "ok": true
+        },
+        {
+          "sequence": "MPCLucy_2degPol_zeroPol_2degAz_zeroAz",
+          "axis": "elevation",
+          "move": 14.1695,
+          "fit_error": 82.74656687850243,
+          "fit_current": 74.73256692131262,
+          "fit_position": 93.72872591459186,
+          "ok": true
+        }
+      ]
+    }
+  ],
+  "last_iteration": "I5"
+}

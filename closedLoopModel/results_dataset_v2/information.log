@@ -1,0 +1,4 @@
+VClosedLoop 1 deg (old identification set) / elevation: 10 moves, n_eff 40, condition 215, scale 71%, sigma0 244%, Tc 601%, Ts_ratio 1377%, vs 1312%, b_{\theta,h} 5546%, K_cable 614%, theta0_cable_deg 1.5
+VClosedLoop/V2 doublets / elevation: 24 moves, n_eff 81, condition 14.5, scale 15%, sigma0 51%, Tc 34%, Ts_ratio 55%, vs 150%, b_{\theta,h} 86%, K_cable 7%, theta0_cable_deg 0.19
+VClosedLoop 1 deg (old identification set) / azimuth: 8 moves, n_eff 35, condition 17.5, scale 35%, sigma0 2106%, Tc 173%, Ts_ratio 47600%, K_cable 737%, theta0_cable_deg 0.22
+VClosedLoop/V2 doublets / azimuth: 26 moves, n_eff 92, condition 65.9, scale 13%, sigma0 127%, Tc 34%, Ts_ratio 27%, K_cable 4%, theta0_cable_deg 0.13

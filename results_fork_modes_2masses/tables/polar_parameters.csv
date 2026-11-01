@@ -1,0 +1,16 @@
+parameter,unit,estimate,start_or_H7,lower,upper,std_percent,at_bound,note
+k_b,N m/rad,10000,1.16e+05,1e+04,1e+09,1203.7,yes,telescope - hub
+c_b,N m s/rad,2260.1,1.2542,0.001,1e+04,12.2,,telescope - hub
+k_g,N m/rad,116.71,164,1,1e+05,8.5,,bearings (pre-sliding) to the stator structure
+eta_g,,3.201,3.11,0.001,30,8.3,,loss factor of the bearing constraint
+tau_d,s,0.0005945,nan,1e-06,0.001,4.4,,equivalent drive delay
+f_1,Hz,57.743,58.5,52.65,64.35,0.2,,stator mass 1
+zeta_1,,0.037728,nan,0.001,0.5,6.0,,stator mass 1
+a_1,1/(kg m^2),-0.69484,nan,-50,50,2.1,,stator mass 1: kappa/J
+f_2,Hz,100.12,99.2,89.28,109.1,0.2,,stator mass 2
+zeta_2,,0.030211,nan,0.001,0.5,5.0,,stator mass 2
+a_2,1/(kg m^2),0.62643,nan,-50,50,2.2,,stator mass 2: kappa/J
+
+stator mass,f_Hz,zeta,a_1/(kg m^2),J_kgm2,kappa,k_Nm_rad,c_Nms_rad
+1,57.743,0.0377,-0.6948,1.439,-1,1.894e+05,39.4
+2,100.120,0.0302,+0.6264,1.596,+1,6.317e+05,60.68

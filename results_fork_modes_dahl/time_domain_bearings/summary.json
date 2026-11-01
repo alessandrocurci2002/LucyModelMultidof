@@ -1,0 +1,438 @@
+{
+ "time_domain_dahl": {
+  "azimuth": {
+   "sigma0": 4513.249888662102,
+   "Tc": 0.23164718452468275,
+   "Ts_ratio": 7.933971242101985,
+   "vs": 0.005815716297880016
+  },
+  "elevation": {
+   "sigma0": 1703.0477790473333,
+   "Tc": 0.4072922393201249,
+   "Ts_ratio": 1.1393903475417886,
+   "vs": 0.015
+  }
+ },
+ "elevation": {
+  "frequency_domain_dahl": {
+   "sigma0": 18754.01868881432,
+   "Tc": 0.40675857514179176
+  },
+  "refit": {
+   "parameters": {
+    "s_J_e": 0.93376838821647,
+    "s_J_hp": 1.1999938088332056,
+    "s_J_m": 1.1997868217528291,
+    "s_J_r": 1.1998246512029076,
+    "s_k_1": 1.1930800240950559,
+    "s_k_2": 0.8017423181617039,
+    "s_k_3": 1.1850774077320498,
+    "tau_d": 0.00016157429039308552,
+    "f_1": 56.445854893228194,
+    "a_1": -0.6247308006116148,
+    "f_2": 98.77703733874003,
+    "a_2": 0.7099452535386442,
+    "g_Kt": 0.907787898175621,
+    "zeta_2": 0.033235372347566065,
+    "zeta_3": 0.0328546590074034,
+    "zeta_4": 0.04995146440825835,
+    "zeta_5": 0.04990520007585946,
+    "zeta_6": 0.049792579788902475
+   },
+   "at_bound": [
+    "s_J_hp",
+    "s_J_m",
+    "s_J_r",
+    "zeta_4",
+    "zeta_5",
+    "zeta_6"
+   ],
+   "cost": 0.001288414031655041
+  },
+  "hybrid": {
+   "Tc_from_time": 0.4072922393201249,
+   "parameters": {
+    "s_J_e": 0.8584981497039607,
+    "s_J_hp": 0.9979381060135201,
+    "s_J_m": 0.8000008018134939,
+    "s_J_r": 0.8000011290334057,
+    "s_k_1": 0.9154918117461824,
+    "s_k_2": 1.1999999940786845,
+    "s_k_3": 0.9138177608594541,
+    "sigma0": 18782.167500174684,
+    "tau_d": 0.00047094525792020436,
+    "f_1": 56.00056147964504,
+    "a_1": -0.5549016499622468,
+    "f_2": 98.24140670503083,
+    "a_2": 0.6065972911883355,
+    "g_Kt": 1.0504033100062828,
+    "zeta_2": 0.019224418935150932,
+    "zeta_3": 0.030896309573250402,
+    "zeta_4": 0.00010000000013604682,
+    "zeta_5": 0.00010000003544867011,
+    "zeta_6": 0.00019690735013659964
+   },
+   "std_rel": {
+    "s_J_e": 143.0727263696318,
+    "s_J_hp": 0.01192065952918422,
+    "s_J_m": NaN,
+    "s_J_r": NaN,
+    "s_k_1": 2286.846406636413,
+    "s_k_2": NaN,
+    "s_k_3": 262.7420693684096,
+    "sigma0": 0.07227217342187758,
+    "tau_d": 0.09435913070267843,
+    "f_1": 0.0010966159779913901,
+    "a_1": 0.028721863180199914,
+    "f_2": 0.0018380176852456694,
+    "a_2": 0.0440841528101342,
+    "g_Kt": 0.007362008674759847,
+    "zeta_2": 0.058203389701928905,
+    "zeta_3": 0.0641954437785928,
+    "zeta_4": NaN,
+    "zeta_5": NaN,
+    "zeta_6": Infinity
+   },
+   "at_bound": [
+    "s_J_m",
+    "s_J_r",
+    "s_k_2",
+    "zeta_4",
+    "zeta_5"
+   ],
+   "cost": 0.0003038830975145286,
+   "starts": [
+    0.0003038832262712987,
+    0.0003038830975145286
+   ],
+   "presliding_scale_urad": 21.685049891943347
+  },
+  "cost": {
+   "Dahl identified in frequency (sigma0, T_c fitted)": 0.00030388185399621347,
+   "hybrid Dahl: T_c from time domain, sigma0 from FRF": 0.00030388309751452853,
+   "Dahl from time domain, structure refitted": 0.001288414031655041,
+   "linear hysteretic bearings (saved fit)": 0.0009847175479124985,
+   "Dahl from time domain, same structure": 0.002971752799114116
+  },
+  "fit_quality": {
+   "Dahl identified in frequency (sigma0, T_c fitted)": [
+    {
+     "model": "Dahl identified in frequency (sigma0, T_c fitted)",
+     "measurement": "elevation, 1 % grid (1-600 Hz)",
+     "fit_all": 77.9,
+     "fit_1-5 Hz": 82.5,
+     "fit_5-100 Hz": 62.1,
+     "fit_>100 Hz": 76.5,
+     "rms_dB": 1.64,
+     "rms_deg": 9.2
+    },
+    {
+     "model": "Dahl identified in frequency (sigma0, T_c fitted)",
+     "measurement": "elevation, 1 % grid (30-150 Hz)",
+     "fit_all": 76.9,
+     "fit_1-5 Hz": NaN,
+     "fit_5-100 Hz": 75.9,
+     "fit_>100 Hz": 85.8,
+     "rms_dB": 2.01,
+     "rms_deg": 7.6
+    },
+    {
+     "model": "Dahl identified in frequency (sigma0, T_c fitted)",
+     "measurement": "elevation, 16 screws, 4 A (30-300 Hz)",
+     "fit_all": 79.7,
+     "fit_1-5 Hz": NaN,
+     "fit_5-100 Hz": 79.5,
+     "fit_>100 Hz": 76.0,
+     "rms_dB": 1.31,
+     "rms_deg": 6.3
+    }
+   ],
+   "hybrid Dahl: T_c from time domain, sigma0 from FRF": [
+    {
+     "model": "hybrid Dahl: T_c from time domain, sigma0 from FRF",
+     "measurement": "elevation, 1 % grid (1-600 Hz)",
+     "fit_all": 77.9,
+     "fit_1-5 Hz": 82.5,
+     "fit_5-100 Hz": 62.2,
+     "fit_>100 Hz": 76.5,
+     "rms_dB": 1.64,
+     "rms_deg": 9.2
+    },
+    {
+     "model": "hybrid Dahl: T_c from time domain, sigma0 from FRF",
+     "measurement": "elevation, 1 % grid (30-150 Hz)",
+     "fit_all": 76.9,
+     "fit_1-5 Hz": NaN,
+     "fit_5-100 Hz": 75.9,
+     "fit_>100 Hz": 85.8,
+     "rms_dB": 2.01,
+     "rms_deg": 7.6
+    },
+    {
+     "model": "hybrid Dahl: T_c from time domain, sigma0 from FRF",
+     "measurement": "elevation, 16 screws, 4 A (30-300 Hz)",
+     "fit_all": 79.7,
+     "fit_1-5 Hz": NaN,
+     "fit_5-100 Hz": 79.5,
+     "fit_>100 Hz": 76.0,
+     "rms_dB": 1.31,
+     "rms_deg": 6.3
+    }
+   ],
+   "Dahl from time domain, structure refitted": [
+    {
+     "model": "Dahl from time domain, structure refitted",
+     "measurement": "elevation, 1 % grid (1-600 Hz)",
+     "fit_all": 53.4,
+     "fit_1-5 Hz": 60.3,
+     "fit_5-100 Hz": 22.4,
+     "fit_>100 Hz": 69.3,
+     "rms_dB": 3.02,
+     "rms_deg": 17.3
+    },
+    {
+     "model": "Dahl from time domain, structure refitted",
+     "measurement": "elevation, 1 % grid (30-150 Hz)",
+     "fit_all": 68.0,
+     "fit_1-5 Hz": NaN,
+     "fit_5-100 Hz": 67.1,
+     "fit_>100 Hz": 71.8,
+     "rms_dB": 2.5,
+     "rms_deg": 12.1
+    },
+    {
+     "model": "Dahl from time domain, structure refitted",
+     "measurement": "elevation, 16 screws, 4 A (30-300 Hz)",
+     "fit_all": 64.6,
+     "fit_1-5 Hz": NaN,
+     "fit_5-100 Hz": 64.0,
+     "fit_>100 Hz": 61.5,
+     "rms_dB": 2.36,
+     "rms_deg": 9.2
+    }
+   ],
+   "linear hysteretic bearings (saved fit)": [
+    {
+     "model": "linear hysteretic bearings (saved fit)",
+     "measurement": "elevation, 1 % grid (1-600 Hz)",
+     "fit_all": 59.6,
+     "fit_1-5 Hz": 66.9,
+     "fit_5-100 Hz": 31.6,
+     "fit_>100 Hz": 73.5,
+     "rms_dB": 2.7,
+     "rms_deg": 18.4
+    },
+    {
+     "model": "linear hysteretic bearings (saved fit)",
+     "measurement": "elevation, 1 % grid (30-150 Hz)",
+     "fit_all": 68.6,
+     "fit_1-5 Hz": NaN,
+     "fit_5-100 Hz": 67.5,
+     "fit_>100 Hz": 76.4,
+     "rms_dB": 2.42,
+     "rms_deg": 11.2
+    },
+    {
+     "model": "linear hysteretic bearings (saved fit)",
+     "measurement": "elevation, 16 screws, 4 A (30-300 Hz)",
+     "fit_all": 65.2,
+     "fit_1-5 Hz": NaN,
+     "fit_5-100 Hz": 64.3,
+     "fit_>100 Hz": 66.1,
+     "rms_dB": 2.09,
+     "rms_deg": 8.5
+    }
+   ],
+   "Dahl from time domain, same structure": [
+    {
+     "model": "Dahl from time domain, same structure",
+     "measurement": "elevation, 1 % grid (1-600 Hz)",
+     "fit_all": 28.9,
+     "fit_1-5 Hz": 45.4,
+     "fit_5-100 Hz": -23.5,
+     "fit_>100 Hz": 74.5,
+     "rms_dB": 3.33,
+     "rms_deg": 17.4
+    },
+    {
+     "model": "Dahl from time domain, same structure",
+     "measurement": "elevation, 1 % grid (30-150 Hz)",
+     "fit_all": 34.6,
+     "fit_1-5 Hz": NaN,
+     "fit_5-100 Hz": 31.3,
+     "fit_>100 Hz": 69.2,
+     "rms_dB": 3.04,
+     "rms_deg": 10.7
+    },
+    {
+     "model": "Dahl from time domain, same structure",
+     "measurement": "elevation, 16 screws, 4 A (30-300 Hz)",
+     "fit_all": 69.7,
+     "fit_1-5 Hz": NaN,
+     "fit_5-100 Hz": 70.9,
+     "fit_>100 Hz": 50.6,
+     "rms_dB": 2.24,
+     "rms_deg": 7.8
+    }
+   ]
+  },
+  "presliding_scale_urad": {
+   "frequency": 21.68914203889535,
+   "time": 239.15491058504526
+  }
+ },
+ "azimuth": {
+  "frequency_domain_dahl": {
+   "sigma0": 1570.0571851322563,
+   "Tc": 0.20420349993372594
+  },
+  "refit": {
+   "parameters": {
+    "s_J_e": 0.8000000000000002,
+    "s_J_m": 0.8000000000000002,
+    "s_J_L": 1.199999999985566,
+    "s_k_1": 1.1999999999999997,
+    "s_k_2": 1.1999999999999997,
+    "alpha": 0.6213813911967062,
+    "k_LA": 56072.27941408024,
+    "tau_d": 0.0004818920864959435,
+    "g_Kt": 0.9000000000000001,
+    "zeta_2": 0.024153585784502295,
+    "zeta_3": 0.00010000000000000026,
+    "zeta_4": 0.04999999999999998
+   },
+   "at_bound": [
+    "s_J_e",
+    "s_J_m",
+    "s_J_L",
+    "s_k_1",
+    "s_k_2",
+    "g_Kt",
+    "zeta_3",
+    "zeta_4"
+   ],
+   "cost": 0.002702903559823673
+  },
+  "hybrid": {
+   "Tc_from_time": 0.23164718452468275,
+   "parameters": {
+    "s_J_e": 0.8000000000000002,
+    "s_J_m": 0.8000000000000002,
+    "s_J_L": 1.135342549286184,
+    "s_k_1": 1.1999999999999997,
+    "s_k_2": 1.1999999999999997,
+    "alpha": 0.6066371709725156,
+    "k_LA": 54741.008017080945,
+    "sigma0": 1570.8487740884063,
+    "tau_d": 0.0004780587186949552,
+    "g_Kt": 0.9000000000000001,
+    "zeta_2": 0.028180762601252865,
+    "zeta_3": 0.00010000000000000026,
+    "zeta_4": 0.04999999999999998
+   },
+   "std_rel": {
+    "s_J_e": NaN,
+    "s_J_m": NaN,
+    "s_J_L": 0.012034858282630822,
+    "s_k_1": NaN,
+    "s_k_2": NaN,
+    "alpha": 0.02059017522912829,
+    "k_LA": 0.023061475930813202,
+    "sigma0": 0.019345524464601173,
+    "tau_d": 0.042070945565509416,
+    "g_Kt": NaN,
+    "zeta_2": 0.05978358332727033,
+    "zeta_3": NaN,
+    "zeta_4": NaN
+   },
+   "at_bound": [
+    "s_J_e",
+    "s_J_m",
+    "s_k_1",
+    "s_k_2",
+    "g_Kt",
+    "zeta_3",
+    "zeta_4"
+   ],
+   "cost": 0.00026340060149002793,
+   "starts": [
+    0.00026340060149002793,
+    0.0002634006021049535
+   ],
+   "presliding_scale_urad": 147.46625413328667
+  },
+  "cost": {
+   "Dahl identified in frequency (sigma0, T_c fitted)": 0.0002571161799152237,
+   "hybrid Dahl: T_c from time domain, sigma0 from FRF": 0.0002634006014900279,
+   "Dahl from time domain, structure refitted": 0.002702903559823673,
+   "linear hysteretic bearings (saved fit)": 0.0002725960075034464,
+   "Dahl from time domain, same structure": 0.002818912418725872
+  },
+  "fit_quality": {
+   "Dahl identified in frequency (sigma0, T_c fitted)": [
+    {
+     "model": "Dahl identified in frequency (sigma0, T_c fitted)",
+     "measurement": "azimuth, 3 % grid (1-600 Hz)",
+     "fit_all": 75.6,
+     "fit_1-5 Hz": 89.9,
+     "fit_5-100 Hz": 70.6,
+     "fit_>100 Hz": -81.2,
+     "rms_dB": 2.21,
+     "rms_deg": 9.1
+    }
+   ],
+   "hybrid Dahl: T_c from time domain, sigma0 from FRF": [
+    {
+     "model": "hybrid Dahl: T_c from time domain, sigma0 from FRF",
+     "measurement": "azimuth, 3 % grid (1-600 Hz)",
+     "fit_all": 75.3,
+     "fit_1-5 Hz": 89.8,
+     "fit_5-100 Hz": 70.2,
+     "fit_>100 Hz": -82.5,
+     "rms_dB": 1.6,
+     "rms_deg": 14.9
+    }
+   ],
+   "Dahl from time domain, structure refitted": [
+    {
+     "model": "Dahl from time domain, structure refitted",
+     "measurement": "azimuth, 3 % grid (1-600 Hz)",
+     "fit_all": 20.9,
+     "fit_1-5 Hz": -35.0,
+     "fit_5-100 Hz": 66.2,
+     "fit_>100 Hz": -83.3,
+     "rms_dB": 6.45,
+     "rms_deg": 37.2
+    }
+   ],
+   "linear hysteretic bearings (saved fit)": [
+    {
+     "model": "linear hysteretic bearings (saved fit)",
+     "measurement": "azimuth, 3 % grid (1-600 Hz)",
+     "fit_all": 74.9,
+     "fit_1-5 Hz": 89.2,
+     "fit_5-100 Hz": 69.5,
+     "fit_>100 Hz": -82.9,
+     "rms_dB": 2.51,
+     "rms_deg": 17.2
+    }
+   ],
+   "Dahl from time domain, same structure": [
+    {
+     "model": "Dahl from time domain, same structure",
+     "measurement": "azimuth, 3 % grid (1-600 Hz)",
+     "fit_all": 19.2,
+     "fit_1-5 Hz": -36.0,
+     "fit_5-100 Hz": 59.2,
+     "fit_>100 Hz": -80.8,
+     "rms_dB": 7.21,
+     "rms_deg": 41.6
+    }
+   ]
+  },
+  "presliding_scale_urad": {
+   "frequency": 130.0611862213952,
+   "time": 51.32602675216633
+  }
+ }
+}

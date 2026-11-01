@@ -1,0 +1,60 @@
+# Closed-loop configuration with the plant estimated by vtesi_greybox_fit.py on the VTesi responses.
+results_dir: results_vtesi_greybox_closed_loop
+label: H7 (9 DOF) estimated on the VTesi plant responses (14 screws), estimated values
+  (vtesi_greybox_fit.py)
+plant:
+  config: ../config_hub_telescopeonring_alhub_fit_ground_aztel.yaml
+  theta0_deg: 0.0
+  balanced_telescope: true
+  zeta_first_flexible: null
+  bearing_friction:
+    model: none
+  parameter_overrides:
+    J_{\psi,e}: 0.00022193171169580364
+    J_{\psi,m}: 0.00023531557211226988
+    J_{\psi,L}: 1.4658522197816606
+    J_{\psi,p}: 0.0
+    k_{\psi,1}: 7638.040614503161
+    k_{\psi,2}: 15708.911300310241
+    k_{\psi,3}: 81048.86219678269
+    c_{\psi,1}: 1.0000000000000023e-06
+    c_{\psi,2}: 5.110957478065803
+    c_{\psi,3}: 5.801284237764305
+    J^{ax}: 0.06397471691206107
+    I_zz: 1.0293849742662597
+    J_{\theta,e}: 1.0729888815102474e-05
+    J_{\theta,h}: 0.025815730101318133
+    J_{\theta,m}: 0.0005910647750388351
+    J_{\theta,r}: 0.0005153181043513245
+    J_{\theta,p}: 0.0
+    k_{\theta,1}: 4219.381505991724
+    k_{\theta,2}: 3413.9145680309125
+    k_{\theta,3}: 11633.027618378253
+    k_{\theta,4}: 15.569711435790724
+    c_{\theta,1}: 3.886607245018339e-06
+    c_{\theta,2}: 23.131998099075695
+    c_{\theta,3}: 3.1915577379351726e-06
+    c_{\theta,4}: 483.67131093125573
+    I_yy: 0.6929663950975367
+  ground_override:
+    azimuth:
+      k: 1042.8178907173055
+      eta: 0.7254858086503809
+    elevation:
+      k: 106.69198179956416
+      eta: 4.638434824587875
+motor:
+  file: data/motor_TBM7646A.yaml
+  temperature: cold
+  cogging: false
+drives:
+  azimuth:
+    parameters: ../../LucyIdentification/VClosedLoop/Parameters_azimuth.akd
+    measurement: ../../LucyIdentification/VClosedLoop/VTesi/BodeMeasurement_Azimuth_14viti.csv
+  elevation:
+    parameters: ../../LucyIdentification/VClosedLoop/Parameters_elevation.akd
+    measurement: ../../LucyIdentification/VClosedLoop/VTesi/BodeMeasurement_Polar_14viti.csv
+  feedforward: false
+  observer: from_parameters
+  delay_s: 0.0
+  position_gain_unit: hz

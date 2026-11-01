@@ -1,0 +1,82 @@
+# =====================================================================
+# PLANT DRIVEN BY THE MEASURED CURRENT, IDENTIFIED ON THE DOUBLETS OF VClosedLoop/V2 (2026-10-20)
+# Identification on V2 (doublets +A, -2A, +A from 0.1 to 15 deg, one axis per file), structure of the friction
+# chosen by leave-one-file-out cross-validation inside V2, final validation on the four step sequences of
+# VClosedLoop (another test session, never used here for fitting or for choosing).
+# Steps (v2_identification.py):
+#   0. model-free analysis of V2: holding torque at rest and torque in the cruise at 10 deg/s (friction at that
+#      speed, position-dependent torque), start values of the fits;
+#   1. check of the rigid surrogate (each axis turning as a rigid body) against the full H6 model;
+#   2. structures fitted on all of V2 and scored by leave-one-file-out cross-validation (rigid surrogate):
+#      cable spring yes/no, then sigma0, vs, b fixed at nominal values (x 1/3, 1, 3) or fitted;
+#   3. selected structure refitted with the full H6 model on all of V2;
+#   4. validation on the VClosedLoop steps with the full model.
+# Run (from this folder):
+#   ../.venv/bin/python -I v2_identification.py --config config_v2_identification.yaml
+# =====================================================================
+results_dir: results_v2_identification
+base_config: config_vcl_fit.yaml          # plant of vcl_study.py (Bode of October): k_b, ring, dampers
+sequences_dir: ../../LucyIdentification/VClosedLoop
+amps_per_A: 2.0
+workers: 8
+input_lowpass_hz: 150.0
+window: {pre_s: 0.3, after_move_s: 0.5}
+identification_sequences:
+  - V2/MPCLucy_doublets_azimut_01deg_minus01deg
+  - V2/MPCLucy_doublets_azimut_05deg_minus05deg
+  - V2/MPCLucy_doublets_azimut_1deg_minus1deg
+  - V2/MPCLucy_doublets_azimut_3deg_minus3deg
+  - V2/MPCLucy_doublets_azimut_5deg_minus5deg
+  - V2/MPCLucy_doublets_azimut_8deg_minus8deg
+  - V2/MPCLucy_doublets_azimut_1deg_15deg
+  - V2/MPCLucy_doublets_elevation_01deg_minus01deg
+  - V2/MPCLucy_doublets_elevation_05deg_minus05deg
+  - V2/MPCLucy_doublets_elevation_1deg_minus1deg
+  - V2/MPCLucy_doublets_elevation_3deg_minus3deg
+  - V2/MPCLucy_doublets_elevation_5deg_minus5deg
+  - V2/MPCLucy_doublets_elevation_8deg_minus8deg
+  - V2/MPCLucy_doublets_elevation_10deg_minus10deg
+  - V2/MPCLucy_doublets_elevation_15deg_minus15deg
+excluded_sequences:
+  V2/MPCLucy_doublets_azimut_1deg_15deg_v2: "one move only (-15 -> 0 deg), a repetition of the end of azimut_1deg_15deg"
+validation_sequences:
+  - MPCLucy_step_1deg
+  - MPCLucy_1degAz_zeroAz_1degPol__zeroPol
+  - MPCLucy_2degAz_2degPol_zeroAz_zeroPol
+  - MPCLucy_2degPol_zeroPol_2degAz_zeroAz
+threshold_position_fit: 90.0
+max_cpu_per_window_s: 30
+
+# values of the parameters a structure does not fit
+nominal:
+  sigma0: bode            # small-amplitude stiffness of the H6 Dahl element (ground constraint of the FRF fit)
+  vs: 5.0e-3              # rad/s: no independent measurement; the multipliers show whether it matters
+  "b_{\\theta,h}": 0.0    # H6 configuration: no viscous bearing friction
+multipliers: [0.3333333, 1.0, 3.0]
+fixable:
+  azimuth: [sigma0, vs]
+  elevation: [sigma0, vs, "b_{\\theta,h}"]
+always_free: [scale, Tc, Ts_ratio]
+spring: [K_cable, theta0_cable_deg]
+start: {scale: 1.0, Ts_ratio: 1.3, "b_{\\theta,h}": 0.02}
+# grid of the start of the first structures (the others start from the fit of the structure they come from)
+grid:
+  scale: [0.85, 1.0, 1.15]
+  Tc_factor: [0.6, 0.85, 1.1]            # x friction torque in the cruise (model-free analysis)
+  Ts_ratio: [1.1, 1.5, 2.5]
+  K_cable_factor: [0.3, 1.0, 3.0]        # x gradient of the position torque in the cruise (model-free analysis)
+  theta0_offset_deg: [-5.0, 0.0, 5.0]    # + neutral angle of the position torque (model-free analysis)
+bounds:
+  scale: [0.5, 2.0]
+  sigma0: [50.0, 1.0e+5]
+  Tc: [0.01, 3.0]
+  Ts_ratio: [1.0, 10.0]
+  vs: [1.0e-4, 1.0e-1]
+  "b_{\\theta,h}": [1.0e-4, 10.0]
+  K_cable: [1.0e-3, 50.0]
+  theta0_cable_deg: [-30.0, 30.0]
+max_nfev: 40              # fit of a structure on all of V2
+max_nfev_cv: 12           # fit of a cross-validation fold (warm start from the fit on all of V2)
+max_nfev_full: 8          # refit of the selected structure with the full H6 model
+parsimony_points: 1.0     # a structure with fewer free parameters is preferred within this many points of CV median
+window_loss_scale: 1.0    # per-window Cauchy loss of 1 - fit (saturates for fits below about 0 %); null: plain least squares

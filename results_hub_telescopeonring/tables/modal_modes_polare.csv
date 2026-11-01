@@ -1,0 +1,13 @@
+# AVVISO: result from placeholder parameters
+modo,tipo,f_Hz,zeta,massa_modale,unita_massa,c_e,c_m,c_P,hankel_rad_Nm,tenuto,motivo,f_lumped_Hz,scarto_lumped
+0,rigido,0,0,0.901601,kg m^2,1,1,1,inf,si,sempre (rigido),0,
+1,flessibile,84.8824,0.01,1,- (normalizzato),5.14231,6.83755,-0.212396,3.0903e-03,si,taglio,84.8824,-1.985e-08
+2,flessibile,167.378,0.01972,1,- (normalizzato),-1.40898,23.8214,0.0143995,3.8475e-04,si,taglio,167.377,-4.301e-06
+3,flessibile,1592.2,0.1876,1,- (normalizzato),238.5,-0.0177875,1.40783e-05,5.6495e-08,si,taglio,1592.15,-2.630e-05
+4,flessibile,2784.76,0.3281,1,- (normalizzato),0.0108209,142.154,8.02238e-07,3.8287e-09,si,taglio,2774.74,-3.600e-03
+5,flessibile,19595.1,2.309,1,- (normalizzato),8.61967e-05,-27.6737,2.85667e-09,1.7042e-14,no,,15929.2,-1.871e-01
+6,flessibile,29474.6,3.472,1,- (normalizzato),-408.366,-1.23436e-06,2.09348e-10,1.0581e-15,no,,17017.6,-4.226e-01
+7,flessibile,63123,7.437,1,- (normalizzato),9.48207e-10,0.675619,-3.74746e-14,1.3691e-22,no,,36552.3,-4.209e-01
+8,flessibile,70977.4,8.362,1,- (normalizzato),-1.72597e-10,-0.110951,7.39793e-15,2.8787e-24,no,,57805.2,-1.856e-01
+9,flessibile,78574.9,9.257,1,- (normalizzato),3.2543e-08,1.01863,-1.46464e-12,3.6730e-21,no,,63641.4,-1.901e-01
+10,flessibile,156740,18.47,1,- (normalizzato),-1.51199e-09,254.061,8.0337e-14,5.3622e-21,no,,91983.2,-4.131e-01

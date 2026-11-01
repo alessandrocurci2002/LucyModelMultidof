@@ -1,0 +1,15 @@
+# AVVISO: result from placeholder parameters
+asse_o_nodo,elemento_o_ruolo,nodo_a,nodo_b,elementi_FEM,J_kgm2,k_Nm_rad
+azimut,1,1,5,1 2 3 4,3.698862e-04,9.547551e+03
+azimut,2,5,9,5 6 7 8,5.460274e-05,1.309076e+04
+polare,1,1,H,1 2,1.788315e-05,3.790756e+04
+polare,2,H,7,4 5 6,2.509406e-05,9.630884e+03
+polare,3,7,11,7 8 9 10,1.288295e-03,9.694190e+03
+polare,4,H,P,b,0.000000e+00,9.800000e+03
+nodo,e,1,,,1.849431e-04,
+nodo,m,5,,,2.122445e-04,
+nodo,L,9,,,1.252178e+00,
+nodo,e,1,,,8.941574e-06,
+nodo,p,H,,,3.226966e-02,
+nodo,m,7,,,6.566945e-04,
+nodo,r,11,,,6.441475e-04,

@@ -1,0 +1,22 @@
+\babel@toc {english}{}\relax 
+\contentsline {paragraph}{Purpose.}{1}{section*.1}%
+\contentsline {paragraph}{Main results.}{1}{section*.2}%
+\contentsline {section}{\numberline {1}The closed-loop model}{2}{section.1}%
+\contentsline {paragraph}{Assumptions specific to the comparison.}{2}{section*.5}%
+\contentsline {paragraph}{Checks of the implementation.}{3}{section*.8}%
+\contentsline {section}{\numberline {2}Measurements}{4}{section.2}%
+\contentsline {paragraph}{Scale of the current channel.}{5}{section*.11}%
+\contentsline {section}{\numberline {3}Comparison method}{5}{section.3}%
+\contentsline {section}{\numberline {4}September sequences: why the drive gains had to be estimated}{6}{section.4}%
+\contentsline {paragraph}{The parameters of the files do not reproduce the sequences.}{6}{section*.15}%
+\contentsline {paragraph}{Estimate.}{6}{section*.16}%
+\contentsline {paragraph}{Validation on the other sequences.}{7}{section*.18}%
+\contentsline {section}{\numberline {5}October tests: comparison with the parameters of the tests}{8}{section.5}%
+\contentsline {subsection}{\numberline {5.1}Frequency responses}{8}{subsection.5.1}%
+\contentsline {subsection}{\numberline {5.2}Step tests: configurations tested and why}{9}{subsection.5.2}%
+\contentsline {subsection}{\numberline {5.3}Results}{10}{subsection.5.3}%
+\contentsline {paragraph}{Azimuth.}{11}{section*.31}%
+\contentsline {paragraph}{Elevation.}{12}{section*.32}%
+\contentsline {paragraph}{Coupling between the axes.}{12}{section*.33}%
+\contentsline {section}{\numberline {6}Conclusions and open points}{12}{section.6}%
+\contentsline {section}{\numberline {A}Configurations and results}{13}{appendix.A}%

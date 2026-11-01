@@ -33,7 +33,7 @@ import scipy.linalg as sla
 
 from . import geometry as geo
 from .geometry import Pezzo, ProprietaElemento
-from .params import Avviso, Elemento, NomeAsse, ParametriAsse
+from .params import Avviso, Elemento, NomeAsse, ParametriAsse, in_inglese
 
 ModelloMassa = Literal["lumped", "consistent"]
 MODELLI_MASSA: Final[tuple[ModelloMassa, ...]] = ("lumped", "consistent")
@@ -179,8 +179,8 @@ def dividi_elemento_payload(el: Elemento, xi: float, tratto_rigido: float) -> Di
     assert el.J_manuale is not None and el.k_manuale is not None
     avvisi.append(Avviso(
         "P_MANUALE_UNIFORME", "informazione",
-        f"Elemento polare {el.id} in modalita' manual: la divisione nel nodo P assume "
-        "l'elemento uniforme (k e J ripartiti in proporzione alla lunghezza)."))
+        f"Polar element {el.id} in manual mode: the split at node P assumes "
+        "a uniform element (k and J shared in proportion to the length)."))
     cedevolezza_unitaria = 1.0 / (el.k_manuale * L)
     if not diviso:
         k_int = 1.0 / (cedevolezza_unitaria * (L - (b_r - a_r)))
@@ -257,6 +257,13 @@ class ModelloAsse:
     avvisi: tuple[Avviso, ...] = field(default_factory=tuple)
     alias: dict[str, int] = field(default_factory=dict)
     """Nodi utente che coincidono con P quando il telescopio non ha albero."""
+    i_H: int | None = None
+    """Centro del mozzo (modello ``hub``): nodo della catena a cui e' appeso il telescopio P."""
+
+    @property
+    def ramo(self) -> bool:
+        """``True`` se il telescopio P e' un nodo fuori dalla catena, appeso a H tramite k_b."""
+        return self.i_H is not None and self.i_P is not None and self.i_H != self.i_P
 
     @property
     def n(self) -> int:
@@ -305,10 +312,23 @@ def _proprieta(el: Elemento, etichetta: str | None = None) -> ProprietaElemento:
     return geo.proprieta_elemento(el, etichetta)
 
 
-def costruisci_asse(asse: ParametriAsse, forma_consistente: str = "linear") -> ModelloAsse:
-    """Assembla il modello FEM completo di un asse (sezioni 7.1-7.3 e 7.5)."""
+def costruisci_asse(asse: ParametriAsse, forma_consistente: str = "linear", *,
+                   con_telescopio: bool = True) -> ModelloAsse:
+    """Assembla il modello FEM completo di un asse (sezioni 7.1-7.3 e 7.5).
+
+    Modello ``hub`` (``asse.mozzo``): le due meta' del mozzo sostituiscono gli elementi
+    ``elementi_lato`` (molle senza massa), il centro H prende i nodi dell'elemento del telescopio
+    con l'inerzia del mozzo, e il telescopio e' il nodo P fuori dalla catena, collegato a H dalla
+    molla k_b. Con ``con_telescopio = False`` (prova senza telescopio) il ramo non c'e' e H fa da P.
+    """
+    from . import mozzo as mz
+
     avvisi: list[Avviso] = []
-    originali = tuple(_proprieta(e) for e in asse.elementi)
+    pm = asse.mozzo
+    originali = tuple(
+        mz.proprieta_lato(pm, str(e.id), e.segnaposto or pm.geometria_segnaposto)
+        if pm is not None and e.id in pm.elementi_lato else _proprieta(e) for e in asse.elementi)
+    ramo = pm is not None and con_telescopio
 
     # --- elementi effettivi, con l'eventuale divisione nel nodo P -----------
     elementi: list[ProprietaElemento] = []
@@ -329,7 +349,7 @@ def costruisci_asse(asse: ParametriAsse, forma_consistente: str = "linear") -> M
             assert asse.xi_payload is not None
             i_P = i
             alias[str(el.id)] = alias[str(el.id + 1)] = i
-            etichette[i] = "P"
+            etichette[i] = "H" if ramo else "P"
             x_nodi[i] = xu + asse.xi_payload * el.lunghezza
             xu += el.lunghezza
             continue
@@ -371,6 +391,33 @@ def costruisci_asse(asse: ParametriAsse, forma_consistente: str = "linear") -> M
         collegamenti.append((i, i + 1))
         elementi.append(p_orig)
 
+    # --- modello hub: telescopio P appeso al centro del mozzo H tramite k_b ----------
+    i_H: int | None = None
+    if pm is not None:
+        i_H = i_P
+        assert i_H is not None
+        J_H = pm.J_polare
+        if not con_telescopio and pm.tratto_telescopio is not None:
+            # prova senza telescopio: il tratto di tubo stretto nell'anello se ne va con il telescopio
+            J_H -= mz.inerzia_tratto(pm)[2]  # type: ignore[index]
+        extra_nodali[str(pm.elemento_centro)] = extra_nodali.get(str(pm.elemento_centro), 0.0) + J_H
+        if ramo:
+            etichette.append("P")
+            x_nodi.append(x_nodi[i_H])
+            i_P = len(etichette) - 1
+            collegamenti.append((i_H, i_P))
+            elementi.append(mz.proprieta_attacco(pm))
+
+    # --- azimut: telescopio P appeso al load L (forcella + mozzo + anello) tramite k ---------
+    if asse.attacco_telescopio is not None and con_telescopio:
+        ramo = True
+        i_H = etichette.index(str(asse.nodo_estremo))
+        etichette.append("P")
+        x_nodi.append(x_nodi[i_H])
+        i_P = len(etichette) - 1
+        collegamenti.append((i_H, i_P))
+        elementi.append(mz.proprieta_attacco_azimut(asse.attacco_telescopio))
+
     n = len(etichette)
     idx = {e: k for k, e in enumerate(etichette)}
     idx.update(alias)
@@ -400,7 +447,9 @@ def costruisci_asse(asse: ParametriAsse, forma_consistente: str = "linear") -> M
         C_b[b_i, b_i] += b / 2.0
 
     # --- master ------------------------------------------------------------
-    masters = sorted({(i_P if str(m) == "P" else idx[str(m)]) for m in asse.masters})  # type: ignore[misc]
+    # con il ramo H-P (L-P sull'azimut) sono master sia il nodo d'aggancio sia il telescopio
+    masters = sorted({(i_P if str(m) == "P" else idx[str(m)]) for m in asse.masters}  # type: ignore[misc]
+                     | ({i_H, i_P} if ramo and i_H is not None and i_P is not None else set()))
     assert i_P is None or i_P in masters
 
     # --- pezzi posizionati (per J^ax e sottrazioni) --------------------------
@@ -442,9 +491,11 @@ def costruisci_asse(asse: ParametriAsse, forma_consistente: str = "linear") -> M
         segnaposto=asse.segnaposto,
         avvisi=tuple(avvisi),
         alias=alias,
+        i_H=i_H if ramo else None,
     )
     for m in MODELLI_MASSA:
-        verifica_matrici(modello.M[m], modello.K, modello.J_totale, etichetta=f"{asse.nome}/{m}")
+        verifica_matrici(modello.M[m], modello.K, modello.J_totale, etichetta=f"{asse.nome}/{m}",
+                         senza_massa=(i_P,) if ramo and i_P is not None else ())
 
     # M^l - M^c e' semidefinita solo se ogni elemento ha A_e = C_e (sezione 7.4):
     # con inerzia non simmetrica rispetto alla mezzeria l'ordinamento
@@ -454,10 +505,10 @@ def costruisci_asse(asse: ParametriAsse, forma_consistente: str = "linear") -> M
         lam = float(autovalori_differenza_masse(modello).min())
         avvisi.append(Avviso(
             f"MASSA_NON_ORDINATA_{asse.nome.upper()}", "informazione",
-            f"Asse {asse.nome}: gli elementi {asimmetrici} hanno inerzia non simmetrica "
-            "rispetto alla mezzeria, quindi M^l - M^c non e' semidefinita (autovalore "
-            f"minimo {lam:.3e} kg m^2) e omega^l <= omega^c non e' garantito per ogni modo "
-            "(sezione 7.4: la proprieta' vale per elementi uniformi)."))
+            f"{in_inglese(asse.nome).capitalize()} axis: elements {asimmetrici} have an inertia that is not "
+            "symmetric about the midpoint, so M^l - M^c is not semidefinite (smallest eigenvalue "
+            f"{lam:.3e} kg m^2) and omega^l <= omega^c is not guaranteed for every mode "
+            "(section 7.4: the property holds for uniform elements)."))
         modello = replace(modello, avvisi=tuple(avvisi))
     return modello
 
@@ -484,12 +535,15 @@ def matrici_isolate(
     *,
     J_aggiunta: float = 0.0,
     k_aggiunta: float = 0.0,
+    J_telescopio: float = 0.0,
 ) -> tuple[np.ndarray, np.ndarray]:
     """Matrici dell'asse isolato con le inerzie dominanti (sezione 7.3).
 
     * polare: ``J_aggiunta`` = :math:`I_{yy,p}` e ``k_aggiunta`` =
       :math:`k_g(\\theta_0)` al nodo P;
-    * azimut: ``J_aggiunta`` = :math:`J^{ax} + J_{\\psi,p}(\\theta_0)` al nodo 9.
+    * azimut: ``J_aggiunta`` = :math:`J^{ax}` e ``J_telescopio`` = :math:`J_{\\psi,p}(\\theta_0)` al
+      nodo 9; con il telescopio appeso al load (``azimuth.telescope_attachment``) ``J_telescopio`` va
+      al nodo P.
 
     Nel modello accoppiato queste grandezze entrano solo attraverso :math:`T` e
     :math:`V` e **non** vanno sommate qui (flag ``isolated`` della specifica:
@@ -498,8 +552,10 @@ def matrici_isolate(
     M = mod.M[modello_massa].copy()
     K = mod.K.copy()
     i = mod.i_P if mod.nome == "polare" else mod.i_estremo
-    assert i is not None
+    i_tel = mod.i_P if mod.nome == "azimut" and mod.ramo else i
+    assert i is not None and i_tel is not None
     M[i, i] += J_aggiunta
+    M[i_tel, i_tel] += J_telescopio
     K[i, i] += k_aggiunta
     return M, K
 
@@ -558,8 +614,12 @@ def frequenze_proprie(M: np.ndarray, K: np.ndarray) -> np.ndarray:
 # ---------------------------------------------------------------------------
 
 
-def verifica_matrici(M: np.ndarray, K: np.ndarray, J_totale: float, *, etichetta: str = "") -> None:
+def verifica_matrici(M: np.ndarray, K: np.ndarray, J_totale: float, *, etichetta: str = "",
+                     senza_massa: tuple[int, ...] = ()) -> None:
     """Simmetria, definita positivita' di M, :math:`K\\mathbf 1 = 0`, inerzia totale.
+
+    ``senza_massa``: nodi ammessi senza inerzia (il telescopio P del modello ``hub``, la cui
+    inerzia entra dal payload); M deve essere definita positiva sugli altri nodi.
 
     Raises
     ------
@@ -569,7 +629,8 @@ def verifica_matrici(M: np.ndarray, K: np.ndarray, J_totale: float, *, etichetta
     scala_K = max(float(np.max(np.abs(K))), 1e-30)
     assert np.allclose(M, M.T, atol=0.0, rtol=1e-14), f"{etichetta}: M non simmetrica"
     assert np.allclose(K, K.T, atol=1e-14 * scala_K), f"{etichetta}: K non simmetrica"
-    assert np.all(np.linalg.eigvalsh(M) > 0.0), f"{etichetta}: M non definita positiva"
+    altri = [i for i in range(M.shape[0]) if i not in senza_massa]
+    assert np.all(np.linalg.eigvalsh(M[np.ix_(altri, altri)]) > 0.0), f"{etichetta}: M non definita positiva"
     uno = np.ones(K.shape[0])
     assert np.max(np.abs(K @ uno)) <= 1e-10 * scala_K, f"{etichetta}: K 1 != 0"
     somma = float(uno @ M @ uno)

@@ -1,0 +1,48 @@
+# =====================================================================
+# PLANT DRIVEN BY THE MEASURED CURRENT, FIT ON THE ENCODER POSITION -- ITERATION I6 (2026-10-20)
+# The first run (config_current_input.yaml -> results_current_input/) gave an adequate azimuth (validation
+# 94.5 %) and an elevation at 81 % with an asymmetric error (positive moves short of the target): a constant
+# torque the model lacks. I6 refits the elevation with gravity and the centre-of-gravity offset of the
+# telescope along its axis (static imbalance moment m g d_x cos theta) free, from the first run.
+# The measured motor currents of the MPCLucy sequences (VClosedLoop) drive the model (no drive in the loop);
+# the only measure of goodness is the NRMSE fit of the simulated against the measured encoder position.
+# First guess: iteration I5 of vcl_study.py (fitted plant config_vcl_fit.yaml, friction level of I5).
+# Identification on the 1 deg sequences, validation on the 2 deg sequences.
+# Run (from this folder):
+#   ../.venv/bin/python -I current_input_study.py --config config_current_input.yaml
+# =====================================================================
+base_config: config_vcl_fit.yaml
+first_guess: results_vcl_study/summary.json      # iteration I5 (last one)
+first_guess_current_input: results_current_input/summary.json   # values of the first run
+gravity: true
+axes: [elevation]
+always_fit: {elevation: [d_x_mm]}
+results_dir: results_current_input_I6
+sequences_dir: ../../LucyIdentification/VClosedLoop
+amps_per_A: 2.0
+workers: 8
+input_lowpass_hz: 150.0          # zero-phase low pass of the measured current (mechanics of interest < 50 Hz)
+identification_sequences: [MPCLucy_step_1deg, MPCLucy_1degAz_zeroAz_1degPol__zeroPol]
+validation_sequences: [MPCLucy_2degAz_2degPol_zeroAz_zeroPol, MPCLucy_2degPol_zeroPol_2degAz_zeroAz]
+window: {pre_s: 0.3, after_move_s: 0.5}   # from before the move to 0.5 s after the end of the command
+threshold_position_fit: 90.0
+max_cpu_per_window_s: 60
+
+# candidate parameters (first guess from I5 and config_vcl_fit.yaml unless given), bounds
+parameters:
+  azimuth: [scale, sigma0, Tc, Ts_ratio, vs, "c_{\\psi,1}", "c_{\\psi,2}"]
+  elevation: [scale, sigma0, Tc, Ts_ratio, vs, d_x_mm]
+start: {scale: 1.0, Ts_ratio: 1.2, vs: 1.0e-3}
+bounds:
+  scale: [0.5, 2.0]
+  sigma0: [100.0, 1.0e+6]
+  Tc: [0.01, 3.0]
+  Ts_ratio: [1.0, 10.0]
+  vs: [1.0e-5, 1.0e-1]
+  k_b: [1.0e+4, 1.0e+7]
+  ring: [1.0, 1.0e+4]
+  d_x_mm: [-100.0, 100.0]
+  damper_factor: [1.0e-3, 1.0e+3]
+screening: {step: 0.3, min_relative_change: 0.02, signed_step: 5.0}   # d_x_mm: +/-1.5 mm
+grid: {scale: [0.9, 1.0, 1.1, 1.2], Ts_ratio: [1.2, 2.0, 4.0]}
+max_nfev: 40

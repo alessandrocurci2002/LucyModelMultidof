@@ -32,13 +32,13 @@ USCITE: Final[tuple[str, ...]] = (
 """Uscite della sezione 10.3; ``err_*`` = encoder meno angolo vero."""
 
 ETICHETTE_USCITE: Final[dict[str, str]] = {
-    "psi_e": r"$\psi_e$ (encoder az.)",
-    "theta_e": r"$\theta_e$ (encoder pol.)",
-    "psi_m": r"$\psi_m$ (motore az.)",
-    "theta_m": r"$\theta_m$ (motore pol.)",
-    "psi_L": r"$\psi_L$ (forcella)",
-    "theta_p": r"$\theta_p$ (telescopio)",
-    "theta_r": r"$\theta_r$ (estremita' pol.)",
+    "psi_e": r"$\psi_e$ (az. encoder)",
+    "theta_e": r"$\theta_e$ (pol. encoder)",
+    "psi_m": r"$\psi_m$ (az. motor)",
+    "theta_m": r"$\theta_m$ (pol. motor)",
+    "psi_L": r"$\psi_L$ (fork)",
+    "theta_p": r"$\theta_p$ (telescope)",
+    "theta_r": r"$\theta_r$ (pol. rear end)",
     "err_psi": r"$\psi_e - \psi_L$",
     "err_theta": r"$\theta_e - \theta_p$",
 }
@@ -145,6 +145,9 @@ class ModelloLineare:
 
 
 def costruisci_uscite(acc: ModelloAccoppiato) -> np.ndarray:
+    """Matrice delle uscite :data:`USCITE` sulle coordinate del modello."""
+    if hasattr(acc, "matrice_uscite"):  # modello su base generica (modal.ModelloRitz)
+        return acc.matrice_uscite()
     st = acc.struttura
     n = st.n
     righe = []
@@ -168,6 +171,8 @@ def costruisci_uscite(acc: ModelloAccoppiato) -> np.ndarray:
 
 def linearizza(acc: ModelloAccoppiato, theta0: float, Omega0: float) -> ModelloLineare:
     """Matrici linearizzate e spazio degli stati in :math:`(\\theta_0, \\Omega_0)`."""
+    if hasattr(acc, "linearizza"):  # modello su base generica (modal.ModelloRitz)
+        return acc.linearizza(theta0, Omega0)
     p = acc.parametri
     M0 = np.asarray(acc.funzioni.M0(theta0, Omega0, p), dtype=float)
     C0 = np.asarray(acc.funzioni.C0(theta0, Omega0, p), dtype=float)

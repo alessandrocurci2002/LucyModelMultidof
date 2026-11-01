@@ -1,0 +1,13 @@
+stability of the observer loops
+simulating 10 cases
+  dob20: The solver successfully reached the end of the integration interval. (cpu 5 s)
+  dob10: The solver successfully reached the end of the integration interval. (cpu 6 s)
+  dob40: The solver successfully reached the end of the integration interval. (cpu 5 s)
+  dob20_ff_gyro100: The solver successfully reached the end of the integration interval. (cpu 6 s)
+  dob20_ff: The solver successfully reached the end of the integration interval. (cpu 6 s)
+  encoders: The solver successfully reached the end of the integration interval. (cpu 8 s)
+  encoders_ff: The solver successfully reached the end of the integration interval. (cpu 9 s)
+  dob5: The solver successfully reached the end of the integration interval. (cpu 8 s)
+  encoders_ff_altaz: The solver successfully reached the end of the integration interval. (cpu 4 s)
+  dob20_ff_altaz: The solver successfully reached the end of the integration interval. (cpu 3 s)
+done in 1.0 min

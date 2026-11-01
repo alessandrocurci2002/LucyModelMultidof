@@ -1,0 +1,40 @@
+# =====================================================================
+# COMPARISON MODEL / STEP TESTS OF OCTOBER 2026 WITH THE DRIVE PARAMETERS OF THE TESTS (2026-10-20)
+# Sequences: sim/LucyIdentification/VClosedLoop/MPCLucy_*.csv (steps of 1 and 2 deg, 10 deg/s, both axes);
+# drive parameters: VClosedLoop/Parameters_{azimuth,elevation}.akd (through config_vcl.yaml).
+# Nothing is estimated here: variants A-F differ only in the reading of two settings of the files,
+#   - PL.KP: 2 pi PL.KP (the convention of the WorkBench Controller trace) or PL.KP in 1/s;
+#   - VL.KVFF = 1 in the files, while the application is stated without feedforward;
+# and, for the bearing friction, in the H6 Dahl element or the Coulomb level found on the September sequences.
+# G and H use gains estimated on the September sequences (cross-check between the two test campaigns).
+# Run (from this folder):
+#   ../.venv/bin/python -I compare.py --config config_compare_vcl.yaml
+# =====================================================================
+base_config: config_vcl.yaml
+results_dir: results_VClosedLoop_H6_zeta10/time_comparison
+sequences_dir: ../../LucyIdentification/VClosedLoop
+amps_per_A: 2.0                      # AXIS*_AMPS = 2 x current (A rms), as for the September sequences
+workers: 8
+sequences: [MPCLucy_step_1deg, MPCLucy_1degAz_zeroAz_1degPol__zeroPol, MPCLucy_2degAz_2degPol_zeroAz_zeroPol,
+            MPCLucy_2degPol_zeroPol_2degAz_zeroAz]
+pre_s: 0.3
+post_s: 2.5
+max_cpu_per_window_s: 120
+
+variants:
+  - {name: A, label: "2 pi PL.KP, no FF", position_gain_unit: hz, feedforward: false}
+  - {name: B, label: "PL.KP in 1/s, no FF", position_gain_unit: per_s, feedforward: false}
+  - {name: C, label: "2 pi PL.KP, KVFF of the files", position_gain_unit: hz, feedforward: true}
+  - {name: D, label: "PL.KP in 1/s, KVFF of the files", position_gain_unit: per_s, feedforward: true}
+  # bearing friction: Coulomb level estimated on the September sequences (results_validation_H6_zeta10)
+  - {name: E, label: "2 pi PL.KP, no FF, Tc Sep.", position_gain_unit: hz, feedforward: false,
+     Tc: {azimuth: 0.302, elevation: 0.295}}
+  - {name: F, label: "PL.KP in 1/s, no FF, Tc Sep.", position_gain_unit: per_s, feedforward: false,
+     Tc: {azimuth: 0.302, elevation: 0.295}}
+  # cross-check between test campaigns: gains estimated on the September sequences (results_validation_H6_zeta10)
+  - {name: G, label: "Kpp of Sep. estimate, rest of the files, Tc Sep.", position_gain_unit: per_s,
+     feedforward: false, Kpp: {azimuth: 7.43, elevation: 8.575}, Tc: {azimuth: 0.302, elevation: 0.295}}
+  - {name: H, label: "Kpp, Kpv, Kiv, Tc of Sep. estimate", position_gain_unit: per_s, feedforward: false,
+     Kpp: {azimuth: 7.43, elevation: 8.575}, Kpv: {azimuth: 198.0, elevation: 61.39},
+     Kiv: {azimuth: 0.1477, elevation: 0.7267}, Tc: {azimuth: 0.302, elevation: 0.295}}
+plot_variants: [A, B, F, H]

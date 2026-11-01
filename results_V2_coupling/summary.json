@@ -1,0 +1,60 @@
+{
+  "coherence_peak": {
+    "azimut": {
+      "f_coh_Hz": 56.884765625,
+      "coh": 0.8480549540911598,
+      "ratio_at_coh": 0.06605778501270353,
+      "power_ratio_vs_rest": 6.624253029564452,
+      "f_ratio_max_Hz": 53.955078125,
+      "ratio_max": 0.1063304101933482
+    },
+    "elevation": {
+      "f_coh_Hz": 56.884765625,
+      "coh": 0.8165866943767912,
+      "ratio_at_coh": 0.07331238607379799,
+      "power_ratio_vs_rest": 4.737751662540322,
+      "f_ratio_max_Hz": 52.978515625,
+      "ratio_max": 0.2147013452428213
+    }
+  },
+  "low_frequency": {
+    "moves": 26,
+    "deviation_sign_equals_held_torque_sign": 26,
+    "deviation_sign_equals_move_direction": 9,
+    "held_torque_sign_flipped": 23,
+    "azimuth_encoder_deviation_in_elevation_moves_mdeg_max": 0.686646
+  },
+  "elevation_holding_fit": {
+    "c": 0.10838934267237077,
+    "f": 0.529831302538443,
+    "K": 1.1278105520460728,
+    "sigma_c": 0.010316564321447124,
+    "sigma_f": 0.014068590669924204,
+    "sigma_K": 0.11072235011284967,
+    "rms_residuo": 0.035589283292144835,
+    "n": 18
+  },
+  "azimuth_holding_fit": {
+    "c": -0.0020210028522215334,
+    "f": 0.39911055702932086,
+    "K": 0.8486734189655198,
+    "sigma_c": 0.023123194767846775,
+    "sigma_f": 0.033512204236720904,
+    "sigma_K": 0.2702738413495362,
+    "rms_residuo": 0.09062092902766498,
+    "n": 21
+  },
+  "azimuth_torque_vs_elevation_angle": {
+    "c": 0.22980326685185176,
+    "K": 0.49047669999317556,
+    "sigma_c": 0.003857421065193153,
+    "sigma_K": 0.032200158569601685,
+    "rms_residuo": 0.015429684260772614,
+    "n": 18
+  },
+  "elevation_unbalance_if_gravity": {
+    "m_kg": 17.35,
+    "cg_below_axis_mm": 6.626247709630371,
+    "cg_along_optical_axis_mm": 0.6368220552008083
+  }
+}

@@ -1,0 +1,34 @@
+\babel@toc {english}{}\relax 
+\contentsline {paragraph}{Purpose.}{1}{section*.1}%
+\contentsline {paragraph}{Main results.}{1}{section*.2}%
+\contentsline {section}{\numberline {1}Data}{3}{section.1}%
+\contentsline {section}{\numberline {2}Physical models}{3}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Measured plant}{3}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Elevation: H7 with two modal masses on the motor stator, rigid telescope}{3}{subsection.2.2}%
+\contentsline {paragraph}{Rotor chain.}{3}{section*.6}%
+\contentsline {paragraph}{Stator masses.}{4}{section*.7}%
+\contentsline {paragraph}{Bearings.}{4}{section*.8}%
+\contentsline {paragraph}{Input and output.}{4}{section*.9}%
+\contentsline {subsection}{\numberline {2.3}Azimuth: flexible load, rigid telescope}{4}{subsection.2.3}%
+\contentsline {section}{\numberline {3}Modal formulation}{5}{section.3}%
+\contentsline {paragraph}{Modes.}{5}{section*.12}%
+\contentsline {paragraph}{Damping.}{5}{section*.13}%
+\contentsline {paragraph}{Frequency response.}{5}{section*.14}%
+\contentsline {paragraph}{Sign of the residues and non-minimum-phase zeros.}{5}{section*.15}%
+\contentsline {section}{\numberline {4}Identification}{6}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Residuals and cost}{6}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}Parameters and constraints}{6}{subsection.4.2}%
+\contentsline {subsection}{\numberline {4.3}Solver, starts and uncertainty}{7}{subsection.4.3}%
+\contentsline {paragraph}{Goodness measures.}{7}{section*.18}%
+\contentsline {section}{\numberline {5}Results: elevation}{7}{section.5}%
+\contentsline {paragraph}{Modes.}{8}{section*.21}%
+\contentsline {paragraph}{Bearings.}{8}{section*.22}%
+\contentsline {paragraph}{Parameters at a bound.}{8}{section*.23}%
+\contentsline {paragraph}{Effect of the damping limit}{9}{section*.25}%
+\contentsline {section}{\numberline {6}Results: azimuth}{10}{section.6}%
+\contentsline {paragraph}{Modes.}{11}{section*.29}%
+\contentsline {paragraph}{Parameters.}{11}{section*.30}%
+\contentsline {paragraph}{Where it misses}{12}{section*.32}%
+\contentsline {section}{\numberline {7}Fit quality in the band 1--150\,Hz}{13}{section.7}%
+\contentsline {paragraph}{Comparison of the steps.}{14}{section*.36}%
+\contentsline {section}{\numberline {8}Limitations and open points}{15}{section.8}%

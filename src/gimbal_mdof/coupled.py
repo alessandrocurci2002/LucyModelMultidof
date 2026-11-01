@@ -63,6 +63,19 @@ class Struttura:
     i_theta_e: int
     i_theta_p: int
     i_theta_m: int
+    archi_theta: tuple[tuple[int, int], ...] = ()
+    """Molle fra i master polari; vuoto = catena (master consecutivi). Modello ``hub``: albero."""
+    i_psi_p: int | None = None
+    """Telescopio sull'asse di azimut (``azimuth.telescope_attachment``): coordinata con cui ruota il
+    telescopio attorno a z_hat, appesa a L; ``None`` = il telescopio ruota con la forcella."""
+
+    @property
+    def archi_th(self) -> tuple[tuple[int, int], ...]:
+        return self.archi_theta or tuple((i, i + 1) for i in range(self.n_theta - 1))
+
+    @property
+    def archi_psi(self) -> tuple[tuple[int, int], ...]:
+        return tuple((i, i + 1) for i in range(self.n_psi - 1))
 
     @property
     def n_psi(self) -> int:
@@ -90,6 +103,11 @@ class Struttura:
         return self.i_psi_L
 
     @property
+    def j_psi_p(self) -> int:
+        """Coordinata di azimut del telescopio: psi_p se appeso a L, altrimenti psi_L."""
+        return self.i_psi_L if self.i_psi_p is None else self.i_psi_p
+
+    @property
     def j_theta_e(self) -> int:
         return self.n_psi + self.i_theta_e
 
@@ -113,21 +131,24 @@ def struttura_da(rid_psi: ModelloRidotto, rid_theta: ModelloRidotto) -> Struttur
         ruoli_psi=rid_psi.ruoli, ruoli_theta=rid_theta.ruoli,
         i_psi_e=rid_psi.i_encoder, i_psi_m=rid_psi.i_motore, i_psi_L=rid_psi.i_estremo,
         i_theta_e=rid_theta.i_encoder, i_theta_p=rid_theta.i_P, i_theta_m=rid_theta.i_motore,
+        archi_theta=rid_theta.archi if rid_theta.completo.ramo else (),
+        i_psi_p=rid_psi.i_P if rid_psi.completo.ramo else None,
     )
 
 
-def _matrice_tridiagonale(nome: str, apice: str, ruoli: tuple[str, ...]) -> tuple[sp.Matrix, list[sp.Symbol]]:
-    """Matrice simmetrica tridiagonale di simboli ``nome^{apice}_{ij}``."""
+def _matrice_tridiagonale(nome: str, apice: str, ruoli: tuple[str, ...],
+                         archi: tuple[tuple[int, int], ...] | None = None) -> tuple[sp.Matrix, list[sp.Symbol]]:
+    """Matrice simmetrica di simboli ``nome^{apice}_{ij}`` con la struttura delle molle: diagonale piu'
+    gli ``archi`` (di default i master consecutivi, cioe' tridiagonale)."""
     n = len(ruoli)
     A = sp.zeros(n, n)
     simboli: list[sp.Symbol] = []
-    for i in range(n):
-        for j in (i, i + 1):
-            if j >= n:
-                continue
-            s = sp.Symbol(f"{nome}^{{{apice}}}_{{{ruoli[i]}{ruoli[j]}}}", real=True)
-            A[i, j] = A[j, i] = s
-            simboli.append(s)
+    archi = archi if archi is not None else tuple((i, i + 1) for i in range(n - 1))
+    coppie = sorted({(i, i) for i in range(n)} | {(min(a, b), max(a, b)) for a, b in archi})
+    for i, j in coppie:
+        s = sp.Symbol(f"{nome}^{{{apice}}}_{{{ruoli[i]}{ruoli[j]}}}", real=True)
+        A[i, j] = A[j, i] = s
+        simboli.append(s)
     return A, simboli
 
 
@@ -166,6 +187,26 @@ def velocita_angolare_forma_chiusa(theta_p: sp.Symbol, dpsi_L: sp.Symbol,
                                    dtheta_p: sp.Symbol) -> sp.Matrix:
     """Forma chiusa nella terna P: :math:`(\\dot\\psi_L\\sin\\theta_p, -\\dot\\theta_p, \\dot\\psi_L\\cos\\theta_p)`."""
     return sp.Matrix([dpsi_L * sp.sin(theta_p), -dtheta_p, dpsi_L * sp.cos(theta_p)])
+
+
+def energie_payload(psi_L: sp.Symbol, theta_p: sp.Symbol, dpsi_L: sp.Symbol,
+                    dtheta_p: sp.Symbol) -> tuple[sp.Matrix, sp.Expr, sp.Expr]:
+    """:math:`(\\boldsymbol\\omega_p|_B,\\ T_p,\\ V_g)` del telescopio rigido (sezioni 9.1-9.3).
+
+    Unico punto in cui si scrivono cinematica ed energie del payload: lo usano sia il
+    modello accoppiato ridotto (:func:`costruisci_simbolico`) sia il modello su base
+    generica di :mod:`gimbal_mdof.modal`. La velocita' angolare da Poisson e'
+    verificata contro la forma chiusa.
+    """
+    omega = velocita_angolare_poisson(psi_L, theta_p, dpsi_L, dtheta_p)
+    scarto = sp.simplify(omega - velocita_angolare_forma_chiusa(theta_p, dpsi_L, dtheta_p))
+    if scarto != sp.zeros(3, 1):
+        raise AssertionError(f"omega_p da Poisson diversa dalla forma chiusa: {scarto.T}")
+    half = sp.Rational(1, 2)
+    T_payload = sp.expand(sp.trigsimp(sp.expand(half * (omega.T * lg.tensore_B() * omega)[0, 0])))
+    Z_in_B = kin.R_y(-theta_p).T * sp.Matrix([0, 0, 1])
+    V_g = sp.simplify(m_p * g * (sp.Matrix([d_x, d_y, d_z]).T * Z_in_B)[0, 0])
+    return omega, T_payload, V_g
 
 
 # ---------------------------------------------------------------------------
@@ -253,26 +294,22 @@ def costruisci_simbolico(st: Struttura) -> ModelloAccoppiatoSimbolico:
     M_psi, sM_psi = _matrice_tridiagonale("M", "\\psi", rp)
     K_psi, sK_psi = _matrice_tridiagonale("K", "\\psi", rp)
     C_psi, sC_psi = _matrice_tridiagonale("C", "\\psi", rp)
-    M_th, sM_th = _matrice_tridiagonale("M", "\\theta", rt)
-    K_th, sK_th = _matrice_tridiagonale("K", "\\theta", rt)
-    C_th, sC_th = _matrice_tridiagonale("C", "\\theta", rt)
+    M_th, sM_th = _matrice_tridiagonale("M", "\\theta", rt, st.archi_th)
+    K_th, sK_th = _matrice_tridiagonale("K", "\\theta", rt, st.archi_th)
+    C_th, sC_th = _matrice_tridiagonale("C", "\\theta", rt, st.archi_th)
 
     psi_L, dpsi_L = q[st.j_psi_L], dq[st.j_psi_L]
     theta_p, dtheta_p = q[st.j_theta_p], dq[st.j_theta_p]
 
-    # --- cinematica del payload (Poisson, verificata con la forma chiusa) -----
-    omega = velocita_angolare_poisson(psi_L, theta_p, dpsi_L, dtheta_p)
-    scarto = sp.simplify(omega - velocita_angolare_forma_chiusa(theta_p, dpsi_L, dtheta_p))
-    if scarto != sp.zeros(3, 1):
-        raise AssertionError(f"omega_p da Poisson diversa dalla forma chiusa: {scarto.T}")
+    # --- cinematica ed energie del payload --------------------------------------
+    # il telescopio ruota attorno a z_hat con psi_p (appeso a L) o con la forcella psi_L; J^ax
+    # (alberi polari, mozzo e anello) resta sempre sulla forcella
+    omega, T_payload, V_g = energie_payload(q[st.j_psi_p], theta_p, dq[st.j_psi_p], dtheta_p)
 
     # --- energie ---------------------------------------------------------------
     half = sp.Rational(1, 2)
-    T_payload = sp.expand(sp.trigsimp(sp.expand(half * (omega.T * lg.tensore_B() * omega)[0, 0])))
     T = (half * (dq_psi.T * M_psi * dq_psi)[0, 0] + half * J_ax * dpsi_L**2
          + half * (dq_th.T * M_th * dq_th)[0, 0] + T_payload)
-    Z_in_B = kin.R_y(-theta_p).T * sp.Matrix([0, 0, 1])
-    V_g = sp.simplify(m_p * g * (sp.Matrix([d_x, d_y, d_z]).T * Z_in_B)[0, 0])
     V = half * (q_psi.T * K_psi * q_psi)[0, 0] + half * (q_th.T * K_th * q_th)[0, 0] + V_g
     D = half * (dq_psi.T * C_psi * dq_psi)[0, 0] + half * (dq_th.T * C_th * dq_th)[0, 0]
     L = T - V
@@ -342,19 +379,23 @@ def sostituzione_catena_lumped(mod: ModelloAccoppiatoSimbolico) -> tuple[dict, d
     """
     sost: dict = {}
     k: dict[str, sp.Symbol] = {}
-    for nome, Mm, Km, Cm, n in (("psi", mod.M_psi, mod.K_psi, mod.C_psi, mod.struttura.n_psi),
-                                ("theta", mod.M_theta, mod.K_theta, mod.C_theta, mod.struttura.n_theta)):
-        ks = [sp.Symbol(f"k_{{\\{nome},{i + 1}}}", positive=True) for i in range(n - 1)]
+    st = mod.struttura
+    for nome, Mm, Km, Cm, n, archi in (("psi", mod.M_psi, mod.K_psi, mod.C_psi, st.n_psi, st.archi_psi),
+                                       ("theta", mod.M_theta, mod.K_theta, mod.C_theta, st.n_theta, st.archi_th)):
+        ks = [sp.Symbol(f"k_{{\\{nome},{i + 1}}}", positive=True) for i in range(len(archi))]
         for i, s in enumerate(ks):
             k[f"k_{nome}_{i + 1}"] = s
+        diag = [sp.S.Zero] * n
+        for (a, b), s in zip(archi, ks):
+            i, j = min(a, b), max(a, b)
+            sost[Mm[i, j]] = 0
+            sost[Km[i, j]] = -s
+            sost[Cm[i, j]] = 0
+            diag[a] += s
+            diag[b] += s
         for i in range(n):
-            for j in range(i, min(i + 2, n)):
-                if j == i + 1:
-                    sost[Mm[i, j]] = 0
-                    sost[Km[i, j]] = -ks[i]
-                else:
-                    sost[Km[i, i]] = (ks[i - 1] if i > 0 else 0) + (ks[i] if i < n - 1 else 0)
-                sost[Cm[i, j]] = 0
+            sost[Km[i, i]] = diag[i]
+            sost[Cm[i, i]] = 0
     return sost, k
 
 
@@ -363,10 +404,17 @@ def sostituzione_catena_lumped(mod: ModelloAccoppiatoSimbolico) -> tuple[dict, d
 # ---------------------------------------------------------------------------
 
 
-def _verifica_tridiagonale(A: np.ndarray, nome: str) -> None:
+def _verifica_tridiagonale(A: np.ndarray, nome: str, archi: tuple[tuple[int, int], ...] | None = None) -> None:
+    """Gli elementi fuori dalla diagonale e dagli ``archi`` (default: tridiagonale) devono essere nulli."""
+    n = A.shape[0]
+    archi = archi if archi is not None else tuple((i, i + 1) for i in range(n - 1))
+    maschera = np.eye(n, dtype=bool)
+    for a, b in archi:
+        maschera[a, b] = maschera[b, a] = True
     scala = max(float(np.max(np.abs(A))), 1e-300)
-    if np.max(np.abs(np.triu(A, 2))) > 1e-10 * scala:
-        raise AssertionError(f"{nome} non e' tridiagonale: i master non formano una catena")
+    if np.max(np.abs(np.where(maschera, 0.0, A))) > 1e-10 * scala:
+        raise AssertionError(f"{nome}: elementi fuori dalla struttura delle molle (i master non formano "
+                             "la catena o l'albero previsto)")
 
 
 def valori_parametri(mod: ModelloAccoppiatoSimbolico, rid_psi: ModelloRidotto,
@@ -374,14 +422,19 @@ def valori_parametri(mod: ModelloAccoppiatoSimbolico, rid_psi: ModelloRidotto,
                      C_theta: np.ndarray) -> np.ndarray:
     """Vettore numerico allineato a ``mod.parametri``."""
     valori: dict[sp.Symbol, float] = {}
-    for S, A, nome in ((mod.M_psi, rid_psi.M_r, "M_psi"), (mod.K_psi, rid_psi.K_r, "K_psi"),
-                       (mod.C_psi, C_psi, "C_psi"), (mod.M_theta, rid_theta.M_r, "M_theta"),
-                       (mod.K_theta, rid_theta.K_r, "K_theta"), (mod.C_theta, C_theta, "C_theta")):
-        _verifica_tridiagonale(A, nome)
+    st = mod.struttura
+    for S, A, nome, archi in ((mod.M_psi, rid_psi.M_r, "M_psi", st.archi_psi),
+                              (mod.K_psi, rid_psi.K_r, "K_psi", st.archi_psi),
+                              (mod.C_psi, C_psi, "C_psi", st.archi_psi),
+                              (mod.M_theta, rid_theta.M_r, "M_theta", st.archi_th),
+                              (mod.K_theta, rid_theta.K_r, "K_theta", st.archi_th),
+                              (mod.C_theta, C_theta, "C_theta", st.archi_th)):
+        _verifica_tridiagonale(A, nome, archi)
         n = A.shape[0]
         for i in range(n):
-            for j in range(i, min(i + 2, n)):
-                valori[S[i, j]] = float(A[i, j])
+            for j in range(i, n):
+                if S[i, j] != 0:
+                    valori[S[i, j]] = float(A[i, j])
     valori.update({J_ax: pl.J_ax, I_xx: pl.I_xx, I_yy: pl.I_yy, I_zz: pl.I_zz, I_xy: pl.I_xy,
                    I_xz: pl.I_xz, I_yz: pl.I_yz, m_p: pl.m, g: pl.g, d_x: pl.d_x, d_y: pl.d_y,
                    d_z: pl.d_z})
@@ -478,6 +531,16 @@ class ModelloAccoppiato:
     def M(self, q: np.ndarray) -> np.ndarray:
         return np.asarray(self.funzioni.M(q, self.parametri), dtype=float)
 
+    def direzione_rigida(self, asse: str) -> np.ndarray:
+        """Coordinate del moto rigido unitario dell'asse (tutti i nodi ruotano di 1 rad)."""
+        u = np.zeros(self.n)
+        n_psi = self.struttura.n_psi
+        if asse == "azimut":
+            u[:n_psi] = 1.0
+        else:
+            u[n_psi:] = 1.0
+        return u
+
     def accelerazioni(self, q: np.ndarray, dq: np.ndarray, tau: np.ndarray) -> np.ndarray:
         """:math:`\\ddot{\\mathbf q} = \\mathbf M^{-1}(\\mathbf E\\boldsymbol\\tau - \\mathbf C\\dot{\\mathbf q}
         - \\mathbf C_d\\dot{\\mathbf q} - \\partial V/\\partial\\mathbf q)`."""
@@ -523,20 +586,21 @@ class Sistema:
     beta_theta: float
     accoppiato: ModelloAccoppiato
 
-    def aggiunte_isolate(self, asse: str, theta0: float) -> tuple[float, float]:
-        """``(J_aggiunta, k_aggiunta)`` del modello isolato (sezione 7.3)."""
+    def aggiunte_isolate(self, asse: str, theta0: float) -> tuple[float, float, float]:
+        """``(J_aggiunta, k_aggiunta, J_telescopio)`` del modello isolato (sezione 7.3)."""
         pl = self.payload
         if asse == "azimut":
-            return pl.J_ax + float(pl.J_psi(theta0)), 0.0
-        return pl.I_yy, float(pl.k_g(theta0))
+            return pl.J_ax, 0.0, float(pl.J_psi(theta0))
+        return pl.I_yy, float(pl.k_g(theta0)), 0.0
 
     def isolato_completo(self, asse: str, theta0: float) -> tuple[np.ndarray, np.ndarray, np.ndarray]:
         """``(M, K, C)`` del modello FEM completo isolato in ``theta0``."""
         from . import fem
 
         mod = self.asse_psi if asse == "azimut" else self.asse_theta
-        J, k = self.aggiunte_isolate(asse, theta0)
-        M, K = fem.matrici_isolate(mod, self.modello_massa, J_aggiunta=J, k_aggiunta=k)  # type: ignore[arg-type]
+        J, k, J_tel = self.aggiunte_isolate(asse, theta0)
+        M, K = fem.matrici_isolate(mod, self.modello_massa, J_aggiunta=J, k_aggiunta=k,  # type: ignore[arg-type]
+                                   J_telescopio=J_tel)
         beta = self.beta_psi if asse == "azimut" else self.beta_theta
         C = fem.matrice_smorzamento(mod.K, mod.C_b, beta)  # type: ignore[attr-defined]
         return M, K, C
@@ -546,8 +610,8 @@ class Sistema:
         from . import reduction as rd
 
         rid = self.rid_psi if asse == "azimut" else self.rid_theta
-        J, k = self.aggiunte_isolate(asse, theta0)
-        M, K = rd.matrici_ridotte_isolate(rid, J_aggiunta=J, k_aggiunta=k)
+        J, k, J_tel = self.aggiunte_isolate(asse, theta0)
+        M, K = rd.matrici_ridotte_isolate(rid, J_aggiunta=J, k_aggiunta=k, J_telescopio=J_tel)
         beta = self.beta_psi if asse == "azimut" else self.beta_theta
         return M, K, beta * rid.K_r + rid.C_b_r
 
@@ -573,7 +637,7 @@ def costruisci_sistema(par, modello_massa: str = "consistent", forma_massa: str 
 
     th = THETA_RIFERIMENTO_BETA
     M_psi, _ = fem.matrici_isolate(mod_psi, modello_massa,  # type: ignore[arg-type]
-                                   J_aggiunta=pl.J_ax + float(pl.J_psi(th)))
+                                   J_aggiunta=pl.J_ax, J_telescopio=float(pl.J_psi(th)))
     M_th, _ = fem.matrici_isolate(mod_theta, modello_massa, J_aggiunta=pl.I_yy)  # type: ignore[arg-type]
     beta_psi = fem.beta_smorzamento(M_psi, mod_psi.K, par.zeta)
     beta_theta = fem.beta_smorzamento(M_th, mod_theta.K, par.zeta)

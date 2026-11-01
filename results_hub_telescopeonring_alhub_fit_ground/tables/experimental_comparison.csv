@@ -1,0 +1,71 @@
+# AVVISO: result from placeholder parameters
+file,misura,caratteristica,f_misura_Hz,modulo_dB_o_scarto,f_modello_Hz,canale_modello,rapporto_f
+Azimuth_BodeMeasurement_Po_0.csv,"azimuth, polar at 0 deg, 3.5 A",risonanza,3.7975,-36.05,,,
+Azimuth_BodeMeasurement_Po_0.csv,"azimuth, polar at 0 deg, 3.5 A",antirisonanza,11.9182,-83.48,12.3806,psi_e,0.9626
+Azimuth_BodeMeasurement_Po_0.csv,"azimuth, polar at 0 deg, 3.5 A",risonanza,37.4043,-39.16,,,
+Azimuth_BodeMeasurement_Po_0.csv,"azimuth, polar at 0 deg, 3.5 A",antirisonanza,45.2593,-57.5,,,
+Azimuth_BodeMeasurement_Po_0.csv,"azimuth, polar at 0 deg, 3.5 A",risonanza,490.371,-9.897,774.046,psi_e,0.6335
+Azimuth_BodeMeasurement_Po_0.csv,"azimuth, polar at 0 deg, 3.5 A",livello psi_e,,-4.6,,psi_e,
+Azimuth_BodeMeasurement_Po_0.csv,"azimuth, polar at 0 deg, 3.5 A",livello psi_m,,-4.55,,psi_m,
+Azimuth_BodeMeasurement_Po_0.csv,"azimuth, polar at 0 deg, 3.5 A",fit NRMSE % (all),,-581.6,,psi_e,
+Azimuth_BodeMeasurement_Po_0.csv,"azimuth, polar at 0 deg, 3.5 A",fit NRMSE % (1-5 Hz),,52.75,,psi_e,
+Azimuth_BodeMeasurement_Po_0.csv,"azimuth, polar at 0 deg, 3.5 A",fit NRMSE % (5-100 Hz),,-0.9818,,psi_e,
+Azimuth_BodeMeasurement_Po_0.csv,"azimuth, polar at 0 deg, 3.5 A",fit NRMSE % (>100 Hz),,-585,,psi_e,
+Azimuth_BodeMeasurement_Po_0_dep.csv,"azimuth, polar at 0 deg, 2.36 A",risonanza,4.17725,-37.57,,,
+Azimuth_BodeMeasurement_Po_0_dep.csv,"azimuth, polar at 0 deg, 2.36 A",antirisonanza,11.9182,-82.6,12.3806,psi_e,0.9626
+Azimuth_BodeMeasurement_Po_0_dep.csv,"azimuth, polar at 0 deg, 2.36 A",risonanza,37.4043,-39.46,,,
+Azimuth_BodeMeasurement_Po_0_dep.csv,"azimuth, polar at 0 deg, 2.36 A",antirisonanza,45.2593,-54.48,,,
+Azimuth_BodeMeasurement_Po_0_dep.csv,"azimuth, polar at 0 deg, 2.36 A",risonanza,490.371,-13.19,774.046,psi_e,0.6335
+Azimuth_BodeMeasurement_Po_0_dep.csv,"azimuth, polar at 0 deg, 2.36 A",livello psi_e,,-5.46,,psi_e,
+Azimuth_BodeMeasurement_Po_0_dep.csv,"azimuth, polar at 0 deg, 2.36 A",livello psi_m,,-5.42,,psi_m,
+Azimuth_BodeMeasurement_Po_0_dep.csv,"azimuth, polar at 0 deg, 2.36 A",fit NRMSE % (all),,-769.6,,psi_e,
+Azimuth_BodeMeasurement_Po_0_dep.csv,"azimuth, polar at 0 deg, 2.36 A",fit NRMSE % (1-5 Hz),,60.67,,psi_e,
+Azimuth_BodeMeasurement_Po_0_dep.csv,"azimuth, polar at 0 deg, 2.36 A",fit NRMSE % (5-100 Hz),,-4.589,,psi_e,
+Azimuth_BodeMeasurement_Po_0_dep.csv,"azimuth, polar at 0 deg, 2.36 A",fit NRMSE % (>100 Hz),,-773.5,,psi_e,
+Azimuth_BodeMeasurement_Po_30.csv,"azimuth, polar at 30 deg, 3.5 A",risonanza,3.81975,-35.11,,,
+Azimuth_BodeMeasurement_Po_30.csv,"azimuth, polar at 30 deg, 3.5 A",antirisonanza,12.2505,-82.32,12.8556,psi_e,0.9529
+Azimuth_BodeMeasurement_Po_30.csv,"azimuth, polar at 30 deg, 3.5 A",risonanza,37.065,-38.82,,,
+Azimuth_BodeMeasurement_Po_30.csv,"azimuth, polar at 30 deg, 3.5 A",antirisonanza,44.145,-57.48,,,
+Azimuth_BodeMeasurement_Po_30.csv,"azimuth, polar at 30 deg, 3.5 A",risonanza,481.306,-5.907,774.051,psi_e,0.6218
+Azimuth_BodeMeasurement_Po_30.csv,"azimuth, polar at 30 deg, 3.5 A",livello psi_e,,-4.66,,psi_e,
+Azimuth_BodeMeasurement_Po_30.csv,"azimuth, polar at 30 deg, 3.5 A",livello psi_m,,-4.48,,psi_m,
+Azimuth_BodeMeasurement_Po_30.csv,"azimuth, polar at 30 deg, 3.5 A",fit NRMSE % (all),,-635.6,,psi_e,
+Azimuth_BodeMeasurement_Po_30.csv,"azimuth, polar at 30 deg, 3.5 A",fit NRMSE % (1-5 Hz),,19.58,,psi_e,
+Azimuth_BodeMeasurement_Po_30.csv,"azimuth, polar at 30 deg, 3.5 A",fit NRMSE % (5-100 Hz),,-6.53,,psi_e,
+Azimuth_BodeMeasurement_Po_30.csv,"azimuth, polar at 30 deg, 3.5 A",fit NRMSE % (>100 Hz),,-639.5,,psi_e,
+VAntiRes/BodeMeasurement_12viti_dueDecimiOmogeneo.csv,"elevation, 12 screws, 0.2 mm uniform gap, 3 A",antirisonanza,6.84059,-54.13,,,
+VAntiRes/BodeMeasurement_12viti_dueDecimiOmogeneo.csv,"elevation, 12 screws, 0.2 mm uniform gap, 3 A",antirisonanza,59.0759,-74.97,58.2424,theta_e,1.014
+VAntiRes/BodeMeasurement_12viti_dueDecimiOmogeneo.csv,"elevation, 12 screws, 0.2 mm uniform gap, 3 A",antirisonanza,70.3604,-74.02,58.2424,theta_e,1.208
+VAntiRes/BodeMeasurement_12viti_dueDecimiOmogeneo.csv,"elevation, 12 screws, 0.2 mm uniform gap, 3 A",risonanza,88.8284,-58.4,,,
+VAntiRes/BodeMeasurement_12viti_dueDecimiOmogeneo.csv,"elevation, 12 screws, 0.2 mm uniform gap, 3 A",risonanza,105.796,-56.33,,,
+VAntiRes/BodeMeasurement_12viti_dueDecimiOmogeneo.csv,"elevation, 12 screws, 0.2 mm uniform gap, 3 A",risonanza,133.565,-48.57,,,
+VAntiRes/BodeMeasurement_12viti_dueDecimiOmogeneo.csv,"elevation, 12 screws, 0.2 mm uniform gap, 3 A",antirisonanza,150.074,-74.17,,,
+VAntiRes/BodeMeasurement_12viti_dueDecimiOmogeneo.csv,"elevation, 12 screws, 0.2 mm uniform gap, 3 A",risonanza,178.74,-47.6,294.395,theta_e,0.6071
+VAntiRes/BodeMeasurement_12viti_dueDecimiOmogeneo.csv,"elevation, 12 screws, 0.2 mm uniform gap, 3 A",antirisonanza,225.655,-72.85,,,
+VAntiRes/BodeMeasurement_12viti_dueDecimiOmogeneo.csv,"elevation, 12 screws, 0.2 mm uniform gap, 3 A",risonanza,239.195,-50.71,294.395,theta_e,0.8125
+VAntiRes/BodeMeasurement_12viti_dueDecimiOmogeneo.csv,"elevation, 12 screws, 0.2 mm uniform gap, 3 A",antirisonanza,284.885,-84.32,,,
+VAntiRes/BodeMeasurement_12viti_dueDecimiOmogeneo.csv,"elevation, 12 screws, 0.2 mm uniform gap, 3 A",risonanza,320.096,-52.15,294.395,theta_e,1.087
+VAntiRes/BodeMeasurement_12viti_dueDecimiOmogeneo.csv,"elevation, 12 screws, 0.2 mm uniform gap, 3 A",antirisonanza,339.302,-62.11,617.424,theta_e,0.5495
+VAntiRes/BodeMeasurement_12viti_dueDecimiOmogeneo.csv,"elevation, 12 screws, 0.2 mm uniform gap, 3 A",risonanza,359.66,-49.9,403.161,theta_e,0.8921
+VAntiRes/BodeMeasurement_12viti_dueDecimiOmogeneo.csv,"elevation, 12 screws, 0.2 mm uniform gap, 3 A",risonanza,428.361,-47.88,403.161,theta_e,1.063
+VAntiRes/BodeMeasurement_12viti_dueDecimiOmogeneo.csv,"elevation, 12 screws, 0.2 mm uniform gap, 3 A",antirisonanza,481.306,-71.67,617.424,theta_e,0.7795
+VAntiRes/BodeMeasurement_12viti_dueDecimiOmogeneo.csv,"elevation, 12 screws, 0.2 mm uniform gap, 3 A",antirisonanza,573.244,-60.15,617.424,theta_e,0.9284
+VAntiRes/BodeMeasurement_12viti_dueDecimiOmogeneo.csv,"elevation, 12 screws, 0.2 mm uniform gap, 3 A",risonanza,607.638,-56.7,403.161,theta_e,1.507
+VAntiRes/BodeMeasurement_12viti_dueDecimiOmogeneo.csv,"elevation, 12 screws, 0.2 mm uniform gap, 3 A",antirisonanza,644.097,-65.25,617.424,theta_e,1.043
+VAntiRes/BodeMeasurement_12viti_dueDecimiOmogeneo.csv,"elevation, 12 screws, 0.2 mm uniform gap, 3 A",risonanza,861.947,-43.3,999.253,theta_e,0.8626
+VAntiRes/BodeMeasurement_12viti_dueDecimiOmogeneo.csv,"elevation, 12 screws, 0.2 mm uniform gap, 3 A",antirisonanza,968.483,-58.08,774.046,theta_e,1.251
+VAntiRes/BodeMeasurement_12viti_dueDecimiOmogeneo.csv,"elevation, 12 screws, 0.2 mm uniform gap, 3 A",livello theta_e,,+3.91,,theta_e,
+VAntiRes/BodeMeasurement_12viti_dueDecimiOmogeneo.csv,"elevation, 12 screws, 0.2 mm uniform gap, 3 A",livello theta_m,,-20.5,,theta_m,
+VAntiRes/BodeMeasurement_12viti_dueDecimiOmogeneo.csv,"elevation, 12 screws, 0.2 mm uniform gap, 3 A",fit NRMSE % (all),,-398.1,,theta_e,
+VAntiRes/BodeMeasurement_12viti_dueDecimiOmogeneo.csv,"elevation, 12 screws, 0.2 mm uniform gap, 3 A",fit NRMSE % (1-5 Hz),,52.66,,theta_e,
+VAntiRes/BodeMeasurement_12viti_dueDecimiOmogeneo.csv,"elevation, 12 screws, 0.2 mm uniform gap, 3 A",fit NRMSE % (5-100 Hz),,9.638,,theta_e,
+VAntiRes/BodeMeasurement_12viti_dueDecimiOmogeneo.csv,"elevation, 12 screws, 0.2 mm uniform gap, 3 A",fit NRMSE % (>100 Hz),,-1038,,theta_e,
+BodeMeasurement_NoTelescope.csv,"elevation without telescope, 2.5 A",antirisonanza,404.114,-44.24,617.424,theta_e,0.6545
+BodeMeasurement_NoTelescope.csv,"elevation without telescope, 2.5 A",risonanza,428.361,-33.17,400.082,theta_e,1.071
+BodeMeasurement_NoTelescope.csv,"elevation without telescope, 2.5 A",antirisonanza,510.185,-60.74,617.424,theta_e,0.8263
+BodeMeasurement_NoTelescope.csv,"elevation without telescope, 2.5 A",livello theta_e,,+0.108,,theta_e,
+BodeMeasurement_NoTelescope.csv,"elevation without telescope, 2.5 A",livello theta_m,,-0.814,,theta_m,
+BodeMeasurement_NoTelescope.csv,"elevation without telescope, 2.5 A",fit NRMSE % (all),,-45.61,,theta_e,
+BodeMeasurement_NoTelescope.csv,"elevation without telescope, 2.5 A",fit NRMSE % (1-5 Hz),,79.73,,theta_e,
+BodeMeasurement_NoTelescope.csv,"elevation without telescope, 2.5 A",fit NRMSE % (5-100 Hz),,-41.39,,theta_e,
+BodeMeasurement_NoTelescope.csv,"elevation without telescope, 2.5 A",fit NRMSE % (>100 Hz),,-83.41,,theta_e,

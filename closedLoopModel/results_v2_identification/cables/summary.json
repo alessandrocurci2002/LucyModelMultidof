@@ -1,0 +1,1963 @@
+{
+ "gains": {
+  "azimuth": {
+   "Kpp": 6.984468570223303,
+   "Kpv": 378.72622454621444,
+   "Kiv": 0.2604918763568792,
+   "kvff": 0.0,
+   "Tc": 0.17260674958681926
+  },
+  "elevation": {
+   "Kpp": 6.784056579188558,
+   "Kpv": 53.83123603900217,
+   "Kiv": 2.875717800254564,
+   "kvff": 0.0,
+   "Tc": 0.3849994745028063
+  }
+ },
+ "session": [
+  {
+   "file": "V2/MPCLucy_doublets_azimut_1deg_15deg",
+   "start_min": 0.0,
+   "duration_s": 99.7885,
+   "axis": [
+    "azimuth"
+   ]
+  },
+  {
+   "file": "V2/MPCLucy_doublets_azimut_1deg_15deg_v2",
+   "start_min": 28.29665000041326,
+   "duration_s": 99.9895,
+   "axis": [
+    "azimuth"
+   ]
+  },
+  {
+   "file": "V2/MPCLucy_doublets_azimut_1deg_minus1deg",
+   "start_min": 47.16669166882833,
+   "duration_s": 99.787,
+   "axis": [
+    "azimuth"
+   ]
+  },
+  {
+   "file": "V2/MPCLucy_doublets_azimut_3deg_minus3deg",
+   "start_min": 49.96332499980927,
+   "duration_s": 99.989,
+   "axis": [
+    "azimuth"
+   ]
+  },
+  {
+   "file": "V2/MPCLucy_doublets_azimut_5deg_minus5deg",
+   "start_min": 52.16332499980926,
+   "duration_s": 99.989,
+   "axis": [
+    "azimuth"
+   ]
+  },
+  {
+   "file": "V2/MPCLucy_doublets_azimut_8deg_minus8deg",
+   "start_min": 54.32998333374659,
+   "duration_s": 99.9895,
+   "axis": [
+    "azimuth"
+   ]
+  },
+  {
+   "file": "V2/MPCLucy_doublets_azimut_01deg_minus01deg",
+   "start_min": 56.67342500289281,
+   "duration_s": 97.383,
+   "axis": [
+    "azimuth"
+   ]
+  },
+  {
+   "file": "V2/MPCLucy_doublets_azimut_05deg_minus05deg",
+   "start_min": 59.85477499961853,
+   "duration_s": 98.502,
+   "axis": [
+    "azimuth"
+   ]
+  },
+  {
+   "file": "V2/MPCLucy_doublets_elevation_01deg_minus01deg",
+   "start_min": 62.6966583331426,
+   "duration_s": 99.989,
+   "axis": [
+    "elevation"
+   ]
+  },
+  {
+   "file": "V2/MPCLucy_doublets_elevation_05deg_minus05deg",
+   "start_min": 64.83334166606268,
+   "duration_s": 99.788,
+   "axis": [
+    "elevation"
+   ]
+  },
+  {
+   "file": "V2/MPCLucy_doublets_elevation_1deg_minus1deg",
+   "start_min": 66.9550166686376,
+   "duration_s": 98.4875,
+   "axis": [
+    "elevation"
+   ]
+  },
+  {
+   "file": "V2/MPCLucy_doublets_elevation_3deg_minus3deg",
+   "start_min": 69.3346250017484,
+   "duration_s": 99.711,
+   "axis": [
+    "elevation"
+   ]
+  },
+  {
+   "file": "V2/MPCLucy_doublets_elevation_5deg_minus5deg",
+   "start_min": 71.69665000041326,
+   "duration_s": 99.9895,
+   "axis": [
+    "elevation"
+   ]
+  },
+  {
+   "file": "V2/MPCLucy_doublets_elevation_8deg_minus8deg",
+   "start_min": 73.9675166686376,
+   "duration_s": 99.7375,
+   "axis": [
+    "elevation"
+   ]
+  },
+  {
+   "file": "V2/MPCLucy_doublets_elevation_10deg_minus10deg",
+   "start_min": 76.22996666828791,
+   "duration_s": 99.9905,
+   "axis": [
+    "elevation"
+   ]
+  },
+  {
+   "file": "V2/MPCLucy_doublets_elevation_15deg_minus15deg",
+   "start_min": 78.62999999920527,
+   "duration_s": 99.9885,
+   "axis": [
+    "elevation"
+   ]
+  }
+ ],
+ "rests": [
+  {
+   "file": "V2/MPCLucy_doublets_azimut_1deg_15deg",
+   "axis": "azimuth",
+   "kind": "before the first move",
+   "t_session_min": 0.0,
+   "angle_deg": 4.999805369925446,
+   "last_move_deg": null,
+   "rest_s": 1.542,
+   "T_start": 0.17141553506493507,
+   "T_end": 0.16958691818181817,
+   "T_mean": 0.17036107137763368,
+   "error_start_mdeg": 0.1961784253240965,
+   "error_end_mdeg": 0.19729311038903255,
+   "encoder_change_mdeg": -0.0011146850648663777,
+   "integral_action_dT": 0.005847050405436711
+  },
+  {
+   "file": "V2/MPCLucy_doublets_azimut_1deg_15deg",
+   "axis": "azimuth",
+   "kind": "after a move",
+   "t_session_min": 0.047091666666666664,
+   "angle_deg": -5.000203636898187,
+   "last_move_deg": -9.99999974,
+   "rest_s": 9.183000000000002,
+   "T_start": -0.38665858859999996,
+   "T_end": -0.365982546,
+   "T_mean": -0.37388644870692006,
+   "error_start_mdeg": 0.2625813600007428,
+   "error_end_mdeg": 0.17675061000086326,
+   "encoder_change_mdeg": 0.08583074999868678,
+   "integral_action_dT": 0.036479931545848006
+  },
+  {
+   "file": "V2/MPCLucy_doublets_azimut_1deg_15deg",
+   "axis": "azimuth",
+   "kind": "after a move",
+   "t_session_min": 0.2765333333333333,
+   "angle_deg": 7.999758203533414,
+   "last_move_deg": 12.999999728,
+   "rest_s": 5.9105000000000025,
+   "T_start": 0.3437066712,
+   "T_end": 0.32589693119999996,
+   "T_mean": 0.3333651477584165,
+   "error_start_mdeg": 0.23705564599923035,
+   "error_end_mdeg": 0.24151884499924473,
+   "encoder_change_mdeg": -0.004463198999559588,
+   "integral_action_dT": 0.027845160390913
+  },
+  {
+   "file": "V2/MPCLucy_doublets_azimut_1deg_15deg",
+   "axis": "azimuth",
+   "kind": "after a move",
+   "t_session_min": 0.4564333333333333,
+   "angle_deg": -8.000165496487634,
+   "last_move_deg": -15.999999716,
+   "rest_s": 5.803499999999996,
+   "T_start": -0.3217047924,
+   "T_end": -0.30558165000000004,
+   "T_mean": -0.31233912556216076,
+   "error_start_mdeg": 0.22986327600019327,
+   "error_end_mdeg": 0.13785298000026552,
+   "encoder_change_mdeg": 0.09201029599897355,
+   "integral_action_dT": 0.018739455005294687
+  },
+  {
+   "file": "V2/MPCLucy_doublets_azimut_1deg_15deg",
+   "axis": "azimuth",
+   "kind": "after a move",
+   "t_session_min": 0.6378833333333334,
+   "angle_deg": 9.999961157288668,
+   "last_move_deg": 17.999999765000002,
+   "rest_s": 8.142499999999991,
+   "T_start": 0.4326335952,
+   "T_end": 0.40173141300000004,
+   "T_mean": 0.4138179917961314,
+   "error_start_mdeg": 0.03805399999884224,
+   "error_end_mdeg": 0.04045726099885,
+   "encoder_change_mdeg": -0.0024032610013531323,
+   "integral_action_dT": 0.00615077612888004
+  },
+  {
+   "file": "V2/MPCLucy_doublets_azimut_1deg_15deg",
+   "axis": "azimuth",
+   "kind": "after a move",
+   "t_session_min": 0.8616499999999999,
+   "angle_deg": -10.000350214180205,
+   "last_move_deg": -19.999999814000002,
+   "rest_s": 10.138000000000005,
+   "T_start": -0.3902981688,
+   "T_end": -0.36026668500000003,
+   "T_mean": -0.3716860770824087,
+   "error_start_mdeg": 0.4573610890011666,
+   "error_end_mdeg": 0.32071853500072556,
+   "encoder_change_mdeg": 0.13664255399923883,
+   "integral_action_dT": 0.06923464273260785,
+   "T_inf": -0.3529527221951118,
+   "dT": -0.03836884395432844,
+   "tau_s": 6.114835122182094
+  },
+  {
+   "file": "V2/MPCLucy_doublets_azimut_1deg_15deg",
+   "axis": "azimuth",
+   "kind": "after a move",
+   "t_session_min": 1.1270083333333334,
+   "angle_deg": 14.999770210652525,
+   "last_move_deg": 24.999999851000002,
+   "rest_s": 3.9729999999999848,
+   "T_start": 0.38292532216624686,
+   "T_end": 0.3664897798488665,
+   "T_mean": 0.37380143951673794,
+   "error_start_mdeg": 0.2292583967264091,
+   "error_end_mdeg": 0.23098798362817793,
+   "encoder_change_mdeg": -0.001729586898460069,
+   "integral_action_dT": 0.01779172406356379
+  },
+  {
+   "file": "V2/MPCLucy_doublets_azimut_1deg_15deg",
+   "axis": "azimuth",
+   "kind": "after a move",
+   "t_session_min": 1.29795,
+   "angle_deg": -15.000204083126567,
+   "last_move_deg": -29.999999888,
+   "rest_s": 9.469499999999996,
+   "T_start": -0.6054215616,
+   "T_end": -0.5626949297999999,
+   "T_mean": -0.5799353738317757,
+   "error_start_mdeg": 0.38709546200102124,
+   "error_end_mdeg": 0.1594723130002865,
+   "encoder_change_mdeg": 0.22762314899980285,
+   "integral_action_dT": 0.03768348211878135
+  },
+  {
+   "file": "V2/MPCLucy_doublets_azimut_1deg_15deg",
+   "axis": "azimuth",
+   "kind": "after a move",
+   "t_session_min": 1.5354999999999999,
+   "angle_deg": -5.736165844359722e-06,
+   "last_move_deg": 14.999999944,
+   "rest_s": 4.458500000000001,
+   "T_start": 0.36644188821548823,
+   "T_end": 0.3495746821548822,
+   "T_mean": 0.3565651940345369,
+   "error_start_mdeg": 0.00038532323232323234,
+   "error_end_mdeg": 0.013871636363636362,
+   "encoder_change_mdeg": -0.013486313131313129,
+   "integral_action_dT": 0.0004986422153438347
+  },
+  {
+   "file": "V2/MPCLucy_doublets_azimut_1deg_15deg_v2",
+   "axis": "azimuth",
+   "kind": "before the first move",
+   "t_session_min": 28.29665000041326,
+   "angle_deg": -15.00012837243209,
+   "last_move_deg": null,
+   "rest_s": 35.696,
+   "T_start": -0.6118071905999999,
+   "T_end": -0.5857851816000001,
+   "T_mean": -0.595077750586192,
+   "error_start_mdeg": 0.12994653500019118,
+   "error_end_mdeg": 0.12170678300016459,
+   "encoder_change_mdeg": 0.008239751996006376,
+   "integral_action_dT": 0.08937401432670178
+  },
+  {
+   "file": "V2/MPCLucy_doublets_azimut_1deg_15deg_v2",
+   "axis": "azimuth",
+   "kind": "after a move",
+   "t_session_min": 28.92130833374659,
+   "angle_deg": -0.00012072931689161279,
+   "last_move_deg": 14.999999944,
+   "rest_s": 59.31,
+   "T_start": 0.42638344200000006,
+   "T_end": 0.34653796319999997,
+   "T_mean": 0.3673485488336804,
+   "error_start_mdeg": 0.0,
+   "error_end_mdeg": 0.146598921,
+   "encoder_change_mdeg": -0.146598921,
+   "integral_action_dT": 0.13959472085583724,
+   "T_inf": 0.3455880334606857,
+   "dT": 0.07288326096987294,
+   "tau_s": 18.44881753898813
+  },
+  {
+   "file": "V2/MPCLucy_doublets_azimut_1deg_minus1deg",
+   "axis": "azimuth",
+   "kind": "before the first move",
+   "t_session_min": 47.16669166882833,
+   "angle_deg": 0.0,
+   "last_move_deg": null,
+   "rest_s": 8.6905,
+   "T_start": -0.1003769124,
+   "T_end": -0.1002855804,
+   "T_mean": -0.10042088788401794,
+   "error_start_mdeg": 0.0,
+   "error_end_mdeg": 0.0,
+   "encoder_change_mdeg": 0.0,
+   "integral_action_dT": 0.0
+  },
+  {
+   "file": "V2/MPCLucy_doublets_azimut_1deg_minus1deg",
+   "axis": "azimuth",
+   "kind": "after a move",
+   "t_session_min": 47.317925002161665,
+   "angle_deg": 0.9997558590000001,
+   "last_move_deg": 0.99999994,
+   "rest_s": 34.937,
+   "T_start": 0.20191678559999998,
+   "T_end": 0.1915445148,
+   "T_mean": 0.19462022157025505,
+   "error_start_mdeg": 0.2440809999999721,
+   "error_end_mdeg": 0.2440809999999721,
+   "encoder_change_mdeg": 0.0,
+   "integral_action_dT": 0.16624295126717345,
+   "T_inf": 0.19079099458248677,
+   "dT": 0.010418737439010091,
+   "tau_s": 13.992463204092124
+  },
+  {
+   "file": "V2/MPCLucy_doublets_azimut_1deg_minus1deg",
+   "axis": "azimuth",
+   "kind": "after a move",
+   "t_session_min": 47.95826666882832,
+   "angle_deg": -1.000099182,
+   "last_move_deg": -1.99999988,
+   "rest_s": 32.13249999999999,
+   "T_start": -0.21646445100000003,
+   "T_end": -0.19022781179999998,
+   "T_mean": -0.19857424207823735,
+   "error_start_mdeg": 0.09924200000014222,
+   "error_end_mdeg": 0.09924200000014222,
+   "encoder_change_mdeg": 0.0,
+   "integral_action_dT": 0.06216842944203063,
+   "T_inf": -0.18884051071007082,
+   "dT": -0.026695489724352765,
+   "tau_s": 12.738494025185014
+  },
+  {
+   "file": "V2/MPCLucy_doublets_azimut_1deg_minus1deg",
+   "axis": "azimuth",
+   "kind": "after a move",
+   "t_session_min": 48.55020000216166,
+   "angle_deg": 0.0,
+   "last_move_deg": 0.99999994,
+   "rest_s": 13.57650000000001,
+   "T_start": 0.19406680020000003,
+   "T_end": 0.18667804140000002,
+   "T_mean": 0.18923624453119248,
+   "error_start_mdeg": 0.0,
+   "error_end_mdeg": 0.0,
+   "encoder_change_mdeg": 0.0,
+   "integral_action_dT": 0.0,
+   "T_inf": 0.1855956852393742,
+   "dT": 0.008351943397891397,
+   "tau_s": 6.869982772916217
+  },
+  {
+   "file": "V2/MPCLucy_doublets_azimut_3deg_minus3deg",
+   "axis": "azimuth",
+   "kind": "before the first move",
+   "t_session_min": 49.96332499980927,
+   "angle_deg": 0.0,
+   "last_move_deg": null,
+   "rest_s": 3.9909999999999997,
+   "T_start": 0.1813745172932331,
+   "T_end": 0.18131729172932332,
+   "T_mean": 0.18136263532949135,
+   "error_start_mdeg": 0.0,
+   "error_end_mdeg": 0.0,
+   "encoder_change_mdeg": 0.0,
+   "integral_action_dT": 0.0
+  },
+  {
+   "file": "V2/MPCLucy_doublets_azimut_3deg_minus3deg",
+   "axis": "azimuth",
+   "kind": "after a move",
+   "t_session_min": 50.039566666475935,
+   "angle_deg": 2.9999542240000006,
+   "last_move_deg": 2.9999999890000004,
+   "rest_s": 39.190999999999995,
+   "T_start": 0.32601261839999995,
+   "T_end": 0.2966128476,
+   "T_mean": 0.3057049201959634,
+   "error_start_mdeg": 0.04576499999999731,
+   "error_end_mdeg": 0.04576499999999731,
+   "encoder_change_mdeg": 0.0,
+   "integral_action_dT": 0.03496585424137098,
+   "T_inf": 0.2946580545377097,
+   "dT": 0.029606789340202392,
+   "tau_s": 16.005933635586242
+  },
+  {
+   "file": "V2/MPCLucy_doublets_azimut_3deg_minus3deg",
+   "axis": "azimuth",
+   "kind": "after a move",
+   "t_session_min": 50.75747499980926,
+   "angle_deg": -3.000297546,
+   "last_move_deg": -5.999999978000001,
+   "rest_s": 41.4755,
+   "T_start": -0.3919391004,
+   "T_end": -0.31519282080000005,
+   "T_mean": -0.33449831189603624,
+   "error_start_mdeg": 0.29755699999973295,
+   "error_end_mdeg": 0.29755699999973295,
+   "encoder_change_mdeg": 0.0,
+   "integral_action_dT": 0.24059781200581423,
+   "T_inf": -0.3172128420167157,
+   "dT": -0.07438034530363143,
+   "tau_s": 9.779204192823935
+  },
+  {
+   "file": "V2/MPCLucy_doublets_azimut_3deg_minus3deg",
+   "axis": "azimuth",
+   "kind": "after a move",
+   "t_session_min": 51.5084583331426,
+   "angle_deg": 0.0,
+   "last_move_deg": 2.9999999890000004,
+   "rest_s": 4.081000000000003,
+   "T_start": 0.3558329044117647,
+   "T_end": 0.3411798639705883,
+   "T_mean": 0.3475223811098861,
+   "error_start_mdeg": 0.0,
+   "error_end_mdeg": 0.0,
+   "encoder_change_mdeg": 0.0,
+   "integral_action_dT": 0.0
+  },
+  {
+   "file": "V2/MPCLucy_doublets_azimut_5deg_minus5deg",
+   "axis": "azimuth",
+   "kind": "before the first move",
+   "t_session_min": 52.16332499980926,
+   "angle_deg": 0.0,
+   "last_move_deg": null,
+   "rest_s": 1.7485,
+   "T_start": 0.3118285581661891,
+   "T_end": 0.3122036561604585,
+   "T_mean": 0.3124191478559176,
+   "error_start_mdeg": 0.0,
+   "error_end_mdeg": 0.0,
+   "encoder_change_mdeg": 0.0,
+   "integral_action_dT": 0.0
+  },
+  {
+   "file": "V2/MPCLucy_doublets_azimut_5deg_minus5deg",
+   "axis": "azimuth",
+   "kind": "after a move",
+   "t_session_min": 52.20552499980927,
+   "angle_deg": 4.9998092650000014,
+   "last_move_deg": 4.99999987,
+   "rest_s": 43.7945,
+   "T_start": 0.2883594792,
+   "T_end": 0.25197281039999997,
+   "T_mean": 0.26219270663211136,
+   "error_start_mdeg": 0.19060499999941607,
+   "error_end_mdeg": 0.19060499999941607,
+   "encoder_change_mdeg": 0.0,
+   "integral_action_dT": 0.16273417809887525,
+   "T_inf": 0.24995754375894638,
+   "dT": 0.03652363173233522,
+   "tau_s": 15.615999063042349
+  },
+  {
+   "file": "V2/MPCLucy_doublets_azimut_5deg_minus5deg",
+   "axis": "azimuth",
+   "kind": "after a move",
+   "t_session_min": 53.00682499980927,
+   "angle_deg": -5.000152543201211,
+   "last_move_deg": -9.99999974,
+   "rest_s": 34.48649999999999,
+   "T_start": -0.40687797119999997,
+   "T_end": -0.3325565562,
+   "T_mean": -0.3524795753120787,
+   "error_start_mdeg": 0.152718000000897,
+   "error_end_mdeg": 0.15237467700089669,
+   "encoder_change_mdeg": 0.00034332300076126077,
+   "integral_action_dT": 0.1026444579669154,
+   "T_inf": -0.3333520302976898,
+   "dT": -0.07386647600575359,
+   "tau_s": 9.13998502308252
+  },
+  {
+   "file": "V2/MPCLucy_doublets_azimut_5deg_minus5deg",
+   "axis": "azimuth",
+   "kind": "after a move",
+   "t_session_min": 53.6446583331426,
+   "angle_deg": 0.0,
+   "last_move_deg": 4.99999987,
+   "rest_s": 7.909000000000006,
+   "T_start": 0.3564139968,
+   "T_end": 0.33727385400000004,
+   "T_mean": 0.3447362973260004,
+   "error_start_mdeg": 0.0,
+   "error_end_mdeg": 0.0,
+   "encoder_change_mdeg": 0.0,
+   "integral_action_dT": 0.0
+  },
+  {
+   "file": "V2/MPCLucy_doublets_azimut_8deg_minus8deg",
+   "axis": "azimuth",
+   "kind": "after a move",
+   "t_session_min": 54.33271666707993,
+   "angle_deg": 7.999763489000002,
+   "last_move_deg": 1.2214447930000003,
+   "rest_s": 31.7735,
+   "T_start": 0.4140810216,
+   "T_end": 0.3636809796,
+   "T_mean": 0.3767161390004406,
+   "error_start_mdeg": 0.23636899999922814,
+   "error_end_mdeg": 0.23636899999922814,
+   "encoder_change_mdeg": 0.0,
+   "integral_action_dT": 0.1464149578123028,
+   "T_inf": 0.3627694429166734,
+   "dT": 0.050478235474473235,
+   "tau_s": 9.048785983888385
+  },
+  {
+   "file": "V2/MPCLucy_doublets_azimut_8deg_minus8deg",
+   "axis": "azimuth",
+   "kind": "after a move",
+   "t_session_min": 54.943666667079924,
+   "angle_deg": -8.0001065673439,
+   "last_move_deg": -15.999999716,
+   "rest_s": 41.3965,
+   "T_start": -0.4523795736000001,
+   "T_end": -0.3660556116,
+   "T_mean": -0.3846634369012247,
+   "error_start_mdeg": 0.10695400000028982,
+   "error_end_mdeg": 0.10626735400029078,
+   "encoder_change_mdeg": 0.0006866459983419669,
+   "integral_action_dT": 0.08611839620703436,
+   "T_inf": -0.36755383193804,
+   "dT": -0.07784441906391189,
+   "tau_s": 9.200778880913436
+  },
+  {
+   "file": "V2/MPCLucy_doublets_azimut_8deg_minus8deg",
+   "axis": "azimuth",
+   "kind": "after a move",
+   "t_session_min": 55.70166666707993,
+   "angle_deg": 0.0,
+   "last_move_deg": 7.999999858,
+   "rest_s": 14.488500000000002,
+   "T_start": 0.3757794252,
+   "T_end": 0.34356054,
+   "T_mean": 0.35458592631651603,
+   "error_start_mdeg": 0.0,
+   "error_end_mdeg": 0.0,
+   "encoder_change_mdeg": 0.0,
+   "integral_action_dT": 0.0,
+   "T_inf": 0.3403317742872893,
+   "dT": 0.03566856467401331,
+   "tau_s": 6.48402287210796
+  },
+  {
+   "file": "V2/MPCLucy_doublets_azimut_01deg_minus01deg",
+   "axis": "azimuth",
+   "kind": "before the first move",
+   "t_session_min": 56.67342500289281,
+   "angle_deg": 0.0,
+   "last_move_deg": null,
+   "rest_s": 6.0835,
+   "T_start": 0.3275348184,
+   "T_end": 0.3260004408,
+   "T_mean": 0.32664487983234713,
+   "error_start_mdeg": 0.0,
+   "error_end_mdeg": 0.0,
+   "encoder_change_mdeg": 0.0,
+   "integral_action_dT": 0.0
+  },
+  {
+   "file": "V2/MPCLucy_doublets_azimut_01deg_minus01deg",
+   "axis": "azimuth",
+   "kind": "after a move",
+   "t_session_min": 56.779108336226145,
+   "angle_deg": 0.09990692100000005,
+   "last_move_deg": 0.09999996100000001,
+   "rest_s": 32.44049999999999,
+   "T_start": 0.1588476588,
+   "T_end": 0.1696918116,
+   "T_mean": 0.16618041340320594,
+   "error_start_mdeg": 0.09304000000000062,
+   "error_end_mdeg": 0.09304000000000062,
+   "encoder_change_mdeg": 0.0,
+   "integral_action_dT": 0.058840143769643145,
+   "T_inf": 0.1700551491983214,
+   "dT": -0.010348662712494482,
+   "tau_s": 13.309524651211344
+  },
+  {
+   "file": "V2/MPCLucy_doublets_azimut_01deg_minus01deg",
+   "axis": "azimuth",
+   "kind": "after a move",
+   "t_session_min": 57.374475002892815,
+   "angle_deg": -0.10025024399999996,
+   "last_move_deg": -0.19999992200000002,
+   "rest_s": 30.662999999999997,
+   "T_start": 0.11435984160000001,
+   "T_end": 0.1147038588,
+   "T_mean": 0.11473476700311445,
+   "error_start_mdeg": 0.25028299999998943,
+   "error_end_mdeg": 0.25028299999998943,
+   "encoder_change_mdeg": 0.0,
+   "integral_action_dT": 0.14961525144560706,
+   "T_inf": 0.11478014573222402,
+   "dT": -0.0006447546374848967,
+   "tau_s": 2.157885292154839
+  },
+  {
+   "file": "V2/MPCLucy_doublets_azimut_01deg_minus01deg",
+   "axis": "azimuth",
+   "kind": "after a move",
+   "t_session_min": 57.93981666955948,
+   "angle_deg": 0.0,
+   "last_move_deg": 0.09999996100000001,
+   "rest_s": 18.199499999999986,
+   "T_start": 0.1827614208,
+   "T_end": 0.1811433222,
+   "T_mean": 0.18177992878925245,
+   "error_start_mdeg": 0.0,
+   "error_end_mdeg": 0.0,
+   "encoder_change_mdeg": 0.0,
+   "integral_action_dT": 0.0,
+   "T_inf": 0.17835210111455485,
+   "dT": 0.004367407296565262,
+   "tau_s": 35.98361035758782
+  },
+  {
+   "file": "V2/MPCLucy_doublets_azimut_05deg_minus05deg",
+   "axis": "azimuth",
+   "kind": "before the first move",
+   "t_session_min": 59.85477499961853,
+   "angle_deg": 0.0,
+   "last_move_deg": null,
+   "rest_s": 5.774,
+   "T_start": 0.18031981200000002,
+   "T_end": 0.1802010804,
+   "T_mean": 0.18028217679452765,
+   "error_start_mdeg": 0.0,
+   "error_end_mdeg": 0.0,
+   "encoder_change_mdeg": 0.0,
+   "integral_action_dT": 0.0
+  },
+  {
+   "file": "V2/MPCLucy_doublets_azimut_05deg_minus05deg",
+   "axis": "azimuth",
+   "kind": "after a move",
+   "t_session_min": 59.956491666285196,
+   "angle_deg": 0.4998779299999999,
+   "last_move_deg": 0.49999997,
+   "rest_s": 30.273999999999994,
+   "T_start": 0.2241500388,
+   "T_end": 0.2178146424,
+   "T_mean": 0.21971848811851755,
+   "error_start_mdeg": 0.12203999999999281,
+   "error_end_mdeg": 0.12203999999999281,
+   "encoder_change_mdeg": 0.0,
+   "integral_action_dT": 0.07202689688410167,
+   "T_inf": 0.21783256377766858,
+   "dT": 0.006008331950851003,
+   "tau_s": 9.983516153106661
+  },
+  {
+   "file": "V2/MPCLucy_doublets_azimut_05deg_minus05deg",
+   "axis": "azimuth",
+   "kind": "after a move",
+   "t_session_min": 60.51744999961853,
+   "angle_deg": -0.5002212520000001,
+   "last_move_deg": -0.99999994,
+   "rest_s": 35.0075,
+   "T_start": -0.076901544,
+   "T_end": -0.06324741,
+   "T_mean": -0.0674476610546161,
+   "error_start_mdeg": 0.22128200000003564,
+   "error_end_mdeg": 0.22128200000003564,
+   "encoder_change_mdeg": 0.0,
+   "integral_action_dT": 0.15102090112879507,
+   "T_inf": -0.06261545767042564,
+   "dT": -0.013796668037313303,
+   "tau_s": 13.188875470336257
+  },
+  {
+   "file": "V2/MPCLucy_doublets_azimut_05deg_minus05deg",
+   "axis": "azimuth",
+   "kind": "after a move",
+   "t_session_min": 61.1563916662852,
+   "angle_deg": 0.0,
+   "last_move_deg": 0.49999997,
+   "rest_s": 17.205,
+   "T_start": 0.16916817480000002,
+   "T_end": 0.16356952319999998,
+   "T_mean": 0.1651510027375763,
+   "error_start_mdeg": 0.0,
+   "error_end_mdeg": 0.0,
+   "encoder_change_mdeg": 0.0,
+   "integral_action_dT": 0.0,
+   "T_inf": 0.1636172486736386,
+   "dT": 0.005987278198849207,
+   "tau_s": 4.506135028442187
+  },
+  {
+   "file": "V2/MPCLucy_doublets_elevation_01deg_minus01deg",
+   "axis": "elevation",
+   "kind": "after a move",
+   "t_session_min": 62.7158833331426,
+   "angle_deg": 0.09992630523526959,
+   "last_move_deg": 0.09999996100000001,
+   "rest_s": 44.287499999999994,
+   "T_start": 0.44857102919999997,
+   "T_end": 0.38630391599999997,
+   "T_mean": 0.4059876934326842,
+   "error_start_mdeg": 0.20152975200000176,
+   "error_end_mdeg": 0.09304000000000062,
+   "encoder_change_mdeg": 0.10848975200001913,
+   "integral_action_dT": 0.09692087092740453,
+   "T_inf": 0.38079697956643416,
+   "dT": 0.07232503454222973,
+   "tau_s": 16.569197102187
+  },
+  {
+   "file": "V2/MPCLucy_doublets_elevation_01deg_minus01deg",
+   "axis": "elevation",
+   "kind": "after a move",
+   "t_session_min": 63.50869999980926,
+   "angle_deg": -0.10024968305100619,
+   "last_move_deg": -0.19999992200000002,
+   "rest_s": 30.9075,
+   "T_start": -0.47080428240000005,
+   "T_end": -0.37143658860000006,
+   "T_mean": -0.4138324636954834,
+   "error_start_mdeg": 0.2138907619999905,
+   "error_end_mdeg": 0.25028299999998943,
+   "encoder_change_mdeg": -0.036392237999999494,
+   "integral_action_dT": 0.22933619655103601,
+   "T_inf": -0.30954478164337623,
+   "dT": -0.16481266171775588,
+   "tau_s": 30.982907242111022
+  },
+  {
+   "file": "V2/MPCLucy_doublets_elevation_01deg_minus01deg",
+   "axis": "elevation",
+   "kind": "after a move",
+   "t_session_min": 64.07811666647594,
+   "angle_deg": 9.146142501078982e-05,
+   "last_move_deg": 0.09999996100000001,
+   "rest_s": 13.901499999999999,
+   "T_start": 0.39256320240000003,
+   "T_end": 0.35328435360000005,
+   "T_mean": 0.3720949027621925,
+   "error_start_mdeg": 0.000343323,
+   "error_end_mdeg": -0.003089907,
+   "encoder_change_mdeg": 0.0034332300000000002,
+   "integral_action_dT": -0.03778002739939341,
+   "T_inf": 0.2584127788640258,
+   "dT": 0.13612704364488562,
+   "tau_s": 37.3820046600361
+  },
+  {
+   "file": "V2/MPCLucy_doublets_elevation_05deg_minus05deg",
+   "axis": "elevation",
+   "kind": "before the first move",
+   "t_session_min": 64.83334166606268,
+   "angle_deg": 0.0,
+   "last_move_deg": null,
+   "rest_s": 7.6415,
+   "T_start": 0.3211963776,
+   "T_end": 0.3195036912,
+   "T_mean": 0.32030458272703477,
+   "error_start_mdeg": 0.0,
+   "error_end_mdeg": 0.0,
+   "encoder_change_mdeg": 0.0,
+   "integral_action_dT": 0.0
+  },
+  {
+   "file": "V2/MPCLucy_doublets_elevation_05deg_minus05deg",
+   "axis": "elevation",
+   "kind": "after a move",
+   "t_session_min": 64.96618333272934,
+   "angle_deg": 0.499966155592094,
+   "last_move_deg": 0.49999997,
+   "rest_s": 37.629999999999995,
+   "T_start": 0.010016076000000002,
+   "T_end": 0.048908286,
+   "T_mean": 0.012576535328195589,
+   "error_start_mdeg": -2.556563837999995,
+   "error_end_mdeg": 0.12203999999999281,
+   "encoder_change_mdeg": -2.6786038380000687,
+   "integral_action_dT": 0.037829080501006106,
+   "T_inf": 0.21846448536368246,
+   "dT": -0.2569216511579479,
+   "tau_s": 81.71310063619389
+  },
+  {
+   "file": "V2/MPCLucy_doublets_elevation_05deg_minus05deg",
+   "axis": "elevation",
+   "kind": "after a move",
+   "t_session_min": 65.64974166606267,
+   "angle_deg": -0.5003493557631705,
+   "last_move_deg": -0.99999994,
+   "rest_s": 35.476499999999994,
+   "T_start": 0.0426276888,
+   "T_end": 0.11855502479999998,
+   "T_mean": 0.12787638480142063,
+   "error_start_mdeg": 1.5945730000000093,
+   "error_end_mdeg": 0.22128200000003564,
+   "encoder_change_mdeg": 1.3732909999998744,
+   "integral_action_dT": 0.368284301536823,
+   "T_inf": 0.1325357915305121,
+   "dT": -0.11696429496171541,
+   "tau_s": 1.4130169094592353
+  },
+  {
+   "file": "V2/MPCLucy_doublets_elevation_05deg_minus05deg",
+   "axis": "elevation",
+   "kind": "after a move",
+   "t_session_min": 66.296499999396,
+   "angle_deg": 0.0005612600558017958,
+   "last_move_deg": 0.49999997,
+   "rest_s": 8.79849999999999,
+   "T_start": 0.0516984786,
+   "T_end": -0.0372132234,
+   "T_mean": -0.016539977122400275,
+   "error_start_mdeg": -1.7166140000000005,
+   "error_end_mdeg": 0.0,
+   "encoder_change_mdeg": -1.7166140000000005,
+   "integral_action_dT": -0.1467258831215976
+  },
+  {
+   "file": "V2/MPCLucy_doublets_elevation_1deg_minus1deg",
+   "axis": "elevation",
+   "kind": "before the first move",
+   "t_session_min": 66.9550166686376,
+   "angle_deg": 0.0,
+   "last_move_deg": null,
+   "rest_s": 3.3994999999999997,
+   "T_start": -0.019828952871870396,
+   "T_end": -0.019053281001472754,
+   "T_mean": -0.019359634681570825,
+   "error_start_mdeg": 0.0,
+   "error_end_mdeg": 0.0,
+   "encoder_change_mdeg": 0.0,
+   "integral_action_dT": 0.0
+  },
+  {
+   "file": "V2/MPCLucy_doublets_elevation_1deg_minus1deg",
+   "axis": "elevation",
+   "kind": "after a move",
+   "t_session_min": 67.01806666863759,
+   "angle_deg": 0.9998529564012065,
+   "last_move_deg": 0.99999994,
+   "rest_s": 26.522,
+   "T_start": 0.5346666612,
+   "T_end": 0.46625290440000006,
+   "T_mean": 0.49629005875011784,
+   "error_start_mdeg": 0.24442432199997202,
+   "error_end_mdeg": 0.2440809999999721,
+   "encoder_change_mdeg": 0.00034332200007924414,
+   "integral_action_dT": 0.11582885397892437,
+   "T_inf": 0.4182239239534923,
+   "dT": 0.12068023398757731,
+   "tau_s": 28.06380056666735
+  },
+  {
+   "file": "V2/MPCLucy_doublets_elevation_1deg_minus1deg",
+   "axis": "elevation",
+   "kind": "after a move",
+   "t_session_min": 67.51815833530426,
+   "angle_deg": -1.0001609445458801,
+   "last_move_deg": -1.99999988,
+   "rest_s": 40.70399999999999,
+   "T_start": -0.388777491,
+   "T_end": -0.24335106960000003,
+   "T_mean": -0.2964963179245283,
+   "error_start_mdeg": -0.11361825999992865,
+   "error_end_mdeg": 0.09924200000014222,
+   "encoder_change_mdeg": -0.21286025999966932,
+   "integral_action_dT": 0.1947263163091908,
+   "T_inf": -0.21476498992752277,
+   "dT": -0.18213009441825176,
+   "tau_s": 21.50610458758141
+  },
+  {
+   "file": "V2/MPCLucy_doublets_elevation_1deg_minus1deg",
+   "axis": "elevation",
+   "kind": "after a move",
+   "t_session_min": 68.25295000197093,
+   "angle_deg": 1.2737575120606478e-05,
+   "last_move_deg": 0.99999994,
+   "rest_s": 17.41149999999999,
+   "T_start": 0.4709899908,
+   "T_end": 0.4346520324,
+   "T_mean": 0.452264310923501,
+   "error_start_mdeg": 0.014076243,
+   "error_end_mdeg": -0.002403261,
+   "encoder_change_mdeg": 0.016479504000000002,
+   "integral_action_dT": -0.006592505118632474,
+   "T_inf": 0.35476954045414344,
+   "dT": 0.11900818551808291,
+   "tau_s": 42.160588256012105
+  },
+  {
+   "file": "V2/MPCLucy_doublets_elevation_3deg_minus3deg",
+   "axis": "elevation",
+   "kind": "before the first move",
+   "t_session_min": 69.3346250017484,
+   "angle_deg": 0.0,
+   "last_move_deg": null,
+   "rest_s": 8.419500000000001,
+   "T_start": 0.41090266799999997,
+   "T_end": 0.41033945400000005,
+   "T_mean": 0.4105771124465558,
+   "error_start_mdeg": 0.0,
+   "error_end_mdeg": 0.0,
+   "encoder_change_mdeg": 0.0,
+   "integral_action_dT": 0.0
+  },
+  {
+   "file": "V2/MPCLucy_doublets_elevation_3deg_minus3deg",
+   "axis": "elevation",
+   "kind": "after a move",
+   "t_session_min": 69.4846750017484,
+   "angle_deg": 3.0001700556799196,
+   "last_move_deg": 2.9999999890000004,
+   "rest_s": 32.644999999999996,
+   "T_start": 0.6094767024000001,
+   "T_end": 0.4927087404,
+   "T_mean": 0.5452552573931689,
+   "error_start_mdeg": 0.3897746459999127,
+   "error_end_mdeg": 0.043705067999998924,
+   "encoder_change_mdeg": 0.3460695779991305,
+   "integral_action_dT": -0.16496740587851833,
+   "T_inf": 0.3832119742638547,
+   "dT": 0.2332097240474692,
+   "tau_s": 41.93853271571755
+  },
+  {
+   "file": "V2/MPCLucy_doublets_elevation_3deg_minus3deg",
+   "axis": "elevation",
+   "kind": "after a move",
+   "t_session_min": 70.09348333508174,
+   "angle_deg": -3.0003444692078776,
+   "last_move_deg": -5.999999978000001,
+   "rest_s": 33.648999999999994,
+   "T_start": -0.46638076920000004,
+   "T_end": -0.3323510592,
+   "T_mean": -0.3872798977399367,
+   "error_start_mdeg": 0.29309381399973644,
+   "error_end_mdeg": 0.29755699999973295,
+   "encoder_change_mdeg": -0.004463186000235035,
+   "integral_action_dT": 0.3444193575367489,
+   "T_inf": -0.27002927247411956,
+   "dT": -0.20231313771816709,
+   "tau_s": 27.764429100568606
+  },
+  {
+   "file": "V2/MPCLucy_doublets_elevation_3deg_minus3deg",
+   "axis": "elevation",
+   "kind": "after a move",
+   "t_session_min": 70.71402500174841,
+   "angle_deg": 0.00031475333191489365,
+   "last_move_deg": 2.9999999890000004,
+   "rest_s": 13.747,
+   "T_start": 0.493253688,
+   "T_end": 0.431825307,
+   "T_mean": 0.4617301246044736,
+   "error_start_mdeg": 0.0,
+   "error_end_mdeg": -0.33817315500000006,
+   "encoder_change_mdeg": 0.33817315500000006,
+   "integral_action_dT": -0.1285678764199794,
+   "T_inf": 0.2052136968213279,
+   "dT": 0.2907083030165141,
+   "tau_s": 53.761937430878916
+  },
+  {
+   "file": "V2/MPCLucy_doublets_elevation_5deg_minus5deg",
+   "axis": "elevation",
+   "kind": "before the first move",
+   "t_session_min": 71.69665000041326,
+   "angle_deg": 0.0,
+   "last_move_deg": null,
+   "rest_s": 4.575,
+   "T_start": 0.35879834426229507,
+   "T_end": 0.3574291960655738,
+   "T_mean": 0.358063158693039,
+   "error_start_mdeg": 0.0,
+   "error_end_mdeg": 0.0,
+   "encoder_change_mdeg": 0.0,
+   "integral_action_dT": 0.0
+  },
+  {
+   "file": "V2/MPCLucy_doublets_elevation_5deg_minus5deg",
+   "axis": "elevation",
+   "kind": "after a move",
+   "t_session_min": 71.78595833374659,
+   "angle_deg": 5.0000836502908745,
+   "last_move_deg": 4.99999987,
+   "rest_s": 34.5695,
+   "T_start": 0.6385537668000001,
+   "T_end": 0.4689928644,
+   "T_mean": 0.5393666916951114,
+   "error_start_mdeg": 0.0838315469993187,
+   "error_end_mdeg": 0.1854551549994114,
+   "encoder_change_mdeg": -0.10162360799951381,
+   "integral_action_dT": -0.08606024030463012,
+   "T_inf": 0.3800895481240843,
+   "dT": 0.26472249562086775,
+   "tau_s": 30.881228502605705
+  },
+  {
+   "file": "V2/MPCLucy_doublets_elevation_5deg_minus5deg",
+   "axis": "elevation",
+   "kind": "after a move",
+   "t_session_min": 72.4335083337466,
+   "angle_deg": -5.000183457882682,
+   "last_move_deg": -9.99999974,
+   "rest_s": 29.994500000000002,
+   "T_start": -0.5257146030000001,
+   "T_end": -0.4063954338,
+   "T_mean": -0.4568319611501917,
+   "error_start_mdeg": 0.15237467700089669,
+   "error_end_mdeg": 0.152718000000897,
+   "encoder_change_mdeg": -0.00034332300076126077,
+   "integral_action_dT": 0.16361905424150716,
+   "T_inf": -0.33835186630459185,
+   "dT": -0.19314482976291686,
+   "tau_s": 27.97176635191958
+  },
+  {
+   "file": "V2/MPCLucy_doublets_elevation_5deg_minus5deg",
+   "axis": "elevation",
+   "kind": "after a move",
+   "t_session_min": 72.99647500041326,
+   "angle_deg": 0.00030715634477806444,
+   "last_move_deg": 4.99999987,
+   "rest_s": 18.799999999999997,
+   "T_start": 0.5172831372000001,
+   "T_end": 0.44060078999999996,
+   "T_mean": 0.4787613513576766,
+   "error_start_mdeg": 0.0017166150000000001,
+   "error_end_mdeg": -0.2983476870000001,
+   "encoder_change_mdeg": 0.30006430200000006,
+   "integral_action_dT": -0.17158365353254607,
+   "T_inf": -0.11522846702039513,
+   "dT": 0.6359401711150452,
+   "tau_s": 136.15972473679625
+  },
+  {
+   "file": "V2/MPCLucy_doublets_elevation_8deg_minus8deg",
+   "axis": "elevation",
+   "kind": "before the first move",
+   "t_session_min": 73.9675166686376,
+   "angle_deg": 0.0,
+   "last_move_deg": null,
+   "rest_s": 3.0614999999999997,
+   "T_start": 0.37397867254901956,
+   "T_end": 0.3723271352941176,
+   "T_mean": 0.37305435208231263,
+   "error_start_mdeg": 0.0,
+   "error_end_mdeg": 0.0,
+   "encoder_change_mdeg": 0.0,
+   "integral_action_dT": 0.0
+  },
+  {
+   "file": "V2/MPCLucy_doublets_elevation_8deg_minus8deg",
+   "axis": "elevation",
+   "kind": "after a move",
+   "t_session_min": 74.03660000197094,
+   "angle_deg": 8.000078357035207,
+   "last_move_deg": 7.999999858,
+   "rest_s": 37.492999999999995,
+   "T_start": 0.7675480391999998,
+   "T_end": 0.5478245580000001,
+   "T_mean": 0.6411221313561019,
+   "error_start_mdeg": 0.23636899999922814,
+   "error_end_mdeg": 0.17113762999931972,
+   "encoder_change_mdeg": 0.06523136999833404,
+   "integral_action_dT": -0.08745502375971274,
+   "T_inf": 0.4093440072130059,
+   "dT": 0.36714058221400137,
+   "tau_s": 37.37759974315196
+  },
+  {
+   "file": "V2/MPCLucy_doublets_elevation_8deg_minus8deg",
+   "axis": "elevation",
+   "kind": "after a move",
+   "t_session_min": 74.74287500197093,
+   "angle_deg": -8.000239870150624,
+   "last_move_deg": -15.999999716,
+   "rest_s": 26.415999999999997,
+   "T_start": -0.5543867622,
+   "T_end": -0.41906774880000003,
+   "T_mean": -0.4799617925387542,
+   "error_start_mdeg": 0.10695400000028982,
+   "error_end_mdeg": 0.10695400000028982,
+   "encoder_change_mdeg": 0.0,
+   "integral_action_dT": 0.1883874043265319,
+   "T_inf": -0.2690758258418489,
+   "dT": -0.2909240147870841,
+   "tau_s": 38.72662263103754
+  },
+  {
+   "file": "V2/MPCLucy_doublets_elevation_8deg_minus8deg",
+   "axis": "elevation",
+   "kind": "after a move",
+   "t_session_min": 75.25120000197093,
+   "angle_deg": 0.00029400671007326953,
+   "last_move_deg": 7.999999858,
+   "rest_s": 19.516499999999994,
+   "T_start": 0.5288640348,
+   "T_end": 0.4531863396,
+   "T_mean": 0.49100196134651836,
+   "error_start_mdeg": 0.0,
+   "error_end_mdeg": -0.22247330400000004,
+   "encoder_change_mdeg": 0.22247330400000004,
+   "integral_action_dT": -0.17049722909133186,
+   "T_inf": -0.18854388218149495,
+   "dT": 0.7210627678950766,
+   "tau_s": 162.91053259162493
+  },
+  {
+   "file": "V2/MPCLucy_doublets_elevation_10deg_minus10deg",
+   "axis": "elevation",
+   "kind": "before the first move",
+   "t_session_min": 76.22996666828791,
+   "angle_deg": 0.0,
+   "last_move_deg": null,
+   "rest_s": 5.685,
+   "T_start": 0.38704066079999994,
+   "T_end": 0.3859857762,
+   "T_mean": 0.3862971717878814,
+   "error_start_mdeg": 0.0,
+   "error_end_mdeg": 0.0,
+   "encoder_change_mdeg": 0.0,
+   "integral_action_dT": 0.0
+  },
+  {
+   "file": "V2/MPCLucy_doublets_elevation_10deg_minus10deg",
+   "axis": "elevation",
+   "kind": "after a move",
+   "t_session_min": 76.34610833495458,
+   "angle_deg": 10.000304275341474,
+   "last_move_deg": 9.999999907000001,
+   "rest_s": 29.923499999999997,
+   "T_start": 0.8409485232,
+   "T_end": 0.6099333624000001,
+   "T_mean": 0.7108100698280615,
+   "error_start_mdeg": -0.2513672890007514,
+   "error_end_mdeg": -0.3052690000006757,
+   "encoder_change_mdeg": 0.053901710999452006,
+   "integral_action_dT": -0.27061739084353675,
+   "T_inf": 0.42094005813319346,
+   "dT": 0.42798547284273153,
+   "tau_s": 35.73252419072592
+  },
+  {
+   "file": "V2/MPCLucy_doublets_elevation_10deg_minus10deg",
+   "axis": "elevation",
+   "kind": "after a move",
+   "t_session_min": 76.93289166828792,
+   "angle_deg": -10.000473548874213,
+   "last_move_deg": -19.999999814000002,
+   "rest_s": 36.01649999999999,
+   "T_start": -0.6241552770000001,
+   "T_end": -0.4307308452,
+   "T_mean": -0.5095431476025211,
+   "error_start_mdeg": 0.3052690000006757,
+   "error_end_mdeg": 0.3052690000006757,
+   "encoder_change_mdeg": 0.0,
+   "integral_action_dT": 0.5068748718935869,
+   "T_inf": -0.33657167383604664,
+   "dT": -0.2970446421268843,
+   "tau_s": 30.010430475674966
+  },
+  {
+   "file": "V2/MPCLucy_doublets_elevation_10deg_minus10deg",
+   "axis": "elevation",
+   "kind": "after a move",
+   "t_session_min": 77.60455833495458,
+   "angle_deg": 0.0003157909680067062,
+   "last_move_deg": 9.999999907000001,
+   "rest_s": 14.314999999999998,
+   "T_start": 0.5315963838,
+   "T_end": 0.45518042160000005,
+   "T_mean": 0.4941479298592435,
+   "error_start_mdeg": 0.0,
+   "error_end_mdeg": -0.3433230000000001,
+   "encoder_change_mdeg": 0.3433230000000001,
+   "integral_action_dT": -0.13432133543260505,
+   "T_inf": -2.3744952084242765,
+   "dT": 2.909903701261698,
+   "tau_s": 499.9999996793841
+  },
+  {
+   "file": "V2/MPCLucy_doublets_elevation_15deg_minus15deg",
+   "axis": "elevation",
+   "kind": "before the first move",
+   "t_session_min": 78.62999999920527,
+   "angle_deg": 8.999292267365662e-08,
+   "last_move_deg": null,
+   "rest_s": 1.9070000000000003,
+   "T_start": 0.3614605732283465,
+   "T_end": 0.3587517763779527,
+   "T_mean": 0.36010663454783753,
+   "error_start_mdeg": 0.0,
+   "error_end_mdeg": 0.0,
+   "encoder_change_mdeg": 0.0,
+   "integral_action_dT": -5.100584231050707e-06
+  },
+  {
+   "file": "V2/MPCLucy_doublets_elevation_15deg_minus15deg",
+   "axis": "elevation",
+   "kind": "after a move",
+   "t_session_min": 78.6915083325386,
+   "angle_deg": 15.000114656754537,
+   "last_move_deg": 14.999999944,
+   "rest_s": 35.803,
+   "T_start": 0.9133961100000001,
+   "T_end": 0.6201229692000001,
+   "T_mean": 0.7437814169927521,
+   "error_start_mdeg": -0.11449700000014132,
+   "error_end_mdeg": -0.11449700000014132,
+   "encoder_change_mdeg": 0.0,
+   "integral_action_dT": -0.12203324479196899,
+   "T_inf": 0.4339221404787756,
+   "dT": 0.4899925767587185,
+   "tau_s": 35.83746138906276
+  },
+  {
+   "file": "V2/MPCLucy_doublets_elevation_15deg_minus15deg",
+   "axis": "elevation",
+   "kind": "after a move",
+   "t_session_min": 79.39294999920527,
+   "angle_deg": -15.000370706731399,
+   "last_move_deg": -29.999999888,
+   "rest_s": 33.5895,
+   "T_start": -0.7625902338,
+   "T_end": -0.4964183418,
+   "T_mean": -0.6061346472700209,
+   "error_start_mdeg": 0.11484032300014242,
+   "error_end_mdeg": 0.11449700000014132,
+   "encoder_change_mdeg": 0.0003433230031466768,
+   "integral_action_dT": 0.3700420695291178,
+   "T_inf": -0.3541683166751365,
+   "dT": -0.4214664311883549,
+   "tau_s": 29.590590022528453
+  },
+  {
+   "file": "V2/MPCLucy_doublets_elevation_15deg_minus15deg",
+   "axis": "elevation",
+   "kind": "after a move",
+   "t_session_min": 80.03249999920527,
+   "angle_deg": 0.0003178977030619512,
+   "last_move_deg": 14.999999944,
+   "rest_s": 12.638499999999993,
+   "T_start": 0.5439962250000001,
+   "T_end": 0.45850642860000007,
+   "T_mean": 0.5024092217896985,
+   "error_start_mdeg": 0.0,
+   "error_end_mdeg": -0.3433230000000001,
+   "encoder_change_mdeg": 0.3433230000000001,
+   "integral_action_dT": -0.11938172421985765,
+   "T_inf": -2.451408062114458,
+   "dT": 2.999999999999988,
+   "tau_s": 406.2706637191854
+  }
+ ],
+ "cruise": {
+  "azimuth": {
+   "V2/MPCLucy_doublets_azimut_1deg_15deg": {
+    "friction": 0.282152616466943,
+    "gradient": 1.2564141232657526,
+    "offset": 0.0357638327392599,
+    "rms": 0.12675796919796656,
+    "bins": [
+     [
+      -11.5,
+      0.01739844199300758,
+      -0.6059657981228838
+     ],
+     [
+      -10.5,
+      0.28176544552670946,
+      -0.5301361595692444
+     ],
+     [
+      -9.5,
+      0.3053509866008707,
+      -0.4729492539185033
+     ],
+     [
+      -8.5,
+      0.2875883189384327,
+      -0.46653314210839214
+     ],
+     [
+      -7.5,
+      0.31629213860999583,
+      -0.42414912500971125
+     ],
+     [
+      -6.5,
+      0.21018880177710267,
+      -0.4274354727140001
+     ],
+     [
+      -5.5,
+      0.2958054977119326,
+      -0.427516838520711
+     ],
+     [
+      -4.5,
+      0.18498113101628771,
+      -0.44234675953605157
+     ],
+     [
+      -3.5,
+      0.24072681010367414,
+      -0.42124379408653345
+     ],
+     [
+      -2.5,
+      0.3107765854009976,
+      -0.3692227321101088
+     ],
+     [
+      -1.5,
+      0.27649122095394674,
+      -0.28600740900844857
+     ],
+     [
+      -0.5,
+      0.38905943296663975,
+      -0.25957851657740144
+     ],
+     [
+      0.5,
+      0.40176299027964163,
+      -0.21845425809932867
+     ],
+     [
+      1.5,
+      0.36675476203843677,
+      -0.08615816529611965
+     ],
+     [
+      2.5,
+      0.3526776957491765,
+      -0.13545816108151906
+     ],
+     [
+      3.5,
+      0.3466138825089568,
+      -0.11246814428786268
+     ],
+     [
+      4.5,
+      0.3101815762501657,
+      -0.054381017871359516
+     ],
+     [
+      5.5,
+      0.324626145247318,
+      -0.13973206882482964
+     ],
+     [
+      6.5,
+      0.3803670564170061,
+      -0.013231759500381562
+     ],
+     [
+      7.5,
+      0.4314307900751642,
+      -0.09237279239747348
+     ],
+     [
+      8.5,
+      0.4484164432210239,
+      0.01742476408508135
+     ],
+     [
+      9.5,
+      0.4970444233671216,
+      -0.05630909234756594
+     ],
+     [
+      10.5,
+      0.5372196973646991,
+      -0.006290518079485175
+     ],
+     [
+      11.5,
+      0.49548360762813254,
+      0.2327114590358216
+     ]
+    ]
+   },
+   "V2/MPCLucy_doublets_azimut_8deg_minus8deg": {
+    "friction": 0.3590040349563166,
+    "gradient": 2.7974926524923567,
+    "offset": 0.08197311726267675,
+    "rms": 0.13340660720350783,
+    "bins": [
+     [
+      -4.5,
+      0.11908356259396961,
+      -0.4963268677003652
+     ],
+     [
+      -3.5,
+      0.3155716306626537,
+      -0.4846463349055206
+     ],
+     [
+      -2.5,
+      0.3898300797407772,
+      -0.4325022715321078
+     ],
+     [
+      -1.5,
+      0.32701454418257353,
+      -0.35841877435540537
+     ]
+    ]
+   }
+  },
+  "elevation": {
+   "V2/MPCLucy_doublets_elevation_5deg_minus5deg": {
+    "friction": 0.33928150514380356,
+    "gradient": 1.775701018274343,
+    "offset": 0.07390851052025227,
+    "rms": 0.0560686331877151,
+    "bins": [
+     [
+      -3.5,
+      0.21367765322076773,
+      -0.37040740940819666
+     ],
+     [
+      -2.5,
+      0.3940109474016914,
+      -0.33829422500851936
+     ],
+     [
+      -1.5,
+      0.37594686938991706,
+      -0.27992520470452414
+     ]
+    ]
+   },
+   "V2/MPCLucy_doublets_elevation_8deg_minus8deg": {
+    "friction": 0.32818084609176107,
+    "gradient": 1.2732923013695703,
+    "offset": 0.03663304938457258,
+    "rms": 0.04505596817636962,
+    "bins": [
+     [
+      -6.5,
+      0.13431708925548802,
+      -0.4373050473295826
+     ],
+     [
+      -5.5,
+      0.25814278219668385,
+      -0.4270818858249295
+     ],
+     [
+      -4.5,
+      0.2864128334390177,
+      -0.404507755760874
+     ],
+     [
+      -3.5,
+      0.24949340512962587,
+      -0.3759294759288964
+     ],
+     [
+      -2.5,
+      0.36844257554417764,
+      -0.3323857101170354
+     ],
+     [
+      -1.5,
+      0.33010752212411615,
+      -0.3007613812740193
+     ]
+    ]
+   },
+   "V2/MPCLucy_doublets_elevation_10deg_minus10deg": {
+    "friction": 0.34305433343810127,
+    "gradient": 1.2553806904531795,
+    "offset": 0.04472740274620698,
+    "rms": 0.04277207982063149,
+    "bins": [
+     [
+      -8.5,
+      0.15085263849033625,
+      -0.4781922271739909
+     ],
+     [
+      -7.5,
+      0.21476269818145888,
+      -0.450935147197333
+     ],
+     [
+      -6.5,
+      0.2736213124913626,
+      -0.4272632874625693
+     ],
+     [
+      -5.5,
+      0.21965942191959756,
+      -0.4307710505157692
+     ],
+     [
+      -4.5,
+      0.29928294400280825,
+      -0.3970176322969437
+     ],
+     [
+      -3.5,
+      0.28850837644576777,
+      -0.37636928992286167
+     ],
+     [
+      -2.5,
+      0.34504911498283386,
+      -0.3337826410478868
+     ],
+     [
+      -1.5,
+      0.386716741391454,
+      -0.28806207151553537
+     ],
+     [
+      7.5,
+      0.5714935188794812,
+      -0.16982245731131568
+     ],
+     [
+      8.5,
+      0.6659275221536375,
+      -0.04411013030720714
+     ]
+    ]
+   },
+   "V2/MPCLucy_doublets_elevation_15deg_minus15deg": {
+    "friction": 0.3751934786611269,
+    "gradient": 1.4029684225019101,
+    "offset": 0.06355727958403247,
+    "rms": 0.046036363002610964,
+    "bins": [
+     [
+      -13.5,
+      0.06038984309768068,
+      -0.6751812957309657
+     ],
+     [
+      -12.5,
+      0.07210998045603112,
+      -0.6211475216626401
+     ],
+     [
+      -11.5,
+      0.19694610251336983,
+      -0.5547527307706751
+     ],
+     [
+      -10.5,
+      0.15821808853280991,
+      -0.561938673046567
+     ],
+     [
+      -9.5,
+      0.20150887541606027,
+      -0.5017391849456446
+     ],
+     [
+      -8.5,
+      0.22012761534715267,
+      -0.4931869992543761
+     ],
+     [
+      -7.5,
+      0.256400858061292,
+      -0.43592427951088963
+     ],
+     [
+      -6.5,
+      0.2661460476036578,
+      -0.43617591422847535
+     ],
+     [
+      -5.5,
+      0.2710330858477314,
+      -0.428751078189898
+     ],
+     [
+      -4.5,
+      0.28482301824382367,
+      -0.3970005135211569
+     ],
+     [
+      -3.5,
+      0.3113459453880601,
+      -0.3967618099592919
+     ],
+     [
+      -2.5,
+      0.34694211723257895,
+      -0.3438141042867448
+     ],
+     [
+      -1.5,
+      0.3695856474613292,
+      -0.31216091128483175
+     ],
+     [
+      9.5,
+      0.7488492600964468,
+      -0.11099115192258725
+     ],
+     [
+      10.5,
+      0.745732708941476,
+      -0.07145586953555264
+     ],
+     [
+      11.5,
+      0.8569406793088656,
+      -0.03756375337267916
+     ],
+     [
+      12.5,
+      0.7418835852695073,
+      -0.05444853066224592
+     ],
+     [
+      13.5,
+      0.8094590641102761,
+      0.002935284876014289
+     ]
+    ]
+   }
+  }
+ },
+ "cruise_all": {
+  "azimuth": {
+   "friction": 0.286123803082956,
+   "gradient": 1.3143047944983692,
+   "offset": 0.03316152440290349,
+   "rms": 0.13669815049105377,
+   "bins": [
+    [
+     -11.0,
+     0.1495819437598585,
+     -0.5680509788460641
+    ],
+    [
+     -9.0,
+     0.2964696527696517,
+     -0.46931670471581566
+    ],
+    [
+     -7.0,
+     0.2464277082816048,
+     -0.43019993476678425
+    ],
+    [
+     -5.0,
+     0.21182762394406543,
+     -0.4507774941554642
+    ],
+    [
+     -3.0,
+     0.29510855730759056,
+     -0.4104964734730848
+    ],
+    [
+     -1.0,
+     0.32809994761150596,
+     -0.2788651032131573
+    ],
+    [
+     1.0,
+     0.3842734507752929,
+     -0.1613588297144427
+    ],
+    [
+     3.0,
+     0.3485189514609007,
+     -0.14397257146809223
+    ],
+    [
+     5.0,
+     0.31740386074874183,
+     -0.06117257644558806
+    ],
+    [
+     7.0,
+     0.40363985821931675,
+     -0.03983378736495028
+    ],
+    [
+     9.0,
+     0.46965136904901417,
+     -0.019350226654393607
+    ],
+    [
+     11.0,
+     0.5163516524964158,
+     0.11260996299797901
+    ]
+   ]
+  },
+  "elevation": {
+   "friction": 0.35545854374442354,
+   "gradient": 1.383821902108398,
+   "offset": 0.058786813852339685,
+   "rms": 0.051001725453122516,
+   "bins": [
+    [
+     -13.0,
+     0.06774222740322972,
+     -0.6378017670946582
+    ],
+    [
+     -11.0,
+     0.17758209552308987,
+     -0.5583636667643107
+    ],
+    [
+     -9.0,
+     0.19645386046088392,
+     -0.49410089201844654
+    ],
+    [
+     -7.0,
+     0.23553968932839137,
+     -0.43756514557919457
+    ],
+    [
+     -5.0,
+     0.2698119481751891,
+     -0.41418665030697016
+    ],
+    [
+     -3.0,
+     0.3186442884763107,
+     -0.3574844834478774
+    ],
+    [
+     -1.0,
+     0.36692643842944855,
+     -0.2884873734789636
+    ],
+    [
+     7.0,
+     0.5633729464990969,
+     -0.1643214194565298
+    ],
+    [
+     9.0,
+     0.7221509732587998,
+     -0.10390140986563379
+    ],
+    [
+     11.0,
+     0.8006433776016834,
+     -0.05455207095057833
+    ],
+    [
+     13.0,
+     0.764181218018313,
+     -0.03216185000977178
+    ]
+   ]
+  }
+ },
+ "sessions": {
+  "azimuth": {
+   "V2": {
+    "rests": 22,
+    "c": 0.01785184232051263,
+    "h": 0.23735105836386744,
+    "rms": 0.09754791567731648,
+    "K_used": 1.3143047944983692
+   },
+   "other session": {
+    "rests": 6,
+    "c": 0.00026534109814004545,
+    "h": 0.1773099742192014,
+    "rms": 0.029018406990142735,
+    "K_used": 1.3143047944983692
+   }
+  },
+  "elevation": {
+   "V2": {
+    "rests": 19,
+    "c": 0.10475367858891531,
+    "h": 0.42659019695272693,
+    "rms": 0.09735997062197478,
+    "K_used": 1.383821902108398
+   },
+   "other session": {
+    "rests": 8,
+    "c": -0.057385107959358715,
+    "h": 0.4134674330914748,
+    "rms": 0.007119437150035,
+    "K_used": 1.383821902108398
+   }
+  }
+ },
+ "theta0_per_file": {
+  "azimuth": {
+   "V2/MPCLucy_doublets_azimut_1deg_15deg": {
+    "theta0_deg": -1.8192242397064782,
+    "fit_median": 88.69519371230702,
+    "fit_median_session_theta0": 90.06385833602644
+   },
+   "V2/MPCLucy_doublets_azimut_1deg_15deg_v2": {
+    "theta0_deg": -5.308942210610336,
+    "fit_median": 88.52602983822473,
+    "fit_median_session_theta0": 81.17214100203434
+   },
+   "V2/MPCLucy_doublets_azimut_1deg_minus1deg": {
+    "theta0_deg": 0.000146502801165567,
+    "fit_median": 93.9889888899315,
+    "fit_median_session_theta0": 82.47832809272255
+   },
+   "V2/MPCLucy_doublets_azimut_3deg_minus3deg": {
+    "theta0_deg": -1.737956880493559,
+    "fit_median": 94.77317893624942,
+    "fit_median_session_theta0": 94.32967386699066
+   },
+   "V2/MPCLucy_doublets_azimut_5deg_minus5deg": {
+    "theta0_deg": -1.683629424050768,
+    "fit_median": 91.10569551646972,
+    "fit_median_session_theta0": 89.55140364220698
+   },
+   "V2/MPCLucy_doublets_azimut_8deg_minus8deg": {
+    "theta0_deg": -0.5084717878388146,
+    "fit_median": 88.61987897846757,
+    "fit_median_session_theta0": 86.3944289310067
+   },
+   "V2/MPCLucy_doublets_azimut_01deg_minus01deg": {
+    "theta0_deg": -7.503028371131683,
+    "fit_median": 37.775713281057975,
+    "fit_median_session_theta0": 26.211929296104486
+   },
+   "V2/MPCLucy_doublets_azimut_05deg_minus05deg": {
+    "theta0_deg": -5.949176843691259,
+    "fit_median": 77.13128598046619,
+    "fit_median_session_theta0": 90.25756766464337
+   }
+  },
+  "elevation": {
+   "V2/MPCLucy_doublets_elevation_01deg_minus01deg": {
+    "theta0_deg": -1.4267334067597228,
+    "fit_median": 71.12332152046366,
+    "fit_median_session_theta0": 68.54519340127077
+   },
+   "V2/MPCLucy_doublets_elevation_05deg_minus05deg": {
+    "theta0_deg": -2.210620421524472,
+    "fit_median": 76.52299870473182,
+    "fit_median_session_theta0": 75.98709297770486
+   },
+   "V2/MPCLucy_doublets_elevation_1deg_minus1deg": {
+    "theta0_deg": -3.2804937183500953,
+    "fit_median": 89.11182399531495,
+    "fit_median_session_theta0": 84.3080063377359
+   },
+   "V2/MPCLucy_doublets_elevation_3deg_minus3deg": {
+    "theta0_deg": -2.865739589515534,
+    "fit_median": 86.5000339686844,
+    "fit_median_session_theta0": 88.92706227035355
+   },
+   "V2/MPCLucy_doublets_elevation_5deg_minus5deg": {
+    "theta0_deg": -2.560032394831297,
+    "fit_median": 91.712211744381,
+    "fit_median_session_theta0": 88.30119310490623
+   },
+   "V2/MPCLucy_doublets_elevation_8deg_minus8deg": {
+    "theta0_deg": -2.504749812237617,
+    "fit_median": 92.90702015042494,
+    "fit_median_session_theta0": 90.2356272027858
+   },
+   "V2/MPCLucy_doublets_elevation_10deg_minus10deg": {
+    "theta0_deg": -2.348743106390902,
+    "fit_median": 94.03543185783889,
+    "fit_median_session_theta0": 93.68564578603011
+   },
+   "V2/MPCLucy_doublets_elevation_15deg_minus15deg": {
+    "theta0_deg": -2.526138307480117,
+    "fit_median": 90.62106693444083,
+    "fit_median_session_theta0": 85.39935833871796
+   }
+  }
+ },
+ "theta0_identified": {
+  "azimuth": -2.6782908910621095,
+  "elevation": -2.1564261374199716
+ },
+ "theta0_other_session": {
+  "azimuth": {
+   "MPCLucy_step_1deg": 2.2068999227275214,
+   "MPCLucy_1degAz_zeroAz_1degPol__zeroPol": 0.0002050623795055178,
+   "MPCLucy_2degAz_2degPol_zeroAz_zeroPol": -0.00013274643728838318,
+   "MPCLucy_2degPol_zeroPol_2degAz_zeroAz": -0.5061796415309814
+  },
+  "elevation": {
+   "MPCLucy_step_1deg": 2.2821424536664234,
+   "MPCLucy_1degAz_zeroAz_1degPol__zeroPol": 2.1624476005694806,
+   "MPCLucy_2degAz_2degPol_zeroAz_zeroPol": 2.8554610703887096,
+   "MPCLucy_2degPol_zeroPol_2degAz_zeroAz": 2.567382772944869
+  }
+ }
+}

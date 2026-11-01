@@ -1,0 +1,82 @@
+# =====================================================================
+# STUDY ON THE OCTOBER CLOSED-LOOP TESTS (LucyIdentification/VClosedLoop), 2026-10-20
+# Source of truth: only the files of VClosedLoop (drive parameters, Bode measurements, MPCLucy sequences).
+#   1-2. transfer functions of the elevation and azimuth controllers (Parameters_*.akd, structure of the
+#        AKD2G loops), checked on the WorkBench traces of BodeMeasurement_*.csv;
+#   3.   elevation: fit of k_b (hub - telescope), ring stiffness factor, ground spring;
+#   4.   azimuth: fit of the ground spring;
+#   5.   both axes: fit of the dampers;
+#   6.   validation of the closed loop on MPCLucy_*.csv with the NRMSE fit; when not adequate, back to 1.
+# Run (from this folder):
+#   ../.venv/bin/python -I vcl_study.py --config config_vcl_study.yaml
+# =====================================================================
+base_config: config_vcl.yaml          # H6 (zeta_1 = 0.10 start), motors, drives and Bode of VClosedLoop
+results_dir: results_vcl_study
+sequences_dir: ../../LucyIdentification/VClosedLoop
+amps_per_A: 2.0
+workers: 8
+
+plant_fit:
+  loss: soft_l1                       # robust to the isolated points of the measurement
+  f_scale: 0.5
+  # bands where the model has the features of the measurement: elevation up to the antiresonance and the
+  # resonance of the telescope (above 150 Hz the measurement shows many modes the 8-DOF model does not have);
+  # azimuth: ground spring below 20 Hz, dampers up to 300 Hz (the measured resonance at 470 Hz is at 750 Hz
+  # in the model and cannot be moved by the parameters of the study)
+  elevation: {stiffness: [k_b, ring, kg_el, eta_el], band_stiffness: [1, 200], band_damping: [1, 200]}
+  azimuth: {stiffness: [kg_az, eta_az], band_stiffness: [1, 20], band_damping: [1, 300]}
+  bounds:
+    k_b: [1.0e4, 1.0e7]
+    ring: [1.0, 1.0e4]                # 1 = ring alone (lower limit of gimbal_mdof), 1000 = H6
+    kg_az: [1.0, 1.0e5]
+    eta_az: [1.0e-3, 50.0]
+    kg_el: [1.0, 1.0e5]
+    eta_el: [1.0e-3, 50.0]
+    damper_factor: [1.0e-3, 1.0e3]    # each damper within this factor of its start value
+  damper_prior_weight: 0.3            # weight of ln(c / c_start) in the residuals
+
+validation:
+  sequences: [MPCLucy_step_1deg, MPCLucy_1degAz_zeroAz_1degPol__zeroPol, MPCLucy_2degAz_2degPol_zeroAz_zeroPol,
+              MPCLucy_2degPol_zeroPol_2degAz_zeroAz]
+  pre_s: 0.3
+  post_s: 2.5
+  max_cpu_per_window_s: 120
+  # adequacy: median NRMSE fit over the moves of each axis
+  threshold: {error: 70.0, current: 50.0}
+  iterations:
+    - name: I1
+      label: "controller as WorkBench defines it (K_pp = 2 pi PL.KP), no feedforward"
+      position_gain_unit: hz
+    - name: I2
+      label: "PL.KP in 1/s, the unit of the AKD position loop ((velocity unit)/(position unit))"
+      position_gain_unit: per_s
+    - name: I3
+      label: "gains of the axes not reproduced, identified within the AKD2G structure on half of the sequences"
+      position_gain_unit: per_s
+      identify: [Kpp, Kpv, Kiv]
+      identification_sequences: [MPCLucy_step_1deg, MPCLucy_1degAz_zeroAz_1degPol__zeroPol]
+      max_nfev: 30
+      max_cpu_per_window_s: 30         # unstable gain sets end quickly (the window then counts as fit 0)
+      grid:                            # start of the least squares: best point of this grid
+        azimuth: {Kpp: [5.0, 10.0, 20.0], Kpv: [60.0, 125.0, 250.0], Kiv: [0.1, 0.3, 1.0]}
+        elevation: {Kpp: [2.0, 4.0, 8.0, 16.0], Kpv: [15.0, 30.0, 60.0, 120.0], Kiv: [0.3, 1.5, 15.0]}
+    - name: I4
+      label: "as I3, with the ground spring in the time domain (Coulomb level Tc of the Dahl friction) fitted with the gains"
+      position_gain_unit: per_s
+      identify: [Kpp, Kpv, Kiv, Tc]
+      start_Tc: regression             # Coulomb level of the moves of the identification sequences
+      identification_sequences: [MPCLucy_step_1deg, MPCLucy_1degAz_zeroAz_1degPol__zeroPol]
+      max_nfev: 30
+      max_cpu_per_window_s: 30
+    - name: I5
+      label: "back to 1: gains searched on a grid with the friction level of the moves, then gains and Tc fitted together"
+      position_gain_unit: per_s
+      identify: [Kpp, Kpv, Kiv, Tc]
+      start_Tc: regression
+      axes: [azimuth, elevation]
+      identification_sequences: [MPCLucy_step_1deg, MPCLucy_1degAz_zeroAz_1degPol__zeroPol]
+      max_nfev: 30
+      max_cpu_per_window_s: 30
+      grid:
+        azimuth: {Kpp: [5.0, 7.0, 10.0, 14.0], Kpv: [125.0, 250.0, 400.0], Kiv: [0.1, 0.3, 1.0]}
+        elevation: {Kpp: [4.0, 8.0, 16.0], Kpv: [30.0, 60.0, 120.0], Kiv: [0.3, 0.75, 1.5, 5.0]}

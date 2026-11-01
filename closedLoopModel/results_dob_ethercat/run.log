@@ -1,0 +1,15 @@
+simulating 13 cases
+  dob40_ff_nonoise: completed (cpu 1034 s)
+  dob20_ff_nonoise: completed (cpu 1041 s)
+  dob10_ff_nonoise: completed (cpu 1341 s)
+  dob5_ff_nonoise: completed (cpu 1365 s)
+  encoders: completed (cpu 243 s)
+  encoders_ff: completed (cpu 361 s)
+  dob5_ff: completed (cpu 2934 s)
+  dob10_ff: completed (cpu 3255 s)
+  dob20: completed (cpu 3486 s)
+  dob20_ff_zoh: completed (cpu 3491 s)
+  dob20_ff: completed (cpu 3484 s)
+  encoders_ff_zoh: completed (cpu 923 s)
+  dob40_ff: completed (cpu 3756 s)
+done in 69.9 min

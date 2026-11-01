@@ -36,8 +36,10 @@ def tex(par: pr.Parametri, tmp_path_factory: pytest.TempPathFactory) -> Path:
 
 def test_contenuto(tex: Path) -> None:
     testo = tex.read_text(encoding="utf-8")
-    # una figura di geometria per asse, piu' quella dei sistemi di riferimento
-    assert testo.count(r"\begin{tikzpicture}") == 3
+    # una figura di geometria per asse, quella dei sistemi di riferimento e lo schema del workflow
+    assert testo.count(r"\begin{tikzpicture}") == 4
+    for etichetta in ("sec:eigen", "sec:workflow", "tab:bar", "tab:chain3", "fig:flow", "tab:sim"):
+        assert rf"\label{{{etichetta}}}" in testo, etichetta
     assert r"\label{fig:geom_azimut}" in testo and r"\label{fig:geom_polare}" in testo
     assert r"\label{sec:frames}" in testo and r"\label{fig:frames}" in testo
     assert r"\label{subsec:input_frames}" in testo

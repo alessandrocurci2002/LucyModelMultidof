@@ -17,7 +17,7 @@ from __future__ import annotations
 import csv
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Iterable, Sequence
+from typing import Callable, Iterable, Sequence
 
 import numpy as np
 
@@ -179,13 +179,23 @@ class SweepTheta:
     """Massimo polo reale (rad/s) per ogni theta_0: > 0 se instabile."""
 
 
+def _lineare(s) -> "Callable[[float, float], lz.ModelloLineare]":
+    """Linearizzatore del sistema: ``s.lineare`` (modale) o il modello accoppiato di Guyan."""
+    if hasattr(s, "lineare"):
+        return s.lineare
+    return lambda th, Om: lz.linearizza(s.accoppiato, th, Om)
+
+
 def sweep_theta0(s: Sistema, theta_grid: np.ndarray, omega_list: Sequence[float]) -> SweepTheta:
+    """Frequenze dei modi complessi in funzione di theta0; ``s``: :class:`Sistema` o
+    :class:`gimbal_mdof.modal.SistemaModale`."""
+    lin = _lineare(s)
     freq: dict[float, np.ndarray] = {}
     reali: dict[float, np.ndarray] = {}
     for Om in omega_list:
         righe, rmax = [], []
         for th in theta_grid:
-            ml = lz.linearizza(s.accoppiato, float(th), float(Om))
+            ml = lin(float(th), float(Om))
             righe.append(frequenze_modi(ml))
             p = ml.poli
             rmax.append(float(np.max(np.real(p[np.abs(np.imag(p)) < 1e-6 * max(1.0, np.max(np.abs(p)))]),
@@ -202,5 +212,5 @@ def sweep_theta0(s: Sistema, theta_grid: np.ndarray, omega_list: Sequence[float]
 
 def frf_incrociate(s: Sistema, theta0: float, omega_list: Sequence[float], w: np.ndarray) -> dict[float, np.ndarray]:
     """FRF coppia -> encoder (2x2) per ciascun :math:`\\Omega_0`."""
-    return {float(Om): lz.linearizza(s.accoppiato, theta0, float(Om)).frf(w, ["psi_e", "theta_e"])
-            for Om in omega_list}
+    lin = _lineare(s)
+    return {float(Om): lin(theta0, float(Om)).frf(w, ["psi_e", "theta_e"]) for Om in omega_list}

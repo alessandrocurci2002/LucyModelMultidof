@@ -1,0 +1,97 @@
+# Closed-loop configuration with the plant fitted on the October frequency responses
+# (written by vcl_study.py from config_vcl_study.yaml; base config_vcl.yaml).
+results_dir: results_vcl_fit
+label: H6 with the plant parameters fitted on the October frequency responses (vcl_study.py)
+plant:
+  config: ../config_hub_telescopeonring_alhub_fit_ground.yaml
+  theta0_deg: 0.0
+  balanced_telescope: true
+  zeta_first_flexible: 0.1
+  bearing_friction:
+    model: dahl
+    reference_frequency_Hz: 2.236
+    velocity_smoothing_rad_s: 1.0e-06
+  parameter_overrides:
+    k_{\theta,4}: 197179.61979178208
+    k_{\theta,1}: 3238.647309232082
+    k_{\theta,2}: 2589.173998765943
+    c_{\psi,1}: 0.3696234205543212
+    c_{\psi,2}: 6.58668033054929
+    c_{\theta,1}: 5.039685119431714
+    c_{\theta,2}: 0.07975334021841715
+    c_{\theta,3}: 0.8986583599715091
+    c_{\theta,4}: 24.601148606563704
+  ground_override:
+    azimuth:
+      k: 149.01664648630097
+      eta: 1.7622387927662015
+    elevation:
+      k: 188.49929319368533
+      eta: 2.7579815813689024
+motor:
+  file: data/motor_TBM7646A.yaml
+  temperature: cold
+  cogging: false
+drives:
+  azimuth:
+    parameters: ../../LucyIdentification/VClosedLoop/Parameters_azimuth.akd
+    measurement: ../../LucyIdentification/VClosedLoop/BodeMeasurement_azimuth.csv
+  elevation:
+    parameters: ../../LucyIdentification/VClosedLoop/Parameters_elevation.akd
+    measurement: ../../LucyIdentification/VClosedLoop/BodeMeasurement_elevation.csv
+  feedforward: false
+  observer: from_parameters
+  delay_s: 0.0
+  position_gain_unit: hz
+analysis:
+  f_min_Hz: 0.5
+  f_max_Hz: 2000.0
+  n_points: 4000
+  zeta_sweep:
+  - 0.01
+  - 0.02
+  - 0.05
+  - 0.1
+  - 0.2
+  max_cpu_per_scenario_s: 300
+scenarios:
+- name: az_step_10mdeg
+  t_end_s: 1.0
+  commands:
+    azimuth:
+      kind: step
+      value_deg: 0.01
+  compare_linear: true
+  description: azimuth step 0.01 deg (pre-sliding range)
+- name: el_step_10mdeg
+  t_end_s: 6.0
+  commands:
+    elevation:
+      kind: step
+      value_deg: 0.01
+  compare_linear: true
+  description: elevation step 0.01 deg (pre-sliding range)
+- name: az_step_500mdeg
+  t_end_s: 1.0
+  commands:
+    azimuth:
+      kind: step
+      value_deg: 0.5
+  description: azimuth step 0.5 deg (current limit)
+- name: el_step_500mdeg
+  t_end_s: 6.0
+  commands:
+    elevation:
+      kind: step
+      value_deg: 0.5
+  description: elevation step 0.5 deg
+- name: sidereal_ramp
+  t_end_s: 6.0
+  commands:
+    azimuth:
+      kind: ramp
+      value_deg_s: 0.004167
+    elevation:
+      kind: ramp
+      value_deg_s: 0.004167
+  description: both axes at the sidereal rate (bearing friction at low speed)

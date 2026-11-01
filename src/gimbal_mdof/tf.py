@@ -114,16 +114,25 @@ def fdt_simboliche_catena(n: int, i_motore: int, i_encoder: int, nome: str,
     con :math:`\\mathbf P(s) = \\operatorname{diag}(J_i)s^2 + \\mathbf K`. Con
     ``con_k_g`` si aggiunge :math:`k_g` al nodo di carico (polare).
     """
+    return fdt_simboliche_albero(n, tuple((i, i + 1) for i in range(n - 1)), i_motore, i_encoder, nome,
+                                 i_carico, ruoli, con_k_g)
+
+
+def fdt_simboliche_albero(n: int, archi: Sequence[tuple[int, int]], i_motore: int, i_encoder: int,
+                          nome: str, i_carico: int | None = None, ruoli: Sequence[str] | None = None,
+                          con_k_g: bool = False) -> dict[str, sp.Expr]:
+    """Come :func:`fdt_simboliche_catena` per una struttura ad albero: molla ``k_{nome,i}`` sull'arco
+    ``archi[i-1]`` (modello ``hub``: il telescopio appeso al centro del mozzo)."""
     s = sp.Symbol("s")
     ruoli = list(ruoli) if ruoli is not None else [str(i + 1) for i in range(n)]
     J = [sp.Symbol(f"J_{{\\{nome},{r}}}", positive=True) for r in ruoli]
-    k = [sp.Symbol(f"k_{{\\{nome},{i + 1}}}", positive=True) for i in range(n - 1)]
+    k = [sp.Symbol(f"k_{{\\{nome},{i + 1}}}", positive=True) for i in range(len(archi))]
     K = sp.zeros(n, n)
-    for i, ki in enumerate(k):
-        K[i, i] += ki
-        K[i + 1, i + 1] += ki
-        K[i, i + 1] -= ki
-        K[i + 1, i] -= ki
+    for (a, b), ki in zip(archi, k):
+        K[a, a] += ki
+        K[b, b] += ki
+        K[a, b] -= ki
+        K[b, a] -= ki
     if con_k_g and i_carico is not None:
         K[i_carico, i_carico] += sp.Symbol("k_g", real=True)
     P = sp.diag(*J) * s**2 + K
@@ -144,8 +153,30 @@ def fdt_simboliche_catena(n: int, i_motore: int, i_encoder: int, nome: str,
 # ---------------------------------------------------------------------------
 
 
-def esporta(ml, cartella: str | Path, nome: str) -> list[Path]:
+def _per_json(extra: dict) -> dict:
+    """Scalari e vettori numerici di ``extra`` (le matrici restano solo in .npz/.mat)."""
+    out = {}
+    for k, v in extra.items():
+        a = np.asarray(v)
+        if a.ndim <= 1 and a.dtype.kind in "fiu":
+            out[k] = a.tolist()
+        elif a.ndim <= 1 and a.dtype.kind == "U":
+            out[k] = [str(x) for x in np.atleast_1d(a)]
+    return out
+
+
+def _segnaposto(acc) -> bool:
+    """Avviso segnaposto del modello (accoppiato di Guyan o su base generica)."""
+    seg = getattr(acc, "segnaposto", None)
+    return bool(seg) if seg is not None else bool(acc.rid_psi.completo.segnaposto)
+
+
+def esporta(ml, cartella: str | Path, nome: str, extra: dict | None = None) -> list[Path]:
     """Matrici di stato in ``.npz`` e ``.mat``, zeri/poli/guadagno e coefficienti in JSON.
+
+    ``extra``: grandezze aggiuntive da salvare in ``.npz``/``.mat`` (per il modello modale:
+    forme modali, frequenze, smorzamenti, vettori d'aggancio e stato a blocchi di Gawronski)
+    e, se scalari o liste, nel JSON.
 
     I coefficienti num/den sono ricavati da ``scipy.signal.ss2tf``: servono solo
     come scambio verso altri strumenti; le FRF di riferimento restano quelle da
@@ -161,6 +192,7 @@ def esporta(ml, cartella: str | Path, nome: str) -> list[Path]:
                 K0=ml.K0, E=ml.E, theta0=ml.theta0, Omega0=ml.Omega0, q0=ml.punto.q0,
                 tau0=ml.punto.tau0, uscite=np.array(USCITE), stati=np.array(
                     list(ml.accoppiato.struttura.nomi) + [f"d{n}" for n in ml.accoppiato.struttura.nomi]))
+    dati.update(extra or {})
     p_npz = cartella / f"{nome}.npz"
     np.savez(p_npz, **dati)
     p_mat = cartella / f"{nome}.mat"
@@ -182,6 +214,8 @@ def esporta(ml, cartella: str | Path, nome: str) -> list[Path]:
         "tau0_Nm": ml.punto.tau0.tolist(),
         "poli": [[float(np.real(v)), float(np.imag(v))] for v in poli],
         "fdt": fdt,
-        "avviso": "risultato da parametri segnaposto" if ml.accoppiato.rid_psi.completo.segnaposto else "",
+        "avviso": "risultato da parametri segnaposto" if _segnaposto(ml.accoppiato) else "",
+        "coordinate": list(ml.accoppiato.struttura.nomi),
+        **_per_json(extra or {}),
     }, indent=1), encoding="utf-8")
     return [p_npz, p_mat, p_json]

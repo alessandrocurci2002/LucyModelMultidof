@@ -1,0 +1,56 @@
+# =====================================================================
+# TRACKING OF THE CIRCLE WITH THE SIGNAL CONSTRAINTS: ETHERCAT 1 ms AND A MEMS GYRO (2026-10-23)
+# As config_dob_tracking.yaml (model, reference, observer, notch), plus:
+#   - drives on EtherCAT: process data exchanged every 1 ms (position targets interpolated by the drive,
+#     actual currents to the master, feedforward current in the RxPDO of the next cycle);
+#   - disturbance observer in the EtherCAT master, discrete at 1 ms;
+#   - rate gyro ADIS16507-1 read over SPI: second-order dynamics (480 Hz), 2000 SPS, Allan-variance noise.
+# Run (from this folder):
+#   ../.venv/bin/python -I dob_ethercat_study.py --config config_dob_ethercat.yaml [--replot]
+# =====================================================================
+results_dir: results_dob_ethercat
+base: config_dob_tracking.yaml             # model, reference, observer (notch), simulation window
+continuous_results: results_dob_tracking   # same cases, continuous loop and ideal gyro
+workers: 8
+seed: 2026                                 # same gyro noise realisation in every case
+rtol: 1.0e-4
+
+ethercat:
+  cycle_s: 0.001
+  interpolation: linear       # position targets: linear interpolation by the drive (CSP) | zoh
+  ff_delay_cycles: 1          # observer output applied by the drive at the next cycle
+
+gyro:                         # Analog Devices ADIS16507-1, x and y axes (data sheet Rev. A)
+  name: "ADIS16507-1 (x, y)"
+  bandwidth_hz: 480.0         # -3 dB bandwidth
+  damping: 0.7071             # second order (Butterworth)
+  odr_hz: 2000.0              # output data rate of the registers
+  latency_s: 0.0005           # one output period between the sample and its use (data ready, SPI burst)
+  arw_deg_rthr: 0.13          # angle random walk
+  bias_instability_deg_hr: 2.3
+  bias_tau_s: 50.0            # time of the Allan minimum: not in the data sheet (assumed)
+  rrw_deg_hr_rthr: 0.0        # rate random walk: not in the data sheet
+  turn_on_bias_deg_s: 0.0
+allan_check_s: 3600           # length of the noise record of the Allan-deviation check
+
+jitter_bands_hz: [1.0, 10.0, 100.0]
+
+cases:
+  - {name: encoders, label: "current (encoders)", observer_hz: null, feedforward: false}
+  - {name: dob20, label: "current + gyro observer 20 Hz", observer_hz: 20.0, feedforward: false}
+  - {name: encoders_ff, label: "current + velocity FF", observer_hz: null, feedforward: true}
+  - {name: dob5_ff, label: "current + velocity FF + gyro observer 5 Hz", observer_hz: 5.0, feedforward: true}
+  - {name: dob10_ff, label: "current + velocity FF + gyro observer 10 Hz", observer_hz: 10.0, feedforward: true}
+  - {name: dob20_ff, label: "current + velocity FF + gyro observer 20 Hz", observer_hz: 20.0, feedforward: true}
+  - {name: dob40_ff, label: "current + velocity FF + gyro observer 40 Hz", observer_hz: 40.0, feedforward: true}
+  # the same observers with a noise-free gyro (EtherCAT and gyro dynamics only)
+  - {name: dob5_ff_nonoise, label: "as dob5_ff, gyro without noise", observer_hz: 5.0, feedforward: true, noise_scale: 0.0}
+  - {name: dob10_ff_nonoise, label: "as dob10_ff, gyro without noise", observer_hz: 10.0, feedforward: true, noise_scale: 0.0}
+  - {name: dob20_ff_nonoise, label: "as dob20_ff, gyro without noise", observer_hz: 20.0, feedforward: true, noise_scale: 0.0}
+  - {name: dob40_ff_nonoise, label: "as dob40_ff, gyro without noise", observer_hz: 40.0, feedforward: true, noise_scale: 0.0}
+  # targets held over the cycle instead of interpolated
+  - {name: encoders_ff_zoh, label: "current + velocity FF, targets held (zoh)", observer_hz: null, feedforward: true,
+     interpolation: zoh}
+  - {name: dob20_ff_zoh, label: "current + velocity FF + gyro observer 20 Hz, targets held (zoh)", observer_hz: 20.0,
+     feedforward: true, interpolation: zoh}
+compare: [[encoders, dob20], [encoders_ff, dob20_ff]]

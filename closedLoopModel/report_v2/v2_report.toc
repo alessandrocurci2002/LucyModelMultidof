@@ -1,0 +1,54 @@
+\babel@toc {english}{}\relax 
+\contentsline {paragraph}{Purpose.}{1}{section*.1}%
+\contentsline {paragraph}{Main results.}{1}{section*.2}%
+\contentsline {section}{\numberline {1}Data}{2}{section.1}%
+\contentsline {paragraph}{V2 session.}{2}{section*.4}%
+\contentsline {paragraph}{Other session.}{2}{section*.5}%
+\contentsline {paragraph}{Split.}{2}{section*.6}%
+\contentsline {section}{\numberline {2}Model}{3}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Plant driven by the measured current}{3}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Friction model}{3}{subsection.2.2}%
+\contentsline {paragraph}{Equations.}{3}{section*.8}%
+\contentsline {paragraph}{Parameters.}{3}{section*.9}%
+\contentsline {paragraph}{Behaviour}{4}{section*.10}%
+\contentsline {subsection}{\numberline {2.3}Rigid surrogate}{4}{subsection.2.3}%
+\contentsline {section}{\numberline {3}Methodology step by step}{5}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Step 0: model-free analysis}{5}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Goodness measure and cost}{6}{subsection.3.2}%
+\contentsline {paragraph}{Fit of a move.}{6}{section*.16}%
+\contentsline {paragraph}{Robust cost.}{6}{section*.17}%
+\contentsline {paragraph}{Parameters.}{6}{section*.18}%
+\contentsline {subsection}{\numberline {3.3}Start values and least squares}{6}{subsection.3.3}%
+\contentsline {subsection}{\numberline {3.4}Choice of the structure: leave-one-file-out cross-validation}{7}{subsection.3.4}%
+\contentsline {paragraph}{Why.}{7}{section*.19}%
+\contentsline {paragraph}{Folds.}{7}{section*.20}%
+\contentsline {paragraph}{Structures compared,}{7}{section*.21}%
+\contentsline {paragraph}{Rule,}{7}{section*.22}%
+\contentsline {subsection}{\numberline {3.5}Final fit and uncertainty}{7}{subsection.3.5}%
+\contentsline {subsection}{\numberline {3.6}Validation protocol}{7}{subsection.3.6}%
+\contentsline {section}{\numberline {4}Results of the identification}{7}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Structures}{7}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}Parameters}{9}{subsection.4.2}%
+\contentsline {subsection}{\numberline {4.3}Position fit}{9}{subsection.4.3}%
+\contentsline {section}{\numberline {5}Resisting torque: angle, history and the cables}{12}{section.5}%
+\contentsline {paragraph}{Questions.}{12}{section*.31}%
+\contentsline {paragraph}{How it is measured.}{12}{section*.32}%
+\contentsline {subsection}{\numberline {5.1}Does the resisting torque change with the angle?}{12}{subsection.5.1}%
+\contentsline {paragraph}{Method.}{12}{section*.33}%
+\contentsline {paragraph}{Results}{13}{section*.34}%
+\contentsline {subsection}{\numberline {5.2}Holding torque and the amplitude of the last move}{14}{subsection.5.2}%
+\contentsline {paragraph}{Method.}{14}{section*.37}%
+\contentsline {paragraph}{Results}{14}{section*.38}%
+\contentsline {subsection}{\numberline {5.3}Back at 0 after a doublet}{14}{subsection.5.3}%
+\contentsline {paragraph}{Method.}{14}{section*.40}%
+\contentsline {paragraph}{Elevation.}{15}{section*.41}%
+\contentsline {paragraph}{Azimuth.}{15}{section*.42}%
+\contentsline {subsection}{\numberline {5.4}Relaxation at constant position}{17}{subsection.5.4}%
+\contentsline {paragraph}{Observation}{17}{section*.45}%
+\contentsline {paragraph}{Two explanations.}{17}{section*.46}%
+\contentsline {paragraph}{Test.}{17}{section*.47}%
+\contentsline {subsection}{\numberline {5.5}From one session to the other}{19}{subsection.5.5}%
+\contentsline {paragraph}{Model-free.}{19}{section*.51}%
+\contentsline {paragraph}{With the model.}{19}{section*.52}%
+\contentsline {subsection}{\numberline {5.6}Can the cables be modelled?}{20}{subsection.5.6}%
+\contentsline {paragraph}{Tests that would settle the open points.}{20}{section*.57}%

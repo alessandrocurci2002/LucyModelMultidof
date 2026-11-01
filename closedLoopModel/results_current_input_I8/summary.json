@@ -1,0 +1,439 @@
+{
+  "config": "config_current_input_I8.yaml",
+  "first_guess": {
+    "azimuth": {
+      "scale": 0.9062488780335707,
+      "sigma0": 202.79047580449608,
+      "Tc": 0.22785017024789467,
+      "Ts_ratio": 1.4771199006428022,
+      "vs": 0.001,
+      "H_hyst": 0.0,
+      "delta_hyst": 0.001,
+      "c_{\\psi,1}": 0.3696234205543212,
+      "c_{\\psi,2}": 6.58668033054929,
+      "d_x_mm": 0.0
+    },
+    "elevation": {
+      "scale": 0.9739053675014672,
+      "sigma0": 20000.0,
+      "Tc": 0.2593807043881749,
+      "Ts_ratio": 6.452942707090914,
+      "vs": 0.01816798893108686,
+      "b_{\\theta,h}": 0.03995470773735736,
+      "trig_a": 0.0,
+      "trig_b": 0.0,
+      "trig_c": 0.0,
+      "d_x_mm": 0.0,
+      "k_b": 197179.61979178208,
+      "ring": 1.9230199443460287,
+      "c_{\\theta,1}": 5.039685119431714,
+      "c_{\\theta,2}": 0.07975334021841715,
+      "c_{\\theta,3}": 0.8986583599715091,
+      "c_{\\theta,4}": 24.601148606563704
+    }
+  },
+  "windows": {
+    "identification": [
+      "MPCLucy_step_1deg azimuth 5.76 s",
+      "MPCLucy_step_1deg azimuth 8.04 s",
+      "MPCLucy_step_1deg azimuth 10.37 s",
+      "MPCLucy_step_1deg azimuth 12.01 s",
+      "MPCLucy_step_1deg elevation 15.77 s",
+      "MPCLucy_step_1deg elevation 18.95 s",
+      "MPCLucy_step_1deg elevation 20.16 s",
+      "MPCLucy_step_1deg elevation 21.30 s",
+      "MPCLucy_step_1deg elevation 22.50 s",
+      "MPCLucy_step_1deg elevation 23.32 s",
+      "MPCLucy_1degAz_zeroAz_1degPol__zeroPol azimuth 3.57 s",
+      "MPCLucy_1degAz_zeroAz_1degPol__zeroPol azimuth 10.29 s",
+      "MPCLucy_1degAz_zeroAz_1degPol__zeroPol azimuth 27.94 s",
+      "MPCLucy_1degAz_zeroAz_1degPol__zeroPol azimuth 33.30 s",
+      "MPCLucy_1degAz_zeroAz_1degPol__zeroPol elevation 17.00 s",
+      "MPCLucy_1degAz_zeroAz_1degPol__zeroPol elevation 21.87 s",
+      "MPCLucy_1degAz_zeroAz_1degPol__zeroPol elevation 37.85 s",
+      "MPCLucy_1degAz_zeroAz_1degPol__zeroPol elevation 58.75 s"
+    ],
+    "validation": [
+      "MPCLucy_2degAz_2degPol_zeroAz_zeroPol azimuth 18.31 s",
+      "MPCLucy_2degAz_2degPol_zeroAz_zeroPol azimuth 37.70 s",
+      "MPCLucy_2degAz_2degPol_zeroAz_zeroPol elevation 23.56 s",
+      "MPCLucy_2degAz_2degPol_zeroAz_zeroPol elevation 40.79 s",
+      "MPCLucy_2degPol_zeroPol_2degAz_zeroAz azimuth 19.95 s",
+      "MPCLucy_2degPol_zeroPol_2degAz_zeroAz azimuth 22.95 s",
+      "MPCLucy_2degPol_zeroPol_2degAz_zeroAz elevation 8.19 s",
+      "MPCLucy_2degPol_zeroPol_2degAz_zeroAz elevation 14.17 s"
+    ]
+  },
+  "first_guess_fits": {
+    "identification": [
+      98.26248093775754,
+      90.75230066702635,
+      91.60441411419721,
+      94.34388462440523,
+      -40.477875184354176,
+      -40.04914609833019,
+      -39.3880106943542,
+      -39.09148332018149,
+      -39.49509008630279,
+      -39.11492035127131,
+      96.60399121059713,
+      96.08056100402241,
+      97.32347710407593,
+      96.28030170525497,
+      -40.35078467968749,
+      -40.04393910672262,
+      -40.44583098955121,
+      -40.355630388429645
+    ],
+    "validation": [
+      97.36095147087906,
+      91.58112057567051,
+      -44.080493730485685,
+      -43.30094014425463,
+      97.72166717952994,
+      91.48070499199052,
+      -42.95008753749665,
+      -41.57303888085146
+    ]
+  },
+  "axes": {
+    "azimuth": {
+      "screening": {
+        "scale": 105.01741761144922,
+        "sigma0": 0.44847701305382187,
+        "Tc": 6.952071614971206,
+        "Ts_ratio": 0.0025192181642590874,
+        "vs": 0.0006448363857655789,
+        "H_hyst": 5.356158313080575,
+        "delta_hyst": 9.258675771109569e-05
+      },
+      "kept": [
+        "scale",
+        "sigma0",
+        "Tc",
+        "H_hyst",
+        "delta_hyst"
+      ],
+      "grid": {
+        "points": [
+          [
+            0.9,
+            1.5
+          ],
+          [
+            0.9,
+            4.0
+          ],
+          [
+            1.0,
+            1.5
+          ],
+          [
+            1.0,
+            4.0
+          ],
+          [
+            1.1,
+            1.5
+          ],
+          [
+            1.1,
+            4.0
+          ]
+        ],
+        "costs": [
+          0.025160931631277077,
+          0.02498697951864064,
+          0.31672402714961584,
+          0.32209220554920265,
+          1.287957085350955,
+          1.3015482926876683
+        ]
+      },
+      "start": {
+        "scale": 0.9,
+        "sigma0": 202.79047580449608,
+        "Tc": 0.22785017024789467,
+        "Ts_ratio": 4.0,
+        "vs": 0.001,
+        "H_hyst": 0.0,
+        "delta_hyst": 0.001,
+        "c_{\\psi,1}": 0.3696234205543212,
+        "c_{\\psi,2}": 6.58668033054929,
+        "d_x_mm": 0.0
+      },
+      "names": [
+        "scale",
+        "sigma0",
+        "Tc",
+        "H_hyst",
+        "delta_hyst",
+        "Ts_ratio"
+      ],
+      "values": {
+        "scale": 0.9050763587845855,
+        "sigma0": 191.43693053068273,
+        "Tc": 0.2212212836185982,
+        "Ts_ratio": 2.592732592573469,
+        "vs": 0.001,
+        "H_hyst": 0.0060566158543226955,
+        "delta_hyst": 0.0003705256292920484,
+        "c_{\\psi,1}": 0.3696234205543212,
+        "c_{\\psi,2}": 6.58668033054929,
+        "d_x_mm": 0.0
+      },
+      "cost": [
+        0.023891122690989378,
+        0.023938579722002994
+      ]
+    },
+    "elevation": {
+      "screening": {
+        "scale": 0.28962182485308086,
+        "Tc": 0.3107452386666425,
+        "Ts_ratio": 0.25368254910107374,
+        "vs": 0.0003787643861549613,
+        "b_{\\theta,h}": 1.2142551364368164e-06,
+        "trig_a": 0.0009897387888826404,
+        "trig_b": 0.0006476986777508566,
+        "trig_c": 0.000647979086205914
+      },
+      "kept": [
+        "scale",
+        "Tc",
+        "Ts_ratio",
+        "trig_a",
+        "trig_b",
+        "trig_c"
+      ],
+      "grid": {
+        "points": [
+          [
+            0.9,
+            1.5
+          ],
+          [
+            0.9,
+            4.0
+          ],
+          [
+            1.0,
+            1.5
+          ],
+          [
+            1.0,
+            4.0
+          ],
+          [
+            1.1,
+            1.5
+          ],
+          [
+            1.1,
+            4.0
+          ]
+        ],
+        "costs": [
+          3.2195573757976965,
+          14.39594515672911,
+          10.499821437067386,
+          8.948227075437327,
+          25.593859248973374,
+          5.377769277444585
+        ]
+      },
+      "start": {
+        "scale": 0.9,
+        "sigma0": 20000.0,
+        "Tc": 0.2593807043881749,
+        "Ts_ratio": 1.5,
+        "vs": 0.01816798893108686,
+        "b_{\\theta,h}": 0.03995470773735736,
+        "trig_a": 0.0,
+        "trig_b": 0.0,
+        "trig_c": 0.0,
+        "d_x_mm": 0.0,
+        "k_b": 197179.61979178208,
+        "ring": 1.9230199443460287,
+        "c_{\\theta,1}": 5.039685119431714,
+        "c_{\\theta,2}": 0.07975334021841715,
+        "c_{\\theta,3}": 0.8986583599715091,
+        "c_{\\theta,4}": 24.601148606563704
+      },
+      "names": [
+        "scale",
+        "Tc",
+        "Ts_ratio",
+        "trig_a",
+        "trig_b",
+        "trig_c"
+      ],
+      "values": {
+        "scale": 0.983461592310717,
+        "sigma0": 20000.0,
+        "Tc": 0.2715997436501631,
+        "Ts_ratio": 1.022598822953341,
+        "vs": 0.01816798893108686,
+        "b_{\\theta,h}": 0.03995470773735736,
+        "trig_a": -18.403471292499074,
+        "trig_b": -0.010533933078125748,
+        "trig_c": 0.2226584342619918,
+        "d_x_mm": 0.0,
+        "k_b": 197179.61979178208,
+        "ring": 1.9230199443460287,
+        "c_{\\theta,1}": 5.039685119431714,
+        "c_{\\theta,2}": 0.07975334021841715,
+        "c_{\\theta,3}": 0.8986583599715091,
+        "c_{\\theta,4}": 24.601148606563704
+      },
+      "cost": [
+        19.567047828405695,
+        0.01800548504555513
+      ]
+    }
+  },
+  "final": {
+    "azimuth": {
+      "scale": 0.9050763587845855,
+      "sigma0": 191.43693053068273,
+      "Tc": 0.2212212836185982,
+      "Ts_ratio": 2.592732592573469,
+      "vs": 0.001,
+      "H_hyst": 0.0060566158543226955,
+      "delta_hyst": 0.0003705256292920484,
+      "c_{\\psi,1}": 0.3696234205543212,
+      "c_{\\psi,2}": 6.58668033054929,
+      "d_x_mm": 0.0
+    },
+    "elevation": {
+      "scale": 0.983461592310717,
+      "sigma0": 20000.0,
+      "Tc": 0.2715997436501631,
+      "Ts_ratio": 1.022598822953341,
+      "vs": 0.01816798893108686,
+      "b_{\\theta,h}": 0.03995470773735736,
+      "trig_a": -18.403471292499074,
+      "trig_b": -0.010533933078125748,
+      "trig_c": 0.2226584342619918,
+      "d_x_mm": 0.0,
+      "k_b": 197179.61979178208,
+      "ring": 1.9230199443460287,
+      "c_{\\theta,1}": 5.039685119431714,
+      "c_{\\theta,2}": 0.07975334021841715,
+      "c_{\\theta,3}": 0.8986583599715091,
+      "c_{\\theta,4}": 24.601148606563704
+    }
+  },
+  "fits": {
+    "identification/azimuth": {
+      "first_guess": [
+        98.26248093775754,
+        90.75230066702635,
+        91.60441411419721,
+        94.34388462440523,
+        96.60399121059713,
+        96.08056100402241,
+        97.32347710407593,
+        96.28030170525497
+      ],
+      "fitted": [
+        98.40734968614775,
+        90.81278161776825,
+        91.621811119839,
+        94.29821341726753,
+        96.51158317387352,
+        96.02307995661391,
+        97.20059790665452,
+        96.27108251098964
+      ],
+      "moves": [
+        "MPCLucy_step_1deg azimuth 5.76 s",
+        "MPCLucy_step_1deg azimuth 8.04 s",
+        "MPCLucy_step_1deg azimuth 10.37 s",
+        "MPCLucy_step_1deg azimuth 12.01 s",
+        "MPCLucy_1degAz_zeroAz_1degPol__zeroPol azimuth 3.57 s",
+        "MPCLucy_1degAz_zeroAz_1degPol__zeroPol azimuth 10.29 s",
+        "MPCLucy_1degAz_zeroAz_1degPol__zeroPol azimuth 27.94 s",
+        "MPCLucy_1degAz_zeroAz_1degPol__zeroPol azimuth 33.30 s"
+      ]
+    },
+    "identification/elevation": {
+      "first_guess": [
+        -40.477875184354176,
+        -40.04914609833019,
+        -39.3880106943542,
+        -39.09148332018149,
+        -39.49509008630279,
+        -39.11492035127131,
+        -40.35078467968749,
+        -40.04393910672262,
+        -40.44583098955121,
+        -40.355630388429645
+      ],
+      "fitted": [
+        97.04953261057089,
+        93.23197624344229,
+        95.76056193031688,
+        98.88437661692923,
+        94.8792242699869,
+        96.90867482253337,
+        93.92498961684745,
+        97.38209520410585,
+        95.6143122329792,
+        97.49060291048832
+      ],
+      "moves": [
+        "MPCLucy_step_1deg elevation 15.77 s",
+        "MPCLucy_step_1deg elevation 18.95 s",
+        "MPCLucy_step_1deg elevation 20.16 s",
+        "MPCLucy_step_1deg elevation 21.30 s",
+        "MPCLucy_step_1deg elevation 22.50 s",
+        "MPCLucy_step_1deg elevation 23.32 s",
+        "MPCLucy_1degAz_zeroAz_1degPol__zeroPol elevation 17.00 s",
+        "MPCLucy_1degAz_zeroAz_1degPol__zeroPol elevation 21.87 s",
+        "MPCLucy_1degAz_zeroAz_1degPol__zeroPol elevation 37.85 s",
+        "MPCLucy_1degAz_zeroAz_1degPol__zeroPol elevation 58.75 s"
+      ]
+    },
+    "validation/azimuth": {
+      "first_guess": [
+        97.36095147087906,
+        91.58112057567051,
+        97.72166717952994,
+        91.48070499199052
+      ],
+      "fitted": [
+        97.3243486029655,
+        91.50359675403868,
+        97.68547443269613,
+        91.44095062682757
+      ],
+      "moves": [
+        "MPCLucy_2degAz_2degPol_zeroAz_zeroPol azimuth 18.31 s",
+        "MPCLucy_2degAz_2degPol_zeroAz_zeroPol azimuth 37.70 s",
+        "MPCLucy_2degPol_zeroPol_2degAz_zeroAz azimuth 19.95 s",
+        "MPCLucy_2degPol_zeroPol_2degAz_zeroAz azimuth 22.95 s"
+      ]
+    },
+    "validation/elevation": {
+      "first_guess": [
+        -44.080493730485685,
+        -43.30094014425463,
+        -42.95008753749665,
+        -41.57303888085146
+      ],
+      "fitted": [
+        88.4653178812729,
+        -0.3601168004237376,
+        85.24571330609146,
+        40.01969201825298
+      ],
+      "moves": [
+        "MPCLucy_2degAz_2degPol_zeroAz_zeroPol elevation 23.56 s",
+        "MPCLucy_2degAz_2degPol_zeroAz_zeroPol elevation 40.79 s",
+        "MPCLucy_2degPol_zeroPol_2degAz_zeroAz elevation 8.19 s",
+        "MPCLucy_2degPol_zeroPol_2degAz_zeroAz elevation 14.17 s"
+      ]
+    }
+  }
+}

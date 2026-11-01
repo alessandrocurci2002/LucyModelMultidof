@@ -1,0 +1,40 @@
+file,label,kind,f_Hz,magnitude_dB
+Poli_Polar_identification/BodeMeasurement_Polar_14vit_600_20261028_1perc.csv,"elevation, lens 12 mm, 1 % grid, 28 Oct",antirisonanza,49.43,-61.3
+Poli_Polar_identification/BodeMeasurement_Polar_14vit_600_20261028_1perc.csv,"elevation, lens 12 mm, 1 % grid, 28 Oct",risonanza,56.25,-45.3
+Poli_Polar_identification/BodeMeasurement_Polar_14vit_600_20261028_1perc.csv,"elevation, lens 12 mm, 1 % grid, 28 Oct",risonanza,58.54,-46.3
+Poli_Polar_identification/BodeMeasurement_Polar_14vit_600_20261028_1perc.csv,"elevation, lens 12 mm, 1 % grid, 28 Oct",antirisonanza,83.76,-65.0
+Poli_Polar_identification/BodeMeasurement_Polar_14vit_600_20261028_1perc.csv,"elevation, lens 12 mm, 1 % grid, 28 Oct",risonanza,99.19,-47.6
+Poli_Polar_identification/BodeMeasurement_Polar_14vit_600_20261028_1perc.csv,"elevation, lens 12 mm, 1 % grid, 28 Oct",antirisonanza,180.20,-70.5
+Poli_Polar_identification/BodeMeasurement_Polar_14vit_600_20261028_1perc.csv,"elevation, lens 12 mm, 1 % grid, 28 Oct",risonanza,199.05,-59.3
+Poli_Polar_identification/BodeMeasurement_Polar_14vit_600_20261028_1perc.csv,"elevation, lens 12 mm, 1 % grid, 28 Oct",antirisonanza,219.88,-74.7
+Poli_Polar_identification/BodeMeasurement_Polar_14vit_600_20261028_1perc.csv,"elevation, lens 12 mm, 1 % grid, 28 Oct",risonanza,296.36,-63.8
+Poli_Polar_identification/BodeMeasurement_Polar_14vit_600_20261028_1perc.csv,"elevation, lens 12 mm, 1 % grid, 28 Oct",antirisonanza,305.34,-72.0
+Poli_Polar_identification/BodeMeasurement_Polar_14vit_600_20261028_1perc.csv,"elevation, lens 12 mm, 1 % grid, 28 Oct",risonanza,314.60,-65.6
+Poli_Polar_identification/BodeMeasurement_Polar_14vit_600_20261028_1perc.csv,"elevation, lens 12 mm, 1 % grid, 28 Oct",antirisonanza,337.29,-76.5
+Poli_Polar_identification/BodeMeasurement_Polar_14vit_600_20261028.csv,"elevation, lens 12 mm, 3 % grid, 28 Oct",risonanza,57.37,-44.6
+Poli_Polar_identification/BodeMeasurement_Polar_14vit_600_20261028.csv,"elevation, lens 12 mm, 3 % grid, 28 Oct",antirisonanza,84.25,-65.0
+Poli_Polar_identification/BodeMeasurement_Polar_14vit_600_20261028.csv,"elevation, lens 12 mm, 3 % grid, 28 Oct",risonanza,100.60,-47.9
+Poli_Polar_identification/BodeMeasurement_Polar_14vit_600_20261028.csv,"elevation, lens 12 mm, 3 % grid, 28 Oct",risonanza,198.55,-59.1
+Poli_Polar_identification/BodeMeasurement_Polar_14vit_600_20261028.csv,"elevation, lens 12 mm, 3 % grid, 28 Oct",antirisonanza,223.47,-74.1
+Poli_Polar_identification/BodeMeasurement_Polar_14vit_600_20261028.csv,"elevation, lens 12 mm, 3 % grid, 28 Oct",risonanza,318.61,-64.5
+Poli_Polar_identification/BodeMeasurement_Polar_14vit_600_20261028.csv,"elevation, lens 12 mm, 3 % grid, 28 Oct",antirisonanza,338.01,-78.7
+Poli_Polar_identification/BodeMeasurement_Polar_14vit_30_150_20261028.csv,"elevation, lens 12 mm, 30-150 Hz, 28 Oct",antirisonanza,50.83,-60.3
+Poli_Polar_identification/BodeMeasurement_Polar_14vit_30_150_20261028.csv,"elevation, lens 12 mm, 30-150 Hz, 28 Oct",risonanza,56.71,-44.1
+Poli_Polar_identification/BodeMeasurement_Polar_14vit_30_150_20261028.csv,"elevation, lens 12 mm, 30-150 Hz, 28 Oct",antirisonanza,84.44,-65.0
+Poli_Polar_identification/BodeMeasurement_Polar_14vit_30_150_20261028.csv,"elevation, lens 12 mm, 30-150 Hz, 28 Oct",risonanza,100.00,-47.8
+Poli_Polar_identification/BodeMeasurement_Azimuth_14vit_600_20261028.csv,"azimuth, 3 % grid, 28 Oct",risonanza,55.70,-37.1
+Poli_Polar_identification/BodeMeasurement_Azimuth_14vit_600_20261028.csv,"azimuth, 3 % grid, 28 Oct",antirisonanza,64.57,-56.3
+VClosedLoop/VTesi/BodeMeasurement_Polar_14viti.csv,"elevation, 14 screws, 23 Oct",antirisonanza,51.44,-58.2
+VClosedLoop/VTesi/BodeMeasurement_Polar_14viti.csv,"elevation, 14 screws, 23 Oct",risonanza,57.39,-45.4
+VClosedLoop/VTesi/BodeMeasurement_Polar_14viti.csv,"elevation, 14 screws, 23 Oct",antirisonanza,84.59,-65.9
+VClosedLoop/VTesi/BodeMeasurement_Polar_14viti.csv,"elevation, 14 screws, 23 Oct",risonanza,97.24,-48.8
+VClosedLoop/VTesi/BodeMeasurement_Polar_14viti.csv,"elevation, 14 screws, 23 Oct",risonanza,173.17,-63.4
+VClosedLoop/VTesi/BodeMeasurement_Polar_14viti.csv,"elevation, 14 screws, 23 Oct",antirisonanza,178.42,-68.6
+VClosedLoop/VTesi/BodeMeasurement_Polar_14viti.csv,"elevation, 14 screws, 23 Oct",risonanza,203.05,-50.9
+VClosedLoop/VTesi/BodeMeasurement_Polar_14viti.csv,"elevation, 14 screws, 23 Oct",antirisonanza,268.29,-74.3
+VClosedLoop/VTesi/BodeMeasurement_Polar_14viti.csv,"elevation, 14 screws, 23 Oct",risonanza,311.48,-67.7
+VClosedLoop/VTesi/BodeMeasurement_Polar_14viti.csv,"elevation, 14 screws, 23 Oct",risonanza,317.74,-68.0
+VClosedLoop/VTesi/BodeMeasurement_Polar_14viti.csv,"elevation, 14 screws, 23 Oct",antirisonanza,327.37,-80.2
+VClosedLoop/VTesi/BodeMeasurement_Azimuth_14viti.csv,"azimuth, 14 screws, 23 Oct",risonanza,55.70,-36.8
+VClosedLoop/VTesi/BodeMeasurement_Azimuth_14viti.csv,"azimuth, 14 screws, 23 Oct",antirisonanza,62.14,-60.9
+VClosedLoop/VTesi/BodeMeasurement_Azimuth_14viti.csv,"azimuth, 14 screws, 23 Oct",antirisonanza,64.02,-56.7

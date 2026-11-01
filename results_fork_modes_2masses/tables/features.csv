@@ -1,0 +1,31 @@
+curve,kind,f_Hz,magnitude_dB
+"measured: elevation, 1 % grid (1-600 Hz)",antirisonanza,8.08,-52.1
+"measured: elevation, 1 % grid (1-600 Hz)",antirisonanza,49.43,-61.3
+"measured: elevation, 1 % grid (1-600 Hz)",risonanza,56.25,-45.3
+"measured: elevation, 1 % grid (1-600 Hz)",risonanza,58.54,-46.3
+"measured: elevation, 1 % grid (1-600 Hz)",antirisonanza,83.76,-65.0
+"measured: elevation, 1 % grid (1-600 Hz)",risonanza,99.19,-47.6
+"measured: elevation, 1 % grid (30-150 Hz)",antirisonanza,50.83,-60.3
+"measured: elevation, 1 % grid (30-150 Hz)",risonanza,56.71,-44.1
+"measured: elevation, 1 % grid (30-150 Hz)",antirisonanza,84.44,-65.0
+"measured: elevation, 1 % grid (30-150 Hz)",risonanza,100.00,-47.8
+"measured: elevation, 16 screws, 4 A (30-300 Hz)",antirisonanza,48.25,-60.6
+"measured: elevation, 16 screws, 4 A (30-300 Hz)",risonanza,56.54,-41.7
+"measured: elevation, 16 screws, 4 A (30-300 Hz)",risonanza,100.40,-48.3
+"measured: azimuth, 3 % grid (1-600 Hz)",antirisonanza,12.34,-87.8
+"measured: azimuth, 3 % grid (1-600 Hz)",risonanza,55.70,-37.1
+"measured: azimuth, 3 % grid (1-600 Hz)",antirisonanza,64.57,-56.3
+model: elevation,risonanza,57.55,-44.0
+model: elevation,risonanza,100.15,-47.4
+model: azimuth,antirisonanza,12.88,-78.8
+model: azimuth,risonanza,54.82,-37.7
+model: azimuth,antirisonanza,64.00,-56.3
+model: elevation,pole,1.82,zeta 0.0018
+model: elevation,pole,57.76,zeta 0.0377
+model: elevation,pole,100.13,zeta 0.0302
+model: elevation,zero,74.60,zeta -0.2595
+model: elevation,zero,81.75,zeta 0.3517
+model: azimuth,pole,3.24,zeta 0.0005
+model: azimuth,pole,55.83,zeta 0.0523
+model: azimuth,zero,12.87,zeta 0.0247
+model: azimuth,zero,63.50,zeta 0.0327

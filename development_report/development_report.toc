@@ -1,0 +1,48 @@
+\babel@toc {english}{}\relax 
+\contentsline {paragraph}{Purpose.}{1}{section*.1}%
+\contentsline {section}{\numberline {1}System conventions and modelling}{2}{section.1}%
+\contentsline {paragraph}{Frames and angles.}{2}{section*.3}%
+\contentsline {paragraph}{Nodes.}{2}{section*.4}%
+\contentsline {paragraph}{Measured plant.}{2}{section*.5}%
+\contentsline {section}{\numberline {2}Reference frames}{3}{section.2}%
+\contentsline {paragraph}{Why $\hat J = -\hat \jmath $.}{3}{section*.8}%
+\contentsline {paragraph}{CAD pose.}{3}{section*.9}%
+\contentsline {subsection}{\numberline {2.1}Eccentricities, telescope tensor and gravity}{4}{subsection.2.1}%
+\contentsline {section}{\numberline {3}Input geometry}{5}{section.3}%
+\contentsline {section}{\numberline {4}Element properties}{5}{section.4}%
+\contentsline {section}{\numberline {5}FEM and modal truncation}{6}{section.5}%
+\contentsline {paragraph}{Torsional FEM.}{6}{section*.15}%
+\contentsline {paragraph}{Modal truncation (Gawronski).}{6}{section*.16}%
+\contentsline {subsection}{\numberline {5.1}Coupling between the axes}{7}{subsection.5.1}%
+\contentsline {subsection}{\numberline {5.2}Results of the 18-element FEM}{7}{subsection.5.2}%
+\contentsline {section}{\numberline {6}The 7-DOF model}{9}{section.6}%
+\contentsline {paragraph}{Degrees of freedom and elements.}{9}{section*.20}%
+\contentsline {subsection}{\numberline {6.1}Newton--Euler equations}{10}{subsection.6.1}%
+\contentsline {subsection}{\numberline {6.2}Zeros and poles}{11}{subsection.6.2}%
+\contentsline {subsection}{\numberline {6.3}7-DOF model against the 18-element FEM}{11}{subsection.6.3}%
+\contentsline {section}{\numberline {7}Comparison of the 7-DOF model with the measurements}{11}{section.7}%
+\contentsline {section}{\numberline {8}Discrepancies and the new model}{13}{section.8}%
+\contentsline {subsection}{\numberline {8.1}Why a branch is needed}{13}{subsection.8.1}%
+\contentsline {subsection}{\numberline {8.2}Hub, telescope interface and ring}{14}{subsection.8.2}%
+\contentsline {paragraph}{Hub stiffness.}{14}{section*.29}%
+\contentsline {paragraph}{Hub and telescope inertias.}{15}{section*.30}%
+\contentsline {paragraph}{Free parameters.}{15}{section*.31}%
+\contentsline {paragraph}{Traceability.}{15}{section*.33}%
+\contentsline {subsection}{\numberline {8.3}FEM with hub}{15}{subsection.8.3}%
+\contentsline {subsection}{\numberline {8.4}The 8-DOF model}{16}{subsection.8.4}%
+\contentsline {section}{\numberline {9}Comparison of the 8-DOF model with the measurements}{20}{section.9}%
+\contentsline {section}{\numberline {10}Ring--telescope connection test}{22}{section.10}%
+\contentsline {subsection}{\numberline {10.1}Zero, two and four screws}{22}{subsection.10.1}%
+\contentsline {subsection}{\numberline {10.2}Eight and twelve screws}{23}{subsection.10.2}%
+\contentsline {section}{\numberline {11}Refit of the free parameters}{24}{section.11}%
+\contentsline {paragraph}{Ring stiffness.}{24}{section*.49}%
+\contentsline {paragraph}{Interface stiffness.}{25}{section*.51}%
+\contentsline {section}{\numberline {12}Stiffness to ground}{27}{section.12}%
+\contentsline {paragraph}{Why the measured slope is positive.}{27}{section*.54}%
+\contentsline {paragraph}{Estimate.}{27}{section*.55}%
+\contentsline {paragraph}{Where the constraint acts.}{27}{section*.57}%
+\contentsline {paragraph}{Newton--Euler equations with the constraint.}{28}{section*.59}%
+\contentsline {paragraph}{Values in the model.}{28}{section*.60}%
+\contentsline {section}{\numberline {13}Goodness of fit}{29}{section.13}%
+\contentsline {section}{\numberline {14}Open issues}{30}{section.14}%
+\contentsline {section}{\numberline {15}Next steps}{31}{section.15}%

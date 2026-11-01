@@ -1,0 +1,4 @@
+- esegui un audit del gawronsky ( /home/alessandro/Desktop/Thesis/978-0-387-78793-0.pdf ) estraendo le informazioni necessarie per sviluppare l'LQG descritto nel gawronsky mantenendo la struttura attuale del driver. Ottenendo quindi i coefficienti K_p e K_i in velocità e K_p in posizione, oltre che K_f per l'active damping via sintesi dell'LQG creando solo il file con il materiale utile per lo sviluppo di questo controllore senza implementarlo
+
+
+- Utilizzando il file appena generato per ottenere la sintesi e la simulazione del controllore proposto sottolineando l'accuratezza e il jitter. utilizza come parametri per il tracking gli stessi della tesi di attorese e della sintesi dell'observer in stile hilkert già generato

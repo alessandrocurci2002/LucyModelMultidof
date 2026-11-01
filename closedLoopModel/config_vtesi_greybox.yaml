@@ -1,0 +1,63 @@
+# =====================================================================
+# GREY-BOX ESTIMATE OF THE PLANT ON THE VTesi FREQUENCY RESPONSES (2026-10-27)
+# Model: H7, 9 DOF (gimbal_mdof config_hub_telescopeonring_alhub_fit_ground_aztel.yaml)
+#   elevation: chain e - h - m - r, telescope p hung from the hub h by k_theta,4, ground constraint on h;
+#   azimuth:   chain e - m - L - p, telescope p hung from the fork L by k_psi,3, ground constraint on L.
+# Data: LucyIdentification/VClosedLoop/VTesi (14 ring-telescope screws, 23 Oct 2026), trace "Plant"
+#   (encoder velocity / current command), 1-400 Hz.
+# Estimator: lucy_cl.greyest (as MATLAB greyest), adapter lucy_cl.gimbal_grey.
+# Constraints (user, 2026-10-27):
+#   - inertias within +-20 % of CAD / geometry;
+#   - springs computed from the geometry within +-20 %;
+#   - springs not determined by the geometry free: telescope-hub (k_theta,4), ring factor, telescope-fork
+#     (k_psi,3), ground constraints;
+#   - damping free.
+# Run (from this folder):
+#   ../.venv/bin/python -I greybox_fit.py --config config_vtesi_greybox.yaml
+# =====================================================================
+results_dir: results_vtesi_greybox
+label: "H7 (9 DOF) estimated on the VTesi plant responses (14 screws)"
+
+plant:
+  config: ../config_hub_telescopeonring_alhub_fit_ground_aztel.yaml
+  theta0_deg: 0.0                 # the VTesi tests are assumed at elevation 0
+  balanced_telescope: true
+  zeta_first_flexible: null       # start from the damping of the configuration (zeta_1 = 0.01)
+  bearing_friction: {model: none} # frequency-domain estimate: hysteretic ground constraint only
+
+motor:
+  file: data/motor_TBM7646A.yaml
+  temperature: cold
+  cogging: false
+
+drives:                           # current loop and filters of the drive; the tuning of the test is read from
+  azimuth:                        # the measurement file
+    parameters: ../../LucyIdentification/VClosedLoop/Parameters_azimuth.akd
+    measurement: ../../LucyIdentification/VClosedLoop/VTesi/BodeMeasurement_Azimuth_14viti.csv
+  elevation:
+    parameters: ../../LucyIdentification/VClosedLoop/Parameters_elevation.akd
+    measurement: ../../LucyIdentification/VClosedLoop/VTesi/BodeMeasurement_Polar_14viti.csv
+  feedforward: false
+  observer: from_parameters
+  delay_s: 0.0
+  position_gain_unit: hz
+
+fit:
+  band_Hz: [1.0, 400.0]
+  frequency_error: log            # ln|G_model/G| and phase difference: dB-like error over the 60 dB of the data
+  loss: soft_l1                   # robust: the three elevation resonances at 50-100 Hz are not in the model
+  f_scale: 0.5
+  max_iterations: 600
+  covariance: robust
+  bounds:
+    relative: 0.2                 # inertias and geometric springs
+    free_stiffness: [1.0, 1.0e9]  # N m/rad
+    ring: [1.0e-3, 1.0e6]         # stiffness factor of the support ring (1 = ring alone)
+    damper: [1.0e-6, 1.0e4]       # N m s/rad
+    eta: [1.0e-4, 100.0]
+  starts:                         # multi-start on the free springs that place the modes
+    azimuth:
+      "k_{\\psi,3}": [3.0e4, 6.0e4, 1.2e5, 3.0e5]
+    elevation:
+      "k_{\\theta,4}": [6.0e4, 1.5e5, 4.0e5, 1.0e6]
+      ring: [1.0, 1000.0]

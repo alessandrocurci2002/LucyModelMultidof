@@ -1,0 +1,31 @@
+\babel@toc {english}{}\relax 
+\contentsline {paragraph}{Purpose.}{1}{section*.1}%
+\contentsline {paragraph}{Main results.}{1}{section*.2}%
+\contentsline {section}{\numberline {1}Data}{2}{section.1}%
+\contentsline {paragraph}{Frequency responses.}{2}{section*.4}%
+\contentsline {paragraph}{Doublets.}{2}{section*.5}%
+\contentsline {paragraph}{Drives.}{2}{section*.6}%
+\contentsline {section}{\numberline {2}Model}{2}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Structure in modal form}{2}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Dahl friction in the bearings}{3}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}Frequency domain: describing function}{3}{subsection.2.3}%
+\contentsline {paragraph}{Describing function.}{3}{section*.7}%
+\contentsline {paragraph}{Plant.}{3}{section*.8}%
+\contentsline {paragraph}{Amplitude of the bearings.}{3}{section*.9}%
+\contentsline {subsection}{\numberline {2.4}Time domain, open loop: measured current in}{4}{subsection.2.4}%
+\contentsline {paragraph}{Initial condition.}{4}{section*.10}%
+\contentsline {subsection}{\numberline {2.5}Time domain, closed loop: position reference in}{4}{subsection.2.5}%
+\contentsline {section}{\numberline {3}Identification}{4}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Cost and constraints}{4}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Hybrid identification of the bearings}{5}{subsection.3.2}%
+\contentsline {section}{\numberline {4}Results: frequency domain}{5}{section.4}%
+\contentsline {paragraph}{Elevation}{6}{section*.15}%
+\contentsline {paragraph}{Azimuth}{6}{section*.16}%
+\contentsline {paragraph}{The other bearing models.}{6}{section*.17}%
+\contentsline {section}{\numberline {5}Results: doublets in open loop (measured current in)}{9}{section.5}%
+\contentsline {section}{\numberline {6}Results: doublets in closed loop (position reference in)}{11}{section.6}%
+\contentsline {paragraph}{Gains of the drives.}{11}{section*.27}%
+\contentsline {paragraph}{What agrees}{11}{section*.31}%
+\contentsline {paragraph}{What differs.}{12}{section*.32}%
+\contentsline {section}{\numberline {7}Limitations and open points}{13}{section.7}%
+\contentsline {paragraph}{Reproducibility.}{14}{section*.35}%

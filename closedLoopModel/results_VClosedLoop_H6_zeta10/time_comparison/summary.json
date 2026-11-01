@@ -1,0 +1,1873 @@
+{
+  "config": "config_compare_vcl.yaml",
+  "variants": {
+    "A": {
+      "label": "2 pi PL.KP, no FF",
+      "values": {
+        "azimuth": {
+          "Kpp": 62.83185307179586,
+          "kvff": 0.0,
+          "Tc": 1.5794562126729097
+        },
+        "elevation": {
+          "Kpp": 2.5132741228718345,
+          "kvff": 0.0,
+          "Tc": 0.6620716614618684
+        }
+      }
+    },
+    "B": {
+      "label": "PL.KP in 1/s, no FF",
+      "values": {
+        "azimuth": {
+          "Kpp": 10.0,
+          "kvff": 0.0,
+          "Tc": 1.5794562126729097
+        },
+        "elevation": {
+          "Kpp": 0.4,
+          "kvff": 0.0,
+          "Tc": 0.6620716614618684
+        }
+      }
+    },
+    "C": {
+      "label": "2 pi PL.KP, KVFF of the files",
+      "values": {
+        "azimuth": {
+          "Kpp": 62.83185307179586,
+          "kvff": 1.0,
+          "Tc": 1.5794562126729097
+        },
+        "elevation": {
+          "Kpp": 2.5132741228718345,
+          "kvff": 1.0,
+          "Tc": 0.6620716614618684
+        }
+      }
+    },
+    "D": {
+      "label": "PL.KP in 1/s, KVFF of the files",
+      "values": {
+        "azimuth": {
+          "Kpp": 10.0,
+          "kvff": 1.0,
+          "Tc": 1.5794562126729097
+        },
+        "elevation": {
+          "Kpp": 0.4,
+          "kvff": 1.0,
+          "Tc": 0.6620716614618684
+        }
+      }
+    },
+    "E": {
+      "label": "2 pi PL.KP, no FF, Tc Sep.",
+      "values": {
+        "azimuth": {
+          "Kpp": 62.83185307179586,
+          "kvff": 0.0,
+          "Tc": 0.302
+        },
+        "elevation": {
+          "Kpp": 2.5132741228718345,
+          "kvff": 0.0,
+          "Tc": 0.295
+        }
+      }
+    },
+    "F": {
+      "label": "PL.KP in 1/s, no FF, Tc Sep.",
+      "values": {
+        "azimuth": {
+          "Kpp": 10.0,
+          "kvff": 0.0,
+          "Tc": 0.302
+        },
+        "elevation": {
+          "Kpp": 0.4,
+          "kvff": 0.0,
+          "Tc": 0.295
+        }
+      }
+    },
+    "G": {
+      "label": "Kpp of Sep. estimate, rest of the files, Tc Sep.",
+      "values": {
+        "azimuth": {
+          "Kpp": 7.43,
+          "kvff": 0.0,
+          "Tc": 0.302
+        },
+        "elevation": {
+          "Kpp": 8.575,
+          "kvff": 0.0,
+          "Tc": 0.295
+        }
+      }
+    },
+    "H": {
+      "label": "Kpp, Kpv, Kiv, Tc of Sep. estimate",
+      "values": {
+        "azimuth": {
+          "Kpp": 7.43,
+          "kvff": 0.0,
+          "Tc": 0.302,
+          "Kpv": 198.0,
+          "Kiv": 0.1477
+        },
+        "elevation": {
+          "Kpp": 8.575,
+          "kvff": 0.0,
+          "Tc": 0.295,
+          "Kpv": 61.39,
+          "Kiv": 0.7267
+        }
+      }
+    }
+  },
+  "moves": [
+    {
+      "sequence": "MPCLucy_step_1deg",
+      "axis": "azimuth",
+      "move": 5.761,
+      "window": [
+        5.461,
+        7.988
+      ],
+      "held_meas_mdeg": 6.179809999999975,
+      "max_error_meas_mdeg": 721.405931,
+      "A": {
+        "ok": true,
+        "fit_error": 9.984469757732107,
+        "fit_current": -104.23969561796756,
+        "max_error_mdeg": 370.28352923488285,
+        "held_mdeg": 0.00799699151916652
+      },
+      "B": {
+        "ok": true,
+        "fit_error": 76.54958492243713,
+        "fit_current": -131.44212302302924,
+        "max_error_mdeg": 662.8585684631302,
+        "held_mdeg": 0.001405511892992985
+      },
+      "C": {
+        "ok": true,
+        "fit_error": -0.9317997638042197,
+        "fit_current": -111.55105633814864,
+        "max_error_mdeg": 280.1597796441535,
+        "held_mdeg": 0.007750524753038599
+      },
+      "D": {
+        "ok": true,
+        "fit_error": 31.70472574904578,
+        "fit_current": -137.7639164061412,
+        "max_error_mdeg": 318.2411173873792,
+        "held_mdeg": 0.0026116973255648837
+      },
+      "E": {
+        "ok": true,
+        "fit_error": -12.439590455549897,
+        "fit_current": -170.8020746856628,
+        "max_error_mdeg": 330.90700219741547,
+        "held_mdeg": 0.020962652255142974
+      },
+      "F": {
+        "ok": true,
+        "fit_error": 69.37720624204479,
+        "fit_current": 1.873739439915001,
+        "max_error_mdeg": 642.4909006247561,
+        "held_mdeg": 0.0018390176424368972
+      },
+      "G": {
+        "ok": true,
+        "fit_error": 83.30183255046258,
+        "fit_current": 16.182320122262862,
+        "max_error_mdeg": 705.9310551520842,
+        "held_mdeg": 0.012848169975488367
+      },
+      "H": {
+        "ok": true,
+        "fit_error": 74.15262310755196,
+        "fit_current": 20.086405915347584,
+        "max_error_mdeg": 750.9260687858289,
+        "held_mdeg": 0.003478292289668743
+      }
+    },
+    {
+      "sequence": "MPCLucy_step_1deg",
+      "axis": "azimuth",
+      "move": 8.038,
+      "window": [
+        7.738,
+        10.318
+      ],
+      "held_meas_mdeg": 7.896424000000013,
+      "max_error_meas_mdeg": 721.508526,
+      "A": {
+        "ok": true,
+        "fit_error": 10.355476932869001,
+        "fit_current": -105.23829359457099,
+        "max_error_mdeg": 371.79622110964766,
+        "held_mdeg": 2.071962926180904
+      },
+      "B": {
+        "ok": true,
+        "fit_error": 76.33587979166694,
+        "fit_current": -123.36069388956284,
+        "max_error_mdeg": 661.0124299888041,
+        "held_mdeg": 0.36357551092057294
+      },
+      "C": {
+        "ok": true,
+        "fit_error": -0.5146192429752006,
+        "fit_current": -112.31666830514988,
+        "max_error_mdeg": 282.17702470932034,
+        "held_mdeg": 2.0719623680871355
+      },
+      "D": {
+        "ok": true,
+        "fit_error": 32.01963560007931,
+        "fit_current": -132.5568944821486,
+        "max_error_mdeg": 319.324439007881,
+        "held_mdeg": 0.3637020952978829
+      },
+      "E": {
+        "ok": true,
+        "fit_error": -12.178018585458016,
+        "fit_current": -167.14355184475554,
+        "max_error_mdeg": 330.0469589394038,
+        "held_mdeg": 2.8400141088500943
+      },
+      "F": {
+        "ok": true,
+        "fit_error": 69.02557043215992,
+        "fit_current": 6.560001280361538,
+        "max_error_mdeg": 639.5212477673806,
+        "held_mdeg": 0.4203554389518791
+      },
+      "G": {
+        "ok": true,
+        "fit_error": 83.3407560853744,
+        "fit_current": 20.366564266188604,
+        "max_error_mdeg": 702.6536373415356,
+        "held_mdeg": 4.145694609198417
+      },
+      "H": {
+        "ok": true,
+        "fit_error": 77.36601386193323,
+        "fit_current": 23.667151210636895,
+        "max_error_mdeg": 746.5173809441045,
+        "held_mdeg": 1.5041842378691848
+      }
+    },
+    {
+      "sequence": "MPCLucy_step_1deg",
+      "axis": "azimuth",
+      "move": 10.368,
+      "window": [
+        10.068,
+        11.960999999999999
+      ],
+      "held_meas_mdeg": 4.4631960000000355,
+      "max_error_meas_mdeg": 721.0626080000001,
+      "A": {
+        "ok": true,
+        "fit_error": 8.301609614351179,
+        "fit_current": -95.13033314799702,
+        "max_error_mdeg": 370.9379677064657,
+        "held_mdeg": 0.9888654865297555
+      },
+      "B": {
+        "ok": true,
+        "fit_error": 76.0125273964813,
+        "fit_current": -101.72738928151182,
+        "max_error_mdeg": 662.1682607913698,
+        "held_mdeg": 0.17106549357992762
+      },
+      "C": {
+        "ok": true,
+        "fit_error": -2.802629360336528,
+        "fit_current": -104.45151278495493,
+        "max_error_mdeg": 281.1503996390527,
+        "held_mdeg": 0.9888231118565101
+      },
+      "D": {
+        "ok": true,
+        "fit_error": 30.511002517231532,
+        "fit_current": -112.53821581084007,
+        "max_error_mdeg": 318.8226787793756,
+        "held_mdeg": 0.17106213495582967
+      },
+      "E": {
+        "ok": true,
+        "fit_error": -14.620206024195959,
+        "fit_current": -171.8553228166065,
+        "max_error_mdeg": 330.50925887669456,
+        "held_mdeg": 1.1974120867232578
+      },
+      "F": {
+        "ok": true,
+        "fit_error": 68.61182329278968,
+        "fit_current": 2.6730152585717093,
+        "max_error_mdeg": 641.3195709491624,
+        "held_mdeg": 0.1854208667863224
+      },
+      "G": {
+        "ok": true,
+        "fit_error": 83.04376676299947,
+        "fit_current": 17.106901624324276,
+        "max_error_mdeg": 704.6777173880648,
+        "held_mdeg": 2.568295810392603
+      },
+      "H": {
+        "ok": true,
+        "fit_error": 75.67043048844745,
+        "fit_current": 20.921859549052357,
+        "max_error_mdeg": 749.3724613299989,
+        "held_mdeg": 0.6695931934693387
+      }
+    },
+    {
+      "sequence": "MPCLucy_step_1deg",
+      "axis": "azimuth",
+      "move": 12.011,
+      "window": [
+        11.710999999999999,
+        14.511
+      ],
+      "held_meas_mdeg": 2.059936999999954,
+      "max_error_meas_mdeg": 721.16185,
+      "A": {
+        "ok": true,
+        "fit_error": 10.72395775887921,
+        "fit_current": -111.01771721131297,
+        "max_error_mdeg": 371.8713324491857,
+        "held_mdeg": 0.2920888254475963
+      },
+      "B": {
+        "ok": true,
+        "fit_error": 76.41827184953489,
+        "fit_current": -133.7780090498239,
+        "max_error_mdeg": 660.9222470637125,
+        "held_mdeg": 0.0583814581053238
+      },
+      "C": {
+        "ok": true,
+        "fit_error": -0.09615054353198094,
+        "fit_current": -117.1843578232553,
+        "max_error_mdeg": 282.2869815272564,
+        "held_mdeg": 0.2921307048145521
+      },
+      "D": {
+        "ok": true,
+        "fit_error": 32.32723853727963,
+        "fit_current": -140.98949976055954,
+        "max_error_mdeg": 319.3953345731657,
+        "held_mdeg": 0.05827610492771618
+      },
+      "E": {
+        "ok": true,
+        "fit_error": -11.726551714684486,
+        "fit_current": -169.29957279821502,
+        "max_error_mdeg": 330.01381059036873,
+        "held_mdeg": 0.2882055204777188
+      },
+      "F": {
+        "ok": true,
+        "fit_error": 69.12396505680141,
+        "fit_current": 5.982824095099515,
+        "max_error_mdeg": 639.373023677612,
+        "held_mdeg": 0.05778585050349305
+      },
+      "G": {
+        "ok": true,
+        "fit_error": 83.41653639193724,
+        "fit_current": 20.014611286079266,
+        "max_error_mdeg": 702.4923120219926,
+        "held_mdeg": 0.5885398075512581
+      },
+      "H": {
+        "ok": true,
+        "fit_error": 77.56323029317022,
+        "fit_current": 23.446121903658813,
+        "max_error_mdeg": 746.3076485025656,
+        "held_mdeg": 0.14145994144584606
+      }
+    },
+    {
+      "sequence": "MPCLucy_step_1deg",
+      "axis": "elevation",
+      "move": 15.766,
+      "window": [
+        15.466,
+        18.266
+      ],
+      "held_meas_mdeg": 0.686646,
+      "max_error_meas_mdeg": 518.8667959999999,
+      "A": {
+        "ok": true,
+        "fit_error": -6.5185501884436725,
+        "fit_current": -93.3366035761598,
+        "max_error_mdeg": 552.8604900422753,
+        "held_mdeg": 0.020995491939685484
+      },
+      "B": {
+        "ok": true,
+        "fit_error": -271.1867972069013,
+        "fit_current": -100.61120200523965,
+        "max_error_mdeg": 569.0097811670717,
+        "held_mdeg": 0.018731504570306496
+      },
+      "C": {
+        "ok": true,
+        "fit_error": -23.616579686374983,
+        "fit_current": -288.7557680138123,
+        "max_error_mdeg": 288.64606577978736,
+        "held_mdeg": 0.020995491939685484
+      },
+      "D": {
+        "ok": true,
+        "fit_error": -15.50635107936964,
+        "fit_current": -227.29041290265343,
+        "max_error_mdeg": 263.67592626101504,
+        "held_mdeg": 0.01873149505617669
+      },
+      "E": {
+        "ok": true,
+        "fit_error": 1.7113702975481648,
+        "fit_current": 49.269180503643625,
+        "max_error_mdeg": 542.8627087655118,
+        "held_mdeg": 0.018960508693791286
+      },
+      "F": {
+        "ok": true,
+        "fit_error": -250.4629018677595,
+        "fit_current": 4.300337852122738,
+        "max_error_mdeg": 568.8888354989573,
+        "held_mdeg": 0.018706836614706887
+      },
+      "G": {
+        "ok": true,
+        "fit_error": 51.74094282370385,
+        "fit_current": -102.86162294703685,
+        "max_error_mdeg": 461.83173751792503,
+        "held_mdeg": 0.018411982161147443
+      },
+      "H": {
+        "ok": true,
+        "fit_error": 87.70971418713106,
+        "fit_current": 56.861373529195724,
+        "max_error_mdeg": 487.9358205809165,
+        "held_mdeg": 0.008988360725178583
+      }
+    },
+    {
+      "sequence": "MPCLucy_step_1deg",
+      "axis": "elevation",
+      "move": 18.9485,
+      "window": [
+        18.6485,
+        20.107499999999998
+      ],
+      "held_meas_mdeg": 0.343323,
+      "max_error_meas_mdeg": 842.992477,
+      "A": {
+        "ok": true,
+        "fit_error": -8.008089682754637,
+        "fit_current": 32.191504796537515,
+        "max_error_mdeg": 938.9744693738612,
+        "held_mdeg": 1.1345618049765911e-05
+      },
+      "B": {
+        "ok": true,
+        "fit_error": -206.21412713259363,
+        "fit_current": -1.0966879923083095,
+        "max_error_mdeg": 996.9745838134438,
+        "held_mdeg": 1.769535217888801e-06
+      },
+      "C": {
+        "ok": true,
+        "fit_error": -32.330189791128696,
+        "fit_current": -267.0724299071784,
+        "max_error_mdeg": 442.46464717246755,
+        "held_mdeg": 7.840950931517487e-05
+      },
+      "D": {
+        "ok": true,
+        "fit_error": -21.500748371448108,
+        "fit_current": -216.92030603026967,
+        "max_error_mdeg": 363.2714436408704,
+        "held_mdeg": 0.00015159721710430898
+      },
+      "E": {
+        "ok": true,
+        "fit_error": -2.7477020835443122,
+        "fit_current": 46.93271837845852,
+        "max_error_mdeg": 914.2170352797486,
+        "held_mdeg": 1.1950040258012816e-05
+      },
+      "F": {
+        "ok": true,
+        "fit_error": -195.35566740760052,
+        "fit_current": 8.689303531200466,
+        "max_error_mdeg": 997.1265975081717,
+        "held_mdeg": 2.7675479464401923e-06
+      },
+      "G": {
+        "ok": true,
+        "fit_error": 43.69650427006364,
+        "fit_current": -138.02912379026614,
+        "max_error_mdeg": 712.962349994108,
+        "held_mdeg": 0.0001057634345798733
+      },
+      "H": {
+        "ok": true,
+        "fit_error": 91.0674385215642,
+        "fit_current": 51.87095800162302,
+        "max_error_mdeg": 799.8346166358267,
+        "held_mdeg": 3.313158727231673e-05
+      }
+    },
+    {
+      "sequence": "MPCLucy_step_1deg",
+      "axis": "elevation",
+      "move": 20.1575,
+      "window": [
+        19.857499999999998,
+        21.253
+      ],
+      "held_meas_mdeg": 1.0299690000000001,
+      "max_error_meas_mdeg": 840.1466530000001,
+      "A": {
+        "ok": true,
+        "fit_error": -10.702500062131204,
+        "fit_current": 8.16147531900333,
+        "max_error_mdeg": 942.0693266798795,
+        "held_mdeg": 0.0019427113187248089
+      },
+      "B": {
+        "ok": true,
+        "fit_error": -199.61241402067756,
+        "fit_current": -12.128722065334973,
+        "max_error_mdeg": 982.5709558770143,
+        "held_mdeg": 0.0015826546011223157
+      },
+      "C": {
+        "ok": true,
+        "fit_error": -30.027012802045427,
+        "fit_current": -256.4971010734337,
+        "max_error_mdeg": 433.26778848899505,
+        "held_mdeg": 0.0019427113187248089
+      },
+      "D": {
+        "ok": true,
+        "fit_error": -20.693546535201122,
+        "fit_current": -209.97078226176984,
+        "max_error_mdeg": 362.0376258534517,
+        "held_mdeg": 0.001582034080001692
+      },
+      "E": {
+        "ok": true,
+        "fit_error": -2.730643349652495,
+        "fit_current": 51.708988792852104,
+        "max_error_mdeg": 909.4327480631252,
+        "held_mdeg": 0.001865303013438078
+      },
+      "F": {
+        "ok": true,
+        "fit_error": -185.4635737815363,
+        "fit_current": 12.909721381512673,
+        "max_error_mdeg": 983.5164717259637,
+        "held_mdeg": 0.0015796703140386948
+      },
+      "G": {
+        "ok": true,
+        "fit_error": 44.51774046048378,
+        "fit_current": -125.67788368418418,
+        "max_error_mdeg": 703.6165769545506,
+        "held_mdeg": 0.001479376591780165
+      },
+      "H": {
+        "ok": true,
+        "fit_error": 91.1504993465308,
+        "fit_current": 57.05808967169326,
+        "max_error_mdeg": 799.5155206555355,
+        "held_mdeg": 0.0006295828929581912
+      }
+    },
+    {
+      "sequence": "MPCLucy_step_1deg",
+      "axis": "elevation",
+      "move": 21.303,
+      "window": [
+        21.003,
+        22.451999999999998
+      ],
+      "held_meas_mdeg": 0.343323,
+      "max_error_meas_mdeg": 837.499313,
+      "A": {
+        "ok": true,
+        "fit_error": -9.042923507534173,
+        "fit_current": 26.53789926305722,
+        "max_error_mdeg": 933.63748928156,
+        "held_mdeg": 0.17057348509943393
+      },
+      "B": {
+        "ok": true,
+        "fit_error": -202.1060032004941,
+        "fit_current": -2.5017374677985815,
+        "max_error_mdeg": 981.3980428519664,
+        "held_mdeg": 0.1409964590122076
+      },
+      "C": {
+        "ok": true,
+        "fit_error": -31.716372777747925,
+        "fit_current": -267.90248152929814,
+        "max_error_mdeg": 443.2894945178476,
+        "held_mdeg": 0.17057348509943393
+      },
+      "D": {
+        "ok": true,
+        "fit_error": -23.14576483584141,
+        "fit_current": -219.3781263768462,
+        "max_error_mdeg": 376.6388339447215,
+        "held_mdeg": 0.1409964957834577
+      },
+      "E": {
+        "ok": true,
+        "fit_error": -3.0855902778092803,
+        "fit_current": 48.62561134516811,
+        "max_error_mdeg": 909.2467499185568,
+        "held_mdeg": 0.15589695954569388
+      },
+      "F": {
+        "ok": true,
+        "fit_error": -191.55266091322062,
+        "fit_current": 9.141843784688763,
+        "max_error_mdeg": 982.9780969253867,
+        "held_mdeg": 0.1366977457791504
+      },
+      "G": {
+        "ok": true,
+        "fit_error": 44.675812449765736,
+        "fit_current": -132.87895648146653,
+        "max_error_mdeg": 703.3167339081683,
+        "held_mdeg": 0.1267514208991215
+      },
+      "H": {
+        "ok": true,
+        "fit_error": 90.82397185425518,
+        "fit_current": 53.581866334998466,
+        "max_error_mdeg": 799.509438399177,
+        "held_mdeg": 0.04315873936984889
+      }
+    },
+    {
+      "sequence": "MPCLucy_step_1deg",
+      "axis": "elevation",
+      "move": 22.502,
+      "window": [
+        22.201999999999998,
+        23.275
+      ],
+      "held_meas_mdeg": 1.0299690000000001,
+      "max_error_meas_mdeg": 838.773362,
+      "A": {
+        "ok": true,
+        "fit_error": -10.364965290207206,
+        "fit_current": 9.903318681813278,
+        "max_error_mdeg": 941.4422957796984,
+        "held_mdeg": 1.150588215214634e-05
+      },
+      "B": {
+        "ok": true,
+        "fit_error": -155.00760625237655,
+        "fit_current": -12.295637260110093,
+        "max_error_mdeg": 983.0518260828183,
+        "held_mdeg": 1.768644746252837e-06
+      },
+      "C": {
+        "ok": true,
+        "fit_error": -33.90226792086211,
+        "fit_current": -269.937545070148,
+        "max_error_mdeg": 434.3886827607125,
+        "held_mdeg": 7.71767435678906e-05
+      },
+      "D": {
+        "ok": true,
+        "fit_error": -24.432808400331464,
+        "fit_current": -225.6978342191531,
+        "max_error_mdeg": 361.90845020081815,
+        "held_mdeg": 0.00014637296684089586
+      },
+      "E": {
+        "ok": true,
+        "fit_error": -2.5011028624036813,
+        "fit_current": 51.17733447544697,
+        "max_error_mdeg": 909.6040187405657,
+        "held_mdeg": 1.2170749345786506e-05
+      },
+      "F": {
+        "ok": true,
+        "fit_error": -143.7784273487826,
+        "fit_current": 8.1655595631964,
+        "max_error_mdeg": 984.0131279015659,
+        "held_mdeg": 2.7996851571348437e-06
+      },
+      "G": {
+        "ok": true,
+        "fit_error": 43.65907260308273,
+        "fit_current": -133.21113835681447,
+        "max_error_mdeg": 703.8949913699429,
+        "held_mdeg": 0.00010219554427503149
+      },
+      "H": {
+        "ok": true,
+        "fit_error": 91.62229613111559,
+        "fit_current": 55.69479816861489,
+        "max_error_mdeg": 799.5219729632976,
+        "held_mdeg": 3.349844604127498e-05
+      }
+    },
+    {
+      "sequence": "MPCLucy_step_1deg",
+      "axis": "elevation",
+      "move": 23.325,
+      "window": [
+        23.025,
+        25.825
+      ],
+      "held_meas_mdeg": 0.686646,
+      "max_error_meas_mdeg": 828.229599,
+      "A": {
+        "ok": true,
+        "fit_error": -5.082196476032341,
+        "fit_current": 18.999588506737307,
+        "max_error_mdeg": 925.7091470262104,
+        "held_mdeg": 0.2798049037582063
+      },
+      "B": {
+        "ok": true,
+        "fit_error": -268.5279857983556,
+        "fit_current": -4.356487518871566,
+        "max_error_mdeg": 970.8000849046482,
+        "held_mdeg": 0.24847360238330518
+      },
+      "C": {
+        "ok": true,
+        "fit_error": -26.271319917601144,
+        "fit_current": -316.48736061446704,
+        "max_error_mdeg": 448.48118645719177,
+        "held_mdeg": 0.2798049037582063
+      },
+      "D": {
+        "ok": true,
+        "fit_error": -20.074263472813247,
+        "fit_current": -234.95908621698214,
+        "max_error_mdeg": 392.8434052421074,
+        "held_mdeg": 0.24847362174761584
+      },
+      "E": {
+        "ok": true,
+        "fit_error": 0.4545905967443975,
+        "fit_current": 39.74838770161332,
+        "max_error_mdeg": 903.3892326066464,
+        "held_mdeg": 0.25572902763645133
+      },
+      "F": {
+        "ok": true,
+        "fit_error": -255.7908637509342,
+        "fit_current": 8.857800711008768,
+        "max_error_mdeg": 971.6346394383205,
+        "held_mdeg": 0.24730234396220313
+      },
+      "G": {
+        "ok": true,
+        "fit_error": 47.055348150113595,
+        "fit_current": -148.08282895443523,
+        "max_error_mdeg": 707.855341130872,
+        "held_mdeg": 0.24198108007323219
+      },
+      "H": {
+        "ok": true,
+        "fit_error": 90.76865757430484,
+        "fit_current": 44.46345003315621,
+        "max_error_mdeg": 790.6906054190604,
+        "held_mdeg": 0.10474957911541857
+      }
+    },
+    {
+      "sequence": "MPCLucy_1degAz_zeroAz_1degPol__zeroPol",
+      "axis": "azimuth",
+      "move": 3.5685,
+      "window": [
+        3.2685,
+        6.0685
+      ],
+      "held_meas_mdeg": 7.8964240000000006,
+      "max_error_meas_mdeg": 721.749253,
+      "A": {
+        "ok": true,
+        "fit_error": 10.541998085779047,
+        "fit_current": -104.82463622987908,
+        "max_error_mdeg": 370.98910058707463,
+        "held_mdeg": 0.062324311380395625
+      },
+      "B": {
+        "ok": true,
+        "fit_error": 76.543543747495,
+        "fit_current": -135.57318252597844,
+        "max_error_mdeg": 662.0502715152882,
+        "held_mdeg": 0.011302785768186038
+      },
+      "C": {
+        "ok": true,
+        "fit_error": -0.29264580206482815,
+        "fit_current": -110.97240019938779,
+        "max_error_mdeg": 281.1761413474656,
+        "held_mdeg": 0.062429470963950004
+      },
+      "D": {
+        "ok": true,
+        "fit_error": 32.18570023108273,
+        "fit_current": -140.81383701011308,
+        "max_error_mdeg": 318.8551005561509,
+        "held_mdeg": 0.011875058251860873
+      },
+      "E": {
+        "ok": true,
+        "fit_error": -11.820435750213143,
+        "fit_current": -165.0800546145861,
+        "max_error_mdeg": 330.57132690491017,
+        "held_mdeg": 0.07941770518104266
+      },
+      "F": {
+        "ok": true,
+        "fit_error": 69.32683750139341,
+        "fit_current": 3.6356991474596367,
+        "max_error_mdeg": 641.15743719363,
+        "held_mdeg": 0.011631892837547786
+      },
+      "G": {
+        "ok": true,
+        "fit_error": 83.41706255623741,
+        "fit_current": 17.143051713458814,
+        "max_error_mdeg": 704.4785804822462,
+        "held_mdeg": 0.13574267098610276
+      },
+      "H": {
+        "ok": true,
+        "fit_error": 75.71282825475973,
+        "fit_current": 20.60432497740975,
+        "max_error_mdeg": 749.0436573236578,
+        "held_mdeg": 0.06489289781356317
+      }
+    },
+    {
+      "sequence": "MPCLucy_1degAz_zeroAz_1degPol__zeroPol",
+      "axis": "azimuth",
+      "move": 10.287,
+      "window": [
+        9.987,
+        12.787
+      ],
+      "held_meas_mdeg": 8.926392,
+      "max_error_meas_mdeg": 721.165203,
+      "A": {
+        "ok": true,
+        "fit_error": 10.727178125374092,
+        "fit_current": -103.32456249349305,
+        "max_error_mdeg": 371.5862242533441,
+        "held_mdeg": 0.14350623965670284
+      },
+      "B": {
+        "ok": true,
+        "fit_error": 76.51721636012623,
+        "fit_current": -140.84325364584905,
+        "max_error_mdeg": 661.3180218617298,
+        "held_mdeg": 0.029136084514716776
+      },
+      "C": {
+        "ok": true,
+        "fit_error": -0.10486448350310873,
+        "fit_current": -109.89141480837974,
+        "max_error_mdeg": 281.9437776116791,
+        "held_mdeg": 0.14342760053740425
+      },
+      "D": {
+        "ok": true,
+        "fit_error": 32.30820486470481,
+        "fit_current": -146.25170824763768,
+        "max_error_mdeg": 319.2453057784595,
+        "held_mdeg": 0.028950070970046426
+      },
+      "E": {
+        "ok": true,
+        "fit_error": -11.710279818101421,
+        "fit_current": -165.79176929332365,
+        "max_error_mdeg": 330.2143054765081,
+        "held_mdeg": 0.1387767485552635
+      },
+      "F": {
+        "ok": true,
+        "fit_error": 69.26858199506421,
+        "fit_current": 4.478561558201289,
+        "max_error_mdeg": 639.9897601749134,
+        "held_mdeg": 0.028769331763514983
+      },
+      "G": {
+        "ok": true,
+        "fit_error": 83.4215612927029,
+        "fit_current": 17.431792156420833,
+        "max_error_mdeg": 703.1831871901603,
+        "held_mdeg": 0.28316918834738886
+      },
+      "H": {
+        "ok": true,
+        "fit_error": 76.79517787039016,
+        "fit_current": 20.390137180694655,
+        "max_error_mdeg": 747.2768970195004,
+        "held_mdeg": 0.06767037222689437
+      }
+    },
+    {
+      "sequence": "MPCLucy_1degAz_zeroAz_1degPol__zeroPol",
+      "axis": "azimuth",
+      "move": 27.9445,
+      "window": [
+        27.6445,
+        30.4445
+      ],
+      "held_meas_mdeg": 9.95636,
+      "max_error_meas_mdeg": 720.719285,
+      "A": {
+        "ok": true,
+        "fit_error": 10.619202019942175,
+        "fit_current": -109.8787453624857,
+        "max_error_mdeg": 372.3342513749827,
+        "held_mdeg": 0.002672918906664618
+      },
+      "B": {
+        "ok": true,
+        "fit_error": 76.24405845644388,
+        "fit_current": -138.61447482293826,
+        "max_error_mdeg": 660.4843979605025,
+        "held_mdeg": 0.000759126903080788
+      },
+      "C": {
+        "ok": true,
+        "fit_error": -0.16778812570563684,
+        "fit_current": -115.76870571944697,
+        "max_error_mdeg": 283.11194000693223,
+        "held_mdeg": 0.002792234431936366
+      },
+      "D": {
+        "ok": true,
+        "fit_error": 32.38978172445659,
+        "fit_current": -144.19894830627996,
+        "max_error_mdeg": 320.0367327439431,
+        "held_mdeg": 0.001566102848906831
+      },
+      "E": {
+        "ok": true,
+        "fit_error": -11.868034426421747,
+        "fit_current": -169.5814371451969,
+        "max_error_mdeg": 329.901801461118,
+        "held_mdeg": 0.02070478506945546
+      },
+      "F": {
+        "ok": true,
+        "fit_error": 68.86668809051568,
+        "fit_current": 2.6169855154485,
+        "max_error_mdeg": 638.5777378395821,
+        "held_mdeg": 0.0010093305589212414
+      },
+      "G": {
+        "ok": true,
+        "fit_error": 83.41093440117014,
+        "fit_current": 16.806144266849444,
+        "max_error_mdeg": 701.6689925102635,
+        "held_mdeg": 0.0005898985822229098
+      },
+      "H": {
+        "ok": true,
+        "fit_error": 78.61645543535627,
+        "fit_current": 20.682819989273582,
+        "max_error_mdeg": 745.4026072283106,
+        "held_mdeg": 0.0004576863275374402
+      }
+    },
+    {
+      "sequence": "MPCLucy_1degAz_zeroAz_1degPol__zeroPol",
+      "axis": "azimuth",
+      "move": 33.2995,
+      "window": [
+        32.999500000000005,
+        35.7995
+      ],
+      "held_meas_mdeg": 9.269714,
+      "max_error_meas_mdeg": 721.2074480000001,
+      "A": {
+        "ok": true,
+        "fit_error": 10.707409474649698,
+        "fit_current": -101.5497397007846,
+        "max_error_mdeg": 371.31175800484044,
+        "held_mdeg": 0.003422949976856098
+      },
+      "B": {
+        "ok": true,
+        "fit_error": 76.58287469756192,
+        "fit_current": -139.41891104895205,
+        "max_error_mdeg": 661.6589249371883,
+        "held_mdeg": 0.0007190905390375227
+      },
+      "C": {
+        "ok": true,
+        "fit_error": -0.13614585788173095,
+        "fit_current": -108.17932863016316,
+        "max_error_mdeg": 281.4420652691965,
+        "held_mdeg": 0.003542770204502341
+      },
+      "D": {
+        "ok": true,
+        "fit_error": 32.259509671579565,
+        "fit_current": -144.66615538017754,
+        "max_error_mdeg": 318.97916663432414,
+        "held_mdeg": 0.0018187297075965112
+      },
+      "E": {
+        "ok": true,
+        "fit_error": -11.712945261088503,
+        "fit_current": -164.2029929895998,
+        "max_error_mdeg": 330.37972278735026,
+        "held_mdeg": 0.006002417710760248
+      },
+      "F": {
+        "ok": true,
+        "fit_error": 69.36589180704038,
+        "fit_current": 4.625901061800097,
+        "max_error_mdeg": 640.5499836822493,
+        "held_mdeg": 0.0008954303005620061
+      },
+      "G": {
+        "ok": true,
+        "fit_error": 83.41900235770619,
+        "fit_current": 17.336378780548255,
+        "max_error_mdeg": 703.7390602871849,
+        "held_mdeg": 0.0005863760442434504
+      },
+      "H": {
+        "ok": true,
+        "fit_error": 76.19518767185362,
+        "fit_current": 20.184329375607536,
+        "max_error_mdeg": 747.9785397196266,
+        "held_mdeg": 0.00043100948903617434
+      }
+    },
+    {
+      "sequence": "MPCLucy_1degAz_zeroAz_1degPol__zeroPol",
+      "axis": "elevation",
+      "move": 16.9995,
+      "window": [
+        16.6995,
+        19.4995
+      ],
+      "held_meas_mdeg": 0.686646,
+      "max_error_meas_mdeg": 846.669786,
+      "A": {
+        "ok": true,
+        "fit_error": -4.478953248409678,
+        "fit_current": 0.5322748872738869,
+        "max_error_mdeg": 945.8597783368357,
+        "held_mdeg": 1.1628288656105804e-05
+      },
+      "B": {
+        "ok": true,
+        "fit_error": -277.0962728837571,
+        "fit_current": -19.38983507425329,
+        "max_error_mdeg": 997.5229118651519,
+        "held_mdeg": 1.8114822300958516e-06
+      },
+      "C": {
+        "ok": true,
+        "fit_error": -23.685818070671118,
+        "fit_current": -278.243116256551,
+        "max_error_mdeg": 434.87303374647934,
+        "held_mdeg": 7.677762898164135e-05
+      },
+      "D": {
+        "ok": true,
+        "fit_error": -13.23453423609504,
+        "fit_current": -195.42616901246936,
+        "max_error_mdeg": 371.95682460753574,
+        "held_mdeg": 0.0001465600909578972
+      },
+      "E": {
+        "ok": true,
+        "fit_error": 2.0419069200680706,
+        "fit_current": 52.80446912077288,
+        "max_error_mdeg": 914.2260925201821,
+        "held_mdeg": 1.2162625270085789e-05
+      },
+      "F": {
+        "ok": true,
+        "fit_error": -259.7658595730873,
+        "fit_current": 17.114213491993468,
+        "max_error_mdeg": 997.3442506893253,
+        "held_mdeg": 2.841329015359164e-06
+      },
+      "G": {
+        "ok": true,
+        "fit_error": 46.97550183691755,
+        "fit_current": -118.7447662369535,
+        "max_error_mdeg": 712.9961527160377,
+        "held_mdeg": 0.00010481783207243043
+      },
+      "H": {
+        "ok": true,
+        "fit_error": 91.39650127731734,
+        "fit_current": 58.52691429002485,
+        "max_error_mdeg": 799.8478468273681,
+        "held_mdeg": 3.349966155218158e-05
+      }
+    },
+    {
+      "sequence": "MPCLucy_1degAz_zeroAz_1degPol__zeroPol",
+      "axis": "elevation",
+      "move": 21.8735,
+      "window": [
+        21.5735,
+        24.3735
+      ],
+      "held_meas_mdeg": 0.686646,
+      "max_error_meas_mdeg": 846.0823819999999,
+      "A": {
+        "ok": true,
+        "fit_error": -3.0165656127001172,
+        "fit_current": 23.953526566919802,
+        "max_error_mdeg": 942.0691630164329,
+        "held_mdeg": 1.1381076857167193e-05
+      },
+      "B": {
+        "ok": true,
+        "fit_error": -274.04706258366855,
+        "fit_current": -2.503527665577887,
+        "max_error_mdeg": 997.4613148672684,
+        "held_mdeg": 1.7637862342275632e-06
+      },
+      "C": {
+        "ok": true,
+        "fit_error": -24.881528037009204,
+        "fit_current": -290.8400891680737,
+        "max_error_mdeg": 439.18146653072347,
+        "held_mdeg": 7.863632766768538e-05
+      },
+      "D": {
+        "ok": true,
+        "fit_error": -14.429712696315079,
+        "fit_current": -204.40979993238165,
+        "max_error_mdeg": 365.1845230965123,
+        "held_mdeg": 0.0001515072766614187
+      },
+      "E": {
+        "ok": true,
+        "fit_error": 2.5877109201971837,
+        "fit_current": 41.54163160129749,
+        "max_error_mdeg": 914.2197263875099,
+        "held_mdeg": 1.1944089833211543e-05
+      },
+      "F": {
+        "ok": true,
+        "fit_error": -258.93483802146903,
+        "fit_current": 11.503112024977181,
+        "max_error_mdeg": 997.4610814616983,
+        "held_mdeg": 2.768757139403253e-06
+      },
+      "G": {
+        "ok": true,
+        "fit_error": 46.512044531435016,
+        "fit_current": -126.86510422136128,
+        "max_error_mdeg": 712.7289861258782,
+        "held_mdeg": 0.00010586062090124296
+      },
+      "H": {
+        "ok": true,
+        "fit_error": 91.48315134044597,
+        "fit_current": 46.05674548283619,
+        "max_error_mdeg": 799.8578579055106,
+        "held_mdeg": 3.3123331312821526e-05
+      }
+    },
+    {
+      "sequence": "MPCLucy_1degAz_zeroAz_1degPol__zeroPol",
+      "axis": "elevation",
+      "move": 37.854,
+      "window": [
+        37.554,
+        40.354
+      ],
+      "held_meas_mdeg": 0.686646,
+      "max_error_meas_mdeg": 843.2365580000001,
+      "A": {
+        "ok": true,
+        "fit_error": -4.700187414808443,
+        "fit_current": -0.31151244194831396,
+        "max_error_mdeg": 944.8095354426315,
+        "held_mdeg": 1.161510732856931e-05
+      },
+      "B": {
+        "ok": true,
+        "fit_error": -277.5522209936739,
+        "fit_current": -19.784208554054985,
+        "max_error_mdeg": 996.8333116746142,
+        "held_mdeg": 1.8077822120335215e-06
+      },
+      "C": {
+        "ok": true,
+        "fit_error": -23.921994958015837,
+        "fit_current": -284.82653160469124,
+        "max_error_mdeg": 435.84263995302615,
+        "held_mdeg": 7.67159339950577e-05
+      },
+      "D": {
+        "ok": true,
+        "fit_error": -13.528574571621688,
+        "fit_current": -200.08844808990366,
+        "max_error_mdeg": 369.88974048836235,
+        "held_mdeg": 0.000146601929541558
+      },
+      "E": {
+        "ok": true,
+        "fit_error": 1.6788846617664555,
+        "fit_current": 52.893992278037175,
+        "max_error_mdeg": 914.0852594717255,
+        "held_mdeg": 1.2158684399902387e-05
+      },
+      "F": {
+        "ok": true,
+        "fit_error": -260.6567146629093,
+        "fit_current": 16.970066443365496,
+        "max_error_mdeg": 996.697799567703,
+        "held_mdeg": 2.83847629155047e-06
+      },
+      "G": {
+        "ok": true,
+        "fit_error": 47.01875108370989,
+        "fit_current": -122.6621817399757,
+        "max_error_mdeg": 712.5885573690392,
+        "held_mdeg": 0.00010469893470639455
+      },
+      "H": {
+        "ok": true,
+        "fit_error": 91.59899158528235,
+        "fit_current": 59.31624351175691,
+        "max_error_mdeg": 799.8252198321276,
+        "held_mdeg": 3.3495688839842246e-05
+      }
+    },
+    {
+      "sequence": "MPCLucy_1degAz_zeroAz_1degPol__zeroPol",
+      "axis": "elevation",
+      "move": 58.7535,
+      "window": [
+        58.453500000000005,
+        61.2535
+      ],
+      "held_meas_mdeg": 0.343323,
+      "max_error_meas_mdeg": 840.6200630000001,
+      "A": {
+        "ok": true,
+        "fit_error": -3.6485679703673224,
+        "fit_current": 20.908562681854935,
+        "max_error_mdeg": 938.6804023063107,
+        "held_mdeg": 1.1342276487367558e-05
+      },
+      "B": {
+        "ok": true,
+        "fit_error": -275.1074142561976,
+        "fit_current": -5.840153159951411,
+        "max_error_mdeg": 997.2872270023239,
+        "held_mdeg": 1.7715866891733493e-06
+      },
+      "C": {
+        "ok": true,
+        "fit_error": -25.59205289449111,
+        "fit_current": -310.11456413990555,
+        "max_error_mdeg": 442.9247516693889,
+        "held_mdeg": 7.832840633093155e-05
+      },
+      "D": {
+        "ok": true,
+        "fit_error": -15.221938301582405,
+        "fit_current": -218.82086508098527,
+        "max_error_mdeg": 363.5230757067348,
+        "held_mdeg": 0.00015168349052673065
+      },
+      "E": {
+        "ok": true,
+        "fit_error": 1.3148562266088293,
+        "fit_current": 39.72502070844327,
+        "max_error_mdeg": 914.1714682794883,
+        "held_mdeg": 1.1943818589380915e-05
+      },
+      "F": {
+        "ok": true,
+        "fit_error": -261.74210256393275,
+        "fit_current": 7.667237814889738,
+        "max_error_mdeg": 997.466135185453,
+        "held_mdeg": 2.7683746742808434e-06
+      },
+      "G": {
+        "ok": true,
+        "fit_error": 46.77191985115523,
+        "fit_current": -136.12491395596624,
+        "max_error_mdeg": 712.8117902381248,
+        "held_mdeg": 0.00010583348943169081
+      },
+      "H": {
+        "ok": true,
+        "fit_error": 91.51953494215635,
+        "fit_current": 45.45387414794122,
+        "max_error_mdeg": 799.8740420491047,
+        "held_mdeg": 3.312532855743013e-05
+      }
+    },
+    {
+      "sequence": "MPCLucy_2degAz_2degPol_zeroAz_zeroPol",
+      "axis": "azimuth",
+      "move": 18.3095,
+      "window": [
+        18.0095,
+        20.8095
+      ],
+      "held_meas_mdeg": 6.17981,
+      "max_error_meas_mdeg": 1144.6565020000003,
+      "A": {
+        "ok": true,
+        "fit_error": 10.393953912045461,
+        "fit_current": -150.64571038929725,
+        "max_error_mdeg": 422.0143370652643,
+        "held_mdeg": 0.004577661462728751
+      },
+      "B": {
+        "ok": true,
+        "fit_error": 74.33144101501118,
+        "fit_current": -107.26996461390779,
+        "max_error_mdeg": 946.5824529830718,
+        "held_mdeg": 0.0017706254067349084
+      },
+      "C": {
+        "ok": true,
+        "fit_error": -5.187804285425601,
+        "fit_current": -163.44651790367965,
+        "max_error_mdeg": 310.38985159466125,
+        "held_mdeg": 0.008177067715630076
+      },
+      "D": {
+        "ok": true,
+        "fit_error": 18.37145436944565,
+        "fit_current": -77.38673261935777,
+        "max_error_mdeg": 369.29675477419954,
+        "held_mdeg": 0.0027125401357057455
+      },
+      "E": {
+        "ok": true,
+        "fit_error": 11.460570241905188,
+        "fit_current": -118.15427997842653,
+        "max_error_mdeg": 345.10930285441196,
+        "held_mdeg": 0.010012673142900982
+      },
+      "F": {
+        "ok": true,
+        "fit_error": 69.00818337510482,
+        "fit_current": 20.843941654306487,
+        "max_error_mdeg": 887.3496106890556,
+        "held_mdeg": 0.0018770300619694218
+      },
+      "G": {
+        "ok": true,
+        "fit_error": 85.48394360691414,
+        "fit_current": 44.112122911140126,
+        "max_error_mdeg": 1055.5890993070516,
+        "held_mdeg": 0.00131321401544504
+      },
+      "H": {
+        "ok": true,
+        "fit_error": 86.47162533434317,
+        "fit_current": 53.96614676665965,
+        "max_error_mdeg": 1165.0096019308064,
+        "held_mdeg": 0.0013139888446521651
+      }
+    },
+    {
+      "sequence": "MPCLucy_2degAz_2degPol_zeroAz_zeroPol",
+      "axis": "azimuth",
+      "move": 37.7035,
+      "window": [
+        37.4035,
+        40.2035
+      ],
+      "held_meas_mdeg": 4.806517999999667,
+      "max_error_meas_mdeg": 1143.5856300000003,
+      "A": {
+        "ok": true,
+        "fit_error": 10.524305436846914,
+        "fit_current": -143.46006424029437,
+        "max_error_mdeg": 420.8211156202617,
+        "held_mdeg": 0.1949804112759525
+      },
+      "B": {
+        "ok": true,
+        "fit_error": 74.55138158273957,
+        "fit_current": -110.33797811105521,
+        "max_error_mdeg": 948.1853467784475,
+        "held_mdeg": 0.04235345486789738
+      },
+      "C": {
+        "ok": true,
+        "fit_error": -5.038333965949016,
+        "fit_current": -156.7558870212526,
+        "max_error_mdeg": 308.8639775270464,
+        "held_mdeg": 0.18167941009336647
+      },
+      "D": {
+        "ok": true,
+        "fit_error": 18.32598972238855,
+        "fit_current": -75.37650088743379,
+        "max_error_mdeg": 368.17291563723757,
+        "held_mdeg": 0.03176744780647023
+      },
+      "E": {
+        "ok": true,
+        "fit_error": 11.518600752320951,
+        "fit_current": -113.39851572570261,
+        "max_error_mdeg": 345.2049730240837,
+        "held_mdeg": 0.14270247509032497
+      },
+      "F": {
+        "ok": true,
+        "fit_error": 69.23424601589076,
+        "fit_current": 21.593386105180514,
+        "max_error_mdeg": 889.0432305184753,
+        "held_mdeg": 0.0295520202186349
+      },
+      "G": {
+        "ok": true,
+        "fit_error": 85.53199657104498,
+        "fit_current": 43.609600701609054,
+        "max_error_mdeg": 1057.5267915705538,
+        "held_mdeg": 0.3916521599896391
+      },
+      "H": {
+        "ok": true,
+        "fit_error": 85.53763001324191,
+        "fit_current": 52.38466842592799,
+        "max_error_mdeg": 1168.168502103041,
+        "held_mdeg": 0.15839535885221123
+      }
+    },
+    {
+      "sequence": "MPCLucy_2degAz_2degPol_zeroAz_zeroPol",
+      "axis": "elevation",
+      "move": 23.556,
+      "window": [
+        23.256,
+        26.056
+      ],
+      "held_meas_mdeg": 0.6866450000000434,
+      "max_error_meas_mdeg": 1196.45264,
+      "A": {
+        "ok": true,
+        "fit_error": -22.626155463538943,
+        "fit_current": -36.50733562581687,
+        "max_error_mdeg": 1511.0089053840397,
+        "held_mdeg": 0.17197705156112467
+      },
+      "B": {
+        "ok": true,
+        "fit_error": -331.96432417962274,
+        "fit_current": -48.8996385829632,
+        "max_error_mdeg": 1958.9278491046916,
+        "held_mdeg": 0.1438604271878179
+      },
+      "C": {
+        "ok": true,
+        "fit_error": -18.52224074070996,
+        "fit_current": -213.86186920209803,
+        "max_error_mdeg": 303.9699927807772,
+        "held_mdeg": 0.17197705156112467
+      },
+      "D": {
+        "ok": true,
+        "fit_error": -14.56440703316153,
+        "fit_current": -186.2759895990239,
+        "max_error_mdeg": 318.53410327429975,
+        "held_mdeg": 0.14386041869931504
+      },
+      "E": {
+        "ok": true,
+        "fit_error": -20.16106964052056,
+        "fit_current": 21.194817377301067,
+        "max_error_mdeg": 1469.4192459043186,
+        "held_mdeg": 0.22427603860850687
+      },
+      "F": {
+        "ok": true,
+        "fit_error": -324.1944716620634,
+        "fit_current": 7.958675970729578,
+        "max_error_mdeg": 1915.489542203899,
+        "held_mdeg": 0.14440869014985228
+      },
+      "G": {
+        "ok": true,
+        "fit_error": 64.71981510242728,
+        "fit_current": -123.8894258364081,
+        "max_error_mdeg": 829.1191066550049,
+        "held_mdeg": 0.14342891166649024
+      },
+      "H": {
+        "ok": true,
+        "fit_error": 85.36032690855325,
+        "fit_current": -95.80841276348137,
+        "max_error_mdeg": 1097.6420357092672,
+        "held_mdeg": 0.10110064713079667
+      }
+    },
+    {
+      "sequence": "MPCLucy_2degAz_2degPol_zeroAz_zeroPol",
+      "axis": "elevation",
+      "move": 40.7915,
+      "window": [
+        40.4915,
+        43.2915
+      ],
+      "held_meas_mdeg": 0.686646,
+      "max_error_meas_mdeg": 1220.2512100000001,
+      "A": {
+        "ok": true,
+        "fit_error": -20.25133898382352,
+        "fit_current": 6.340023915265325,
+        "max_error_mdeg": 1525.9605266762796,
+        "held_mdeg": 0.03617833551091874
+      },
+      "B": {
+        "ok": true,
+        "fit_error": -328.392908772526,
+        "fit_current": -18.388471316936705,
+        "max_error_mdeg": 1971.2166058972007,
+        "held_mdeg": 0.032350364006336195
+      },
+      "C": {
+        "ok": true,
+        "fit_error": -17.612224075362025,
+        "fit_current": -168.5744168946064,
+        "max_error_mdeg": 317.7766054346814,
+        "held_mdeg": 0.03617833551091874
+      },
+      "D": {
+        "ok": true,
+        "fit_error": -13.119600865645808,
+        "fit_current": -144.9823322940516,
+        "max_error_mdeg": 334.8822648252534,
+        "held_mdeg": 0.03235036807588771
+      },
+      "E": {
+        "ok": true,
+        "fit_error": -17.80213144800056,
+        "fit_current": 18.53664833645201,
+        "max_error_mdeg": 1479.7775239360503,
+        "held_mdeg": 0.03261537072823492
+      },
+      "F": {
+        "ok": true,
+        "fit_error": -320.679792434012,
+        "fit_current": 3.297279626935634,
+        "max_error_mdeg": 1935.4254261563472,
+        "held_mdeg": 0.032285883930840927
+      },
+      "G": {
+        "ok": true,
+        "fit_error": 64.19278070406199,
+        "fit_current": -86.30475687306185,
+        "max_error_mdeg": 835.7903910326868,
+        "held_mdeg": 0.031747364700421304
+      },
+      "H": {
+        "ok": true,
+        "fit_error": 87.78233073754026,
+        "fit_current": -72.80717762506738,
+        "max_error_mdeg": 1128.9448715805627,
+        "held_mdeg": 0.014959858525578941
+      }
+    },
+    {
+      "sequence": "MPCLucy_2degPol_zeroPol_2degAz_zeroAz",
+      "axis": "azimuth",
+      "move": 19.945,
+      "window": [
+        19.645,
+        22.445
+      ],
+      "held_meas_mdeg": 8.583069,
+      "max_error_meas_mdeg": 1144.0737920000001,
+      "A": {
+        "ok": true,
+        "fit_error": 10.395256439882417,
+        "fit_current": -147.66365022125032,
+        "max_error_mdeg": 422.0979287820761,
+        "held_mdeg": 0.005303589844489229
+      },
+      "B": {
+        "ok": true,
+        "fit_error": 74.34251229496418,
+        "fit_current": -104.38768246170041,
+        "max_error_mdeg": 946.4355465860358,
+        "held_mdeg": 0.001792708445468277
+      },
+      "C": {
+        "ok": true,
+        "fit_error": -5.191500839518115,
+        "fit_current": -160.05693100671056,
+        "max_error_mdeg": 310.4990527958678,
+        "held_mdeg": 0.010012839478878814
+      },
+      "D": {
+        "ok": true,
+        "fit_error": 18.38379110297521,
+        "fit_current": -75.42562579402892,
+        "max_error_mdeg": 369.36513833264,
+        "held_mdeg": 0.002762631180662179
+      },
+      "E": {
+        "ok": true,
+        "fit_error": 11.461843551055061,
+        "fit_current": -115.38330457051136,
+        "max_error_mdeg": 345.0703378394729,
+        "held_mdeg": 0.010005040946237597
+      },
+      "F": {
+        "ok": true,
+        "fit_error": 69.01697437966936,
+        "fit_current": 21.823737366232876,
+        "max_error_mdeg": 887.1918429138888,
+        "held_mdeg": 0.0018766799157372788
+      },
+      "G": {
+        "ok": true,
+        "fit_error": 85.49981794866483,
+        "fit_current": 44.28868862209774,
+        "max_error_mdeg": 1055.4096594710145,
+        "held_mdeg": 0.0013130061140117107
+      },
+      "H": {
+        "ok": true,
+        "fit_error": 86.54051265066447,
+        "fit_current": 53.553107012190026,
+        "max_error_mdeg": 1164.7150347099712,
+        "held_mdeg": 0.0013142691526350555
+      }
+    },
+    {
+      "sequence": "MPCLucy_2degPol_zeroPol_2degAz_zeroAz",
+      "axis": "azimuth",
+      "move": 22.945,
+      "window": [
+        22.645,
+        25.445
+      ],
+      "held_meas_mdeg": 9.613037,
+      "max_error_meas_mdeg": 1143.5856300000003,
+      "A": {
+        "ok": true,
+        "fit_error": 10.550898459418988,
+        "fit_current": -141.36368136018066,
+        "max_error_mdeg": 419.77182794506734,
+        "held_mdeg": 2.460974520557205
+      },
+      "B": {
+        "ok": true,
+        "fit_error": 74.75239846084709,
+        "fit_current": -108.617657210588,
+        "max_error_mdeg": 950.7891869659428,
+        "held_mdeg": 0.4334083596473217
+      },
+      "C": {
+        "ok": true,
+        "fit_error": -4.982573017686653,
+        "fit_current": -154.7644463081904,
+        "max_error_mdeg": 307.42009008572313,
+        "held_mdeg": 2.460981799870073
+      },
+      "D": {
+        "ok": true,
+        "fit_error": 18.247616982293046,
+        "fit_current": -74.39041134496347,
+        "max_error_mdeg": 367.4408289019077,
+        "held_mdeg": 0.4334125081876241
+      },
+      "E": {
+        "ok": true,
+        "fit_error": 11.56699060896914,
+        "fit_current": -112.37439294927624,
+        "max_error_mdeg": 346.056091770044,
+        "held_mdeg": 3.2746938710249056
+      },
+      "F": {
+        "ok": true,
+        "fit_error": 69.43808495115451,
+        "fit_current": 21.835056233650707,
+        "max_error_mdeg": 891.8260984585689,
+        "held_mdeg": 0.47260998504104546
+      },
+      "G": {
+        "ok": true,
+        "fit_error": 85.61164934062518,
+        "fit_current": 43.44969194351196,
+        "max_error_mdeg": 1060.7021119281824,
+        "held_mdeg": 4.730675106655791
+      },
+      "H": {
+        "ok": true,
+        "fit_error": 84.30097847855747,
+        "fit_current": 51.825785413361594,
+        "max_error_mdeg": 1173.458504752424,
+        "held_mdeg": 1.6026191371074394
+      }
+    },
+    {
+      "sequence": "MPCLucy_2degPol_zeroPol_2degAz_zeroAz",
+      "axis": "elevation",
+      "move": 8.19,
+      "window": [
+        7.89,
+        10.69
+      ],
+      "held_meas_mdeg": 0.686646,
+      "max_error_meas_mdeg": 1236.1888959999999,
+      "A": {
+        "ok": true,
+        "fit_error": -19.292794282660218,
+        "fit_current": -0.8894560858217826,
+        "max_error_mdeg": 1563.0820785264011,
+        "held_mdeg": 1.473539327332696e-05
+      },
+      "B": {
+        "ok": true,
+        "fit_error": -326.86190926737584,
+        "fit_current": -27.134752703889674,
+        "max_error_mdeg": 1982.0444925848228,
+        "held_mdeg": 5.404172885551454e-06
+      },
+      "C": {
+        "ok": true,
+        "fit_error": -15.932168174071283,
+        "fit_current": -151.98788726245445,
+        "max_error_mdeg": 345.24607894401555,
+        "held_mdeg": 5.473066206889977e-05
+      },
+      "D": {
+        "ok": true,
+        "fit_error": -11.137307179035849,
+        "fit_current": -126.55035538626214,
+        "max_error_mdeg": 361.7473584138866,
+        "held_mdeg": 0.00011244948917773617
+      },
+      "E": {
+        "ok": true,
+        "fit_error": -16.604712959086743,
+        "fit_current": 34.79136674944032,
+        "max_error_mdeg": 1507.6720665689522,
+        "held_mdeg": 1.2691614292276315e-05
+      },
+      "F": {
+        "ok": true,
+        "fit_error": -318.7106608272484,
+        "fit_current": 11.283484883232486,
+        "max_error_mdeg": 1962.6703291782505,
+        "held_mdeg": 6.881868967379429e-06
+      },
+      "G": {
+        "ok": true,
+        "fit_error": 63.649756648605084,
+        "fit_current": -65.94774947215029,
+        "max_error_mdeg": 870.3583531038569,
+        "held_mdeg": 7.989111132483982e-05
+      },
+      "H": {
+        "ok": true,
+        "fit_error": 94.111780416711,
+        "fit_current": 21.098471225263072,
+        "max_error_mdeg": 1190.5389557482831,
+        "held_mdeg": 4.847878835802634e-05
+      }
+    },
+    {
+      "sequence": "MPCLucy_2degPol_zeroPol_2degAz_zeroAz",
+      "axis": "elevation",
+      "move": 14.1695,
+      "window": [
+        13.869499999999999,
+        16.6695
+      ],
+      "held_meas_mdeg": 1.0299690000000001,
+      "max_error_meas_mdeg": 1259.046681,
+      "A": {
+        "ok": true,
+        "fit_error": -17.75895574816746,
+        "fit_current": 21.136266480318344,
+        "max_error_mdeg": 1573.3229604814653,
+        "held_mdeg": 1.4714825239632438e-05
+      },
+      "B": {
+        "ok": true,
+        "fit_error": -323.2842919897716,
+        "fit_current": -14.01115804753168,
+        "max_error_mdeg": 1984.7668591694187,
+        "held_mdeg": 5.108342137981531e-06
+      },
+      "C": {
+        "ok": true,
+        "fit_error": -15.433335720221187,
+        "fit_current": -128.2627941018905,
+        "max_error_mdeg": 353.1156288034759,
+        "held_mdeg": 5.401514043663195e-05
+      },
+      "D": {
+        "ok": true,
+        "fit_error": -10.49601617514715,
+        "fit_current": -104.29373333708361,
+        "max_error_mdeg": 370.4922600283599,
+        "held_mdeg": 0.00011582182166004499
+      },
+      "E": {
+        "ok": true,
+        "fit_error": -14.609128785457992,
+        "fit_current": 36.82201689427431,
+        "max_error_mdeg": 1507.497219359652,
+        "held_mdeg": 1.2260303870020227e-05
+      },
+      "F": {
+        "ok": true,
+        "fit_error": -313.6179241172549,
+        "fit_current": 12.152552752370383,
+        "max_error_mdeg": 1962.9071074897397,
+        "held_mdeg": 6.5239318659329655e-06
+      },
+      "G": {
+        "ok": true,
+        "fit_error": 63.144170818214775,
+        "fit_current": -51.67585332815927,
+        "max_error_mdeg": 869.6020277811642,
+        "held_mdeg": 7.939039396348747e-05
+      },
+      "H": {
+        "ok": true,
+        "fit_error": 92.83066357393838,
+        "fit_current": 17.12919671239299,
+        "max_error_mdeg": 1190.3236396846044,
+        "held_mdeg": 4.808243345952776e-05
+      }
+    }
+  ]
+}

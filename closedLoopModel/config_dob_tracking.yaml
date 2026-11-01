@@ -1,0 +1,61 @@
+# =====================================================================
+# TRACKING OF A DRONE ON A CIRCLE: CURRENT CONTROL VS HILKERT'S GYRO DISTURBANCE OBSERVER (2026-10-23)
+# Time-domain closed loop (dob_tracking_study.py):
+#   plant H6 with the plant fitted on the October Bode (config_vcl_fit.yaml), effective drive gains of iteration
+#   I5 (vcl_study.py), friction, cable spring and torque scale identified on VClosedLoop/V2 (v2_identification.py);
+#   current control: position P and velocity PI of the drives closed on the encoders;
+#   proposed: the same plus a rate gyro on the telescope (ideal, no noise) and the single-state disturbance
+#   observer of Hilkert & Pautler (Proc. SPIE 8052, 2011) fed forward to the current command.
+# Reference: Attorrese (2026), section 6.2: pointer at the origin, drone on a horizontal circle of radius 10 m
+# at height 5 m, centred 100 m away, 0.2 rad/s.
+# Run (from this folder):
+#   ../.venv/bin/python -I dob_tracking_study.py --config config_dob_tracking.yaml
+# =====================================================================
+results_dir: results_dob_tracking
+base_config: config_vcl_fit.yaml
+drive_gains: results_vcl_study/summary.json          # effective gains of iteration I5 (last one)
+identified: results_v2_identification/summary.json   # friction, cable spring, torque scale ("final")
+workers: 8
+
+reference:
+  centre_m: [100.0, 0.0]      # horizontal centre of the circle; x is the zero azimuth of the pointer
+  radius_m: 10.0
+  height_m: 5.0
+  omega_rad_s: 0.2
+  phase_rad: 0.0              # drone at (110, 0, 5) m at t = 0, moving towards +y
+
+simulation:
+  t_settle_s: 5.0             # transient from rest, left out of the metrics
+  orbits: 1                   # simulated after the settling (one orbit: 31.4 s)
+  output_rate_hz: 1000
+  rtol: 1.0e-4
+
+observer:
+  inertia: rigid              # J' = r^T M r of the model (all nodes of the axis turning together)
+  torque_constant: nominal    # K_t' of the motor data; the true torque is scale x K_t i (scale 0.96 / 1.07)
+  gyro_bandwidth_hz: null     # ideal gyro: no noise, no lag
+  notch:                      # biquad on the feedforward path (Hilkert, figure 3)
+    elevation: {f_hz: 210.0, qz: 5.0, qp: 0.5}   # first flexible mode of the elevation in the model (209.9 Hz),
+                                                 # telescope against motor; -20 dB. The measured one is ~95 Hz.
+  stability_bandwidths_hz: [2, 5, 7, 8, 10, 20, 40, 80]
+
+cases:
+  - {name: encoders, label: "current: loops on the encoders", observer_hz: null, feedforward: false}
+  - {name: dob5, label: "encoders + gyro observer 5 Hz", observer_hz: 5.0, feedforward: false}
+  - {name: dob10, label: "encoders + gyro observer 10 Hz", observer_hz: 10.0, feedforward: false}
+  - {name: dob20, label: "encoders + gyro observer 20 Hz", observer_hz: 20.0, feedforward: false}
+  - {name: dob40, label: "encoders + gyro observer 40 Hz", observer_hz: 40.0, feedforward: false}
+  - {name: encoders_ff, label: "current + velocity feedforward", observer_hz: null, feedforward: true}
+  - {name: dob20_ff, label: "current + velocity feedforward + gyro observer 20 Hz", observer_hz: 20.0, feedforward: true}
+  # sensitivity: gyro with a first-order bandwidth of 100 Hz (Hilkert's simulation)
+  - {name: dob20_ff_gyro100, label: "as above, gyro bandwidth 100 Hz", observer_hz: 20.0, feedforward: true,
+     gyro_bandwidth_hz: 100.0}
+  # sensitivity: azimuth friction of the alternative structure (T_s/T_c 2.66 instead of 7.9, CV 86.2 %)
+  - {name: encoders_ff_altaz, label: "current + velocity feedforward, alternative azimuth friction", observer_hz: null,
+     feedforward: true, friction_structures: {azimuth: "S1 vs fixed x3"}}
+  - {name: dob20_ff_altaz, label: "current + velocity feedforward + gyro observer 20 Hz, alternative azimuth friction",
+     observer_hz: 20.0, feedforward: true, friction_structures: {azimuth: "S1 vs fixed x3"}}
+compare: [[encoders, dob20], [encoders_ff, dob20_ff], [encoders_ff_altaz, dob20_ff_altaz]]   # pairs of the main figures
+
+metrics:
+  jitter_bands_hz: [1.0, 10.0]   # jitter: rms of the line-of-sight error above these frequencies

@@ -1,0 +1,86 @@
+\babel@toc {english}{}\relax 
+\contentsline {section}{\numberline {1}System, conventions and modelling chain}{2}{section.1}%
+\contentsline {paragraph}{Frames and angles.}{2}{section*.2}%
+\contentsline {paragraph}{Numbering and coordinates.}{2}{section*.3}%
+\contentsline {paragraph}{Reduced coordinates.}{2}{section*.4}%
+\contentsline {section}{\numberline {2}Reference frames}{2}{section.2}%
+\contentsline {paragraph}{Why $\hat J = -\hat \jmath $.}{3}{section*.6}%
+\contentsline {paragraph}{CAD pose.}{3}{section*.7}%
+\contentsline {subsection}{\numberline {2.1}Eccentricities}{4}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Coordinates along the shafts}{4}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}In which frame each inertia is entered}{4}{subsection.2.3}%
+\contentsline {paragraph}{Telescope (\texttt {payload}).}{4}{section*.9}%
+\contentsline {paragraph}{Current telescope data.}{5}{section*.10}%
+\contentsline {paragraph}{Fork (body 1, azimuth node 9).}{5}{section*.11}%
+\contentsline {paragraph}{Rotors and other node inertias.}{5}{section*.12}%
+\contentsline {section}{\numberline {3}Input geometry}{6}{section.3}%
+\contentsline {section}{\numberline {4}Element properties}{6}{section.4}%
+\contentsline {section}{\numberline {5}Hub and compliant telescope attachment (hub model)}{8}{section.5}%
+\contentsline {paragraph}{Purpose and switch.}{8}{section*.15}%
+\contentsline {paragraph}{Topology.}{8}{section*.16}%
+\contentsline {paragraph}{Geometry.}{8}{section*.17}%
+\contentsline {paragraph}{Stiffness.}{8}{section*.19}%
+\contentsline {paragraph}{Inertia.}{9}{section*.21}%
+\contentsline {paragraph}{Telescope section clamped in the ring.}{9}{section*.22}%
+\contentsline {paragraph}{Telescope attachment.}{9}{section*.23}%
+\contentsline {section}{\numberline {6}Finite element model of each axis}{9}{section.6}%
+\contentsline {paragraph}{Element matrices.}{9}{section*.24}%
+\contentsline {paragraph}{Nodes H and P (hub model).}{10}{section*.25}%
+\contentsline {paragraph}{Assembly.}{10}{section*.26}%
+\contentsline {paragraph}{Azimuth axis}{10}{section*.27}%
+\contentsline {paragraph}{Polar axis}{11}{section*.28}%
+\contentsline {paragraph}{Checks.}{12}{section*.29}%
+\contentsline {paragraph}{Lumped versus consistent mass.}{12}{section*.30}%
+\contentsline {paragraph}{Damping.}{12}{section*.31}%
+\contentsline {section}{\numberline {7}Natural frequencies and mode shapes}{12}{section.7}%
+\contentsline {subsection}{\numberline {7.1}The eigenvalue problem}{12}{subsection.7.1}%
+\contentsline {subsection}{\numberline {7.2}Analytical solutions}{13}{subsection.7.2}%
+\contentsline {paragraph}{Uniform shaft.}{13}{section*.32}%
+\contentsline {subsection}{\numberline {7.3}Numerical solution}{13}{subsection.7.3}%
+\contentsline {paragraph}{Verification.}{14}{section*.34}%
+\contentsline {section}{\numberline {8}Coupled model}{14}{section.8}%
+\contentsline {paragraph}{Coordinates.}{14}{section*.35}%
+\contentsline {paragraph}{Kinematics.}{14}{section*.36}%
+\contentsline {paragraph}{Energies and dissipation.}{14}{section*.37}%
+\contentsline {paragraph}{Generalised forces and the reaction torque.}{14}{section*.38}%
+\contentsline {paragraph}{Telescope terms.}{14}{section*.39}%
+\contentsline {section}{\numberline {9}Operating point and linearisation}{15}{section.9}%
+\contentsline {paragraph}{Operating point.}{15}{section*.40}%
+\contentsline {paragraph}{Linearised telescope terms.}{15}{section*.41}%
+\contentsline {section}{\numberline {10}Modal truncation (Gawronski): the default reduced model}{15}{section.10}%
+\contentsline {paragraph}{Modal basis.}{15}{section*.43}%
+\contentsline {paragraph}{Nonlinear equations in modal coordinates.}{16}{section*.44}%
+\contentsline {paragraph}{Linear model.}{16}{section*.45}%
+\contentsline {paragraph}{Choice of the modes.}{16}{section*.46}%
+\contentsline {paragraph}{Residual flexibility of the discarded modes.}{17}{section*.49}%
+\contentsline {paragraph}{Mesh check.}{17}{section*.51}%
+\contentsline {subsection}{\numberline {10.1}Results of the reduced linear model}{19}{subsection.10.1}%
+\contentsline {section}{\numberline {11}Lumped-parameter model (3 + 5 DOF)}{22}{section.11}%
+\contentsline {paragraph}{Topology.}{22}{section*.57}%
+\contentsline {subsection}{\numberline {11.1}Newton--Euler equations}{23}{subsection.11.1}%
+\contentsline {paragraph}{Chain nodes.}{23}{section*.61}%
+\contentsline {paragraph}{Telescope.}{24}{section*.62}%
+\contentsline {paragraph}{Equations of motion, one per degree of freedom.}{24}{section*.63}%
+\contentsline {paragraph}{Verification.}{24}{section*.64}%
+\contentsline {subsection}{\numberline {11.2}Transfer functions}{24}{subsection.11.2}%
+\contentsline {paragraph}{Symbolic transfer functions of the isolated chains}{24}{section*.65}%
+\contentsline {paragraph}{Reading poles and zeros from the chain.}{25}{section*.67}%
+\contentsline {paragraph}{Linearised coupled model.}{26}{section*.69}%
+\contentsline {subsection}{\numberline {11.3}Nonlinear simulator}{30}{subsection.11.3}%
+\contentsline {paragraph}{Exported code.}{30}{section*.73}%
+\contentsline {paragraph}{Scenarios.}{30}{section*.74}%
+\contentsline {section}{\numberline {12}Comparison with experimental frequency responses}{32}{section.12}%
+\contentsline {paragraph}{Measurements.}{32}{section*.79}%
+\contentsline {paragraph}{Model.}{32}{section*.81}%
+\contentsline {paragraph}{Measured features against the model.}{38}{section*.88}%
+\contentsline {subsection}{\numberline {12.1}Discrepancies and their likely causes}{39}{subsection.12.1}%
+\contentsline {paragraph}{Summary.}{40}{section*.89}%
+\contentsline {section}{\numberline {13}How the model works and how it is simulated}{40}{section.13}%
+\contentsline {subsection}{\numberline {13.1}Computational workflow}{40}{subsection.13.1}%
+\contentsline {subsection}{\numberline {13.2}Equations of the reduced model}{41}{subsection.13.2}%
+\contentsline {subsection}{\numberline {13.3}Operating point and linearisation}{41}{subsection.13.3}%
+\contentsline {subsection}{\numberline {13.4}Time-domain simulation}{41}{subsection.13.4}%
+\contentsline {paragraph}{Integrator.}{42}{section*.92}%
+\contentsline {paragraph}{Full-DOF reference.}{42}{section*.93}%
+\contentsline {subsection}{\numberline {13.5}Software}{45}{subsection.13.5}%
+\contentsline {section}{\numberline {14}Assumptions and placeholders}{45}{section.14}%

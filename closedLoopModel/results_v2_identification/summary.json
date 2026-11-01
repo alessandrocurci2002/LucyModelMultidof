@@ -1,0 +1,3973 @@
+{
+ "model_free": {
+  "azimuth": {
+   "rests": [
+    {
+     "sequence": "V2/MPCLucy_doublets_azimut_01deg_minus01deg",
+     "angle_deg": 0.09990692100000005,
+     "direction": 1.0,
+     "torque": 0.16618041340320594,
+     "torque_start": 0.15928148579999998,
+     "torque_end": 0.16946957040000002,
+     "rest_s": 32.44049999999999
+    },
+    {
+     "sequence": "V2/MPCLucy_doublets_azimut_01deg_minus01deg",
+     "angle_deg": -0.10025024399999996,
+     "direction": -1.0,
+     "torque": 0.11473476700311445,
+     "torque_start": 0.1142540487,
+     "torque_end": 0.1146460152,
+     "rest_s": 30.662999999999997
+    },
+    {
+     "sequence": "V2/MPCLucy_doublets_azimut_01deg_minus01deg",
+     "angle_deg": 0.0,
+     "direction": 1.0,
+     "torque": 0.18177992878925245,
+     "torque_start": 0.1826807442,
+     "torque_end": 0.1810953729,
+     "rest_s": 18.199499999999986
+    },
+    {
+     "sequence": "V2/MPCLucy_doublets_azimut_05deg_minus05deg",
+     "angle_deg": 0.4998779299999999,
+     "direction": 1.0,
+     "torque": 0.21971848811851755,
+     "torque_start": 0.2239551972,
+     "torque_end": 0.2178717249,
+     "rest_s": 30.273999999999994
+    },
+    {
+     "sequence": "V2/MPCLucy_doublets_azimut_05deg_minus05deg",
+     "angle_deg": -0.5002212520000001,
+     "direction": -1.0,
+     "torque": -0.0674476610546161,
+     "torque_start": -0.0765072942,
+     "torque_end": -0.0633052536,
+     "rest_s": 35.0075
+    },
+    {
+     "sequence": "V2/MPCLucy_doublets_azimut_05deg_minus05deg",
+     "angle_deg": 0.0,
+     "direction": 1.0,
+     "torque": 0.1651510027375763,
+     "torque_start": 0.1690007328,
+     "torque_end": 0.16352461829999998,
+     "rest_s": 17.205
+    },
+    {
+     "sequence": "V2/MPCLucy_doublets_azimut_1deg_minus1deg",
+     "angle_deg": 0.9997558590000001,
+     "direction": 1.0,
+     "torque": 0.19462022157025505,
+     "torque_start": 0.2015103582,
+     "torque_end": 0.19148362680000003,
+     "rest_s": 34.937
+    },
+    {
+     "sequence": "V2/MPCLucy_doublets_azimut_1deg_minus1deg",
+     "angle_deg": -1.000099182,
+     "direction": -1.0,
+     "torque": -0.19857424207823735,
+     "torque_start": -0.2156538795,
+     "torque_end": -0.1903868817,
+     "rest_s": 32.13249999999999
+    },
+    {
+     "sequence": "V2/MPCLucy_doublets_azimut_1deg_minus1deg",
+     "angle_deg": 0.0,
+     "direction": 1.0,
+     "torque": 0.18923624453119248,
+     "torque_start": 0.193585785,
+     "torque_end": 0.1867145742,
+     "rest_s": 13.57650000000001
+    },
+    {
+     "sequence": "V2/MPCLucy_doublets_azimut_3deg_minus3deg",
+     "angle_deg": 2.9999542240000006,
+     "direction": 1.0,
+     "torque": 0.3057049201959634,
+     "torque_start": 0.32508864299999995,
+     "torque_end": 0.2968388943,
+     "rest_s": 39.190999999999995
+    },
+    {
+     "sequence": "V2/MPCLucy_doublets_azimut_3deg_minus3deg",
+     "angle_deg": -3.000297546,
+     "direction": -1.0,
+     "torque": -0.33449831189603624,
+     "torque_start": -0.3895553352,
+     "torque_end": -0.3152263092,
+     "rest_s": 41.4755
+    },
+    {
+     "sequence": "V2/MPCLucy_doublets_azimut_3deg_minus3deg",
+     "angle_deg": 0.0,
+     "direction": 1.0,
+     "torque": 0.3475223811098861,
+     "torque_start": 0.3540926418,
+     "torque_end": 0.34196984100000005,
+     "rest_s": 4.081000000000003
+    },
+    {
+     "sequence": "V2/MPCLucy_doublets_azimut_5deg_minus5deg",
+     "angle_deg": 4.9998092650000014,
+     "direction": 1.0,
+     "torque": 0.26219270663211136,
+     "torque_start": 0.28727262839999995,
+     "torque_end": 0.25204130939999997,
+     "rest_s": 43.7945
+    },
+    {
+     "sequence": "V2/MPCLucy_doublets_azimut_5deg_minus5deg",
+     "angle_deg": -5.000152543201211,
+     "direction": -1.0,
+     "torque": -0.3524795753120787,
+     "torque_start": -0.4047879906,
+     "torque_end": -0.3335596860000001,
+     "rest_s": 34.48649999999999
+    },
+    {
+     "sequence": "V2/MPCLucy_doublets_azimut_5deg_minus5deg",
+     "angle_deg": 0.0,
+     "direction": 1.0,
+     "torque": 0.3447362973260004,
+     "torque_start": 0.35503945020000005,
+     "torque_end": 0.337502184,
+     "rest_s": 7.909000000000006
+    },
+    {
+     "sequence": "V2/MPCLucy_doublets_azimut_8deg_minus8deg",
+     "angle_deg": 7.999763489000002,
+     "direction": 1.0,
+     "torque": 0.3767161390004406,
+     "torque_start": 0.4122391596,
+     "torque_end": 0.3627646152,
+     "rest_s": 31.7735
+    },
+    {
+     "sequence": "V2/MPCLucy_doublets_azimut_8deg_minus8deg",
+     "angle_deg": -8.0001065673439,
+     "direction": -1.0,
+     "torque": -0.3846634369012247,
+     "torque_start": -0.44892874620000006,
+     "torque_end": -0.36531734460000004,
+     "rest_s": 41.3965
+    },
+    {
+     "sequence": "V2/MPCLucy_doublets_azimut_8deg_minus8deg",
+     "angle_deg": 0.0,
+     "direction": 1.0,
+     "torque": 0.35458592631651603,
+     "torque_start": 0.37404411719999997,
+     "torque_end": 0.3439152126,
+     "rest_s": 14.488500000000002
+    },
+    {
+     "sequence": "V2/MPCLucy_doublets_azimut_1deg_15deg",
+     "angle_deg": -5.000203636898187,
+     "direction": -1.0,
+     "torque": -0.37388644870692006,
+     "torque_start": -0.3854004903,
+     "torque_end": -0.3662748084,
+     "rest_s": 9.183000000000002
+    },
+    {
+     "sequence": "V2/MPCLucy_doublets_azimut_1deg_15deg",
+     "angle_deg": 7.999758203533414,
+     "direction": 1.0,
+     "torque": 0.3333651477584165,
+     "torque_start": 0.34230776939999996,
+     "torque_end": 0.326451012,
+     "rest_s": 5.9105000000000025
+    },
+    {
+     "sequence": "V2/MPCLucy_doublets_azimut_1deg_15deg",
+     "angle_deg": -8.000165496487634,
+     "direction": -1.0,
+     "torque": -0.31233912556216076,
+     "torque_start": -0.32048398799999994,
+     "torque_end": -0.30604896540000004,
+     "rest_s": 5.803499999999996
+    },
+    {
+     "sequence": "V2/MPCLucy_doublets_azimut_1deg_15deg",
+     "angle_deg": 9.999961157288668,
+     "direction": 1.0,
+     "torque": 0.4138179917961314,
+     "torque_start": 0.43058928060000007,
+     "torque_end": 0.4022246058000001,
+     "rest_s": 8.142499999999991
+    },
+    {
+     "sequence": "V2/MPCLucy_doublets_azimut_1deg_15deg",
+     "angle_deg": -10.000350214180205,
+     "direction": -1.0,
+     "torque": -0.3716860770824087,
+     "torque_start": -0.3886267932,
+     "torque_end": -0.36069822870000007,
+     "rest_s": 10.138000000000005
+    },
+    {
+     "sequence": "V2/MPCLucy_doublets_azimut_1deg_15deg",
+     "angle_deg": 14.999770210652525,
+     "direction": 1.0,
+     "torque": 0.37380143951673794,
+     "torque_start": 0.38112234720000004,
+     "torque_end": 0.36739134209999996,
+     "rest_s": 3.9729999999999848
+    },
+    {
+     "sequence": "V2/MPCLucy_doublets_azimut_1deg_15deg",
+     "angle_deg": -15.000204083126567,
+     "direction": -1.0,
+     "torque": -0.5799353738317757,
+     "torque_start": -0.6030012636000001,
+     "torque_end": -0.5635466007,
+     "rest_s": 9.469499999999996
+    },
+    {
+     "sequence": "V2/MPCLucy_doublets_azimut_1deg_15deg",
+     "angle_deg": -5.736165844359722e-06,
+     "direction": 1.0,
+     "torque": 0.3565651940345369,
+     "torque_start": 0.36450144539999996,
+     "torque_end": 0.3503282412,
+     "rest_s": 4.458500000000001
+    }
+   ],
+   "rest_fit": {
+    "gradient": 1.1209283638474867,
+    "offset": 0.023719282562830787,
+    "direction": 0.20101758711797216,
+    "rms": 0.09711641888652164
+   },
+   "cruise": {
+    "friction": 0.37449252642016845,
+    "gradient": 0.15974119968698341,
+    "offset": 0.04937570499208132,
+    "rms": 0.5095935533616553,
+    "bins": [
+     [
+      -11.0,
+      0.1495819437598585,
+      -0.5615206605023936
+     ],
+     [
+      -9.0,
+      0.5582937127507369,
+      -0.47686143887076554
+     ],
+     [
+      -7.0,
+      0.5503895007002207,
+      -0.43019248222049655
+     ],
+     [
+      -5.0,
+      0.3911775826200647,
+      -0.4469786513117073
+     ],
+     [
+      -3.0,
+      0.36064669793466747,
+      -0.41141078312662316
+     ],
+     [
+      -1.0,
+      0.3256438992672292,
+      -0.2852517520288174
+     ],
+     [
+      1.0,
+      0.5544037009139468,
+      -0.2019076352224984
+     ],
+     [
+      3.0,
+      0.34964578912906663,
+      -0.2905320402585576
+     ],
+     [
+      5.0,
+      0.31712946701515565,
+      -0.2763331771795669
+     ],
+     [
+      7.0,
+      0.40268122574401644,
+      -0.426757612909161
+     ],
+     [
+      9.0,
+      0.47365122584628017,
+      -0.3365513776215944
+     ],
+     [
+      11.0,
+      0.5147062949984882,
+      0.11171765916314491
+     ]
+    ]
+   },
+   "start": {
+    "Tc": 0.37449252642016845,
+    "K_cable": 0.15974119968698341,
+    "theta0_cable_deg": -10.0
+   }
+  },
+  "elevation": {
+   "rests": [
+    {
+     "sequence": "V2/MPCLucy_doublets_elevation_01deg_minus01deg",
+     "angle_deg": 0.09992630523526959,
+     "direction": 1.0,
+     "torque": 0.4059876934326842,
+     "torque_start": 0.4484492532,
+     "torque_end": 0.3863221824,
+     "rest_s": 44.287499999999994
+    },
+    {
+     "sequence": "V2/MPCLucy_doublets_elevation_01deg_minus01deg",
+     "angle_deg": -0.10024968305100619,
+     "direction": -1.0,
+     "torque": -0.4138324636954834,
+     "torque_start": -0.470040138,
+     "torque_end": -0.37189400970000003,
+     "rest_s": 30.9075
+    },
+    {
+     "sequence": "V2/MPCLucy_doublets_elevation_01deg_minus01deg",
+     "angle_deg": 9.146142501078982e-05,
+     "direction": 1.0,
+     "torque": 0.3720949027621925,
+     "torque_start": 0.39204261,
+     "torque_end": 0.353896278,
+     "rest_s": 13.901499999999999
+    },
+    {
+     "sequence": "V2/MPCLucy_doublets_elevation_05deg_minus05deg",
+     "angle_deg": 0.499966155592094,
+     "direction": 1.0,
+     "torque": 0.012576535328195589,
+     "torque_start": 0.0002602962,
+     "torque_end": 0.0487514994,
+     "rest_s": 37.629999999999995
+    },
+    {
+     "sequence": "V2/MPCLucy_doublets_elevation_05deg_minus05deg",
+     "angle_deg": -0.5003493557631705,
+     "direction": -1.0,
+     "torque": 0.12787638480142063,
+     "torque_start": 0.050940423000000006,
+     "torque_end": 0.11870572260000001,
+     "rest_s": 35.476499999999994
+    },
+    {
+     "sequence": "V2/MPCLucy_doublets_elevation_05deg_minus05deg",
+     "angle_deg": 0.0005612600558017958,
+     "direction": 1.0,
+     "torque": -0.016539977122400275,
+     "torque_start": 0.04212155730000001,
+     "torque_end": -0.0371804961,
+     "rest_s": 8.79849999999999
+    },
+    {
+     "sequence": "V2/MPCLucy_doublets_elevation_1deg_minus1deg",
+     "angle_deg": 0.9998529564012065,
+     "direction": 1.0,
+     "torque": 0.49629005875011784,
+     "torque_start": 0.5344505088,
+     "torque_end": 0.46663193220000004,
+     "rest_s": 26.522
+    },
+    {
+     "sequence": "V2/MPCLucy_doublets_elevation_1deg_minus1deg",
+     "angle_deg": -1.0001609445458801,
+     "direction": -1.0,
+     "torque": -0.2964963179245283,
+     "torque_start": -0.38808488999999996,
+     "torque_end": -0.24368975910000001,
+     "rest_s": 40.70399999999999
+    },
+    {
+     "sequence": "V2/MPCLucy_doublets_elevation_1deg_minus1deg",
+     "angle_deg": 1.2737575120606478e-05,
+     "direction": 1.0,
+     "torque": 0.452264310923501,
+     "torque_start": 0.47097020219999997,
+     "torque_end": 0.435059982,
+     "rest_s": 17.41149999999999
+    },
+    {
+     "sequence": "V2/MPCLucy_doublets_elevation_3deg_minus3deg",
+     "angle_deg": 3.0001700556799196,
+     "direction": 1.0,
+     "torque": 0.5452552573931689,
+     "torque_start": 0.6098222418,
+     "torque_end": 0.49320649980000003,
+     "rest_s": 32.644999999999996
+    },
+    {
+     "sequence": "V2/MPCLucy_doublets_elevation_3deg_minus3deg",
+     "angle_deg": -3.0003444692078776,
+     "direction": -1.0,
+     "torque": -0.3872798977399367,
+     "torque_start": -0.46558465860000003,
+     "torque_end": -0.33278945280000005,
+     "rest_s": 33.648999999999994
+    },
+    {
+     "sequence": "V2/MPCLucy_doublets_elevation_3deg_minus3deg",
+     "angle_deg": 0.00031475333191489365,
+     "direction": 1.0,
+     "torque": 0.4617301246044736,
+     "torque_start": 0.4924880214,
+     "torque_end": 0.4327789653,
+     "rest_s": 13.747
+    },
+    {
+     "sequence": "V2/MPCLucy_doublets_elevation_5deg_minus5deg",
+     "angle_deg": 5.0000836502908745,
+     "direction": 1.0,
+     "torque": 0.5393666916951114,
+     "torque_start": 0.6370947381000001,
+     "torque_end": 0.4695728226,
+     "rest_s": 34.5695
+    },
+    {
+     "sequence": "V2/MPCLucy_doublets_elevation_5deg_minus5deg",
+     "angle_deg": -5.000183457882682,
+     "direction": -1.0,
+     "torque": -0.4568319611501917,
+     "torque_start": -0.5249542641,
+     "torque_end": -0.4068574215,
+     "rest_s": 29.994500000000002
+    },
+    {
+     "sequence": "V2/MPCLucy_doublets_elevation_5deg_minus5deg",
+     "angle_deg": 0.00030715634477806444,
+     "direction": 1.0,
+     "torque": 0.4787613513576766,
+     "torque_start": 0.5167777668000001,
+     "torque_end": 0.4415110656,
+     "rest_s": 18.799999999999997
+    },
+    {
+     "sequence": "V2/MPCLucy_doublets_elevation_8deg_minus8deg",
+     "angle_deg": 8.000078357035207,
+     "direction": 1.0,
+     "torque": 0.6411221313561019,
+     "torque_start": 0.766359201,
+     "torque_end": 0.5485993578,
+     "rest_s": 37.492999999999995
+    },
+    {
+     "sequence": "V2/MPCLucy_doublets_elevation_8deg_minus8deg",
+     "angle_deg": -8.000239870150624,
+     "direction": -1.0,
+     "torque": -0.4799617925387542,
+     "torque_start": -0.553289256,
+     "torque_end": -0.4198364598,
+     "rest_s": 26.415999999999997
+    },
+    {
+     "sequence": "V2/MPCLucy_doublets_elevation_8deg_minus8deg",
+     "angle_deg": 0.00029400671007326953,
+     "direction": 1.0,
+     "torque": 0.49100196134651836,
+     "torque_start": 0.5284180302,
+     "torque_end": 0.45407834880000003,
+     "rest_s": 19.516499999999994
+    },
+    {
+     "sequence": "V2/MPCLucy_doublets_elevation_10deg_minus10deg",
+     "angle_deg": 10.000304275341474,
+     "direction": 1.0,
+     "torque": 0.7108100698280615,
+     "torque_start": 0.8390313123,
+     "torque_end": 0.6110674014,
+     "rest_s": 29.923499999999997
+    },
+    {
+     "sequence": "V2/MPCLucy_doublets_elevation_10deg_minus10deg",
+     "angle_deg": -10.000473548874213,
+     "direction": -1.0,
+     "torque": -0.5095431476025211,
+     "torque_start": -0.6227137536,
+     "torque_end": -0.43128492599999996,
+     "rest_s": 36.01649999999999
+    },
+    {
+     "sequence": "V2/MPCLucy_doublets_elevation_10deg_minus10deg",
+     "angle_deg": 0.0003157909680067062,
+     "direction": 1.0,
+     "torque": 0.4941479298592435,
+     "torque_start": 0.5307705903,
+     "torque_end": 0.4565062578000001,
+     "rest_s": 14.314999999999998
+    },
+    {
+     "sequence": "V2/MPCLucy_doublets_elevation_15deg_minus15deg",
+     "angle_deg": 15.000114656754537,
+     "direction": 1.0,
+     "torque": 0.7437814169927521,
+     "torque_start": 0.9110975880000001,
+     "torque_end": 0.6211314267,
+     "rest_s": 35.803
+    },
+    {
+     "sequence": "V2/MPCLucy_doublets_elevation_15deg_minus15deg",
+     "angle_deg": -15.000370706731399,
+     "direction": -1.0,
+     "torque": -0.6061346472700209,
+     "torque_start": -0.7608488370000001,
+     "torque_end": -0.49719085830000004,
+     "rest_s": 33.5895
+    },
+    {
+     "sequence": "V2/MPCLucy_doublets_elevation_15deg_minus15deg",
+     "angle_deg": 0.0003178977030619512,
+     "direction": 1.0,
+     "torque": 0.5024092217896985,
+     "torque_start": 0.5430638775000001,
+     "torque_end": 0.46021814250000004,
+     "rest_s": 12.638499999999993
+    }
+   ],
+   "rest_fit": {
+    "gradient": 1.6238179617368453,
+    "offset": 0.07793859115354158,
+    "direction": 0.30479000367831643,
+    "rms": 0.15478295501018177
+   },
+   "cruise": {
+    "friction": 0.3841605657882155,
+    "gradient": 1.2893302230586314,
+    "offset": 0.07381079746132696,
+    "rms": 0.10892305436585577,
+    "bins": [
+     [
+      -11.0,
+      0.17758209552308987,
+      -0.558716199321573
+     ],
+     [
+      -9.0,
+      0.25728872738103525,
+      -0.4974417116357822
+     ],
+     [
+      -7.0,
+      0.271503239758176,
+      -0.43353298774707494
+     ],
+     [
+      -5.0,
+      0.2928938108156039,
+      -0.41178454722114544
+     ],
+     [
+      -3.0,
+      0.2622378519796392,
+      -0.3597689013461499
+     ],
+     [
+      1.0,
+      0.6269472822639939,
+      -0.23652112028718572
+     ],
+     [
+      3.0,
+      0.48116810660734816,
+      -0.24678647136290313
+     ],
+     [
+      5.0,
+      0.5529030206024883,
+      -0.27622471601411497
+     ],
+     [
+      7.0,
+      0.6814637134224519,
+      -0.19312698959386906
+     ],
+     [
+      9.0,
+      0.7390777052469238,
+      -0.1482211080331907
+     ],
+     [
+      11.0,
+      0.7999427542906269,
+      -0.05455207095057833
+     ]
+    ]
+   },
+   "start": {
+    "Tc": 0.3841605657882155,
+    "K_cable": 1.2893302230586314,
+    "theta0_cable_deg": -3.2800341614552013
+   }
+  }
+ },
+ "nominal": {
+  "azimuth": {
+   "sigma0": 1504.4166295540342,
+   "vs": 0.005
+  },
+  "elevation": {
+   "sigma0": 5825.642080553581,
+   "vs": 0.005,
+   "b_{\\theta,h}": 0.0
+  }
+ },
+ "base": {
+  "azimuth": {
+   "scale": 1.0,
+   "Tc": 0.37449252642016845,
+   "Ts_ratio": 1.3,
+   "sigma0": 1504.4166295540342,
+   "vs": 0.005,
+   "K_cable": 0.0,
+   "theta0_cable_deg": 0.0
+  },
+  "elevation": {
+   "scale": 1.0,
+   "Tc": 0.3841605657882155,
+   "Ts_ratio": 1.3,
+   "sigma0": 5825.642080553581,
+   "vs": 0.005,
+   "K_cable": 0.0,
+   "theta0_cable_deg": 0.0,
+   "b_{\\theta,h}": 0.0
+  }
+ },
+ "surrogate": {
+  "azimuth": {
+   "fit_difference": [
+    0.4554474173110208,
+    0.19878266950748014,
+    0.5888641619125394,
+    0.13549466471823735,
+    0.029084577901564046,
+    0.18601520912112335,
+    0.022213792114257558,
+    0.005232002513082534,
+    0.06845141373197805,
+    0.027294920744736828,
+    0.01754108367039464,
+    0.03536158999391148,
+    0.07191326508495877,
+    0.01354826907059703,
+    0.018158311388233983,
+    0.019528083202068558,
+    0.025022094349438362,
+    0.0030967200419880214,
+    0.01998091075255104,
+    0.0164720829503473,
+    0.019425564046137822,
+    0.0197600838818488,
+    0.021593473510804984,
+    0.02118282173526609,
+    0.03582976463012422
+   ],
+   "position_difference_rel": [
+    0.035244379469715925,
+    0.0301168667539499,
+    0.03429019268293065,
+    0.0187589923125596,
+    0.012847431094242856,
+    0.018991566542804924,
+    0.011754478276985739,
+    0.005987623945306013,
+    0.012730641738225036,
+    0.0036118319133559736,
+    0.002071225225511354,
+    0.0043423893037202125,
+    0.002099771496980647,
+    0.0012772674288334571,
+    0.0024851570008350044,
+    0.0008089388777837194,
+    0.0016005349446257817,
+    0.001218402655484296,
+    0.0009512301334338761,
+    0.0007907475217540078,
+    0.000636032389021613,
+    0.0006398325019302199,
+    0.00047850752382996755,
+    0.00044122081358546086,
+    0.0008209807758838181
+   ],
+   "wall_s": {
+    "rigid": 5.900761842727661,
+    "full": 16.955501794815063
+   }
+  },
+  "elevation": {
+   "fit_difference": [
+    0.06256121841303663,
+    0.2562391302977325,
+    0.21097889002659187,
+    0.10872996600556917,
+    0.057559953341993264,
+    0.05618202701727881,
+    0.05002193889977491,
+    0.049303812128471236,
+    0.0768140993801083,
+    0.019056337934401313,
+    0.025816601366202008,
+    0.046161562834960534,
+    0.026932915396471913,
+    0.017361673363041064,
+    0.0433187143949354,
+    0.009849678876847179,
+    0.01122923050128577,
+    0.017095893363247683,
+    0.025296127769124155,
+    0.0056115460693177965,
+    0.015368798593662802,
+    0.006883229838535954,
+    0.0016613671644307715,
+    0.004440651894149994
+   ],
+   "position_difference_rel": [
+    0.002518222685880433,
+    0.002677994265697933,
+    0.003227373716518783,
+    0.0011671980325599263,
+    0.0005630105167965739,
+    0.0009033283268059619,
+    0.0005818681579765518,
+    0.0004493250482489706,
+    0.0008944157930947745,
+    0.00018143427986614495,
+    0.0002386660117413285,
+    0.000427538370415111,
+    0.00020399796473818447,
+    0.0001255083229548234,
+    0.00034909734330155866,
+    0.00012703922658262293,
+    7.062200245561305e-05,
+    0.00015575487680237373,
+    0.00021589968623852052,
+    3.92468794569205e-05,
+    0.00013356159493095913,
+    9.904618046952207e-05,
+    2.840789617259885e-05,
+    4.716618888384342e-05
+   ],
+   "wall_s": {
+    "rigid": 5.806952238082886,
+    "full": 14.065840721130371
+   }
+  }
+ },
+ "structures": {
+  "azimuth": {
+   "S0 no spring": {
+    "label": "Dahl + Stribeck, all fitted, no cable spring",
+    "free": [
+     "scale",
+     "Tc",
+     "Ts_ratio",
+     "sigma0",
+     "vs"
+    ],
+    "fixed": {
+     "K_cable": 0.0
+    },
+    "values": {
+     "scale": 0.8730705649041304,
+     "Tc": 0.11710253673998407,
+     "Ts_ratio": 4.045130119516339,
+     "sigma0": 727.0658959934643,
+     "vs": 0.046058268022646065,
+     "K_cable": 0.0,
+     "theta0_cable_deg": 0.0
+    },
+    "se": {
+     "scale": 0.6475889358537892,
+     "Tc": 3.008912808178474,
+     "Ts_ratio": 2.5275504161649742,
+     "sigma0": 3.5684011678642866,
+     "vs": 2.537597683664112
+    },
+    "cost": 2.113785838231314,
+    "nfev": 10,
+    "fits": {
+     "V2/MPCLucy_doublets_azimut_01deg_minus01deg azimuth 6.28 s": 80.27790603290966,
+     "V2/MPCLucy_doublets_azimut_01deg_minus01deg azimuth 41.98 s": -28.911889290799774,
+     "V2/MPCLucy_doublets_azimut_01deg_minus01deg azimuth 75.93 s": 65.88095184662318,
+     "V2/MPCLucy_doublets_azimut_05deg_minus05deg azimuth 5.97 s": 74.46776008748459,
+     "V2/MPCLucy_doublets_azimut_05deg_minus05deg azimuth 39.58 s": 80.61372588496634,
+     "V2/MPCLucy_doublets_azimut_05deg_minus05deg azimuth 77.97 s": 84.40755839159132,
+     "V2/MPCLucy_doublets_azimut_1deg_minus1deg azimuth 8.89 s": 92.90714937020084,
+     "V2/MPCLucy_doublets_azimut_1deg_minus1deg azimuth 47.21 s": 85.12850285864666,
+     "V2/MPCLucy_doublets_azimut_1deg_minus1deg azimuth 82.83 s": 92.01879017213669,
+     "V2/MPCLucy_doublets_azimut_3deg_minus3deg azimuth 4.19 s": 80.143196679606,
+     "V2/MPCLucy_doublets_azimut_3deg_minus3deg azimuth 46.97 s": 90.54243432088475,
+     "V2/MPCLucy_doublets_azimut_3deg_minus3deg azimuth 92.32 s": 92.94992778565165,
+     "V2/MPCLucy_doublets_azimut_5deg_minus5deg azimuth 1.95 s": 68.94990600440603,
+     "V2/MPCLucy_doublets_azimut_5deg_minus5deg azimuth 49.53 s": 86.93500343871597,
+     "V2/MPCLucy_doublets_azimut_5deg_minus5deg azimuth 88.30 s": 90.37333571735635,
+     "V2/MPCLucy_doublets_azimut_8deg_minus8deg azimuth 35.14 s": 82.07886358484487,
+     "V2/MPCLucy_doublets_azimut_8deg_minus8deg azimuth 81.42 s": 88.56542634115779,
+     "V2/MPCLucy_doublets_azimut_1deg_15deg azimuth 1.74 s": 86.69478930616728,
+     "V2/MPCLucy_doublets_azimut_1deg_15deg azimuth 15.21 s": 85.98338498208196,
+     "V2/MPCLucy_doublets_azimut_1deg_15deg azimuth 25.70 s": 81.47778983708555,
+     "V2/MPCLucy_doublets_azimut_1deg_15deg azimuth 36.39 s": 80.84163334799644,
+     "V2/MPCLucy_doublets_azimut_1deg_15deg azimuth 49.62 s": 71.58033391079061,
+     "V2/MPCLucy_doublets_azimut_1deg_15deg azimuth 65.04 s": 50.8206632535652,
+     "V2/MPCLucy_doublets_azimut_1deg_15deg azimuth 74.79 s": 65.75467183940304,
+     "V2/MPCLucy_doublets_azimut_1deg_15deg azimuth 90.55 s": 67.24776311120412
+    },
+    "cv_fits": {
+     "V2/MPCLucy_doublets_azimut_01deg_minus01deg azimuth 6.28 s": 29.953962692888826,
+     "V2/MPCLucy_doublets_azimut_01deg_minus01deg azimuth 41.98 s": 31.670417158172103,
+     "V2/MPCLucy_doublets_azimut_01deg_minus01deg azimuth 75.93 s": -97.46596234441243,
+     "V2/MPCLucy_doublets_azimut_05deg_minus05deg azimuth 5.97 s": 74.46776008748459,
+     "V2/MPCLucy_doublets_azimut_05deg_minus05deg azimuth 39.58 s": 80.61372588496634,
+     "V2/MPCLucy_doublets_azimut_05deg_minus05deg azimuth 77.97 s": 84.40755839159132,
+     "V2/MPCLucy_doublets_azimut_1deg_15deg azimuth 1.74 s": 85.51018047558347,
+     "V2/MPCLucy_doublets_azimut_1deg_15deg azimuth 15.21 s": 86.02067629728971,
+     "V2/MPCLucy_doublets_azimut_1deg_15deg azimuth 25.70 s": 80.36431050248363,
+     "V2/MPCLucy_doublets_azimut_1deg_15deg azimuth 36.39 s": 81.11122835531633,
+     "V2/MPCLucy_doublets_azimut_1deg_15deg azimuth 49.62 s": 70.64897916307808,
+     "V2/MPCLucy_doublets_azimut_1deg_15deg azimuth 65.04 s": 52.13401212117578,
+     "V2/MPCLucy_doublets_azimut_1deg_15deg azimuth 74.79 s": 65.26728208020224,
+     "V2/MPCLucy_doublets_azimut_1deg_15deg azimuth 90.55 s": 65.21548986736998,
+     "V2/MPCLucy_doublets_azimut_1deg_minus1deg azimuth 8.89 s": 91.81339986760472,
+     "V2/MPCLucy_doublets_azimut_1deg_minus1deg azimuth 47.21 s": 84.19333634899057,
+     "V2/MPCLucy_doublets_azimut_1deg_minus1deg azimuth 82.83 s": 90.8945616697366,
+     "V2/MPCLucy_doublets_azimut_3deg_minus3deg azimuth 4.19 s": 79.6253146473174,
+     "V2/MPCLucy_doublets_azimut_3deg_minus3deg azimuth 46.97 s": 90.4948079533505,
+     "V2/MPCLucy_doublets_azimut_3deg_minus3deg azimuth 92.32 s": 92.75718220636307,
+     "V2/MPCLucy_doublets_azimut_5deg_minus5deg azimuth 1.95 s": 67.79195724910372,
+     "V2/MPCLucy_doublets_azimut_5deg_minus5deg azimuth 49.53 s": 86.52975594486497,
+     "V2/MPCLucy_doublets_azimut_5deg_minus5deg azimuth 88.30 s": 90.70179611730218,
+     "V2/MPCLucy_doublets_azimut_8deg_minus8deg azimuth 35.14 s": 81.80058638519473,
+     "V2/MPCLucy_doublets_azimut_8deg_minus8deg azimuth 81.42 s": 88.40283199964351
+    },
+    "cv_values": {
+     "V2/MPCLucy_doublets_azimut_01deg_minus01deg": {
+      "scale": 0.8207522478295525,
+      "Tc": 0.12280643076165447,
+      "Ts_ratio": 8.707536795188993,
+      "sigma0": 69.40963229757718,
+      "vs": 0.04087402916731757
+     },
+     "V2/MPCLucy_doublets_azimut_05deg_minus05deg": {
+      "scale": 0.8730705649041304,
+      "Tc": 0.11710253673998407,
+      "Ts_ratio": 4.045130119516339,
+      "sigma0": 727.0658959934643,
+      "vs": 0.046058268022646065
+     },
+     "V2/MPCLucy_doublets_azimut_1deg_15deg": {
+      "scale": 0.8610617654293438,
+      "Tc": 0.11281731239822125,
+      "Ts_ratio": 4.075057217240172,
+      "sigma0": 741.3232490412321,
+      "vs": 0.045987782799432296
+     },
+     "V2/MPCLucy_doublets_azimut_1deg_minus1deg": {
+      "scale": 0.8667250086299731,
+      "Tc": 0.11521663991886355,
+      "Ts_ratio": 4.074154422245259,
+      "sigma0": 728.7586631320047,
+      "vs": 0.04610852228559444
+     },
+     "V2/MPCLucy_doublets_azimut_3deg_minus3deg": {
+      "scale": 0.8724587605919426,
+      "Tc": 0.1155940763434175,
+      "Ts_ratio": 4.0969971190578205,
+      "sigma0": 728.6134684200692,
+      "vs": 0.045361641049818054
+     },
+     "V2/MPCLucy_doublets_azimut_5deg_minus5deg": {
+      "scale": 0.8774389690618452,
+      "Tc": 0.11621305380060226,
+      "Ts_ratio": 4.1014253279795945,
+      "sigma0": 731.8914270825001,
+      "vs": 0.04606578250112251
+     },
+     "V2/MPCLucy_doublets_azimut_8deg_minus8deg": {
+      "scale": 0.8723471564205264,
+      "Tc": 0.11549020995572627,
+      "Ts_ratio": 4.0994874836138555,
+      "sigma0": 727.3287495197552,
+      "vs": 0.04585256329604338
+     }
+    },
+    "cv_median": 81.11122835531633,
+    "cv_mean_square": 0.23713761620863785,
+    "fit_median": 81.47778983708555
+   },
+   "S1 spring": {
+    "label": "Dahl + Stribeck + cable spring, all fitted",
+    "free": [
+     "scale",
+     "Tc",
+     "Ts_ratio",
+     "sigma0",
+     "vs",
+     "K_cable",
+     "theta0_cable_deg"
+    ],
+    "fixed": {},
+    "values": {
+     "scale": 0.891963323264986,
+     "Tc": 0.23124823361913624,
+     "Ts_ratio": 5.264588062912863,
+     "sigma0": 446.6450797421114,
+     "vs": 0.00811813208928009,
+     "K_cable": 1.177929185382812,
+     "theta0_cable_deg": -2.8149940290832975
+    },
+    "se": {
+     "scale": 0.44489771636068104,
+     "Tc": 1.3084608582024213,
+     "Ts_ratio": 3.5081062234462665,
+     "sigma0": 1.5608681190629061,
+     "vs": 1.2196886131047506,
+     "K_cable": 1.7420606339226832,
+     "theta0_cable_deg": 5.528914161035232
+    },
+    "cost": 0.8682355601030565,
+    "nfev": 14,
+    "fits": {
+     "V2/MPCLucy_doublets_azimut_01deg_minus01deg azimuth 6.28 s": 60.23191992052941,
+     "V2/MPCLucy_doublets_azimut_01deg_minus01deg azimuth 41.98 s": 74.01103374705136,
+     "V2/MPCLucy_doublets_azimut_01deg_minus01deg azimuth 75.93 s": 63.24628003950361,
+     "V2/MPCLucy_doublets_azimut_05deg_minus05deg azimuth 5.97 s": 68.97859326376906,
+     "V2/MPCLucy_doublets_azimut_05deg_minus05deg azimuth 39.58 s": 95.48586407175416,
+     "V2/MPCLucy_doublets_azimut_05deg_minus05deg azimuth 77.97 s": 96.99022795216644,
+     "V2/MPCLucy_doublets_azimut_1deg_minus1deg azimuth 8.89 s": 80.17482198254795,
+     "V2/MPCLucy_doublets_azimut_1deg_minus1deg azimuth 47.21 s": 91.44971850622258,
+     "V2/MPCLucy_doublets_azimut_1deg_minus1deg azimuth 82.83 s": 83.52068757237384,
+     "V2/MPCLucy_doublets_azimut_3deg_minus3deg azimuth 4.19 s": 88.99370237718394,
+     "V2/MPCLucy_doublets_azimut_3deg_minus3deg azimuth 46.97 s": 93.98752413164327,
+     "V2/MPCLucy_doublets_azimut_3deg_minus3deg azimuth 92.32 s": 87.13344554473265,
+     "V2/MPCLucy_doublets_azimut_5deg_minus5deg azimuth 1.95 s": 92.72480038869696,
+     "V2/MPCLucy_doublets_azimut_5deg_minus5deg azimuth 49.53 s": 89.40931915894954,
+     "V2/MPCLucy_doublets_azimut_5deg_minus5deg azimuth 88.30 s": 85.08482334292657,
+     "V2/MPCLucy_doublets_azimut_8deg_minus8deg azimuth 35.14 s": 79.28235744670651,
+     "V2/MPCLucy_doublets_azimut_8deg_minus8deg azimuth 81.42 s": 94.03524856286212,
+     "V2/MPCLucy_doublets_azimut_1deg_15deg azimuth 1.74 s": 93.57255087911902,
+     "V2/MPCLucy_doublets_azimut_1deg_15deg azimuth 15.21 s": 68.13709045410133,
+     "V2/MPCLucy_doublets_azimut_1deg_15deg azimuth 25.70 s": 95.87209184948806,
+     "V2/MPCLucy_doublets_azimut_1deg_15deg azimuth 36.39 s": 74.93408070655099,
+     "V2/MPCLucy_doublets_azimut_1deg_15deg azimuth 49.62 s": 93.96589363771646,
+     "V2/MPCLucy_doublets_azimut_1deg_15deg azimuth 65.04 s": 93.49463253933082,
+     "V2/MPCLucy_doublets_azimut_1deg_15deg azimuth 74.79 s": 74.26762308774111,
+     "V2/MPCLucy_doublets_azimut_1deg_15deg azimuth 90.55 s": 89.7827560198536
+    },
+    "cv_fits": {
+     "V2/MPCLucy_doublets_azimut_01deg_minus01deg azimuth 6.28 s": -37.005658325989074,
+     "V2/MPCLucy_doublets_azimut_01deg_minus01deg azimuth 41.98 s": -35.49689325752669,
+     "V2/MPCLucy_doublets_azimut_01deg_minus01deg azimuth 75.93 s": -3.073243166171502,
+     "V2/MPCLucy_doublets_azimut_05deg_minus05deg azimuth 5.97 s": 61.66613388060227,
+     "V2/MPCLucy_doublets_azimut_05deg_minus05deg azimuth 39.58 s": 97.17446724873116,
+     "V2/MPCLucy_doublets_azimut_05deg_minus05deg azimuth 77.97 s": 91.59005020018445,
+     "V2/MPCLucy_doublets_azimut_1deg_15deg azimuth 1.74 s": 93.72664865162605,
+     "V2/MPCLucy_doublets_azimut_1deg_15deg azimuth 15.21 s": 65.50049822025976,
+     "V2/MPCLucy_doublets_azimut_1deg_15deg azimuth 25.70 s": 95.66931597916422,
+     "V2/MPCLucy_doublets_azimut_1deg_15deg azimuth 36.39 s": 72.11880649610097,
+     "V2/MPCLucy_doublets_azimut_1deg_15deg azimuth 49.62 s": 93.49109558589998,
+     "V2/MPCLucy_doublets_azimut_1deg_15deg azimuth 65.04 s": 90.27201959504654,
+     "V2/MPCLucy_doublets_azimut_1deg_15deg azimuth 74.79 s": 72.48644313328319,
+     "V2/MPCLucy_doublets_azimut_1deg_15deg azimuth 90.55 s": 90.23549613775349,
+     "V2/MPCLucy_doublets_azimut_1deg_minus1deg azimuth 8.89 s": 79.41181211584347,
+     "V2/MPCLucy_doublets_azimut_1deg_minus1deg azimuth 47.21 s": 91.00002876662792,
+     "V2/MPCLucy_doublets_azimut_1deg_minus1deg azimuth 82.83 s": 82.7830423296488,
+     "V2/MPCLucy_doublets_azimut_3deg_minus3deg azimuth 4.19 s": 88.76911420726694,
+     "V2/MPCLucy_doublets_azimut_3deg_minus3deg azimuth 46.97 s": 93.98163896499538,
+     "V2/MPCLucy_doublets_azimut_3deg_minus3deg azimuth 92.32 s": 86.92999319361263,
+     "V2/MPCLucy_doublets_azimut_5deg_minus5deg azimuth 1.95 s": 92.50972763256878,
+     "V2/MPCLucy_doublets_azimut_5deg_minus5deg azimuth 49.53 s": 89.44501928995851,
+     "V2/MPCLucy_doublets_azimut_5deg_minus5deg azimuth 88.30 s": 84.89576960894671,
+     "V2/MPCLucy_doublets_azimut_8deg_minus8deg azimuth 35.14 s": 78.48439864707618,
+     "V2/MPCLucy_doublets_azimut_8deg_minus8deg azimuth 81.42 s": 94.10605876191016
+    },
+    "cv_values": {
+     "V2/MPCLucy_doublets_azimut_01deg_minus01deg": {
+      "scale": 0.9566572215923035,
+      "Tc": 0.25666156755539904,
+      "Ts_ratio": 6.954239357104622,
+      "sigma0": 310.9179658531083,
+      "vs": 0.023348157309549516,
+      "K_cable": 1.0186431957216928,
+      "theta0_cable_deg": -1.7216241102835934
+     },
+     "V2/MPCLucy_doublets_azimut_05deg_minus05deg": {
+      "scale": 0.9020451036591824,
+      "Tc": 0.22531951643197984,
+      "Ts_ratio": 8.355960915830286,
+      "sigma0": 454.49673513765134,
+      "vs": 0.007382592523954871,
+      "K_cable": 1.0354745028772738,
+      "theta0_cable_deg": -2.9087173057485125
+     },
+     "V2/MPCLucy_doublets_azimut_1deg_15deg": {
+      "scale": 0.8882910300234355,
+      "Tc": 0.23220464158551762,
+      "Ts_ratio": 5.280991075903104,
+      "sigma0": 448.105516145364,
+      "vs": 0.007913074256515289,
+      "K_cable": 1.1891661068073984,
+      "theta0_cable_deg": -3.05994700087877
+     },
+     "V2/MPCLucy_doublets_azimut_1deg_minus1deg": {
+      "scale": 0.8893032535614617,
+      "Tc": 0.23166062663808762,
+      "Ts_ratio": 5.272074919370155,
+      "sigma0": 447.8369180233109,
+      "vs": 0.00806034791925358,
+      "K_cable": 1.1798323996604612,
+      "theta0_cable_deg": -2.8387215110262534
+     },
+     "V2/MPCLucy_doublets_azimut_3deg_minus3deg": {
+      "scale": 0.8911392056655887,
+      "Tc": 0.2314312667507486,
+      "Ts_ratio": 5.2674362383345565,
+      "sigma0": 447.0978531521211,
+      "vs": 0.008108399843567132,
+      "K_cable": 1.17815685923558,
+      "theta0_cable_deg": -2.8230467192769164
+     },
+     "V2/MPCLucy_doublets_azimut_5deg_minus5deg": {
+      "scale": 0.8913865900678002,
+      "Tc": 0.23139138623579,
+      "Ts_ratio": 5.267827600058063,
+      "sigma0": 447.17839250878376,
+      "vs": 0.008108465840596787,
+      "K_cable": 1.1783498751357488,
+      "theta0_cable_deg": -2.8306667923442155
+     },
+     "V2/MPCLucy_doublets_azimut_8deg_minus8deg": {
+      "scale": 0.8932995680745344,
+      "Tc": 0.2311103101180347,
+      "Ts_ratio": 5.284103966889912,
+      "sigma0": 450.23777929943066,
+      "vs": 0.008098751718675563,
+      "K_cable": 1.1821545820752315,
+      "theta0_cable_deg": -2.8738945556529774
+     }
+    },
+    "cv_median": 88.76911420726694,
+    "cv_mean_square": 0.21738023845161847,
+    "fit_median": 88.99370237718394
+   },
+   "S1 sigma0 fixed x0.333": {
+    "label": "Dahl + Stribeck + cable spring, all fitted; sigma0 fixed at 0.333 x nominal (501.5)",
+    "free": [
+     "scale",
+     "Tc",
+     "Ts_ratio",
+     "vs",
+     "K_cable",
+     "theta0_cable_deg"
+    ],
+    "fixed": {
+     "sigma0": 501.4721597041237
+    },
+    "values": {
+     "scale": 0.9010133289183756,
+     "Tc": 0.2334911073009262,
+     "Ts_ratio": 5.820135424281495,
+     "sigma0": 501.4721597041237,
+     "vs": 0.007726015790265256,
+     "K_cable": 1.1831711200952844,
+     "theta0_cable_deg": -2.866494991197064
+    },
+    "se": {
+     "scale": 0.4006674490840774,
+     "Tc": 1.2241244676312861,
+     "Ts_ratio": 2.7907577388342295,
+     "vs": 0.973643604222036,
+     "K_cable": 1.7801742111352592,
+     "theta0_cable_deg": 5.659479557142968
+    },
+    "cost": 0.8959547626189039,
+    "nfev": 7,
+    "fits": {
+     "V2/MPCLucy_doublets_azimut_01deg_minus01deg azimuth 6.28 s": 61.22598670474171,
+     "V2/MPCLucy_doublets_azimut_01deg_minus01deg azimuth 41.98 s": 73.46535477277106,
+     "V2/MPCLucy_doublets_azimut_01deg_minus01deg azimuth 75.93 s": 58.31173604700219,
+     "V2/MPCLucy_doublets_azimut_05deg_minus05deg azimuth 5.97 s": 68.14047655220674,
+     "V2/MPCLucy_doublets_azimut_05deg_minus05deg azimuth 39.58 s": 96.42245354942072,
+     "V2/MPCLucy_doublets_azimut_05deg_minus05deg azimuth 77.97 s": 96.82782471483902,
+     "V2/MPCLucy_doublets_azimut_1deg_minus1deg azimuth 8.89 s": 80.48913782659255,
+     "V2/MPCLucy_doublets_azimut_1deg_minus1deg azimuth 47.21 s": 92.46613334312481,
+     "V2/MPCLucy_doublets_azimut_1deg_minus1deg azimuth 82.83 s": 83.74950844750597,
+     "V2/MPCLucy_doublets_azimut_3deg_minus3deg azimuth 4.19 s": 90.13314686550578,
+     "V2/MPCLucy_doublets_azimut_3deg_minus3deg azimuth 46.97 s": 93.97119480621987,
+     "V2/MPCLucy_doublets_azimut_3deg_minus3deg azimuth 92.32 s": 87.79168337141067,
+     "V2/MPCLucy_doublets_azimut_5deg_minus5deg azimuth 1.95 s": 94.05370478694323,
+     "V2/MPCLucy_doublets_azimut_5deg_minus5deg azimuth 49.53 s": 88.47502116799672,
+     "V2/MPCLucy_doublets_azimut_5deg_minus5deg azimuth 88.30 s": 85.63832716011531,
+     "V2/MPCLucy_doublets_azimut_8deg_minus8deg azimuth 35.14 s": 78.05955294504963,
+     "V2/MPCLucy_doublets_azimut_8deg_minus8deg azimuth 81.42 s": 94.60580686721664,
+     "V2/MPCLucy_doublets_azimut_1deg_15deg azimuth 1.74 s": 94.38256361204087,
+     "V2/MPCLucy_doublets_azimut_1deg_15deg azimuth 15.21 s": 68.59085540314787,
+     "V2/MPCLucy_doublets_azimut_1deg_15deg azimuth 25.70 s": 96.01341199556359,
+     "V2/MPCLucy_doublets_azimut_1deg_15deg azimuth 36.39 s": 75.38193772094009,
+     "V2/MPCLucy_doublets_azimut_1deg_15deg azimuth 49.62 s": 93.87964466086163,
+     "V2/MPCLucy_doublets_azimut_1deg_15deg azimuth 65.04 s": 93.85208804728522,
+     "V2/MPCLucy_doublets_azimut_1deg_15deg azimuth 74.79 s": 73.26718040973535,
+     "V2/MPCLucy_doublets_azimut_1deg_15deg azimuth 90.55 s": 89.87660278034491
+    },
+    "cv_fits": {
+     "V2/MPCLucy_doublets_azimut_01deg_minus01deg azimuth 6.28 s": -23.59281564239364,
+     "V2/MPCLucy_doublets_azimut_01deg_minus01deg azimuth 41.98 s": -45.95802853781501,
+     "V2/MPCLucy_doublets_azimut_01deg_minus01deg azimuth 75.93 s": -12.690502603043697,
+     "V2/MPCLucy_doublets_azimut_05deg_minus05deg azimuth 5.97 s": 65.87448224609622,
+     "V2/MPCLucy_doublets_azimut_05deg_minus05deg azimuth 39.58 s": 97.29724361100254,
+     "V2/MPCLucy_doublets_azimut_05deg_minus05deg azimuth 77.97 s": 95.27388635254388,
+     "V2/MPCLucy_doublets_azimut_1deg_15deg azimuth 1.74 s": 94.15728990677543,
+     "V2/MPCLucy_doublets_azimut_1deg_15deg azimuth 15.21 s": 65.53316069694576,
+     "V2/MPCLucy_doublets_azimut_1deg_15deg azimuth 25.70 s": 95.7875971276352,
+     "V2/MPCLucy_doublets_azimut_1deg_15deg azimuth 36.39 s": 72.06992348523329,
+     "V2/MPCLucy_doublets_azimut_1deg_15deg azimuth 49.62 s": 93.57924695126012,
+     "V2/MPCLucy_doublets_azimut_1deg_15deg azimuth 65.04 s": 90.15683346325986,
+     "V2/MPCLucy_doublets_azimut_1deg_15deg azimuth 74.79 s": 72.50488136818811,
+     "V2/MPCLucy_doublets_azimut_1deg_15deg azimuth 90.55 s": 90.41840845455808,
+     "V2/MPCLucy_doublets_azimut_1deg_minus1deg azimuth 8.89 s": 80.26579447166999,
+     "V2/MPCLucy_doublets_azimut_1deg_minus1deg azimuth 47.21 s": 92.32003884444018,
+     "V2/MPCLucy_doublets_azimut_1deg_minus1deg azimuth 82.83 s": 83.54332822359444,
+     "V2/MPCLucy_doublets_azimut_3deg_minus3deg azimuth 4.19 s": 90.08703710878501,
+     "V2/MPCLucy_doublets_azimut_3deg_minus3deg azimuth 46.97 s": 93.98352955897484,
+     "V2/MPCLucy_doublets_azimut_3deg_minus3deg azimuth 92.32 s": 87.7401343172146,
+     "V2/MPCLucy_doublets_azimut_5deg_minus5deg azimuth 1.95 s": 94.05370478694323,
+     "V2/MPCLucy_doublets_azimut_5deg_minus5deg azimuth 49.53 s": 88.47502116799672,
+     "V2/MPCLucy_doublets_azimut_5deg_minus5deg azimuth 88.30 s": 85.63832716011531,
+     "V2/MPCLucy_doublets_azimut_8deg_minus8deg azimuth 35.14 s": 78.05955294504963,
+     "V2/MPCLucy_doublets_azimut_8deg_minus8deg azimuth 81.42 s": 94.60580686721664
+    },
+    "cv_values": {
+     "V2/MPCLucy_doublets_azimut_01deg_minus01deg": {
+      "scale": 0.9678011208785239,
+      "Tc": 0.2575682990909774,
+      "Ts_ratio": 5.788157553814471,
+      "vs": 0.022797550156365032,
+      "K_cable": 1.013147698101358,
+      "theta0_cable_deg": -1.7288861123561943
+     },
+     "V2/MPCLucy_doublets_azimut_05deg_minus05deg": {
+      "scale": 0.9107838346919622,
+      "Tc": 0.23712100365551783,
+      "Ts_ratio": 6.5278010973362655,
+      "vs": 0.0074836261884831876,
+      "K_cable": 1.1109569671437995,
+      "theta0_cable_deg": -2.9922288255041196
+     },
+     "V2/MPCLucy_doublets_azimut_1deg_15deg": {
+      "scale": 0.8956223023926433,
+      "Tc": 0.23524818288534927,
+      "Ts_ratio": 5.830483385848166,
+      "vs": 0.0074626774781118245,
+      "K_cable": 1.189102763609893,
+      "theta0_cable_deg": -3.091956347386614
+     },
+     "V2/MPCLucy_doublets_azimut_1deg_minus1deg": {
+      "scale": 0.9002509953958755,
+      "Tc": 0.23370251204760475,
+      "Ts_ratio": 5.820867694392779,
+      "vs": 0.007708880726356854,
+      "K_cable": 1.1830226826912569,
+      "theta0_cable_deg": -2.8727277621233505
+     },
+     "V2/MPCLucy_doublets_azimut_3deg_minus3deg": {
+      "scale": 0.9008214815903139,
+      "Tc": 0.2335430625919607,
+      "Ts_ratio": 5.820423646396015,
+      "vs": 0.007720924527035691,
+      "K_cable": 1.1830396538407721,
+      "theta0_cable_deg": -2.868076947024838
+     },
+     "V2/MPCLucy_doublets_azimut_5deg_minus5deg": {
+      "scale": 0.9010133289183756,
+      "Tc": 0.2334911073009262,
+      "Ts_ratio": 5.820135424281495,
+      "vs": 0.007726015790265256,
+      "K_cable": 1.1831711200952844,
+      "theta0_cable_deg": -2.866494991197064
+     },
+     "V2/MPCLucy_doublets_azimut_8deg_minus8deg": {
+      "scale": 0.9010133289183756,
+      "Tc": 0.2334911073009262,
+      "Ts_ratio": 5.820135424281495,
+      "vs": 0.007726015790265256,
+      "K_cable": 1.1831711200952844,
+      "theta0_cable_deg": -2.866494991197064
+     }
+    },
+    "cv_median": 88.47502116799672,
+    "cv_mean_square": 0.22146816520840518,
+    "fit_median": 88.47502116799672
+   },
+   "S1 sigma0 fixed x1": {
+    "label": "Dahl + Stribeck + cable spring, all fitted; sigma0 fixed at 1 x nominal (1504)",
+    "free": [
+     "scale",
+     "Tc",
+     "Ts_ratio",
+     "vs",
+     "K_cable",
+     "theta0_cable_deg"
+    ],
+    "fixed": {
+     "sigma0": 1504.4166295540342
+    },
+    "values": {
+     "scale": 0.8888099953327769,
+     "Tc": 0.2051191200360296,
+     "Ts_ratio": 5.407661101187183,
+     "sigma0": 1504.4166295540342,
+     "vs": 0.0069772710379095325,
+     "K_cable": 1.0722629392683507,
+     "theta0_cable_deg": -4.010749854539563
+    },
+    "se": {
+     "scale": 0.40330146209332474,
+     "Tc": 1.027014380892159,
+     "Ts_ratio": 4.592603222771452,
+     "vs": 3.1765773808805458,
+     "K_cable": 2.4236006914868726,
+     "theta0_cable_deg": 10.43888526853999
+    },
+    "cost": 1.5115731664689034,
+    "nfev": 18,
+    "fits": {
+     "V2/MPCLucy_doublets_azimut_01deg_minus01deg azimuth 6.28 s": 76.1910985285938,
+     "V2/MPCLucy_doublets_azimut_01deg_minus01deg azimuth 41.98 s": 74.89271790845005,
+     "V2/MPCLucy_doublets_azimut_01deg_minus01deg azimuth 75.93 s": 17.892981717879763,
+     "V2/MPCLucy_doublets_azimut_05deg_minus05deg azimuth 5.97 s": 70.93812827694067,
+     "V2/MPCLucy_doublets_azimut_05deg_minus05deg azimuth 39.58 s": 96.12130583810507,
+     "V2/MPCLucy_doublets_azimut_05deg_minus05deg azimuth 77.97 s": 90.38168739343404,
+     "V2/MPCLucy_doublets_azimut_1deg_minus1deg azimuth 8.89 s": 72.25823730174739,
+     "V2/MPCLucy_doublets_azimut_1deg_minus1deg azimuth 47.21 s": 92.86865056366564,
+     "V2/MPCLucy_doublets_azimut_1deg_minus1deg azimuth 82.83 s": 74.10834845547754,
+     "V2/MPCLucy_doublets_azimut_3deg_minus3deg azimuth 4.19 s": 88.29216991929013,
+     "V2/MPCLucy_doublets_azimut_3deg_minus3deg azimuth 46.97 s": 89.89753508621668,
+     "V2/MPCLucy_doublets_azimut_3deg_minus3deg azimuth 92.32 s": 81.55930428624505,
+     "V2/MPCLucy_doublets_azimut_5deg_minus5deg azimuth 1.95 s": 93.63712539658545,
+     "V2/MPCLucy_doublets_azimut_5deg_minus5deg azimuth 49.53 s": 81.5830028090568,
+     "V2/MPCLucy_doublets_azimut_5deg_minus5deg azimuth 88.30 s": 80.4356693995905,
+     "V2/MPCLucy_doublets_azimut_8deg_minus8deg azimuth 35.14 s": 68.5380307534327,
+     "V2/MPCLucy_doublets_azimut_8deg_minus8deg azimuth 81.42 s": 89.8939515868235,
+     "V2/MPCLucy_doublets_azimut_1deg_15deg azimuth 1.74 s": 91.07794212579479,
+     "V2/MPCLucy_doublets_azimut_1deg_15deg azimuth 15.21 s": 65.39841561342172,
+     "V2/MPCLucy_doublets_azimut_1deg_15deg azimuth 25.70 s": 88.07434535825915,
+     "V2/MPCLucy_doublets_azimut_1deg_15deg azimuth 36.39 s": 72.3538154483969,
+     "V2/MPCLucy_doublets_azimut_1deg_15deg azimuth 49.62 s": 84.85824383059922,
+     "V2/MPCLucy_doublets_azimut_1deg_15deg azimuth 65.04 s": 92.20625519811844,
+     "V2/MPCLucy_doublets_azimut_1deg_15deg azimuth 74.79 s": 59.03273261186782,
+     "V2/MPCLucy_doublets_azimut_1deg_15deg azimuth 90.55 s": 87.82089908249564
+    },
+    "cv_fits": {
+     "V2/MPCLucy_doublets_azimut_01deg_minus01deg azimuth 6.28 s": 17.00063852034692,
+     "V2/MPCLucy_doublets_azimut_01deg_minus01deg azimuth 41.98 s": -4.544771537507808,
+     "V2/MPCLucy_doublets_azimut_01deg_minus01deg azimuth 75.93 s": 6.1272502217421305,
+     "V2/MPCLucy_doublets_azimut_05deg_minus05deg azimuth 5.97 s": 67.19052097106353,
+     "V2/MPCLucy_doublets_azimut_05deg_minus05deg azimuth 39.58 s": 96.8495149687272,
+     "V2/MPCLucy_doublets_azimut_05deg_minus05deg azimuth 77.97 s": 94.0884930467293,
+     "V2/MPCLucy_doublets_azimut_1deg_15deg azimuth 1.74 s": 90.20862900018383,
+     "V2/MPCLucy_doublets_azimut_1deg_15deg azimuth 15.21 s": 64.77434249626523,
+     "V2/MPCLucy_doublets_azimut_1deg_15deg azimuth 25.70 s": 86.59560760190337,
+     "V2/MPCLucy_doublets_azimut_1deg_15deg azimuth 36.39 s": 71.7426515711142,
+     "V2/MPCLucy_doublets_azimut_1deg_15deg azimuth 49.62 s": 83.21304751945766,
+     "V2/MPCLucy_doublets_azimut_1deg_15deg azimuth 65.04 s": 91.53301527619344,
+     "V2/MPCLucy_doublets_azimut_1deg_15deg azimuth 74.79 s": 56.82344112476242,
+     "V2/MPCLucy_doublets_azimut_1deg_15deg azimuth 90.55 s": 87.74614534792215,
+     "V2/MPCLucy_doublets_azimut_1deg_minus1deg azimuth 8.89 s": 72.05814758911144,
+     "V2/MPCLucy_doublets_azimut_1deg_minus1deg azimuth 47.21 s": 92.70401946608047,
+     "V2/MPCLucy_doublets_azimut_1deg_minus1deg azimuth 82.83 s": 73.89734228804214,
+     "V2/MPCLucy_doublets_azimut_3deg_minus3deg azimuth 4.19 s": 88.29216991929013,
+     "V2/MPCLucy_doublets_azimut_3deg_minus3deg azimuth 46.97 s": 89.89753508621668,
+     "V2/MPCLucy_doublets_azimut_3deg_minus3deg azimuth 92.32 s": 81.55930428624505,
+     "V2/MPCLucy_doublets_azimut_5deg_minus5deg azimuth 1.95 s": 93.56461541420633,
+     "V2/MPCLucy_doublets_azimut_5deg_minus5deg azimuth 49.53 s": 81.54898919229848,
+     "V2/MPCLucy_doublets_azimut_5deg_minus5deg azimuth 88.30 s": 80.36143661892538,
+     "V2/MPCLucy_doublets_azimut_8deg_minus8deg azimuth 35.14 s": 67.8326106110428,
+     "V2/MPCLucy_doublets_azimut_8deg_minus8deg azimuth 81.42 s": 89.46414776394059
+    },
+    "cv_values": {
+     "V2/MPCLucy_doublets_azimut_01deg_minus01deg": {
+      "scale": 0.9982509731393099,
+      "Tc": 0.2701747341459731,
+      "Ts_ratio": 6.135243100404816,
+      "vs": 0.01647020793829588,
+      "K_cable": 1.0803294342718779,
+      "theta0_cable_deg": -1.7609635794534646
+     },
+     "V2/MPCLucy_doublets_azimut_05deg_minus05deg": {
+      "scale": 0.8950214993739042,
+      "Tc": 0.201072005760447,
+      "Ts_ratio": 6.04551878548567,
+      "vs": 0.006980706202603832,
+      "K_cable": 0.9646384546450658,
+      "theta0_cable_deg": -4.315795927960394
+     },
+     "V2/MPCLucy_doublets_azimut_1deg_15deg": {
+      "scale": 0.8883428690862871,
+      "Tc": 0.2037438184018391,
+      "Ts_ratio": 5.420750218778829,
+      "vs": 0.006958244679490879,
+      "K_cable": 1.0794189790849185,
+      "theta0_cable_deg": -4.156868492615109
+     },
+     "V2/MPCLucy_doublets_azimut_1deg_minus1deg": {
+      "scale": 0.8877598901139554,
+      "Tc": 0.20507909951561595,
+      "Ts_ratio": 5.410905185120067,
+      "vs": 0.006969106464528631,
+      "K_cable": 1.0718663373631614,
+      "theta0_cable_deg": -4.013513126055103
+     },
+     "V2/MPCLucy_doublets_azimut_3deg_minus3deg": {
+      "scale": 0.8888099953327769,
+      "Tc": 0.2051191200360296,
+      "Ts_ratio": 5.407661101187183,
+      "vs": 0.0069772710379095325,
+      "K_cable": 1.0722629392683507,
+      "theta0_cable_deg": -4.010749854539563
+     },
+     "V2/MPCLucy_doublets_azimut_5deg_minus5deg": {
+      "scale": 0.8883451775007521,
+      "Tc": 0.2048209652787547,
+      "Ts_ratio": 5.415307023762645,
+      "vs": 0.006977465804464477,
+      "K_cable": 1.0711119755401863,
+      "theta0_cable_deg": -4.024041670802292
+     },
+     "V2/MPCLucy_doublets_azimut_8deg_minus8deg": {
+      "scale": 0.886355723751239,
+      "Tc": 0.19609421688141132,
+      "Ts_ratio": 6.084788450167194,
+      "vs": 0.006964126141133409,
+      "K_cable": 0.9709206476006397,
+      "theta0_cable_deg": -4.331142517653563
+     }
+    },
+    "cv_median": 81.55930428624505,
+    "cv_mean_square": 0.1457698350286725,
+    "fit_median": 81.5830028090568
+   },
+   "S1 sigma0 fixed x3": {
+    "label": "Dahl + Stribeck + cable spring, all fitted; sigma0 fixed at 3 x nominal (4513)",
+    "free": [
+     "scale",
+     "Tc",
+     "Ts_ratio",
+     "vs",
+     "K_cable",
+     "theta0_cable_deg"
+    ],
+    "fixed": {
+     "sigma0": 4513.249888662102
+    },
+    "values": {
+     "scale": 0.9643542943278754,
+     "Tc": 0.23164718452468275,
+     "Ts_ratio": 7.933971242101985,
+     "sigma0": 4513.249888662102,
+     "vs": 0.005815716297880016,
+     "K_cable": 0.9278644802875702,
+     "theta0_cable_deg": -2.6782908910621095
+    },
+    "se": {
+     "scale": 0.2987465805785437,
+     "Tc": 0.33636627671526875,
+     "Ts_ratio": 3.435503462407404,
+     "vs": 1.164018818494061,
+     "K_cable": 2.5976967142784786,
+     "theta0_cable_deg": 11.764082289874432
+    },
+    "cost": 1.79458120252596,
+    "nfev": 8,
+    "fits": {
+     "V2/MPCLucy_doublets_azimut_01deg_minus01deg azimuth 6.28 s": 66.62635500585654,
+     "V2/MPCLucy_doublets_azimut_01deg_minus01deg azimuth 41.98 s": -2.7236907864381044,
+     "V2/MPCLucy_doublets_azimut_01deg_minus01deg azimuth 75.93 s": 25.612843789671413,
+     "V2/MPCLucy_doublets_azimut_05deg_minus05deg azimuth 5.97 s": 52.22383621657578,
+     "V2/MPCLucy_doublets_azimut_05deg_minus05deg azimuth 39.58 s": 90.23441193155577,
+     "V2/MPCLucy_doublets_azimut_05deg_minus05deg azimuth 77.97 s": 94.944714077151,
+     "V2/MPCLucy_doublets_azimut_1deg_minus1deg azimuth 8.89 s": 82.36929408827781,
+     "V2/MPCLucy_doublets_azimut_1deg_minus1deg azimuth 47.21 s": 92.76066386915434,
+     "V2/MPCLucy_doublets_azimut_1deg_minus1deg azimuth 82.83 s": 82.41069905125985,
+     "V2/MPCLucy_doublets_azimut_3deg_minus3deg azimuth 4.19 s": 97.24113310820691,
+     "V2/MPCLucy_doublets_azimut_3deg_minus3deg azimuth 46.97 s": 94.35180170067711,
+     "V2/MPCLucy_doublets_azimut_3deg_minus3deg azimuth 92.32 s": 91.15690428737986,
+     "V2/MPCLucy_doublets_azimut_5deg_minus5deg azimuth 1.95 s": 89.4859348658352,
+     "V2/MPCLucy_doublets_azimut_5deg_minus5deg azimuth 49.53 s": 86.98137308485852,
+     "V2/MPCLucy_doublets_azimut_5deg_minus5deg azimuth 88.30 s": 90.20220630239035,
+     "V2/MPCLucy_doublets_azimut_8deg_minus8deg azimuth 35.14 s": 78.06324625879216,
+     "V2/MPCLucy_doublets_azimut_8deg_minus8deg azimuth 81.42 s": 94.72544240620351,
+     "V2/MPCLucy_doublets_azimut_1deg_15deg azimuth 1.74 s": 95.40373369473531,
+     "V2/MPCLucy_doublets_azimut_1deg_15deg azimuth 15.21 s": 78.18843111980117,
+     "V2/MPCLucy_doublets_azimut_1deg_15deg azimuth 25.70 s": 95.3616826095757,
+     "V2/MPCLucy_doublets_azimut_1deg_15deg azimuth 36.39 s": 84.31191489965946,
+     "V2/MPCLucy_doublets_azimut_1deg_15deg azimuth 49.62 s": 91.93456623150408,
+     "V2/MPCLucy_doublets_azimut_1deg_15deg azimuth 65.04 s": 90.89249178948927,
+     "V2/MPCLucy_doublets_azimut_1deg_15deg azimuth 74.79 s": 78.79567473091183,
+     "V2/MPCLucy_doublets_azimut_1deg_15deg azimuth 90.55 s": 89.19991887607057
+    },
+    "cv_fits": {
+     "V2/MPCLucy_doublets_azimut_01deg_minus01deg azimuth 6.28 s": 62.13948446779882,
+     "V2/MPCLucy_doublets_azimut_01deg_minus01deg azimuth 41.98 s": -23.130173733609304,
+     "V2/MPCLucy_doublets_azimut_01deg_minus01deg azimuth 75.93 s": 17.75597546522638,
+     "V2/MPCLucy_doublets_azimut_05deg_minus05deg azimuth 5.97 s": 52.48111749635122,
+     "V2/MPCLucy_doublets_azimut_05deg_minus05deg azimuth 39.58 s": 90.6595492490848,
+     "V2/MPCLucy_doublets_azimut_05deg_minus05deg azimuth 77.97 s": 95.02682881471029,
+     "V2/MPCLucy_doublets_azimut_1deg_15deg azimuth 1.74 s": 94.32070517135371,
+     "V2/MPCLucy_doublets_azimut_1deg_15deg azimuth 15.21 s": 73.32807612830734,
+     "V2/MPCLucy_doublets_azimut_1deg_15deg azimuth 25.70 s": 94.47002653704358,
+     "V2/MPCLucy_doublets_azimut_1deg_15deg azimuth 36.39 s": 77.54635530719501,
+     "V2/MPCLucy_doublets_azimut_1deg_15deg azimuth 49.62 s": 91.2331670156653,
+     "V2/MPCLucy_doublets_azimut_1deg_15deg azimuth 65.04 s": 94.87338854340418,
+     "V2/MPCLucy_doublets_azimut_1deg_15deg azimuth 74.79 s": 76.36153870989926,
+     "V2/MPCLucy_doublets_azimut_1deg_15deg azimuth 90.55 s": 82.66895078817902,
+     "V2/MPCLucy_doublets_azimut_1deg_minus1deg azimuth 8.89 s": 79.23611339742523,
+     "V2/MPCLucy_doublets_azimut_1deg_minus1deg azimuth 47.21 s": 92.23967176336862,
+     "V2/MPCLucy_doublets_azimut_1deg_minus1deg azimuth 82.83 s": 79.28269131950573,
+     "V2/MPCLucy_doublets_azimut_3deg_minus3deg azimuth 4.19 s": 97.24113310820691,
+     "V2/MPCLucy_doublets_azimut_3deg_minus3deg azimuth 46.97 s": 94.35180170067711,
+     "V2/MPCLucy_doublets_azimut_3deg_minus3deg azimuth 92.32 s": 91.15690428737986,
+     "V2/MPCLucy_doublets_azimut_5deg_minus5deg azimuth 1.95 s": 89.4859348658352,
+     "V2/MPCLucy_doublets_azimut_5deg_minus5deg azimuth 49.53 s": 86.98137308485852,
+     "V2/MPCLucy_doublets_azimut_5deg_minus5deg azimuth 88.30 s": 90.20220630239035,
+     "V2/MPCLucy_doublets_azimut_8deg_minus8deg azimuth 35.14 s": 75.39126058824796,
+     "V2/MPCLucy_doublets_azimut_8deg_minus8deg azimuth 81.42 s": 94.78068572808226
+    },
+    "cv_values": {
+     "V2/MPCLucy_doublets_azimut_01deg_minus01deg": {
+      "scale": 0.9997205126365016,
+      "Tc": 0.2626467872214024,
+      "Ts_ratio": 8.151262804035428,
+      "vs": 0.008693846634481217,
+      "K_cable": 1.1021273956083244,
+      "theta0_cable_deg": -1.759881233269603
+     },
+     "V2/MPCLucy_doublets_azimut_05deg_minus05deg": {
+      "scale": 0.96311544439634,
+      "Tc": 0.2312073963208788,
+      "Ts_ratio": 9.06162815692928,
+      "vs": 0.005422134285365995,
+      "K_cable": 0.9499423156380052,
+      "theta0_cable_deg": -2.674944993173281
+     },
+     "V2/MPCLucy_doublets_azimut_1deg_15deg": {
+      "scale": 0.9607563440814885,
+      "Tc": 0.22978534332574685,
+      "Ts_ratio": 7.985941630865982,
+      "vs": 0.005583414174185459,
+      "K_cable": 0.8158071796356228,
+      "theta0_cable_deg": -3.901288947998227
+     },
+     "V2/MPCLucy_doublets_azimut_1deg_minus1deg": {
+      "scale": 0.9523531806847185,
+      "Tc": 0.2289713414821029,
+      "Ts_ratio": 8.035978401689409,
+      "vs": 0.005616039279197065,
+      "K_cable": 0.9069650855854563,
+      "theta0_cable_deg": -3.0834893509295043
+     },
+     "V2/MPCLucy_doublets_azimut_3deg_minus3deg": {
+      "scale": 0.9643542943278754,
+      "Tc": 0.23164718452468275,
+      "Ts_ratio": 7.933971242101985,
+      "vs": 0.005815716297880016,
+      "K_cable": 0.9278644802875702,
+      "theta0_cable_deg": -2.6782908910621095
+     },
+     "V2/MPCLucy_doublets_azimut_5deg_minus5deg": {
+      "scale": 0.9643542943278754,
+      "Tc": 0.23164718452468275,
+      "Ts_ratio": 7.933971242101985,
+      "vs": 0.005815716297880016,
+      "K_cable": 0.9278644802875702,
+      "theta0_cable_deg": -2.6782908910621095
+     },
+     "V2/MPCLucy_doublets_azimut_8deg_minus8deg": {
+      "scale": 0.9595231211258888,
+      "Tc": 0.22618754964085158,
+      "Ts_ratio": 7.956487321893205,
+      "vs": 0.005789945904058973,
+      "K_cable": 0.9268598438661584,
+      "theta0_cable_deg": -2.9836136499782038
+     }
+    },
+    "cv_median": 89.4859348658352,
+    "cv_mean_square": 0.12006549401965355,
+    "fit_median": 89.4859348658352
+   },
+   "S1 vs fixed x0.333": {
+    "label": "Dahl + Stribeck + cable spring, all fitted; vs fixed at 0.333 x nominal (0.001667)",
+    "free": [
+     "scale",
+     "Tc",
+     "Ts_ratio",
+     "sigma0",
+     "K_cable",
+     "theta0_cable_deg"
+    ],
+    "fixed": {
+     "vs": 0.0016666665
+    },
+    "values": {
+     "scale": 1.00488559489021,
+     "Tc": 0.34855352993784927,
+     "Ts_ratio": 8.936279880964793,
+     "sigma0": 854.2291350309013,
+     "vs": 0.0016666665,
+     "K_cable": 1.8161079849983797,
+     "theta0_cable_deg": -2.767724243409538
+    },
+    "se": {
+     "scale": 0.5371825895146811,
+     "Tc": 1.2108846821691752,
+     "Ts_ratio": 129.24914277656845,
+     "sigma0": 4.8653635585117705,
+     "K_cable": 1.9687344698044407,
+     "theta0_cable_deg": 6.583126693807993
+    },
+    "cost": 1.6484379960672149,
+    "nfev": 8,
+    "fits": {
+     "V2/MPCLucy_doublets_azimut_01deg_minus01deg azimuth 6.28 s": 13.82413478032596,
+     "V2/MPCLucy_doublets_azimut_01deg_minus01deg azimuth 41.98 s": 70.44102174603466,
+     "V2/MPCLucy_doublets_azimut_01deg_minus01deg azimuth 75.93 s": 79.41716959434916,
+     "V2/MPCLucy_doublets_azimut_05deg_minus05deg azimuth 5.97 s": 84.33018206285695,
+     "V2/MPCLucy_doublets_azimut_05deg_minus05deg azimuth 39.58 s": 94.96389137920164,
+     "V2/MPCLucy_doublets_azimut_05deg_minus05deg azimuth 77.97 s": 75.17967283383842,
+     "V2/MPCLucy_doublets_azimut_1deg_minus1deg azimuth 8.89 s": 65.35547486873352,
+     "V2/MPCLucy_doublets_azimut_1deg_minus1deg azimuth 47.21 s": 95.94230056656477,
+     "V2/MPCLucy_doublets_azimut_1deg_minus1deg azimuth 82.83 s": 70.62223062534225,
+     "V2/MPCLucy_doublets_azimut_3deg_minus3deg azimuth 4.19 s": 85.30596665905999,
+     "V2/MPCLucy_doublets_azimut_3deg_minus3deg azimuth 46.97 s": 97.14204478624795,
+     "V2/MPCLucy_doublets_azimut_3deg_minus3deg azimuth 92.32 s": 85.8514650517718,
+     "V2/MPCLucy_doublets_azimut_5deg_minus5deg azimuth 1.95 s": 85.21791090653973,
+     "V2/MPCLucy_doublets_azimut_5deg_minus5deg azimuth 49.53 s": 89.59340718680357,
+     "V2/MPCLucy_doublets_azimut_5deg_minus5deg azimuth 88.30 s": 84.398198579382,
+     "V2/MPCLucy_doublets_azimut_8deg_minus8deg azimuth 35.14 s": 79.71364086442578,
+     "V2/MPCLucy_doublets_azimut_8deg_minus8deg azimuth 81.42 s": 97.18570549721352,
+     "V2/MPCLucy_doublets_azimut_1deg_15deg azimuth 1.74 s": 97.97734052898784,
+     "V2/MPCLucy_doublets_azimut_1deg_15deg azimuth 15.21 s": 51.76850521095585,
+     "V2/MPCLucy_doublets_azimut_1deg_15deg azimuth 25.70 s": 95.95093474432419,
+     "V2/MPCLucy_doublets_azimut_1deg_15deg azimuth 36.39 s": 57.73432705083519,
+     "V2/MPCLucy_doublets_azimut_1deg_15deg azimuth 49.62 s": 96.55461767602851,
+     "V2/MPCLucy_doublets_azimut_1deg_15deg azimuth 65.04 s": 66.23888899857522,
+     "V2/MPCLucy_doublets_azimut_1deg_15deg azimuth 74.79 s": 77.48543825466747,
+     "V2/MPCLucy_doublets_azimut_1deg_15deg azimuth 90.55 s": 90.10210896657233
+    },
+    "cv_fits": {
+     "V2/MPCLucy_doublets_azimut_01deg_minus01deg azimuth 6.28 s": -144.3471988797249,
+     "V2/MPCLucy_doublets_azimut_01deg_minus01deg azimuth 41.98 s": 75.54104517538886,
+     "V2/MPCLucy_doublets_azimut_01deg_minus01deg azimuth 75.93 s": -60.127581206652096,
+     "V2/MPCLucy_doublets_azimut_05deg_minus05deg azimuth 5.97 s": 84.07695209983919,
+     "V2/MPCLucy_doublets_azimut_05deg_minus05deg azimuth 39.58 s": 95.05375081858867,
+     "V2/MPCLucy_doublets_azimut_05deg_minus05deg azimuth 77.97 s": 75.35699938050695,
+     "V2/MPCLucy_doublets_azimut_1deg_15deg azimuth 1.74 s": 96.95740062244346,
+     "V2/MPCLucy_doublets_azimut_1deg_15deg azimuth 15.21 s": 43.74671261904336,
+     "V2/MPCLucy_doublets_azimut_1deg_15deg azimuth 25.70 s": 94.30853285326454,
+     "V2/MPCLucy_doublets_azimut_1deg_15deg azimuth 36.39 s": 46.47439703588589,
+     "V2/MPCLucy_doublets_azimut_1deg_15deg azimuth 49.62 s": 94.6872299414009,
+     "V2/MPCLucy_doublets_azimut_1deg_15deg azimuth 65.04 s": 53.235038363385065,
+     "V2/MPCLucy_doublets_azimut_1deg_15deg azimuth 74.79 s": 81.33122922364755,
+     "V2/MPCLucy_doublets_azimut_1deg_15deg azimuth 90.55 s": 97.5930552243803,
+     "V2/MPCLucy_doublets_azimut_1deg_minus1deg azimuth 8.89 s": 63.98727771400975,
+     "V2/MPCLucy_doublets_azimut_1deg_minus1deg azimuth 47.21 s": 95.71772387846882,
+     "V2/MPCLucy_doublets_azimut_1deg_minus1deg azimuth 82.83 s": 69.34857133498502,
+     "V2/MPCLucy_doublets_azimut_3deg_minus3deg azimuth 4.19 s": 85.30596665905999,
+     "V2/MPCLucy_doublets_azimut_3deg_minus3deg azimuth 46.97 s": 97.14204478624795,
+     "V2/MPCLucy_doublets_azimut_3deg_minus3deg azimuth 92.32 s": 85.8514650517718,
+     "V2/MPCLucy_doublets_azimut_5deg_minus5deg azimuth 1.95 s": 85.32796749561744,
+     "V2/MPCLucy_doublets_azimut_5deg_minus5deg azimuth 49.53 s": 89.37056480527484,
+     "V2/MPCLucy_doublets_azimut_5deg_minus5deg azimuth 88.30 s": 84.51122911173435,
+     "V2/MPCLucy_doublets_azimut_8deg_minus8deg azimuth 35.14 s": 78.41187530499347,
+     "V2/MPCLucy_doublets_azimut_8deg_minus8deg azimuth 81.42 s": 97.74255095574028
+    },
+    "cv_values": {
+     "V2/MPCLucy_doublets_azimut_01deg_minus01deg": {
+      "scale": 0.9521522185690566,
+      "Tc": 0.28054096870729855,
+      "Ts_ratio": 9.99999998998409,
+      "sigma0": 313.42193325633116,
+      "K_cable": 1.277987239220195,
+      "theta0_cable_deg": -1.9118758147754722
+     },
+     "V2/MPCLucy_doublets_azimut_05deg_minus05deg": {
+      "scale": 1.0059370931308782,
+      "Tc": 0.34869020051114863,
+      "Ts_ratio": 8.93629740271197,
+      "sigma0": 854.2025675469272,
+      "K_cable": 1.8161089699961832,
+      "theta0_cable_deg": -2.768890075770869
+     },
+     "V2/MPCLucy_doublets_azimut_1deg_15deg": {
+      "scale": 1.0357277385579997,
+      "Tc": 0.3883717131865489,
+      "Ts_ratio": 9.999849379154915,
+      "sigma0": 650.5759058955574,
+      "K_cable": 1.8146908705924631,
+      "theta0_cable_deg": -3.247998984790548
+     },
+     "V2/MPCLucy_doublets_azimut_1deg_minus1deg": {
+      "scale": 1.00280376310525,
+      "Tc": 0.35031758288419257,
+      "Ts_ratio": 8.936425003713723,
+      "sigma0": 853.8682015974483,
+      "K_cable": 1.8205962915594844,
+      "theta0_cable_deg": -2.8235756575087034
+     },
+     "V2/MPCLucy_doublets_azimut_3deg_minus3deg": {
+      "scale": 1.00488559489021,
+      "Tc": 0.34855352993784927,
+      "Ts_ratio": 8.936279880964793,
+      "sigma0": 854.2291350309013,
+      "K_cable": 1.8161079849983797,
+      "theta0_cable_deg": -2.767724243409538
+     },
+     "V2/MPCLucy_doublets_azimut_5deg_minus5deg": {
+      "scale": 1.0058866509924576,
+      "Tc": 0.3486972660318412,
+      "Ts_ratio": 8.936301603668449,
+      "sigma0": 854.1338065955614,
+      "K_cable": 1.8165534022142666,
+      "theta0_cable_deg": -2.7749827433890064
+     },
+     "V2/MPCLucy_doublets_azimut_8deg_minus8deg": {
+      "scale": 1.0097447219834281,
+      "Tc": 0.34871804752839247,
+      "Ts_ratio": 8.936440662925882,
+      "sigma0": 853.720000957108,
+      "K_cable": 1.819227353749925,
+      "theta0_cable_deg": -2.8049481419301396
+     }
+    },
+    "cv_median": 84.51122911173435,
+    "cv_mean_square": 0.39675530111236784,
+    "fit_median": 84.398198579382
+   },
+   "S1 vs fixed x1": {
+    "label": "Dahl + Stribeck + cable spring, all fitted; vs fixed at 1 x nominal (0.005)",
+    "free": [
+     "scale",
+     "Tc",
+     "Ts_ratio",
+     "sigma0",
+     "K_cable",
+     "theta0_cable_deg"
+    ],
+    "fixed": {
+     "vs": 0.005
+    },
+    "values": {
+     "scale": 0.9119296598264862,
+     "Tc": 0.2782104072251788,
+     "Ts_ratio": 9.964830655465619,
+     "sigma0": 546.1831966567938,
+     "vs": 0.005,
+     "K_cable": 1.5669999354842523,
+     "theta0_cable_deg": -2.6187563606190905
+    },
+    "se": {
+     "scale": 0.6342266644454293,
+     "Tc": 1.6242212969933236,
+     "Ts_ratio": 9.368664865694605,
+     "sigma0": 3.177873581898524,
+     "K_cable": 2.0065769442428483,
+     "theta0_cable_deg": 6.5039954085963645
+    },
+    "cost": 1.2772722815723336,
+    "nfev": 8,
+    "fits": {
+     "V2/MPCLucy_doublets_azimut_01deg_minus01deg azimuth 6.28 s": 35.44694667321934,
+     "V2/MPCLucy_doublets_azimut_01deg_minus01deg azimuth 41.98 s": 79.59859333456701,
+     "V2/MPCLucy_doublets_azimut_01deg_minus01deg azimuth 75.93 s": 64.46222219143432,
+     "V2/MPCLucy_doublets_azimut_05deg_minus05deg azimuth 5.97 s": 82.86592988462883,
+     "V2/MPCLucy_doublets_azimut_05deg_minus05deg azimuth 39.58 s": 92.81933607286352,
+     "V2/MPCLucy_doublets_azimut_05deg_minus05deg azimuth 77.97 s": 86.35112101199233,
+     "V2/MPCLucy_doublets_azimut_1deg_minus1deg azimuth 8.89 s": 69.8682389623728,
+     "V2/MPCLucy_doublets_azimut_1deg_minus1deg azimuth 47.21 s": 90.14598165779448,
+     "V2/MPCLucy_doublets_azimut_1deg_minus1deg azimuth 82.83 s": 74.7302614806284,
+     "V2/MPCLucy_doublets_azimut_3deg_minus3deg azimuth 4.19 s": 82.51070799512017,
+     "V2/MPCLucy_doublets_azimut_3deg_minus3deg azimuth 46.97 s": 95.60187581837363,
+     "V2/MPCLucy_doublets_azimut_3deg_minus3deg azimuth 92.32 s": 83.68126419237515,
+     "V2/MPCLucy_doublets_azimut_5deg_minus5deg azimuth 1.95 s": 83.78297633628469,
+     "V2/MPCLucy_doublets_azimut_5deg_minus5deg azimuth 49.53 s": 92.70104257274657,
+     "V2/MPCLucy_doublets_azimut_5deg_minus5deg azimuth 88.30 s": 82.09663013536913,
+     "V2/MPCLucy_doublets_azimut_8deg_minus8deg azimuth 35.14 s": 81.91774577365834,
+     "V2/MPCLucy_doublets_azimut_8deg_minus8deg azimuth 81.42 s": 93.99621147102229,
+     "V2/MPCLucy_doublets_azimut_1deg_15deg azimuth 1.74 s": 93.63790015089045,
+     "V2/MPCLucy_doublets_azimut_1deg_15deg azimuth 15.21 s": 57.315212533008705,
+     "V2/MPCLucy_doublets_azimut_1deg_15deg azimuth 25.70 s": 98.08983933516414,
+     "V2/MPCLucy_doublets_azimut_1deg_15deg azimuth 36.39 s": 65.255112918399,
+     "V2/MPCLucy_doublets_azimut_1deg_15deg azimuth 49.62 s": 98.36544558248917,
+     "V2/MPCLucy_doublets_azimut_1deg_15deg azimuth 65.04 s": 78.65024648292487,
+     "V2/MPCLucy_doublets_azimut_1deg_15deg azimuth 74.79 s": 75.69021299605583,
+     "V2/MPCLucy_doublets_azimut_1deg_15deg azimuth 90.55 s": 88.44018993887892
+    },
+    "cv_fits": {
+     "V2/MPCLucy_doublets_azimut_01deg_minus01deg azimuth 6.28 s": -102.07881646123948,
+     "V2/MPCLucy_doublets_azimut_01deg_minus01deg azimuth 41.98 s": 74.07392216142377,
+     "V2/MPCLucy_doublets_azimut_01deg_minus01deg azimuth 75.93 s": -22.830989544619197,
+     "V2/MPCLucy_doublets_azimut_05deg_minus05deg azimuth 5.97 s": 82.86592988462883,
+     "V2/MPCLucy_doublets_azimut_05deg_minus05deg azimuth 39.58 s": 92.81933607286352,
+     "V2/MPCLucy_doublets_azimut_05deg_minus05deg azimuth 77.97 s": 86.35112101199233,
+     "V2/MPCLucy_doublets_azimut_1deg_15deg azimuth 1.74 s": 96.76429014770935,
+     "V2/MPCLucy_doublets_azimut_1deg_15deg azimuth 15.21 s": 55.833323948044665,
+     "V2/MPCLucy_doublets_azimut_1deg_15deg azimuth 25.70 s": 97.84327178610054,
+     "V2/MPCLucy_doublets_azimut_1deg_15deg azimuth 36.39 s": 63.483964962677916,
+     "V2/MPCLucy_doublets_azimut_1deg_15deg azimuth 49.62 s": 96.35224873553915,
+     "V2/MPCLucy_doublets_azimut_1deg_15deg azimuth 65.04 s": 74.15692422183193,
+     "V2/MPCLucy_doublets_azimut_1deg_15deg azimuth 74.79 s": 73.80287241332863,
+     "V2/MPCLucy_doublets_azimut_1deg_15deg azimuth 90.55 s": 85.38637882820544,
+     "V2/MPCLucy_doublets_azimut_1deg_minus1deg azimuth 8.89 s": 68.95905923423264,
+     "V2/MPCLucy_doublets_azimut_1deg_minus1deg azimuth 47.21 s": 89.61350280025822,
+     "V2/MPCLucy_doublets_azimut_1deg_minus1deg azimuth 82.83 s": 73.87046896961733,
+     "V2/MPCLucy_doublets_azimut_3deg_minus3deg azimuth 4.19 s": 82.07523205028258,
+     "V2/MPCLucy_doublets_azimut_3deg_minus3deg azimuth 46.97 s": 95.33424323184755,
+     "V2/MPCLucy_doublets_azimut_3deg_minus3deg azimuth 92.32 s": 83.29490404042829,
+     "V2/MPCLucy_doublets_azimut_5deg_minus5deg azimuth 1.95 s": 83.44409941977682,
+     "V2/MPCLucy_doublets_azimut_5deg_minus5deg azimuth 49.53 s": 92.73881137559896,
+     "V2/MPCLucy_doublets_azimut_5deg_minus5deg azimuth 88.30 s": 81.82968699747748,
+     "V2/MPCLucy_doublets_azimut_8deg_minus8deg azimuth 35.14 s": 81.91774577365834,
+     "V2/MPCLucy_doublets_azimut_8deg_minus8deg azimuth 81.42 s": 93.99621147102229
+    },
+    "cv_values": {
+     "V2/MPCLucy_doublets_azimut_01deg_minus01deg": {
+      "scale": 0.9560758752471108,
+      "Tc": 0.28039346675323135,
+      "Ts_ratio": 9.999991254514622,
+      "sigma0": 383.10211057469576,
+      "K_cable": 1.2763786844587124,
+      "theta0_cable_deg": -1.8602751729887395
+     },
+     "V2/MPCLucy_doublets_azimut_05deg_minus05deg": {
+      "scale": 0.9119296598264862,
+      "Tc": 0.2782104072251788,
+      "Ts_ratio": 9.964830655465619,
+      "sigma0": 546.1831966567938,
+      "K_cable": 1.5669999354842523,
+      "theta0_cable_deg": -2.6187563606190905
+     },
+     "V2/MPCLucy_doublets_azimut_1deg_15deg": {
+      "scale": 0.9433753197943062,
+      "Tc": 0.30288733183992145,
+      "Ts_ratio": 9.99880312153191,
+      "sigma0": 528.68480952027,
+      "K_cable": 1.7418740959458514,
+      "theta0_cable_deg": -2.6209205706404544
+     },
+     "V2/MPCLucy_doublets_azimut_1deg_minus1deg": {
+      "scale": 0.9082762827215661,
+      "Tc": 0.27812184196668255,
+      "Ts_ratio": 9.964882613820974,
+      "sigma0": 548.030326252784,
+      "K_cable": 1.5725674437603094,
+      "theta0_cable_deg": -2.6335251326818616
+     },
+     "V2/MPCLucy_doublets_azimut_3deg_minus3deg": {
+      "scale": 0.9093609912252012,
+      "Tc": 0.27772102339994914,
+      "Ts_ratio": 9.96490403140371,
+      "sigma0": 547.7584342417498,
+      "K_cable": 1.569051793325793,
+      "theta0_cable_deg": -2.612034201695086
+     },
+     "V2/MPCLucy_doublets_azimut_5deg_minus5deg": {
+      "scale": 0.9109807464493317,
+      "Tc": 0.27831283915245464,
+      "Ts_ratio": 9.964846952355927,
+      "sigma0": 546.7637795543095,
+      "K_cable": 1.5685696149197088,
+      "theta0_cable_deg": -2.6347143807720363
+     },
+     "V2/MPCLucy_doublets_azimut_8deg_minus8deg": {
+      "scale": 0.9119296598264862,
+      "Tc": 0.2782104072251788,
+      "Ts_ratio": 9.964830655465619,
+      "sigma0": 546.1831966567938,
+      "K_cable": 1.5669999354842523,
+      "theta0_cable_deg": -2.6187563606190905
+     }
+    },
+    "cv_median": 82.86592988462883,
+    "cv_mean_square": 0.26161376851907747,
+    "fit_median": 82.86592988462883
+   },
+   "S1 vs fixed x3": {
+    "label": "Dahl + Stribeck + cable spring, all fitted; vs fixed at 3 x nominal (0.015)",
+    "free": [
+     "scale",
+     "Tc",
+     "Ts_ratio",
+     "sigma0",
+     "K_cable",
+     "theta0_cable_deg"
+    ],
+    "fixed": {
+     "vs": 0.015
+    },
+    "values": {
+     "scale": 0.8863093230646693,
+     "Tc": 0.21017459827882123,
+     "Ts_ratio": 2.6629280676599403,
+     "sigma0": 412.3713631280512,
+     "vs": 0.015,
+     "K_cable": 0.9954568977370574,
+     "theta0_cable_deg": -3.2398596931466055
+    },
+    "se": {
+     "scale": 0.4600124037538221,
+     "Tc": 1.3915862278903892,
+     "Ts_ratio": 1.3362831792996102,
+     "sigma0": 1.894591206974525,
+     "K_cable": 0.624088315582018,
+     "theta0_cable_deg": 5.5594946513668155
+    },
+    "cost": 0.8949693357240855,
+    "nfev": 7,
+    "fits": {
+     "V2/MPCLucy_doublets_azimut_01deg_minus01deg azimuth 6.28 s": 66.43454965403708,
+     "V2/MPCLucy_doublets_azimut_01deg_minus01deg azimuth 41.98 s": 57.660514066397916,
+     "V2/MPCLucy_doublets_azimut_01deg_minus01deg azimuth 75.93 s": 69.77388188451303,
+     "V2/MPCLucy_doublets_azimut_05deg_minus05deg azimuth 5.97 s": 62.93604625046334,
+     "V2/MPCLucy_doublets_azimut_05deg_minus05deg azimuth 39.58 s": 97.568362140615,
+     "V2/MPCLucy_doublets_azimut_05deg_minus05deg azimuth 77.97 s": 94.06720540088348,
+     "V2/MPCLucy_doublets_azimut_1deg_minus1deg azimuth 8.89 s": 83.78901397846634,
+     "V2/MPCLucy_doublets_azimut_1deg_minus1deg azimuth 47.21 s": 93.23316211731235,
+     "V2/MPCLucy_doublets_azimut_1deg_minus1deg azimuth 82.83 s": 86.38283460989167,
+     "V2/MPCLucy_doublets_azimut_3deg_minus3deg azimuth 4.19 s": 91.5731790027822,
+     "V2/MPCLucy_doublets_azimut_3deg_minus3deg azimuth 46.97 s": 92.22431461539375,
+     "V2/MPCLucy_doublets_azimut_3deg_minus3deg azimuth 92.32 s": 88.45505434273096,
+     "V2/MPCLucy_doublets_azimut_5deg_minus5deg azimuth 1.95 s": 95.9012227191575,
+     "V2/MPCLucy_doublets_azimut_5deg_minus5deg azimuth 49.53 s": 86.50917852356906,
+     "V2/MPCLucy_doublets_azimut_5deg_minus5deg azimuth 88.30 s": 86.2560833428635,
+     "V2/MPCLucy_doublets_azimut_8deg_minus8deg azimuth 35.14 s": 76.13856029230901,
+     "V2/MPCLucy_doublets_azimut_8deg_minus8deg azimuth 81.42 s": 93.37999601626781,
+     "V2/MPCLucy_doublets_azimut_1deg_15deg azimuth 1.74 s": 93.34786470482298,
+     "V2/MPCLucy_doublets_azimut_1deg_15deg azimuth 15.21 s": 72.16665129868865,
+     "V2/MPCLucy_doublets_azimut_1deg_15deg azimuth 25.70 s": 93.88526001141486,
+     "V2/MPCLucy_doublets_azimut_1deg_15deg azimuth 36.39 s": 77.81344455468825,
+     "V2/MPCLucy_doublets_azimut_1deg_15deg azimuth 49.62 s": 91.48463092304499,
+     "V2/MPCLucy_doublets_azimut_1deg_15deg azimuth 65.04 s": 96.36096534590776,
+     "V2/MPCLucy_doublets_azimut_1deg_15deg azimuth 74.79 s": 71.41619357625389,
+     "V2/MPCLucy_doublets_azimut_1deg_15deg azimuth 90.55 s": 89.12001067953179
+    },
+    "cv_fits": {
+     "V2/MPCLucy_doublets_azimut_01deg_minus01deg azimuth 6.28 s": -10.313233378500342,
+     "V2/MPCLucy_doublets_azimut_01deg_minus01deg azimuth 41.98 s": -18.53518509586054,
+     "V2/MPCLucy_doublets_azimut_01deg_minus01deg azimuth 75.93 s": -5.626099430742837,
+     "V2/MPCLucy_doublets_azimut_05deg_minus05deg azimuth 5.97 s": 53.015221102997415,
+     "V2/MPCLucy_doublets_azimut_05deg_minus05deg azimuth 39.58 s": 99.15315534931514,
+     "V2/MPCLucy_doublets_azimut_05deg_minus05deg azimuth 77.97 s": 86.80590888097396,
+     "V2/MPCLucy_doublets_azimut_1deg_15deg azimuth 1.74 s": 91.46983276626419,
+     "V2/MPCLucy_doublets_azimut_1deg_15deg azimuth 15.21 s": 68.76460726463951,
+     "V2/MPCLucy_doublets_azimut_1deg_15deg azimuth 25.70 s": 88.82393701165938,
+     "V2/MPCLucy_doublets_azimut_1deg_15deg azimuth 36.39 s": 75.25689275513012,
+     "V2/MPCLucy_doublets_azimut_1deg_15deg azimuth 49.62 s": 85.55152393266926,
+     "V2/MPCLucy_doublets_azimut_1deg_15deg azimuth 65.04 s": 94.81098121755312,
+     "V2/MPCLucy_doublets_azimut_1deg_15deg azimuth 74.79 s": 60.458280299833575,
+     "V2/MPCLucy_doublets_azimut_1deg_15deg azimuth 90.55 s": 88.74287038047821,
+     "V2/MPCLucy_doublets_azimut_1deg_minus1deg azimuth 8.89 s": 81.19319988138868,
+     "V2/MPCLucy_doublets_azimut_1deg_minus1deg azimuth 47.21 s": 91.43733855709402,
+     "V2/MPCLucy_doublets_azimut_1deg_minus1deg azimuth 82.83 s": 83.95859366897234,
+     "V2/MPCLucy_doublets_azimut_3deg_minus3deg azimuth 4.19 s": 91.0109156347817,
+     "V2/MPCLucy_doublets_azimut_3deg_minus3deg azimuth 46.97 s": 92.19557261008491,
+     "V2/MPCLucy_doublets_azimut_3deg_minus3deg azimuth 92.32 s": 88.03028429785391,
+     "V2/MPCLucy_doublets_azimut_5deg_minus5deg azimuth 1.95 s": 95.49796045376598,
+     "V2/MPCLucy_doublets_azimut_5deg_minus5deg azimuth 49.53 s": 86.20618742162185,
+     "V2/MPCLucy_doublets_azimut_5deg_minus5deg azimuth 88.30 s": 86.01006394070383,
+     "V2/MPCLucy_doublets_azimut_8deg_minus8deg azimuth 35.14 s": 73.4081371230375,
+     "V2/MPCLucy_doublets_azimut_8deg_minus8deg azimuth 81.42 s": 93.78700453678547
+    },
+    "cv_values": {
+     "V2/MPCLucy_doublets_azimut_01deg_minus01deg": {
+      "scale": 1.001554873900917,
+      "Tc": 0.2845106501431439,
+      "Ts_ratio": 9.995924169577371,
+      "sigma0": 917.184297728609,
+      "K_cable": 1.144210787848878,
+      "theta0_cable_deg": -1.80077682266317
+     },
+     "V2/MPCLucy_doublets_azimut_05deg_minus05deg": {
+      "scale": 0.9000041811642044,
+      "Tc": 0.20207141934361741,
+      "Ts_ratio": 2.930936354487173,
+      "sigma0": 431.17563366648676,
+      "K_cable": 0.8257174173064563,
+      "theta0_cable_deg": -3.5086776770806005
+     },
+     "V2/MPCLucy_doublets_azimut_1deg_15deg": {
+      "scale": 0.8685992810589228,
+      "Tc": 0.1963640647996442,
+      "Ts_ratio": 2.5731951717361707,
+      "sigma0": 437.5342568894816,
+      "K_cable": 1.0538445035249147,
+      "theta0_cable_deg": -3.7793783260108635
+     },
+     "V2/MPCLucy_doublets_azimut_1deg_minus1deg": {
+      "scale": 0.8712854181510326,
+      "Tc": 0.205097336802452,
+      "Ts_ratio": 2.5893811792026864,
+      "sigma0": 424.19790250456356,
+      "K_cable": 1.0371664289775508,
+      "theta0_cable_deg": -3.1742154000974705
+     },
+     "V2/MPCLucy_doublets_azimut_3deg_minus3deg": {
+      "scale": 0.8844208352113582,
+      "Tc": 0.2100547757634293,
+      "Ts_ratio": 2.6603776116780695,
+      "sigma0": 413.38428967197984,
+      "K_cable": 1.0101618341169623,
+      "theta0_cable_deg": -3.2479057165143166
+     },
+     "V2/MPCLucy_doublets_azimut_5deg_minus5deg": {
+      "scale": 0.885518067685659,
+      "Tc": 0.209983243045081,
+      "Ts_ratio": 2.6616537269696456,
+      "sigma0": 413.80774830946257,
+      "K_cable": 1.0082246758216586,
+      "theta0_cable_deg": -3.275546362494628
+     },
+     "V2/MPCLucy_doublets_azimut_8deg_minus8deg": {
+      "scale": 0.8902859434668705,
+      "Tc": 0.20854835839306754,
+      "Ts_ratio": 2.660067866995363,
+      "sigma0": 435.04769720966266,
+      "K_cable": 1.0273029422912698,
+      "theta0_cable_deg": -3.329037779065895
+     }
+    },
+    "cv_median": 86.20618742162185,
+    "cv_mean_square": 0.18236660052101686,
+    "fit_median": 88.45505434273096
+   }
+  },
+  "elevation": {
+   "S0 no spring": {
+    "label": "Dahl + Stribeck, all fitted, no cable spring",
+    "free": [
+     "scale",
+     "Tc",
+     "Ts_ratio",
+     "sigma0",
+     "vs",
+     "b_{\\theta,h}"
+    ],
+    "fixed": {
+     "K_cable": 0.0
+    },
+    "values": {
+     "scale": 1.0170132717570026,
+     "Tc": 0.37303452079496563,
+     "Ts_ratio": 3.564066511718311,
+     "sigma0": 1445.111693741474,
+     "vs": 0.0014350060833472867,
+     "K_cable": 0.0,
+     "theta0_cable_deg": 0.0,
+     "b_{\\theta,h}": 1.0229722560848056
+    },
+    "se": {
+     "scale": 2.2710836207403133,
+     "Tc": 3.2690396370035577,
+     "Ts_ratio": 304.252439675572,
+     "sigma0": 5.452239635581703,
+     "vs": 144.61083888500602,
+     "b_{\\theta,h}": 5.141047087650279
+    },
+    "cost": 9.835619859669205,
+    "nfev": 9,
+    "fits": {
+     "V2/MPCLucy_doublets_elevation_01deg_minus01deg elevation 1.10 s": -16.502243660280524,
+     "V2/MPCLucy_doublets_elevation_01deg_minus01deg elevation 48.64 s": 75.4106291537401,
+     "V2/MPCLucy_doublets_elevation_01deg_minus01deg elevation 82.83 s": 65.79796036616308,
+     "V2/MPCLucy_doublets_elevation_05deg_minus05deg elevation 7.84 s": 55.52839892752041,
+     "V2/MPCLucy_doublets_elevation_05deg_minus05deg elevation 48.80 s": 44.70772524965152,
+     "V2/MPCLucy_doublets_elevation_05deg_minus05deg elevation 87.66 s": 68.50096503095166,
+     "V2/MPCLucy_doublets_elevation_1deg_minus1deg elevation 3.60 s": 57.517862740997906,
+     "V2/MPCLucy_doublets_elevation_1deg_minus1deg elevation 33.51 s": 49.391380489859806,
+     "V2/MPCLucy_doublets_elevation_1deg_minus1deg elevation 77.69 s": 84.60290114349512,
+     "V2/MPCLucy_doublets_elevation_3deg_minus3deg elevation 8.62 s": 90.84979553859752,
+     "V2/MPCLucy_doublets_elevation_3deg_minus3deg elevation 44.85 s": 13.962291960343176,
+     "V2/MPCLucy_doublets_elevation_3deg_minus3deg elevation 82.38 s": 62.9481197487295,
+     "V2/MPCLucy_doublets_elevation_5deg_minus5deg elevation 4.78 s": 92.32949526392159,
+     "V2/MPCLucy_doublets_elevation_5deg_minus5deg elevation 43.13 s": -10.536683948813753,
+     "V2/MPCLucy_doublets_elevation_5deg_minus5deg elevation 77.41 s": 42.06168279879752,
+     "V2/MPCLucy_doublets_elevation_8deg_minus8deg elevation 3.26 s": 85.38952162383863,
+     "V2/MPCLucy_doublets_elevation_8deg_minus8deg elevation 44.84 s": -36.9873990157392,
+     "V2/MPCLucy_doublets_elevation_8deg_minus8deg elevation 76.14 s": 12.573060435413408,
+     "V2/MPCLucy_doublets_elevation_10deg_minus10deg elevation 5.88 s": 81.28632863969439,
+     "V2/MPCLucy_doublets_elevation_10deg_minus10deg elevation 40.09 s": -46.712321190114125,
+     "V2/MPCLucy_doublets_elevation_10deg_minus10deg elevation 81.39 s": -9.798385001104638,
+     "V2/MPCLucy_doublets_elevation_15deg_minus15deg elevation 2.11 s": 62.15437902213813,
+     "V2/MPCLucy_doublets_elevation_15deg_minus15deg elevation 42.69 s": -54.34951944399322,
+     "V2/MPCLucy_doublets_elevation_15deg_minus15deg elevation 82.57 s": -40.87011201988153
+    },
+    "cv_fits": {
+     "V2/MPCLucy_doublets_elevation_01deg_minus01deg elevation 1.10 s": -878.6831113461783,
+     "V2/MPCLucy_doublets_elevation_01deg_minus01deg elevation 48.64 s": -434.34161298032035,
+     "V2/MPCLucy_doublets_elevation_01deg_minus01deg elevation 82.83 s": -814.628470491353,
+     "V2/MPCLucy_doublets_elevation_05deg_minus05deg elevation 7.84 s": 40.728237296003556,
+     "V2/MPCLucy_doublets_elevation_05deg_minus05deg elevation 48.80 s": 47.330790833051374,
+     "V2/MPCLucy_doublets_elevation_05deg_minus05deg elevation 87.66 s": 74.87693398183379,
+     "V2/MPCLucy_doublets_elevation_10deg_minus10deg elevation 5.88 s": 85.21484910043438,
+     "V2/MPCLucy_doublets_elevation_10deg_minus10deg elevation 40.09 s": -47.24701401923426,
+     "V2/MPCLucy_doublets_elevation_10deg_minus10deg elevation 81.39 s": -12.008381097125387,
+     "V2/MPCLucy_doublets_elevation_15deg_minus15deg elevation 2.11 s": 60.932216165587526,
+     "V2/MPCLucy_doublets_elevation_15deg_minus15deg elevation 42.69 s": -63.048454594933844,
+     "V2/MPCLucy_doublets_elevation_15deg_minus15deg elevation 82.57 s": -40.56630151173146,
+     "V2/MPCLucy_doublets_elevation_1deg_minus1deg elevation 3.60 s": 32.60039773312553,
+     "V2/MPCLucy_doublets_elevation_1deg_minus1deg elevation 33.51 s": 57.09075822785894,
+     "V2/MPCLucy_doublets_elevation_1deg_minus1deg elevation 77.69 s": 93.49742811890764,
+     "V2/MPCLucy_doublets_elevation_3deg_minus3deg elevation 8.62 s": 90.84979553859752,
+     "V2/MPCLucy_doublets_elevation_3deg_minus3deg elevation 44.85 s": 13.962291960343176,
+     "V2/MPCLucy_doublets_elevation_3deg_minus3deg elevation 82.38 s": 62.9481197487295,
+     "V2/MPCLucy_doublets_elevation_5deg_minus5deg elevation 4.78 s": 93.87259232441235,
+     "V2/MPCLucy_doublets_elevation_5deg_minus5deg elevation 43.13 s": -12.733709459277787,
+     "V2/MPCLucy_doublets_elevation_5deg_minus5deg elevation 77.41 s": 40.46224068732214,
+     "V2/MPCLucy_doublets_elevation_8deg_minus8deg elevation 3.26 s": 87.835272183504,
+     "V2/MPCLucy_doublets_elevation_8deg_minus8deg elevation 44.84 s": -39.26205712449165,
+     "V2/MPCLucy_doublets_elevation_8deg_minus8deg elevation 76.14 s": 10.64414005462897
+    },
+    "cv_values": {
+     "V2/MPCLucy_doublets_elevation_01deg_minus01deg": {
+      "scale": 0.602346977956709,
+      "Tc": 0.09568106143823836,
+      "Ts_ratio": 4.289951072289109,
+      "sigma0": 54.74296147339937,
+      "vs": 0.034485502870467546,
+      "b_{\\theta,h}": 0.6677780844548804
+     },
+     "V2/MPCLucy_doublets_elevation_05deg_minus05deg": {
+      "scale": 1.0373203849209496,
+      "Tc": 0.3674762821468008,
+      "Ts_ratio": 3.5648734478455526,
+      "sigma0": 1553.6894684690021,
+      "vs": 0.0014048187803183036,
+      "b_{\\theta,h}": 1.1058087578785525
+     },
+     "V2/MPCLucy_doublets_elevation_10deg_minus10deg": {
+      "scale": 1.0483411246360004,
+      "Tc": 0.38774497213192743,
+      "Ts_ratio": 3.57237146648409,
+      "sigma0": 1478.57078130738,
+      "vs": 0.0014552212541894993,
+      "b_{\\theta,h}": 1.1511111135612118
+     },
+     "V2/MPCLucy_doublets_elevation_15deg_minus15deg": {
+      "scale": 1.1846732342249358,
+      "Tc": 0.42566538443000124,
+      "Ts_ratio": 3.9892246010208874,
+      "sigma0": 2274.1776892853436,
+      "vs": 0.002443759781503602,
+      "b_{\\theta,h}": 1.369510273152671
+     },
+     "V2/MPCLucy_doublets_elevation_1deg_minus1deg": {
+      "scale": 1.1177165320716802,
+      "Tc": 0.3554298687566848,
+      "Ts_ratio": 4.303938585121984,
+      "sigma0": 1820.8723311940523,
+      "vs": 0.003719605095467207,
+      "b_{\\theta,h}": 1.548082021852513
+     },
+     "V2/MPCLucy_doublets_elevation_3deg_minus3deg": {
+      "scale": 1.0170132717570026,
+      "Tc": 0.37303452079496563,
+      "Ts_ratio": 3.564066511718311,
+      "sigma0": 1445.111693741474,
+      "vs": 0.0014350060833472867,
+      "b_{\\theta,h}": 1.0229722560848056
+     },
+     "V2/MPCLucy_doublets_elevation_5deg_minus5deg": {
+      "scale": 1.0412929285726544,
+      "Tc": 0.3884701833249187,
+      "Ts_ratio": 3.6024196750371216,
+      "sigma0": 1456.781363204743,
+      "vs": 0.0014622409440327039,
+      "b_{\\theta,h}": 1.1105709276236035
+     },
+     "V2/MPCLucy_doublets_elevation_8deg_minus8deg": {
+      "scale": 1.0173086539151643,
+      "Tc": 0.37870235969582555,
+      "Ts_ratio": 3.56708865091322,
+      "sigma0": 1432.1689228184546,
+      "vs": 0.0014369527238644547,
+      "b_{\\theta,h}": 1.0373026944214572
+     }
+    },
+    "cv_median": 36.531319210223835,
+    "cv_mean_square": 4.807742708632618,
+    "fit_median": 52.45988970869011
+   },
+   "S1 spring": {
+    "label": "Dahl + Stribeck + cable spring, all fitted",
+    "free": [
+     "scale",
+     "Tc",
+     "Ts_ratio",
+     "sigma0",
+     "vs",
+     "b_{\\theta,h}",
+     "K_cable",
+     "theta0_cable_deg"
+    ],
+    "fixed": {},
+    "values": {
+     "scale": 0.9954073750971284,
+     "Tc": 0.3741292146374338,
+     "Ts_ratio": 1.1520817237417953,
+     "sigma0": 1764.6870976776588,
+     "vs": 0.005244710220381002,
+     "K_cable": 1.5859348312087966,
+     "theta0_cable_deg": -1.8557530549664054,
+     "b_{\\theta,h}": 0.0002442059208762236
+    },
+    "se": {
+     "scale": 0.35869565316686103,
+     "Tc": 0.43544191093079015,
+     "Ts_ratio": 12.965021391741708,
+     "sigma0": 3.674430228349978,
+     "vs": 63.59706338652609,
+     "b_{\\theta,h}": 1503.4699371353313,
+     "K_cable": 0.7699146407179174,
+     "theta0_cable_deg": 3.6204537591921553
+    },
+    "cost": 1.2895716408915687,
+    "nfev": 8,
+    "fits": {
+     "V2/MPCLucy_doublets_elevation_01deg_minus01deg elevation 1.10 s": 76.47269638245623,
+     "V2/MPCLucy_doublets_elevation_01deg_minus01deg elevation 48.64 s": 74.83249450306741,
+     "V2/MPCLucy_doublets_elevation_01deg_minus01deg elevation 82.83 s": 26.426553123499385,
+     "V2/MPCLucy_doublets_elevation_05deg_minus05deg elevation 7.84 s": 89.478507292653,
+     "V2/MPCLucy_doublets_elevation_05deg_minus05deg elevation 48.80 s": 67.71842315075881,
+     "V2/MPCLucy_doublets_elevation_05deg_minus05deg elevation 87.66 s": 52.548307509706085,
+     "V2/MPCLucy_doublets_elevation_1deg_minus1deg elevation 3.60 s": 77.9313660988279,
+     "V2/MPCLucy_doublets_elevation_1deg_minus1deg elevation 33.51 s": 75.01762019189518,
+     "V2/MPCLucy_doublets_elevation_1deg_minus1deg elevation 77.69 s": 82.28370996839884,
+     "V2/MPCLucy_doublets_elevation_3deg_minus3deg elevation 8.62 s": 94.0417299789662,
+     "V2/MPCLucy_doublets_elevation_3deg_minus3deg elevation 44.85 s": 70.72243321995772,
+     "V2/MPCLucy_doublets_elevation_3deg_minus3deg elevation 82.38 s": 83.5776538514533,
+     "V2/MPCLucy_doublets_elevation_5deg_minus5deg elevation 4.78 s": 95.4651585383262,
+     "V2/MPCLucy_doublets_elevation_5deg_minus5deg elevation 43.13 s": 79.16392866299596,
+     "V2/MPCLucy_doublets_elevation_5deg_minus5deg elevation 77.41 s": 84.44819729413045,
+     "V2/MPCLucy_doublets_elevation_8deg_minus8deg elevation 3.26 s": 91.12903296878947,
+     "V2/MPCLucy_doublets_elevation_8deg_minus8deg elevation 44.84 s": 86.83750424059787,
+     "V2/MPCLucy_doublets_elevation_8deg_minus8deg elevation 76.14 s": 92.6396954382535,
+     "V2/MPCLucy_doublets_elevation_10deg_minus10deg elevation 5.88 s": 94.66448430298261,
+     "V2/MPCLucy_doublets_elevation_10deg_minus10deg elevation 40.09 s": 90.38051221767493,
+     "V2/MPCLucy_doublets_elevation_10deg_minus10deg elevation 81.39 s": 97.95099303125984,
+     "V2/MPCLucy_doublets_elevation_15deg_minus15deg elevation 2.11 s": 95.47556439164194,
+     "V2/MPCLucy_doublets_elevation_15deg_minus15deg elevation 42.69 s": 82.01061530374983,
+     "V2/MPCLucy_doublets_elevation_15deg_minus15deg elevation 82.57 s": 82.02411716216604
+    },
+    "cv_fits": {
+     "V2/MPCLucy_doublets_elevation_01deg_minus01deg elevation 1.10 s": -93.60096310304309,
+     "V2/MPCLucy_doublets_elevation_01deg_minus01deg elevation 48.64 s": -171.16339593409805,
+     "V2/MPCLucy_doublets_elevation_01deg_minus01deg elevation 82.83 s": -353.63481707602944,
+     "V2/MPCLucy_doublets_elevation_05deg_minus05deg elevation 7.84 s": 90.33016836805437,
+     "V2/MPCLucy_doublets_elevation_05deg_minus05deg elevation 48.80 s": 70.6739467568744,
+     "V2/MPCLucy_doublets_elevation_05deg_minus05deg elevation 87.66 s": 52.55620319836159,
+     "V2/MPCLucy_doublets_elevation_10deg_minus10deg elevation 5.88 s": 94.08212408262926,
+     "V2/MPCLucy_doublets_elevation_10deg_minus10deg elevation 40.09 s": 85.7323104388847,
+     "V2/MPCLucy_doublets_elevation_10deg_minus10deg elevation 81.39 s": 92.69391309896072,
+     "V2/MPCLucy_doublets_elevation_15deg_minus15deg elevation 2.11 s": 88.01983440829663,
+     "V2/MPCLucy_doublets_elevation_15deg_minus15deg elevation 42.69 s": 68.25047370478637,
+     "V2/MPCLucy_doublets_elevation_15deg_minus15deg elevation 82.57 s": 60.88454516906818,
+     "V2/MPCLucy_doublets_elevation_1deg_minus1deg elevation 3.60 s": 75.23033403886757,
+     "V2/MPCLucy_doublets_elevation_1deg_minus1deg elevation 33.51 s": 80.13040583974666,
+     "V2/MPCLucy_doublets_elevation_1deg_minus1deg elevation 77.69 s": 85.83651093682742,
+     "V2/MPCLucy_doublets_elevation_3deg_minus3deg elevation 8.62 s": 94.16062368357106,
+     "V2/MPCLucy_doublets_elevation_3deg_minus3deg elevation 44.85 s": 73.37082416716554,
+     "V2/MPCLucy_doublets_elevation_3deg_minus3deg elevation 82.38 s": 85.05508160691504,
+     "V2/MPCLucy_doublets_elevation_5deg_minus5deg elevation 4.78 s": 97.47548907605132,
+     "V2/MPCLucy_doublets_elevation_5deg_minus5deg elevation 43.13 s": 78.56998061794303,
+     "V2/MPCLucy_doublets_elevation_5deg_minus5deg elevation 77.41 s": 83.18540455643915,
+     "V2/MPCLucy_doublets_elevation_8deg_minus8deg elevation 3.26 s": 86.39862755486229,
+     "V2/MPCLucy_doublets_elevation_8deg_minus8deg elevation 44.84 s": 85.33160986934361,
+     "V2/MPCLucy_doublets_elevation_8deg_minus8deg elevation 76.14 s": 91.35928871540584
+    },
+    "cv_values": {
+     "V2/MPCLucy_doublets_elevation_01deg_minus01deg": {
+      "scale": 1.0093173305786252,
+      "Tc": 0.3814636909766832,
+      "Ts_ratio": 1.0528561569675925,
+      "sigma0": 571.62945519645,
+      "vs": 0.00010001049314294556,
+      "b_{\\theta,h}": 0.00010006522210163939,
+      "K_cable": 1.5031889867873065,
+      "theta0_cable_deg": -2.765695647692717
+     },
+     "V2/MPCLucy_doublets_elevation_05deg_minus05deg": {
+      "scale": 1.033654487572362,
+      "Tc": 0.3943242360012926,
+      "Ts_ratio": 1.1427619204927493,
+      "sigma0": 1821.0791237692465,
+      "vs": 0.005067544138710279,
+      "b_{\\theta,h}": 0.00024412299888790841,
+      "K_cable": 1.6335591567226806,
+      "theta0_cable_deg": -1.9768580533845108
+     },
+     "V2/MPCLucy_doublets_elevation_10deg_minus10deg": {
+      "scale": 1.1288392085906955,
+      "Tc": 0.44320638678994245,
+      "Ts_ratio": 1.1160488713179688,
+      "sigma0": 1907.9984076448934,
+      "vs": 0.00452824789886875,
+      "b_{\\theta,h}": 0.0002460803800343578,
+      "K_cable": 1.7211306064857692,
+      "theta0_cable_deg": -2.209675235895406
+     },
+     "V2/MPCLucy_doublets_elevation_15deg_minus15deg": {
+      "scale": 1.0213445831841028,
+      "Tc": 0.38997437311172445,
+      "Ts_ratio": 1.1182057800758483,
+      "sigma0": 1905.9433542213571,
+      "vs": 0.0045356987719503755,
+      "b_{\\theta,h}": 0.00024310241614947697,
+      "K_cable": 1.8814887353553653,
+      "theta0_cable_deg": -1.6132972393905574
+     },
+     "V2/MPCLucy_doublets_elevation_1deg_minus1deg": {
+      "scale": 1.0508412351857876,
+      "Tc": 0.4006416162932026,
+      "Ts_ratio": 1.1455951907367785,
+      "sigma0": 1832.8215036413237,
+      "vs": 0.005151617898157597,
+      "b_{\\theta,h}": 0.0002442927454469064,
+      "K_cable": 1.6453144777076651,
+      "theta0_cable_deg": -1.980650221673939
+     },
+     "V2/MPCLucy_doublets_elevation_3deg_minus3deg": {
+      "scale": 1.0386076764939742,
+      "Tc": 0.3973000285063793,
+      "Ts_ratio": 1.1232453789632408,
+      "sigma0": 1885.4211487085556,
+      "vs": 0.004662383503314709,
+      "b_{\\theta,h}": 0.00024365164303546952,
+      "K_cable": 1.6338713926410195,
+      "theta0_cable_deg": -2.0028398606279425
+     },
+     "V2/MPCLucy_doublets_elevation_5deg_minus5deg": {
+      "scale": 1.018013844726623,
+      "Tc": 0.3900096609804898,
+      "Ts_ratio": 1.1152309210480886,
+      "sigma0": 1863.9650634501384,
+      "vs": 0.004476298345599471,
+      "b_{\\theta,h}": 0.00024332092292027118,
+      "K_cable": 1.617372344596838,
+      "theta0_cable_deg": -1.9420363840701247
+     },
+     "V2/MPCLucy_doublets_elevation_8deg_minus8deg": {
+      "scale": 1.121332054927501,
+      "Tc": 0.43859463530024606,
+      "Ts_ratio": 1.120386733013165,
+      "sigma0": 1897.0650628571696,
+      "vs": 0.004618995958027343,
+      "b_{\\theta,h}": 0.000244221372206306,
+      "K_cable": 1.7020451370337288,
+      "theta0_cable_deg": -2.1882110964806007
+     }
+    },
+    "cv_median": 84.1202430816771,
+    "cv_mean_square": 1.3598838372637998,
+    "fit_median": 82.93068190992608
+   },
+   "S1 sigma0 fixed x0.333": {
+    "label": "Dahl + Stribeck + cable spring, all fitted; sigma0 fixed at 0.333 x nominal (1942)",
+    "free": [
+     "scale",
+     "Tc",
+     "Ts_ratio",
+     "vs",
+     "b_{\\theta,h}",
+     "K_cable",
+     "theta0_cable_deg"
+    ],
+    "fixed": {
+     "sigma0": 1941.8804993297908
+    },
+    "values": {
+     "scale": 1.0605390418248624,
+     "Tc": 0.4034795604654761,
+     "Ts_ratio": 1.1437972240504015,
+     "sigma0": 1941.8804993297908,
+     "vs": 0.005108217221131527,
+     "K_cable": 1.6608295746259099,
+     "theta0_cable_deg": -2.10546955690381,
+     "b_{\\theta,h}": 0.00024460226107870115
+    },
+    "se": {
+     "scale": 0.18511524950204583,
+     "Tc": 0.1322720091794998,
+     "Ts_ratio": 11.99248622796266,
+     "vs": 52.36408852459011,
+     "b_{\\theta,h}": 1357.3131900063222,
+     "K_cable": 0.7270988798224269,
+     "theta0_cable_deg": 3.8444601769434947
+    },
+    "cost": 1.2050235906552305,
+    "nfev": 8,
+    "fits": {
+     "V2/MPCLucy_doublets_elevation_01deg_minus01deg elevation 1.10 s": 76.12054784636473,
+     "V2/MPCLucy_doublets_elevation_01deg_minus01deg elevation 48.64 s": 71.81675479548757,
+     "V2/MPCLucy_doublets_elevation_01deg_minus01deg elevation 82.83 s": 23.567602279779955,
+     "V2/MPCLucy_doublets_elevation_05deg_minus05deg elevation 7.84 s": 88.65726977930206,
+     "V2/MPCLucy_doublets_elevation_05deg_minus05deg elevation 48.80 s": 74.08565421713863,
+     "V2/MPCLucy_doublets_elevation_05deg_minus05deg elevation 87.66 s": 53.165303210817385,
+     "V2/MPCLucy_doublets_elevation_1deg_minus1deg elevation 3.60 s": 76.55586012707016,
+     "V2/MPCLucy_doublets_elevation_1deg_minus1deg elevation 33.51 s": 81.51143787982963,
+     "V2/MPCLucy_doublets_elevation_1deg_minus1deg elevation 77.69 s": 85.03633442694598,
+     "V2/MPCLucy_doublets_elevation_3deg_minus3deg elevation 8.62 s": 91.74511953573501,
+     "V2/MPCLucy_doublets_elevation_3deg_minus3deg elevation 44.85 s": 76.96864419409792,
+     "V2/MPCLucy_doublets_elevation_3deg_minus3deg elevation 82.38 s": 86.98837261778057,
+     "V2/MPCLucy_doublets_elevation_5deg_minus5deg elevation 4.78 s": 92.21928279660328,
+     "V2/MPCLucy_doublets_elevation_5deg_minus5deg elevation 43.13 s": 84.76262937907066,
+     "V2/MPCLucy_doublets_elevation_5deg_minus5deg elevation 77.41 s": 86.68896262794449,
+     "V2/MPCLucy_doublets_elevation_8deg_minus8deg elevation 3.26 s": 88.95356841980791,
+     "V2/MPCLucy_doublets_elevation_8deg_minus8deg elevation 44.84 s": 89.5206792587873,
+     "V2/MPCLucy_doublets_elevation_8deg_minus8deg elevation 76.14 s": 92.76963884916837,
+     "V2/MPCLucy_doublets_elevation_10deg_minus10deg elevation 5.88 s": 94.4949115586054,
+     "V2/MPCLucy_doublets_elevation_10deg_minus10deg elevation 40.09 s": 90.72947667561047,
+     "V2/MPCLucy_doublets_elevation_10deg_minus10deg elevation 81.39 s": 95.94086665593487,
+     "V2/MPCLucy_doublets_elevation_15deg_minus15deg elevation 2.11 s": 96.84925984083516,
+     "V2/MPCLucy_doublets_elevation_15deg_minus15deg elevation 42.69 s": 79.60124203658216,
+     "V2/MPCLucy_doublets_elevation_15deg_minus15deg elevation 82.57 s": 84.87087840581052
+    },
+    "cv_fits": {
+     "V2/MPCLucy_doublets_elevation_01deg_minus01deg elevation 1.10 s": 6.614277717867556,
+     "V2/MPCLucy_doublets_elevation_01deg_minus01deg elevation 48.64 s": 15.217187556738077,
+     "V2/MPCLucy_doublets_elevation_01deg_minus01deg elevation 82.83 s": 4.991725563193095,
+     "V2/MPCLucy_doublets_elevation_05deg_minus05deg elevation 7.84 s": 89.78505533068683,
+     "V2/MPCLucy_doublets_elevation_05deg_minus05deg elevation 48.80 s": 74.41068814734821,
+     "V2/MPCLucy_doublets_elevation_05deg_minus05deg elevation 87.66 s": 52.977079990036046,
+     "V2/MPCLucy_doublets_elevation_10deg_minus10deg elevation 5.88 s": 94.6686845055622,
+     "V2/MPCLucy_doublets_elevation_10deg_minus10deg elevation 40.09 s": 88.44003481993164,
+     "V2/MPCLucy_doublets_elevation_10deg_minus10deg elevation 81.39 s": 93.65485391890928,
+     "V2/MPCLucy_doublets_elevation_15deg_minus15deg elevation 2.11 s": 87.848727440507,
+     "V2/MPCLucy_doublets_elevation_15deg_minus15deg elevation 42.69 s": 65.95697791851359,
+     "V2/MPCLucy_doublets_elevation_15deg_minus15deg elevation 82.57 s": 68.44087004868251,
+     "V2/MPCLucy_doublets_elevation_1deg_minus1deg elevation 3.60 s": 74.51477084735404,
+     "V2/MPCLucy_doublets_elevation_1deg_minus1deg elevation 33.51 s": 83.17825633202202,
+     "V2/MPCLucy_doublets_elevation_1deg_minus1deg elevation 77.69 s": 86.76912213417489,
+     "V2/MPCLucy_doublets_elevation_3deg_minus3deg elevation 8.62 s": 91.04757984846263,
+     "V2/MPCLucy_doublets_elevation_3deg_minus3deg elevation 44.85 s": 77.3186780054389,
+     "V2/MPCLucy_doublets_elevation_3deg_minus3deg elevation 82.38 s": 87.768556074423,
+     "V2/MPCLucy_doublets_elevation_5deg_minus5deg elevation 4.78 s": 91.30725968788106,
+     "V2/MPCLucy_doublets_elevation_5deg_minus5deg elevation 43.13 s": 82.77779535510828,
+     "V2/MPCLucy_doublets_elevation_5deg_minus5deg elevation 77.41 s": 86.03977644650791,
+     "V2/MPCLucy_doublets_elevation_8deg_minus8deg elevation 3.26 s": 87.91874731949537,
+     "V2/MPCLucy_doublets_elevation_8deg_minus8deg elevation 44.84 s": 86.65263374128136,
+     "V2/MPCLucy_doublets_elevation_8deg_minus8deg elevation 76.14 s": 90.81202703607774
+    },
+    "cv_values": {
+     "V2/MPCLucy_doublets_elevation_01deg_minus01deg": {
+      "scale": 1.1293012344553697,
+      "Tc": 0.42302536995935286,
+      "Ts_ratio": 8.469225225064495,
+      "vs": 0.0023972446665251395,
+      "b_{\\theta,h}": 0.04714261782755757,
+      "K_cable": 1.6904547659099505,
+      "theta0_cable_deg": -2.826346523955722
+     },
+     "V2/MPCLucy_doublets_elevation_05deg_minus05deg": {
+      "scale": 1.0754635766126284,
+      "Tc": 0.4141306965597501,
+      "Ts_ratio": 1.1287859375249294,
+      "vs": 0.004844479160199903,
+      "b_{\\theta,h}": 0.000244530053816668,
+      "K_cable": 1.6780028105706626,
+      "theta0_cable_deg": -2.13630413687189
+     },
+     "V2/MPCLucy_doublets_elevation_10deg_minus10deg": {
+      "scale": 1.088816076682752,
+      "Tc": 0.4208749053708364,
+      "Ts_ratio": 1.129049871029634,
+      "vs": 0.004860745332787614,
+      "b_{\\theta,h}": 0.000244511647968077,
+      "K_cable": 1.6720448017576746,
+      "theta0_cable_deg": -2.175997294107689
+     },
+     "V2/MPCLucy_doublets_elevation_15deg_minus15deg": {
+      "scale": 1.112529874704087,
+      "Tc": 0.4349547277971892,
+      "Ts_ratio": 1.1050054433688252,
+      "vs": 0.004004528499085819,
+      "b_{\\theta,h}": 0.0002460283845079804,
+      "K_cable": 1.9589861023560282,
+      "theta0_cable_deg": -1.9004252778978454
+     },
+     "V2/MPCLucy_doublets_elevation_1deg_minus1deg": {
+      "scale": 1.0817588844181751,
+      "Tc": 0.4141608262048136,
+      "Ts_ratio": 1.1304303799559599,
+      "vs": 0.004890349850548091,
+      "b_{\\theta,h}": 0.0002445123986398396,
+      "K_cable": 1.6755220370042156,
+      "theta0_cable_deg": -2.1213990848888633
+     },
+     "V2/MPCLucy_doublets_elevation_3deg_minus3deg": {
+      "scale": 1.0784290495583013,
+      "Tc": 0.41422384367908327,
+      "Ts_ratio": 1.1297334112294095,
+      "vs": 0.004852020450860786,
+      "b_{\\theta,h}": 0.00024452085992166217,
+      "K_cable": 1.6679714481591486,
+      "theta0_cable_deg": -2.1360339163764053
+     },
+     "V2/MPCLucy_doublets_elevation_5deg_minus5deg": {
+      "scale": 1.0849382765183322,
+      "Tc": 0.42085315840141657,
+      "Ts_ratio": 1.1290813932169659,
+      "vs": 0.004848715976625476,
+      "b_{\\theta,h}": 0.00024451781013447565,
+      "K_cable": 1.6649763364660757,
+      "theta0_cable_deg": -2.1542220602728666
+     },
+     "V2/MPCLucy_doublets_elevation_8deg_minus8deg": {
+      "scale": 1.0886766494338633,
+      "Tc": 0.42092909645983473,
+      "Ts_ratio": 1.12925349243755,
+      "vs": 0.0048625901842077575,
+      "b_{\\theta,h}": 0.0002444997441196748,
+      "K_cable": 1.656863915048259,
+      "theta0_cable_deg": -2.1750519097215433
+     }
+    },
+    "cv_median": 86.34620509389464,
+    "cv_mean_square": 0.13849201575554598,
+    "fit_median": 85.86264852744523
+   },
+   "S1 sigma0 fixed x1": {
+    "label": "Dahl + Stribeck + cable spring, all fitted; sigma0 fixed at 1 x nominal (5826)",
+    "free": [
+     "scale",
+     "Tc",
+     "Ts_ratio",
+     "vs",
+     "b_{\\theta,h}",
+     "K_cable",
+     "theta0_cable_deg"
+    ],
+    "fixed": {
+     "sigma0": 5825.642080553581
+    },
+    "values": {
+     "scale": 1.002991176517503,
+     "Tc": 0.36786030434144723,
+     "Ts_ratio": 1.1581761986517252,
+     "sigma0": 5825.642080553581,
+     "vs": 0.00522846326061986,
+     "K_cable": 1.5921166337425259,
+     "theta0_cable_deg": -1.9164540891057913,
+     "b_{\\theta,h}": 0.00024420918311097637
+    },
+    "se": {
+     "scale": 0.47869351207210836,
+     "Tc": 0.5162301331571935,
+     "Ts_ratio": 4.1944012817801966,
+     "vs": 26.127726401897228,
+     "b_{\\theta,h}": 2893.962438159627,
+     "K_cable": 1.1756048280887725,
+     "theta0_cable_deg": 4.326885392840913
+    },
+    "cost": 2.681408292001365,
+    "nfev": 10,
+    "fits": {
+     "V2/MPCLucy_doublets_elevation_01deg_minus01deg elevation 1.10 s": 17.350924407622557,
+     "V2/MPCLucy_doublets_elevation_01deg_minus01deg elevation 48.64 s": 43.33665744666436,
+     "V2/MPCLucy_doublets_elevation_01deg_minus01deg elevation 82.83 s": -14.428359117919998,
+     "V2/MPCLucy_doublets_elevation_05deg_minus05deg elevation 7.84 s": 93.03613002674857,
+     "V2/MPCLucy_doublets_elevation_05deg_minus05deg elevation 48.80 s": 59.20765369214429,
+     "V2/MPCLucy_doublets_elevation_05deg_minus05deg elevation 87.66 s": 39.35990589949514,
+     "V2/MPCLucy_doublets_elevation_1deg_minus1deg elevation 3.60 s": 91.56838701519791,
+     "V2/MPCLucy_doublets_elevation_1deg_minus1deg elevation 33.51 s": 67.51888717617638,
+     "V2/MPCLucy_doublets_elevation_1deg_minus1deg elevation 77.69 s": 68.10882364451798,
+     "V2/MPCLucy_doublets_elevation_3deg_minus3deg elevation 8.62 s": 89.92134477822282,
+     "V2/MPCLucy_doublets_elevation_3deg_minus3deg elevation 44.85 s": 67.74054796509685,
+     "V2/MPCLucy_doublets_elevation_3deg_minus3deg elevation 82.38 s": 77.02387322914062,
+     "V2/MPCLucy_doublets_elevation_5deg_minus5deg elevation 4.78 s": 92.06624755833877,
+     "V2/MPCLucy_doublets_elevation_5deg_minus5deg elevation 43.13 s": 79.26593745722201,
+     "V2/MPCLucy_doublets_elevation_5deg_minus5deg elevation 77.41 s": 79.99679588771184,
+     "V2/MPCLucy_doublets_elevation_8deg_minus8deg elevation 3.26 s": 86.9850688669078,
+     "V2/MPCLucy_doublets_elevation_8deg_minus8deg elevation 44.84 s": 90.04307375976505,
+     "V2/MPCLucy_doublets_elevation_8deg_minus8deg elevation 76.14 s": 90.5767407247719,
+     "V2/MPCLucy_doublets_elevation_10deg_minus10deg elevation 5.88 s": 90.69989752749798,
+     "V2/MPCLucy_doublets_elevation_10deg_minus10deg elevation 40.09 s": 94.15928044828962,
+     "V2/MPCLucy_doublets_elevation_10deg_minus10deg elevation 81.39 s": 97.3335389330666,
+     "V2/MPCLucy_doublets_elevation_15deg_minus15deg elevation 2.11 s": 91.42246765384556,
+     "V2/MPCLucy_doublets_elevation_15deg_minus15deg elevation 42.69 s": 82.56176563801428,
+     "V2/MPCLucy_doublets_elevation_15deg_minus15deg elevation 82.57 s": 80.98088663928871
+    },
+    "cv_fits": {
+     "V2/MPCLucy_doublets_elevation_01deg_minus01deg elevation 1.10 s": 30.45555296232232,
+     "V2/MPCLucy_doublets_elevation_01deg_minus01deg elevation 48.64 s": 56.49392295529232,
+     "V2/MPCLucy_doublets_elevation_01deg_minus01deg elevation 82.83 s": -16.260510294667483,
+     "V2/MPCLucy_doublets_elevation_05deg_minus05deg elevation 7.84 s": 95.78211297382325,
+     "V2/MPCLucy_doublets_elevation_05deg_minus05deg elevation 48.80 s": 62.00647547279537,
+     "V2/MPCLucy_doublets_elevation_05deg_minus05deg elevation 87.66 s": 38.861148780335,
+     "V2/MPCLucy_doublets_elevation_10deg_minus10deg elevation 5.88 s": 90.69989752749798,
+     "V2/MPCLucy_doublets_elevation_10deg_minus10deg elevation 40.09 s": 94.15928044828962,
+     "V2/MPCLucy_doublets_elevation_10deg_minus10deg elevation 81.39 s": 97.3335389330666,
+     "V2/MPCLucy_doublets_elevation_15deg_minus15deg elevation 2.11 s": 97.88070919131718,
+     "V2/MPCLucy_doublets_elevation_15deg_minus15deg elevation 42.69 s": 69.8547281163389,
+     "V2/MPCLucy_doublets_elevation_15deg_minus15deg elevation 82.57 s": 59.30471654020001,
+     "V2/MPCLucy_doublets_elevation_1deg_minus1deg elevation 3.60 s": 91.56838701519791,
+     "V2/MPCLucy_doublets_elevation_1deg_minus1deg elevation 33.51 s": 67.51888717617638,
+     "V2/MPCLucy_doublets_elevation_1deg_minus1deg elevation 77.69 s": 68.10882364451798,
+     "V2/MPCLucy_doublets_elevation_3deg_minus3deg elevation 8.62 s": 89.92134477822282,
+     "V2/MPCLucy_doublets_elevation_3deg_minus3deg elevation 44.85 s": 67.74054796509685,
+     "V2/MPCLucy_doublets_elevation_3deg_minus3deg elevation 82.38 s": 77.02387322914062,
+     "V2/MPCLucy_doublets_elevation_5deg_minus5deg elevation 4.78 s": 92.06624755833877,
+     "V2/MPCLucy_doublets_elevation_5deg_minus5deg elevation 43.13 s": 79.26593745722201,
+     "V2/MPCLucy_doublets_elevation_5deg_minus5deg elevation 77.41 s": 79.99679588771184,
+     "V2/MPCLucy_doublets_elevation_8deg_minus8deg elevation 3.26 s": 86.9850688669078,
+     "V2/MPCLucy_doublets_elevation_8deg_minus8deg elevation 44.84 s": 90.04307375976505,
+     "V2/MPCLucy_doublets_elevation_8deg_minus8deg elevation 76.14 s": 90.5767407247719
+    },
+    "cv_values": {
+     "V2/MPCLucy_doublets_elevation_01deg_minus01deg": {
+      "scale": 1.183187343496027,
+      "Tc": 0.4257018675235653,
+      "Ts_ratio": 2.5258039759923063,
+      "vs": 0.0013027801952137776,
+      "b_{\\theta,h}": 0.21225212270852029,
+      "K_cable": 1.8151611700883528,
+      "theta0_cable_deg": -2.8292177650825456
+     },
+     "V2/MPCLucy_doublets_elevation_05deg_minus05deg": {
+      "scale": 1.036774708799828,
+      "Tc": 0.38615873349995705,
+      "Ts_ratio": 1.151554133490325,
+      "vs": 0.005085544287666008,
+      "b_{\\theta,h}": 0.00024421327816720505,
+      "K_cable": 1.6496380031679367,
+      "theta0_cable_deg": -2.0378579856418417
+     },
+     "V2/MPCLucy_doublets_elevation_10deg_minus10deg": {
+      "scale": 1.002991176517503,
+      "Tc": 0.36786030434144723,
+      "Ts_ratio": 1.1581761986517252,
+      "vs": 0.00522846326061986,
+      "b_{\\theta,h}": 0.00024420918311097637,
+      "K_cable": 1.5921166337425259,
+      "theta0_cable_deg": -1.9164540891057913
+     },
+     "V2/MPCLucy_doublets_elevation_15deg_minus15deg": {
+      "scale": 1.0532392614227444,
+      "Tc": 0.3911911923070474,
+      "Ts_ratio": 1.1364654338099034,
+      "vs": 0.0047414765482640025,
+      "b_{\\theta,h}": 0.0002443317895609847,
+      "K_cable": 1.8691070237936005,
+      "theta0_cable_deg": -1.5839332298756676
+     },
+     "V2/MPCLucy_doublets_elevation_1deg_minus1deg": {
+      "scale": 1.002991176517503,
+      "Tc": 0.36786030434144723,
+      "Ts_ratio": 1.1581761986517252,
+      "vs": 0.00522846326061986,
+      "b_{\\theta,h}": 0.00024420918311097637,
+      "K_cable": 1.5921166337425259,
+      "theta0_cable_deg": -1.9164540891057913
+     },
+     "V2/MPCLucy_doublets_elevation_3deg_minus3deg": {
+      "scale": 1.002991176517503,
+      "Tc": 0.36786030434144723,
+      "Ts_ratio": 1.1581761986517252,
+      "vs": 0.00522846326061986,
+      "b_{\\theta,h}": 0.00024420918311097637,
+      "K_cable": 1.5921166337425259,
+      "theta0_cable_deg": -1.9164540891057913
+     },
+     "V2/MPCLucy_doublets_elevation_5deg_minus5deg": {
+      "scale": 1.002991176517503,
+      "Tc": 0.36786030434144723,
+      "Ts_ratio": 1.1581761986517252,
+      "vs": 0.00522846326061986,
+      "b_{\\theta,h}": 0.00024420918311097637,
+      "K_cable": 1.5921166337425259,
+      "theta0_cable_deg": -1.9164540891057913
+     },
+     "V2/MPCLucy_doublets_elevation_8deg_minus8deg": {
+      "scale": 1.002991176517503,
+      "Tc": 0.36786030434144723,
+      "Ts_ratio": 1.1581761986517252,
+      "vs": 0.00522846326061986,
+      "b_{\\theta,h}": 0.00024420918311097637,
+      "K_cable": 1.5921166337425259,
+      "theta0_cable_deg": -1.9164540891057913
+     }
+    },
+    "cv_median": 79.63136667246692,
+    "cv_mean_square": 0.13835683325023185,
+    "fit_median": 81.77132613865149
+   },
+   "S1 sigma0 fixed x3": {
+    "label": "Dahl + Stribeck + cable spring, all fitted; sigma0 fixed at 3 x nominal (1.748e+04)",
+    "free": [
+     "scale",
+     "Tc",
+     "Ts_ratio",
+     "vs",
+     "b_{\\theta,h}",
+     "K_cable",
+     "theta0_cable_deg"
+    ],
+    "fixed": {
+     "sigma0": 17476.92624166074
+    },
+    "values": {
+     "scale": 1.0289357219295505,
+     "Tc": 0.3754839334824133,
+     "Ts_ratio": 1.1695575093226387,
+     "sigma0": 17476.92624166074,
+     "vs": 0.005196032400888143,
+     "K_cable": 1.6152377629360202,
+     "theta0_cable_deg": -2.0664269532818564,
+     "b_{\\theta,h}": 0.00024420400578145044
+    },
+    "se": {
+     "scale": 0.5819795687625136,
+     "Tc": 0.2974301175282499,
+     "Ts_ratio": 3.337449909468611,
+     "vs": 23.833915961241384,
+     "b_{\\theta,h}": 4021.4603609359738,
+     "K_cable": 1.242484167175265,
+     "theta0_cable_deg": 7.988761741369116
+    },
+    "cost": 3.6553832944782707,
+    "nfev": 9,
+    "fits": {
+     "V2/MPCLucy_doublets_elevation_01deg_minus01deg elevation 1.10 s": -14.660376600280278,
+     "V2/MPCLucy_doublets_elevation_01deg_minus01deg elevation 48.64 s": 3.545246261319701,
+     "V2/MPCLucy_doublets_elevation_01deg_minus01deg elevation 82.83 s": -26.20054743024671,
+     "V2/MPCLucy_doublets_elevation_05deg_minus05deg elevation 7.84 s": 98.9674835166273,
+     "V2/MPCLucy_doublets_elevation_05deg_minus05deg elevation 48.80 s": 56.18984785134964,
+     "V2/MPCLucy_doublets_elevation_05deg_minus05deg elevation 87.66 s": 28.5246550922845,
+     "V2/MPCLucy_doublets_elevation_1deg_minus1deg elevation 3.60 s": 99.0847501348326,
+     "V2/MPCLucy_doublets_elevation_1deg_minus1deg elevation 33.51 s": 66.42082165670459,
+     "V2/MPCLucy_doublets_elevation_1deg_minus1deg elevation 77.69 s": 62.01258361089119,
+     "V2/MPCLucy_doublets_elevation_3deg_minus3deg elevation 8.62 s": 88.78136359334512,
+     "V2/MPCLucy_doublets_elevation_3deg_minus3deg elevation 44.85 s": 68.8281999984482,
+     "V2/MPCLucy_doublets_elevation_3deg_minus3deg elevation 82.38 s": 74.96979005353299,
+     "V2/MPCLucy_doublets_elevation_5deg_minus5deg elevation 4.78 s": 91.30540726127852,
+     "V2/MPCLucy_doublets_elevation_5deg_minus5deg elevation 43.13 s": 81.72213430661712,
+     "V2/MPCLucy_doublets_elevation_5deg_minus5deg elevation 77.41 s": 78.36214960738468,
+     "V2/MPCLucy_doublets_elevation_8deg_minus8deg elevation 3.26 s": 85.34255677953213,
+     "V2/MPCLucy_doublets_elevation_8deg_minus8deg elevation 44.84 s": 92.76958302037612,
+     "V2/MPCLucy_doublets_elevation_8deg_minus8deg elevation 76.14 s": 89.03856865605842,
+     "V2/MPCLucy_doublets_elevation_10deg_minus10deg elevation 5.88 s": 89.44529842061968,
+     "V2/MPCLucy_doublets_elevation_10deg_minus10deg elevation 40.09 s": 95.35347448913647,
+     "V2/MPCLucy_doublets_elevation_10deg_minus10deg elevation 81.39 s": 95.62098267493212,
+     "V2/MPCLucy_doublets_elevation_15deg_minus15deg elevation 2.11 s": 90.39564298436567,
+     "V2/MPCLucy_doublets_elevation_15deg_minus15deg elevation 42.69 s": 81.86617051004885,
+     "V2/MPCLucy_doublets_elevation_15deg_minus15deg elevation 82.57 s": 83.03707667700616
+    },
+    "cv_fits": {
+     "V2/MPCLucy_doublets_elevation_01deg_minus01deg elevation 1.10 s": -24.380495384947643,
+     "V2/MPCLucy_doublets_elevation_01deg_minus01deg elevation 48.64 s": 28.957078481542542,
+     "V2/MPCLucy_doublets_elevation_01deg_minus01deg elevation 82.83 s": -25.09612846499183,
+     "V2/MPCLucy_doublets_elevation_05deg_minus05deg elevation 7.84 s": 98.9674835166273,
+     "V2/MPCLucy_doublets_elevation_05deg_minus05deg elevation 48.80 s": 56.18984785134964,
+     "V2/MPCLucy_doublets_elevation_05deg_minus05deg elevation 87.66 s": 28.5246550922845,
+     "V2/MPCLucy_doublets_elevation_10deg_minus10deg elevation 5.88 s": 89.44529842061968,
+     "V2/MPCLucy_doublets_elevation_10deg_minus10deg elevation 40.09 s": 95.35347448913647,
+     "V2/MPCLucy_doublets_elevation_10deg_minus10deg elevation 81.39 s": 95.62098267493212,
+     "V2/MPCLucy_doublets_elevation_15deg_minus15deg elevation 2.11 s": 90.39564298436567,
+     "V2/MPCLucy_doublets_elevation_15deg_minus15deg elevation 42.69 s": 81.86617051004885,
+     "V2/MPCLucy_doublets_elevation_15deg_minus15deg elevation 82.57 s": 83.03707667700616,
+     "V2/MPCLucy_doublets_elevation_1deg_minus1deg elevation 3.60 s": 99.0847501348326,
+     "V2/MPCLucy_doublets_elevation_1deg_minus1deg elevation 33.51 s": 66.42082165670459,
+     "V2/MPCLucy_doublets_elevation_1deg_minus1deg elevation 77.69 s": 62.01258361089119,
+     "V2/MPCLucy_doublets_elevation_3deg_minus3deg elevation 8.62 s": 88.78136359334512,
+     "V2/MPCLucy_doublets_elevation_3deg_minus3deg elevation 44.85 s": 68.8281999984482,
+     "V2/MPCLucy_doublets_elevation_3deg_minus3deg elevation 82.38 s": 74.96979005353299,
+     "V2/MPCLucy_doublets_elevation_5deg_minus5deg elevation 4.78 s": 91.30540726127852,
+     "V2/MPCLucy_doublets_elevation_5deg_minus5deg elevation 43.13 s": 81.72213430661712,
+     "V2/MPCLucy_doublets_elevation_5deg_minus5deg elevation 77.41 s": 78.36214960738468,
+     "V2/MPCLucy_doublets_elevation_8deg_minus8deg elevation 3.26 s": 85.34255677953213,
+     "V2/MPCLucy_doublets_elevation_8deg_minus8deg elevation 44.84 s": 92.76958302037612,
+     "V2/MPCLucy_doublets_elevation_8deg_minus8deg elevation 76.14 s": 89.03856865605842
+    },
+    "cv_values": {
+     "V2/MPCLucy_doublets_elevation_01deg_minus01deg": {
+      "scale": 1.1775483933536108,
+      "Tc": 0.384025926190205,
+      "Ts_ratio": 3.408997654694902,
+      "vs": 0.0010528018301439277,
+      "b_{\\theta,h}": 0.43378282274209917,
+      "K_cable": 1.8506945758934141,
+      "theta0_cable_deg": -2.8822411231929674
+     },
+     "V2/MPCLucy_doublets_elevation_05deg_minus05deg": {
+      "scale": 1.0289357219295505,
+      "Tc": 0.3754839334824133,
+      "Ts_ratio": 1.1695575093226387,
+      "vs": 0.005196032400888143,
+      "b_{\\theta,h}": 0.00024420400578145044,
+      "K_cable": 1.6152377629360202,
+      "theta0_cable_deg": -2.0664269532818564
+     },
+     "V2/MPCLucy_doublets_elevation_10deg_minus10deg": {
+      "scale": 1.0289357219295505,
+      "Tc": 0.3754839334824133,
+      "Ts_ratio": 1.1695575093226387,
+      "vs": 0.005196032400888143,
+      "b_{\\theta,h}": 0.00024420400578145044,
+      "K_cable": 1.6152377629360202,
+      "theta0_cable_deg": -2.0664269532818564
+     },
+     "V2/MPCLucy_doublets_elevation_15deg_minus15deg": {
+      "scale": 1.0289357219295505,
+      "Tc": 0.3754839334824133,
+      "Ts_ratio": 1.1695575093226387,
+      "vs": 0.005196032400888143,
+      "b_{\\theta,h}": 0.00024420400578145044,
+      "K_cable": 1.6152377629360202,
+      "theta0_cable_deg": -2.0664269532818564
+     },
+     "V2/MPCLucy_doublets_elevation_1deg_minus1deg": {
+      "scale": 1.0289357219295505,
+      "Tc": 0.3754839334824133,
+      "Ts_ratio": 1.1695575093226387,
+      "vs": 0.005196032400888143,
+      "b_{\\theta,h}": 0.00024420400578145044,
+      "K_cable": 1.6152377629360202,
+      "theta0_cable_deg": -2.0664269532818564
+     },
+     "V2/MPCLucy_doublets_elevation_3deg_minus3deg": {
+      "scale": 1.0289357219295505,
+      "Tc": 0.3754839334824133,
+      "Ts_ratio": 1.1695575093226387,
+      "vs": 0.005196032400888143,
+      "b_{\\theta,h}": 0.00024420400578145044,
+      "K_cable": 1.6152377629360202,
+      "theta0_cable_deg": -2.0664269532818564
+     },
+     "V2/MPCLucy_doublets_elevation_5deg_minus5deg": {
+      "scale": 1.0289357219295505,
+      "Tc": 0.3754839334824133,
+      "Ts_ratio": 1.1695575093226387,
+      "vs": 0.005196032400888143,
+      "b_{\\theta,h}": 0.00024420400578145044,
+      "K_cable": 1.6152377629360202,
+      "theta0_cable_deg": -2.0664269532818564
+     },
+     "V2/MPCLucy_doublets_elevation_8deg_minus8deg": {
+      "scale": 1.0289357219295505,
+      "Tc": 0.3754839334824133,
+      "Ts_ratio": 1.1695575093226387,
+      "vs": 0.005196032400888143,
+      "b_{\\theta,h}": 0.00024420400578145044,
+      "K_cable": 1.6152377629360202,
+      "theta0_cable_deg": -2.0664269532818564
+     }
+    },
+    "cv_median": 82.4516235935275,
+    "cv_mean_square": 0.20673913557091192,
+    "fit_median": 82.4516235935275
+   },
+   "S1 vs fixed x0.333": {
+    "label": "Dahl + Stribeck + cable spring, all fitted; vs fixed at 0.333 x nominal (0.001667)",
+    "free": [
+     "scale",
+     "Tc",
+     "Ts_ratio",
+     "sigma0",
+     "b_{\\theta,h}",
+     "K_cable",
+     "theta0_cable_deg"
+    ],
+    "fixed": {
+     "vs": 0.0016666665
+    },
+    "values": {
+     "scale": 1.0216587292958952,
+     "Tc": 0.388504773979754,
+     "Ts_ratio": 1.1518536551926295,
+     "sigma0": 1784.8149667592313,
+     "vs": 0.0016666665,
+     "K_cable": 1.6141947707654056,
+     "theta0_cable_deg": -2.002474007294404,
+     "b_{\\theta,h}": 0.0002442669807751583
+    },
+    "se": {
+     "scale": 0.48402643733927714,
+     "Tc": 0.7576063041156194,
+     "Ts_ratio": 11.94290730174019,
+     "sigma0": 2.584214510518838,
+     "b_{\\theta,h}": 1976.3056353815507,
+     "K_cable": 0.8049571355145018,
+     "theta0_cable_deg": 3.415078184264015
+    },
+    "cost": 1.2095421183220871,
+    "nfev": 7,
+    "fits": {
+     "V2/MPCLucy_doublets_elevation_01deg_minus01deg elevation 1.10 s": 74.76831279545564,
+     "V2/MPCLucy_doublets_elevation_01deg_minus01deg elevation 48.64 s": 71.70062077388366,
+     "V2/MPCLucy_doublets_elevation_01deg_minus01deg elevation 82.83 s": 30.480388707554653,
+     "V2/MPCLucy_doublets_elevation_05deg_minus05deg elevation 7.84 s": 90.30249865177966,
+     "V2/MPCLucy_doublets_elevation_05deg_minus05deg elevation 48.80 s": 70.47538670095095,
+     "V2/MPCLucy_doublets_elevation_05deg_minus05deg elevation 87.66 s": 52.33931630832747,
+     "V2/MPCLucy_doublets_elevation_1deg_minus1deg elevation 3.60 s": 79.15890668547824,
+     "V2/MPCLucy_doublets_elevation_1deg_minus1deg elevation 33.51 s": 77.66665323490668,
+     "V2/MPCLucy_doublets_elevation_1deg_minus1deg elevation 77.69 s": 82.9402358638438,
+     "V2/MPCLucy_doublets_elevation_3deg_minus3deg elevation 8.62 s": 94.87550584327641,
+     "V2/MPCLucy_doublets_elevation_3deg_minus3deg elevation 44.85 s": 72.99076334197174,
+     "V2/MPCLucy_doublets_elevation_3deg_minus3deg elevation 82.38 s": 84.19568894393345,
+     "V2/MPCLucy_doublets_elevation_5deg_minus5deg elevation 4.78 s": 96.05861494496209,
+     "V2/MPCLucy_doublets_elevation_5deg_minus5deg elevation 43.13 s": 80.97013105190072,
+     "V2/MPCLucy_doublets_elevation_5deg_minus5deg elevation 77.41 s": 84.22017481518958,
+     "V2/MPCLucy_doublets_elevation_8deg_minus8deg elevation 3.26 s": 92.04872898104234,
+     "V2/MPCLucy_doublets_elevation_8deg_minus8deg elevation 44.84 s": 87.40547198433579,
+     "V2/MPCLucy_doublets_elevation_8deg_minus8deg elevation 76.14 s": 91.2652044464728,
+     "V2/MPCLucy_doublets_elevation_10deg_minus10deg elevation 5.88 s": 96.27942295877152,
+     "V2/MPCLucy_doublets_elevation_10deg_minus10deg elevation 40.09 s": 90.12679081356774,
+     "V2/MPCLucy_doublets_elevation_10deg_minus10deg elevation 81.39 s": 95.61555956514562,
+     "V2/MPCLucy_doublets_elevation_15deg_minus15deg elevation 2.11 s": 97.33681872285884,
+     "V2/MPCLucy_doublets_elevation_15deg_minus15deg elevation 42.69 s": 81.11595291711333,
+     "V2/MPCLucy_doublets_elevation_15deg_minus15deg elevation 82.57 s": 85.36979666615359
+    },
+    "cv_fits": {
+     "V2/MPCLucy_doublets_elevation_01deg_minus01deg elevation 1.10 s": -79.02131356574915,
+     "V2/MPCLucy_doublets_elevation_01deg_minus01deg elevation 48.64 s": -159.3806946928198,
+     "V2/MPCLucy_doublets_elevation_01deg_minus01deg elevation 82.83 s": 23.895607071207703,
+     "V2/MPCLucy_doublets_elevation_05deg_minus05deg elevation 7.84 s": 89.58917210563273,
+     "V2/MPCLucy_doublets_elevation_05deg_minus05deg elevation 48.80 s": 75.68884993707547,
+     "V2/MPCLucy_doublets_elevation_05deg_minus05deg elevation 87.66 s": 53.64210936316417,
+     "V2/MPCLucy_doublets_elevation_10deg_minus10deg elevation 5.88 s": 94.27580592640619,
+     "V2/MPCLucy_doublets_elevation_10deg_minus10deg elevation 40.09 s": 86.1110171534603,
+     "V2/MPCLucy_doublets_elevation_10deg_minus10deg elevation 81.39 s": 92.6365152208608,
+     "V2/MPCLucy_doublets_elevation_15deg_minus15deg elevation 2.11 s": 87.77343951531289,
+     "V2/MPCLucy_doublets_elevation_15deg_minus15deg elevation 42.69 s": 65.68101605353948,
+     "V2/MPCLucy_doublets_elevation_15deg_minus15deg elevation 82.57 s": 68.63495252065898,
+     "V2/MPCLucy_doublets_elevation_1deg_minus1deg elevation 3.60 s": 74.18476876120057,
+     "V2/MPCLucy_doublets_elevation_1deg_minus1deg elevation 33.51 s": 84.64520722845444,
+     "V2/MPCLucy_doublets_elevation_1deg_minus1deg elevation 77.69 s": 87.86500235987886,
+     "V2/MPCLucy_doublets_elevation_3deg_minus3deg elevation 8.62 s": 90.50475352674118,
+     "V2/MPCLucy_doublets_elevation_3deg_minus3deg elevation 44.85 s": 77.85628418764573,
+     "V2/MPCLucy_doublets_elevation_3deg_minus3deg elevation 82.38 s": 88.73952278988875,
+     "V2/MPCLucy_doublets_elevation_5deg_minus5deg elevation 4.78 s": 88.25686973373388,
+     "V2/MPCLucy_doublets_elevation_5deg_minus5deg elevation 43.13 s": 84.44829828682433,
+     "V2/MPCLucy_doublets_elevation_5deg_minus5deg elevation 77.41 s": 88.13429107681033,
+     "V2/MPCLucy_doublets_elevation_8deg_minus8deg elevation 3.26 s": 86.24597959110652,
+     "V2/MPCLucy_doublets_elevation_8deg_minus8deg elevation 44.84 s": 85.40256910680912,
+     "V2/MPCLucy_doublets_elevation_8deg_minus8deg elevation 76.14 s": 90.94971747461207
+    },
+    "cv_values": {
+     "V2/MPCLucy_doublets_elevation_01deg_minus01deg": {
+      "scale": 1.025315279816175,
+      "Tc": 0.38863046773400056,
+      "Ts_ratio": 5.18364999473472,
+      "sigma0": 616.6911817772966,
+      "b_{\\theta,h}": 0.003445777493314873,
+      "K_cable": 1.5230147032378325,
+      "theta0_cable_deg": -2.7707756979489084
+     },
+     "V2/MPCLucy_doublets_elevation_05deg_minus05deg": {
+      "scale": 1.0955479988125738,
+      "Tc": 0.4247102811764159,
+      "Ts_ratio": 1.9403774511357328,
+      "sigma0": 1960.0882256850236,
+      "b_{\\theta,h}": 0.002736516864372813,
+      "K_cable": 1.7008290511231616,
+      "theta0_cable_deg": -2.163626258840839
+     },
+     "V2/MPCLucy_doublets_elevation_10deg_minus10deg": {
+      "scale": 1.1348150536647268,
+      "Tc": 0.4455529857766785,
+      "Ts_ratio": 1.655091677272953,
+      "sigma0": 1948.695458113165,
+      "b_{\\theta,h}": 0.0006727401968834037,
+      "K_cable": 1.735045276080333,
+      "theta0_cable_deg": -2.241926350690606
+     },
+     "V2/MPCLucy_doublets_elevation_15deg_minus15deg": {
+      "scale": 1.1224457978895663,
+      "Tc": 0.4395332344929406,
+      "Ts_ratio": 1.8812494660411563,
+      "sigma0": 1930.2630270563027,
+      "b_{\\theta,h}": 0.0066106028760572555,
+      "K_cable": 1.9722071746086154,
+      "theta0_cable_deg": -1.889931110641124
+     },
+     "V2/MPCLucy_doublets_elevation_1deg_minus1deg": {
+      "scale": 1.1104315651631724,
+      "Tc": 0.4313386859910532,
+      "Ts_ratio": 1.11875895396695,
+      "sigma0": 1927.304778854829,
+      "b_{\\theta,h}": 0.024228651776290085,
+      "K_cable": 1.7130490606603317,
+      "theta0_cable_deg": -2.15450646073169
+     },
+     "V2/MPCLucy_doublets_elevation_3deg_minus3deg": {
+      "scale": 1.0982764297459953,
+      "Tc": 0.4260901786120718,
+      "Ts_ratio": 1.3145258905597437,
+      "sigma0": 1923.6689623071236,
+      "b_{\\theta,h}": 0.003598650876110868,
+      "K_cable": 1.6961306806717484,
+      "theta0_cable_deg": -2.151735103604384
+     },
+     "V2/MPCLucy_doublets_elevation_5deg_minus5deg": {
+      "scale": 1.1201120775470719,
+      "Tc": 0.43759234646202244,
+      "Ts_ratio": 2.072086719997338,
+      "sigma0": 1929.9875439528698,
+      "b_{\\theta,h}": 0.0036744335902751447,
+      "K_cable": 1.710220198684196,
+      "theta0_cable_deg": -2.2084820066847493
+     },
+     "V2/MPCLucy_doublets_elevation_8deg_minus8deg": {
+      "scale": 1.1355358745829618,
+      "Tc": 0.4445521670376662,
+      "Ts_ratio": 1.888773593421873,
+      "sigma0": 1955.0685959071152,
+      "b_{\\theta,h}": 0.008682591272186872,
+      "K_cable": 1.7199832826276706,
+      "theta0_cable_deg": -2.240866374342273
+     }
+    },
+    "cv_median": 85.75679313013471,
+    "cv_mean_square": 0.4721655739354918,
+    "fit_median": 84.20793187956151
+   },
+   "S1 vs fixed x1": {
+    "label": "Dahl + Stribeck + cable spring, all fitted; vs fixed at 1 x nominal (0.005)",
+    "free": [
+     "scale",
+     "Tc",
+     "Ts_ratio",
+     "sigma0",
+     "b_{\\theta,h}",
+     "K_cable",
+     "theta0_cable_deg"
+    ],
+    "fixed": {
+     "vs": 0.005
+    },
+    "values": {
+     "scale": 1.1038065186344221,
+     "Tc": 0.4285011013342689,
+     "Ts_ratio": 1.1206834153539331,
+     "sigma0": 1897.4633749899683,
+     "vs": 0.005,
+     "K_cable": 1.708534948105194,
+     "theta0_cable_deg": -2.1656932613225206,
+     "b_{\\theta,h}": 0.0002441582110539409
+    },
+    "se": {
+     "scale": 0.23263314664218385,
+     "Tc": 0.13956655695229594,
+     "Ts_ratio": 4.354881532420843,
+     "sigma0": 2.6790265498334187,
+     "b_{\\theta,h}": 1697.108318865211,
+     "K_cable": 0.7163789533392263,
+     "theta0_cable_deg": 3.6920377922425267
+    },
+    "cost": 1.1737321656213318,
+    "nfev": 11,
+    "fits": {
+     "V2/MPCLucy_doublets_elevation_01deg_minus01deg elevation 1.10 s": 74.69377182278258,
+     "V2/MPCLucy_doublets_elevation_01deg_minus01deg elevation 48.64 s": 70.46442486710407,
+     "V2/MPCLucy_doublets_elevation_01deg_minus01deg elevation 82.83 s": 25.87447057591673,
+     "V2/MPCLucy_doublets_elevation_05deg_minus05deg elevation 7.84 s": 87.84718638962792,
+     "V2/MPCLucy_doublets_elevation_05deg_minus05deg elevation 48.80 s": 76.70522616407112,
+     "V2/MPCLucy_doublets_elevation_05deg_minus05deg elevation 87.66 s": 54.70992269387267,
+     "V2/MPCLucy_doublets_elevation_1deg_minus1deg elevation 3.60 s": 74.33658515018091,
+     "V2/MPCLucy_doublets_elevation_1deg_minus1deg elevation 33.51 s": 84.9113283586722,
+     "V2/MPCLucy_doublets_elevation_1deg_minus1deg elevation 77.69 s": 87.84219176564334,
+     "V2/MPCLucy_doublets_elevation_3deg_minus3deg elevation 8.62 s": 90.09872754286341,
+     "V2/MPCLucy_doublets_elevation_3deg_minus3deg elevation 44.85 s": 78.85066824630152,
+     "V2/MPCLucy_doublets_elevation_3deg_minus3deg elevation 82.38 s": 89.42719937125165,
+     "V2/MPCLucy_doublets_elevation_5deg_minus5deg elevation 4.78 s": 89.25988681009478,
+     "V2/MPCLucy_doublets_elevation_5deg_minus5deg elevation 43.13 s": 84.8687326646018,
+     "V2/MPCLucy_doublets_elevation_5deg_minus5deg elevation 77.41 s": 88.16227397562042,
+     "V2/MPCLucy_doublets_elevation_8deg_minus8deg elevation 3.26 s": 87.94955100538186,
+     "V2/MPCLucy_doublets_elevation_8deg_minus8deg elevation 44.84 s": 87.11564866661536,
+     "V2/MPCLucy_doublets_elevation_8deg_minus8deg elevation 76.14 s": 92.1290208185238,
+     "V2/MPCLucy_doublets_elevation_10deg_minus10deg elevation 5.88 s": 94.66800793772995,
+     "V2/MPCLucy_doublets_elevation_10deg_minus10deg elevation 40.09 s": 87.75738956650433,
+     "V2/MPCLucy_doublets_elevation_10deg_minus10deg elevation 81.39 s": 94.19353183345055,
+     "V2/MPCLucy_doublets_elevation_15deg_minus15deg elevation 2.11 s": 97.54594846678424,
+     "V2/MPCLucy_doublets_elevation_15deg_minus15deg elevation 42.69 s": 77.87993589236814,
+     "V2/MPCLucy_doublets_elevation_15deg_minus15deg elevation 82.57 s": 87.34004696661928
+    },
+    "cv_fits": {
+     "V2/MPCLucy_doublets_elevation_01deg_minus01deg elevation 1.10 s": -78.16989211390589,
+     "V2/MPCLucy_doublets_elevation_01deg_minus01deg elevation 48.64 s": -161.37877522142108,
+     "V2/MPCLucy_doublets_elevation_01deg_minus01deg elevation 82.83 s": 25.690178771635132,
+     "V2/MPCLucy_doublets_elevation_05deg_minus05deg elevation 7.84 s": 89.44269603574341,
+     "V2/MPCLucy_doublets_elevation_05deg_minus05deg elevation 48.80 s": 75.78763835602712,
+     "V2/MPCLucy_doublets_elevation_05deg_minus05deg elevation 87.66 s": 53.888003837754404,
+     "V2/MPCLucy_doublets_elevation_10deg_minus10deg elevation 5.88 s": 94.03068655053077,
+     "V2/MPCLucy_doublets_elevation_10deg_minus10deg elevation 40.09 s": 87.31732838583615,
+     "V2/MPCLucy_doublets_elevation_10deg_minus10deg elevation 81.39 s": 92.96950770847205,
+     "V2/MPCLucy_doublets_elevation_15deg_minus15deg elevation 2.11 s": 93.4097218850122,
+     "V2/MPCLucy_doublets_elevation_15deg_minus15deg elevation 42.69 s": 70.40951617543267,
+     "V2/MPCLucy_doublets_elevation_15deg_minus15deg elevation 82.57 s": 77.18589582550192,
+     "V2/MPCLucy_doublets_elevation_1deg_minus1deg elevation 3.60 s": 74.33658515018091,
+     "V2/MPCLucy_doublets_elevation_1deg_minus1deg elevation 33.51 s": 84.9113283586722,
+     "V2/MPCLucy_doublets_elevation_1deg_minus1deg elevation 77.69 s": 87.84219176564334,
+     "V2/MPCLucy_doublets_elevation_3deg_minus3deg elevation 8.62 s": 90.09872754286341,
+     "V2/MPCLucy_doublets_elevation_3deg_minus3deg elevation 44.85 s": 78.85066824630152,
+     "V2/MPCLucy_doublets_elevation_3deg_minus3deg elevation 82.38 s": 89.42719937125165,
+     "V2/MPCLucy_doublets_elevation_5deg_minus5deg elevation 4.78 s": 88.59291561244889,
+     "V2/MPCLucy_doublets_elevation_5deg_minus5deg elevation 43.13 s": 84.24898516930514,
+     "V2/MPCLucy_doublets_elevation_5deg_minus5deg elevation 77.41 s": 87.74712609309914,
+     "V2/MPCLucy_doublets_elevation_8deg_minus8deg elevation 3.26 s": 87.58311136265509,
+     "V2/MPCLucy_doublets_elevation_8deg_minus8deg elevation 44.84 s": 85.42924510590848,
+     "V2/MPCLucy_doublets_elevation_8deg_minus8deg elevation 76.14 s": 90.93260952298218
+    },
+    "cv_values": {
+     "V2/MPCLucy_doublets_elevation_01deg_minus01deg": {
+      "scale": 1.014466273590065,
+      "Tc": 0.3795368989411508,
+      "Ts_ratio": 1.4759322623514177,
+      "sigma0": 625.1373792716583,
+      "b_{\\theta,h}": 0.01852344280771969,
+      "K_cable": 1.516697472001313,
+      "theta0_cable_deg": -2.7400875248909347
+     },
+     "V2/MPCLucy_doublets_elevation_05deg_minus05deg": {
+      "scale": 1.1040014113085745,
+      "Tc": 0.431740371214393,
+      "Ts_ratio": 1.1206662050233978,
+      "sigma0": 1897.8150230687143,
+      "b_{\\theta,h}": 0.00024415820455502,
+      "K_cable": 1.7087941424244089,
+      "theta0_cable_deg": -2.164982720552142
+     },
+     "V2/MPCLucy_doublets_elevation_10deg_minus10deg": {
+      "scale": 1.1221731886088049,
+      "Tc": 0.4376861439985195,
+      "Ts_ratio": 1.114875313206589,
+      "sigma0": 1993.6118917460053,
+      "b_{\\theta,h}": 0.0002441738686700504,
+      "K_cable": 1.7142839366469647,
+      "theta0_cable_deg": -2.2421709573248703
+     },
+     "V2/MPCLucy_doublets_elevation_15deg_minus15deg": {
+      "scale": 1.1196122172143468,
+      "Tc": 0.4372843875725921,
+      "Ts_ratio": 1.1175308909778865,
+      "sigma0": 1961.8364104325824,
+      "b_{\\theta,h}": 0.00024416332501486825,
+      "K_cable": 1.8565486368457083,
+      "theta0_cable_deg": -2.0272912980225337
+     },
+     "V2/MPCLucy_doublets_elevation_1deg_minus1deg": {
+      "scale": 1.1038065186344221,
+      "Tc": 0.4285011013342689,
+      "Ts_ratio": 1.1206834153539331,
+      "sigma0": 1897.4633749899683,
+      "b_{\\theta,h}": 0.0002441582110539409,
+      "K_cable": 1.708534948105194,
+      "theta0_cable_deg": -2.1656932613225206
+     },
+     "V2/MPCLucy_doublets_elevation_3deg_minus3deg": {
+      "scale": 1.1038065186344221,
+      "Tc": 0.4285011013342689,
+      "Ts_ratio": 1.1206834153539331,
+      "sigma0": 1897.4633749899683,
+      "b_{\\theta,h}": 0.0002441582110539409,
+      "K_cable": 1.708534948105194,
+      "theta0_cable_deg": -2.1656932613225206
+     },
+     "V2/MPCLucy_doublets_elevation_5deg_minus5deg": {
+      "scale": 1.1174868853753763,
+      "Tc": 0.4371955189137721,
+      "Ts_ratio": 1.119081366034993,
+      "sigma0": 1937.297395024006,
+      "b_{\\theta,h}": 0.0002441614864890468,
+      "K_cable": 1.7081187550622534,
+      "theta0_cable_deg": -2.2104855918693316
+     },
+     "V2/MPCLucy_doublets_elevation_8deg_minus8deg": {
+      "scale": 1.1160477503381887,
+      "Tc": 0.4367844808918683,
+      "Ts_ratio": 1.11991049616658,
+      "sigma0": 1914.8997197132906,
+      "b_{\\theta,h}": 0.00024415940010065126,
+      "K_cable": 1.7018877487938493,
+      "theta0_cable_deg": -2.1964323675120263
+     }
+    },
+    "cv_median": 86.37328674587232,
+    "cv_mean_square": 0.4698458968311367,
+    "fit_median": 87.5487182665618
+   },
+   "S1 vs fixed x3": {
+    "label": "Dahl + Stribeck + cable spring, all fitted; vs fixed at 3 x nominal (0.015)",
+    "free": [
+     "scale",
+     "Tc",
+     "Ts_ratio",
+     "sigma0",
+     "b_{\\theta,h}",
+     "K_cable",
+     "theta0_cable_deg"
+    ],
+    "fixed": {
+     "vs": 0.015
+    },
+    "values": {
+     "scale": 1.0528665233815722,
+     "Tc": 0.39659125561778213,
+     "Ts_ratio": 1.1428277100949336,
+     "sigma0": 1674.4944290922062,
+     "vs": 0.015,
+     "K_cable": 1.6348058842095072,
+     "theta0_cable_deg": -2.1357696701224747,
+     "b_{\\theta,h}": 0.0004712060544156213
+    },
+    "se": {
+     "scale": 0.3262740267050118,
+     "Tc": 0.2823331521133834,
+     "Ts_ratio": 1.3822301989327979,
+     "sigma0": 3.2138541043061055,
+     "b_{\\theta,h}": 918.1139713208794,
+     "K_cable": 0.7218066183381123,
+     "theta0_cable_deg": 3.3032931010416227
+    },
+    "cost": 1.1431586050674118,
+    "nfev": 8,
+    "fits": {
+     "V2/MPCLucy_doublets_elevation_01deg_minus01deg elevation 1.10 s": 69.48287849275879,
+     "V2/MPCLucy_doublets_elevation_01deg_minus01deg elevation 48.64 s": 75.65268465783942,
+     "V2/MPCLucy_doublets_elevation_01deg_minus01deg elevation 82.83 s": 27.417624280989617,
+     "V2/MPCLucy_doublets_elevation_05deg_minus05deg elevation 7.84 s": 89.79217014531497,
+     "V2/MPCLucy_doublets_elevation_05deg_minus05deg elevation 48.80 s": 75.28869602482986,
+     "V2/MPCLucy_doublets_elevation_05deg_minus05deg elevation 87.66 s": 53.86572288310696,
+     "V2/MPCLucy_doublets_elevation_1deg_minus1deg elevation 3.60 s": 75.05475251845075,
+     "V2/MPCLucy_doublets_elevation_1deg_minus1deg elevation 33.51 s": 83.21817259830632,
+     "V2/MPCLucy_doublets_elevation_1deg_minus1deg elevation 77.69 s": 87.02395099160941,
+     "V2/MPCLucy_doublets_elevation_3deg_minus3deg elevation 8.62 s": 92.16663223301175,
+     "V2/MPCLucy_doublets_elevation_3deg_minus3deg elevation 44.85 s": 78.59411102997899,
+     "V2/MPCLucy_doublets_elevation_3deg_minus3deg elevation 82.38 s": 88.15811855568934,
+     "V2/MPCLucy_doublets_elevation_5deg_minus5deg elevation 4.78 s": 92.05955138432613,
+     "V2/MPCLucy_doublets_elevation_5deg_minus5deg elevation 43.13 s": 86.52744330506832,
+     "V2/MPCLucy_doublets_elevation_5deg_minus5deg elevation 77.41 s": 87.86571787968026,
+     "V2/MPCLucy_doublets_elevation_8deg_minus8deg elevation 3.26 s": 88.00478377316739,
+     "V2/MPCLucy_doublets_elevation_8deg_minus8deg elevation 44.84 s": 91.2490050140564,
+     "V2/MPCLucy_doublets_elevation_8deg_minus8deg elevation 76.14 s": 93.60826888644289,
+     "V2/MPCLucy_doublets_elevation_10deg_minus10deg elevation 5.88 s": 93.10238477011639,
+     "V2/MPCLucy_doublets_elevation_10deg_minus10deg elevation 40.09 s": 92.0197405326201,
+     "V2/MPCLucy_doublets_elevation_10deg_minus10deg elevation 81.39 s": 96.46004036284653,
+     "V2/MPCLucy_doublets_elevation_15deg_minus15deg elevation 2.11 s": 94.78543940876743,
+     "V2/MPCLucy_doublets_elevation_15deg_minus15deg elevation 42.69 s": 80.43925716082414,
+     "V2/MPCLucy_doublets_elevation_15deg_minus15deg elevation 82.57 s": 84.55999676563259
+    },
+    "cv_fits": {
+     "V2/MPCLucy_doublets_elevation_01deg_minus01deg elevation 1.10 s": -94.27812515996483,
+     "V2/MPCLucy_doublets_elevation_01deg_minus01deg elevation 48.64 s": -173.068635686584,
+     "V2/MPCLucy_doublets_elevation_01deg_minus01deg elevation 82.83 s": -347.8198452018328,
+     "V2/MPCLucy_doublets_elevation_05deg_minus05deg elevation 7.84 s": 89.79217014531497,
+     "V2/MPCLucy_doublets_elevation_05deg_minus05deg elevation 48.80 s": 75.28869602482986,
+     "V2/MPCLucy_doublets_elevation_05deg_minus05deg elevation 87.66 s": 53.86572288310696,
+     "V2/MPCLucy_doublets_elevation_10deg_minus10deg elevation 5.88 s": 92.62209000562221,
+     "V2/MPCLucy_doublets_elevation_10deg_minus10deg elevation 40.09 s": 91.24672627214244,
+     "V2/MPCLucy_doublets_elevation_10deg_minus10deg elevation 81.39 s": 95.68201593159473,
+     "V2/MPCLucy_doublets_elevation_15deg_minus15deg elevation 2.11 s": 95.47622245265296,
+     "V2/MPCLucy_doublets_elevation_15deg_minus15deg elevation 42.69 s": 69.97395405438391,
+     "V2/MPCLucy_doublets_elevation_15deg_minus15deg elevation 82.57 s": 69.52255665681164,
+     "V2/MPCLucy_doublets_elevation_1deg_minus1deg elevation 3.60 s": 73.45975449355358,
+     "V2/MPCLucy_doublets_elevation_1deg_minus1deg elevation 33.51 s": 84.06595944853643,
+     "V2/MPCLucy_doublets_elevation_1deg_minus1deg elevation 77.69 s": 88.14301347692613,
+     "V2/MPCLucy_doublets_elevation_3deg_minus3deg elevation 8.62 s": 92.16663223301175,
+     "V2/MPCLucy_doublets_elevation_3deg_minus3deg elevation 44.85 s": 78.59411102997899,
+     "V2/MPCLucy_doublets_elevation_3deg_minus3deg elevation 82.38 s": 88.15811855568934,
+     "V2/MPCLucy_doublets_elevation_5deg_minus5deg elevation 4.78 s": 91.62506550865767,
+     "V2/MPCLucy_doublets_elevation_5deg_minus5deg elevation 43.13 s": 85.56717187830564,
+     "V2/MPCLucy_doublets_elevation_5deg_minus5deg elevation 77.41 s": 87.33999485764552,
+     "V2/MPCLucy_doublets_elevation_8deg_minus8deg elevation 3.26 s": 86.4457972519584,
+     "V2/MPCLucy_doublets_elevation_8deg_minus8deg elevation 44.84 s": 90.30921288984446,
+     "V2/MPCLucy_doublets_elevation_8deg_minus8deg elevation 76.14 s": 92.86679023911863
+    },
+    "cv_values": {
+     "V2/MPCLucy_doublets_elevation_01deg_minus01deg": {
+      "scale": 1.0085304499517442,
+      "Tc": 0.3808277265828879,
+      "Ts_ratio": 1.0347438751026767,
+      "sigma0": 565.24706109275,
+      "b_{\\theta,h}": 0.0028980289200179685,
+      "K_cable": 1.5008064477935112,
+      "theta0_cable_deg": -2.7605264599716386
+     },
+     "V2/MPCLucy_doublets_elevation_05deg_minus05deg": {
+      "scale": 1.0528665233815722,
+      "Tc": 0.39659125561778213,
+      "Ts_ratio": 1.1428277100949336,
+      "sigma0": 1674.4944290922062,
+      "b_{\\theta,h}": 0.0004712060544156213,
+      "K_cable": 1.6348058842095072,
+      "theta0_cable_deg": -2.1357696701224747
+     },
+     "V2/MPCLucy_doublets_elevation_10deg_minus10deg": {
+      "scale": 1.0687944419295705,
+      "Tc": 0.40519229982074495,
+      "Ts_ratio": 1.1406805542181082,
+      "sigma0": 1702.8157543730654,
+      "b_{\\theta,h}": 0.00047121616909603074,
+      "K_cable": 1.642277009922015,
+      "theta0_cable_deg": -2.167107507791654
+     },
+     "V2/MPCLucy_doublets_elevation_15deg_minus15deg": {
+      "scale": 1.0783832973108036,
+      "Tc": 0.40932531201688904,
+      "Ts_ratio": 1.1360137218866342,
+      "sigma0": 1745.37817652735,
+      "b_{\\theta,h}": 0.00047117959866586743,
+      "K_cable": 1.8394069968679627,
+      "theta0_cable_deg": -1.9388757165791999
+     },
+     "V2/MPCLucy_doublets_elevation_1deg_minus1deg": {
+      "scale": 1.0684047923856312,
+      "Tc": 0.40420467761779855,
+      "Ts_ratio": 1.1398548497714178,
+      "sigma0": 1709.7674763965663,
+      "b_{\\theta,h}": 0.0004712068172167444,
+      "K_cable": 1.6468515083586583,
+      "theta0_cable_deg": -2.123531831058763
+     },
+     "V2/MPCLucy_doublets_elevation_3deg_minus3deg": {
+      "scale": 1.0528665233815722,
+      "Tc": 0.39659125561778213,
+      "Ts_ratio": 1.1428277100949336,
+      "sigma0": 1674.4944290922062,
+      "b_{\\theta,h}": 0.0004712060544156213,
+      "K_cable": 1.6348058842095072,
+      "theta0_cable_deg": -2.1357696701224747
+     },
+     "V2/MPCLucy_doublets_elevation_5deg_minus5deg": {
+      "scale": 1.0670047513833787,
+      "Tc": 0.406037968135949,
+      "Ts_ratio": 1.137800223357388,
+      "sigma0": 1713.8175523915884,
+      "b_{\\theta,h}": 0.0004714048393326395,
+      "K_cable": 1.6348281842518657,
+      "theta0_cable_deg": -2.174430671813568
+     },
+     "V2/MPCLucy_doublets_elevation_8deg_minus8deg": {
+      "scale": 1.0703737586580426,
+      "Tc": 0.40556775402145806,
+      "Ts_ratio": 1.1398853272927982,
+      "sigma0": 1714.124869088057,
+      "b_{\\theta,h}": 0.00047122303980960575,
+      "K_cable": 1.6300840873545654,
+      "theta0_cable_deg": -2.182533205128253
+     }
+    },
+    "cv_median": 86.89289605480195,
+    "cv_mean_square": 1.3342616948105723,
+    "fit_median": 87.44483443564484
+   },
+   "S1 b_{\\theta,h} fixed 0": {
+    "label": "Dahl + Stribeck + cable spring, all fitted; b_{\\theta,h} fixed at 1 x nominal (0)",
+    "free": [
+     "scale",
+     "Tc",
+     "Ts_ratio",
+     "sigma0",
+     "vs",
+     "K_cable",
+     "theta0_cable_deg"
+    ],
+    "fixed": {
+     "b_{\\theta,h}": 0.0
+    },
+    "values": {
+     "scale": 1.0583007259572275,
+     "Tc": 0.40788823021698645,
+     "Ts_ratio": 1.1154749920889269,
+     "sigma0": 1852.568933286667,
+     "vs": 0.00459226381716162,
+     "K_cable": 1.6726003716771196,
+     "theta0_cable_deg": -1.9955113167398004,
+     "b_{\\theta,h}": 0.0
+    },
+    "se": {
+     "scale": 0.21461507252400736,
+     "Tc": 0.1105000683991055,
+     "Ts_ratio": 15.065563630103856,
+     "sigma0": 2.8271511690421063,
+     "vs": 115.93868218785909,
+     "K_cable": 0.7258369771564314,
+     "theta0_cable_deg": 3.595874579109044
+    },
+    "cost": 1.1977037677889606,
+    "nfev": 7,
+    "fits": {
+     "V2/MPCLucy_doublets_elevation_01deg_minus01deg elevation 1.10 s": 75.77312632877653,
+     "V2/MPCLucy_doublets_elevation_01deg_minus01deg elevation 48.64 s": 75.64991719499665,
+     "V2/MPCLucy_doublets_elevation_01deg_minus01deg elevation 82.83 s": 26.730572318205958,
+     "V2/MPCLucy_doublets_elevation_05deg_minus05deg elevation 7.84 s": 89.60558091938465,
+     "V2/MPCLucy_doublets_elevation_05deg_minus05deg elevation 48.80 s": 72.07997943637307,
+     "V2/MPCLucy_doublets_elevation_05deg_minus05deg elevation 87.66 s": 53.291989346629975,
+     "V2/MPCLucy_doublets_elevation_1deg_minus1deg elevation 3.60 s": 77.19827726271713,
+     "V2/MPCLucy_doublets_elevation_1deg_minus1deg elevation 33.51 s": 80.15623513914609,
+     "V2/MPCLucy_doublets_elevation_1deg_minus1deg elevation 77.69 s": 85.23931341560761,
+     "V2/MPCLucy_doublets_elevation_3deg_minus3deg elevation 8.62 s": 93.20397666692823,
+     "V2/MPCLucy_doublets_elevation_3deg_minus3deg elevation 44.85 s": 74.58498965145155,
+     "V2/MPCLucy_doublets_elevation_3deg_minus3deg elevation 82.38 s": 86.8001918219164,
+     "V2/MPCLucy_doublets_elevation_5deg_minus5deg elevation 4.78 s": 93.33487264601281,
+     "V2/MPCLucy_doublets_elevation_5deg_minus5deg elevation 43.13 s": 81.50509166957124,
+     "V2/MPCLucy_doublets_elevation_5deg_minus5deg elevation 77.41 s": 86.41504463218945,
+     "V2/MPCLucy_doublets_elevation_8deg_minus8deg elevation 3.26 s": 90.74327484605409,
+     "V2/MPCLucy_doublets_elevation_8deg_minus8deg elevation 44.84 s": 86.0408666665986,
+     "V2/MPCLucy_doublets_elevation_8deg_minus8deg elevation 76.14 s": 92.47277373745777,
+     "V2/MPCLucy_doublets_elevation_10deg_minus10deg elevation 5.88 s": 96.34792993013451,
+     "V2/MPCLucy_doublets_elevation_10deg_minus10deg elevation 40.09 s": 87.88862073428105,
+     "V2/MPCLucy_doublets_elevation_10deg_minus10deg elevation 81.39 s": 95.71849722055168,
+     "V2/MPCLucy_doublets_elevation_15deg_minus15deg elevation 2.11 s": 98.23148125214448,
+     "V2/MPCLucy_doublets_elevation_15deg_minus15deg elevation 42.69 s": 78.7673393217873,
+     "V2/MPCLucy_doublets_elevation_15deg_minus15deg elevation 82.57 s": 84.78724764924486
+    },
+    "cv_fits": {
+     "V2/MPCLucy_doublets_elevation_01deg_minus01deg elevation 1.10 s": -113.93266243046357,
+     "V2/MPCLucy_doublets_elevation_01deg_minus01deg elevation 48.64 s": -187.01550430630886,
+     "V2/MPCLucy_doublets_elevation_01deg_minus01deg elevation 82.83 s": 2.7164445340497556,
+     "V2/MPCLucy_doublets_elevation_05deg_minus05deg elevation 7.84 s": 90.74591980248515,
+     "V2/MPCLucy_doublets_elevation_05deg_minus05deg elevation 48.80 s": 73.04803265670314,
+     "V2/MPCLucy_doublets_elevation_05deg_minus05deg elevation 87.66 s": 52.75683277707317,
+     "V2/MPCLucy_doublets_elevation_10deg_minus10deg elevation 5.88 s": 96.59353719486795,
+     "V2/MPCLucy_doublets_elevation_10deg_minus10deg elevation 40.09 s": 87.37967173093622,
+     "V2/MPCLucy_doublets_elevation_10deg_minus10deg elevation 81.39 s": 94.56641010475664,
+     "V2/MPCLucy_doublets_elevation_15deg_minus15deg elevation 2.11 s": 91.79039255506986,
+     "V2/MPCLucy_doublets_elevation_15deg_minus15deg elevation 42.69 s": 68.65139987965468,
+     "V2/MPCLucy_doublets_elevation_15deg_minus15deg elevation 82.57 s": 69.96198205382726,
+     "V2/MPCLucy_doublets_elevation_1deg_minus1deg elevation 3.60 s": 76.8287548352519,
+     "V2/MPCLucy_doublets_elevation_1deg_minus1deg elevation 33.51 s": 80.95021277085657,
+     "V2/MPCLucy_doublets_elevation_1deg_minus1deg elevation 77.69 s": 85.74745245737753,
+     "V2/MPCLucy_doublets_elevation_3deg_minus3deg elevation 8.62 s": 93.26378634677302,
+     "V2/MPCLucy_doublets_elevation_3deg_minus3deg elevation 44.85 s": 74.99918280814664,
+     "V2/MPCLucy_doublets_elevation_3deg_minus3deg elevation 82.38 s": 86.88925355661917,
+     "V2/MPCLucy_doublets_elevation_5deg_minus5deg elevation 4.78 s": 92.98850543377178,
+     "V2/MPCLucy_doublets_elevation_5deg_minus5deg elevation 43.13 s": 81.45968936778307,
+     "V2/MPCLucy_doublets_elevation_5deg_minus5deg elevation 77.41 s": 85.92597766508656,
+     "V2/MPCLucy_doublets_elevation_8deg_minus8deg elevation 3.26 s": 90.46622296702193,
+     "V2/MPCLucy_doublets_elevation_8deg_minus8deg elevation 44.84 s": 85.31315375383961,
+     "V2/MPCLucy_doublets_elevation_8deg_minus8deg elevation 76.14 s": 91.44648075896879
+    },
+    "cv_values": {
+     "V2/MPCLucy_doublets_elevation_01deg_minus01deg": {
+      "scale": 0.9912311317543884,
+      "Tc": 0.3723625952794689,
+      "Ts_ratio": 4.449989218388057,
+      "sigma0": 524.4232885863847,
+      "vs": 0.00012440208014151516,
+      "K_cable": 1.4797052248628506,
+      "theta0_cable_deg": -2.7382056182420618
+     },
+     "V2/MPCLucy_doublets_elevation_05deg_minus05deg": {
+      "scale": 1.0693931544185409,
+      "Tc": 0.41450254137889525,
+      "Ts_ratio": 1.1150303817596137,
+      "sigma0": 1874.8643575685928,
+      "vs": 0.00458371562372865,
+      "K_cable": 1.6777008674171956,
+      "theta0_cable_deg": -2.081621857288296
+     },
+     "V2/MPCLucy_doublets_elevation_10deg_minus10deg": {
+      "scale": 1.0684581577850727,
+      "Tc": 0.4139345897709179,
+      "Ts_ratio": 1.1152698339799867,
+      "sigma0": 1854.7972741893857,
+      "vs": 0.004588846445737852,
+      "K_cable": 1.6732933077053356,
+      "theta0_cable_deg": -2.0540044780552145
+     },
+     "V2/MPCLucy_doublets_elevation_15deg_minus15deg": {
+      "scale": 1.0847649870956062,
+      "Tc": 0.4202998691621386,
+      "Ts_ratio": 1.115116889366953,
+      "sigma0": 1949.9853904668903,
+      "vs": 0.00453099659294142,
+      "K_cable": 1.8768701385328541,
+      "theta0_cable_deg": -1.8347498877219715
+     },
+     "V2/MPCLucy_doublets_elevation_1deg_minus1deg": {
+      "scale": 1.0683893244580935,
+      "Tc": 0.41358729295122415,
+      "Ts_ratio": 1.115297566361723,
+      "sigma0": 1854.7998746847502,
+      "vs": 0.004589389032793247,
+      "K_cable": 1.6751868597099298,
+      "theta0_cable_deg": -2.0270367785591605
+     },
+     "V2/MPCLucy_doublets_elevation_3deg_minus3deg": {
+      "scale": 1.0683604016781096,
+      "Tc": 0.414096336703476,
+      "Ts_ratio": 1.115185393923402,
+      "sigma0": 1858.524863186956,
+      "vs": 0.004587410308931951,
+      "K_cable": 1.672498961130942,
+      "theta0_cable_deg": -2.0488103722865185
+     },
+     "V2/MPCLucy_doublets_elevation_5deg_minus5deg": {
+      "scale": 1.068157348719033,
+      "Tc": 0.41410455010047,
+      "Ts_ratio": 1.115200190720217,
+      "sigma0": 1856.661300077676,
+      "vs": 0.004587891110057854,
+      "K_cable": 1.6686327915936772,
+      "theta0_cable_deg": -2.0574569703798953
+     },
+     "V2/MPCLucy_doublets_elevation_8deg_minus8deg": {
+      "scale": 1.0683154152910908,
+      "Tc": 0.4138897564897194,
+      "Ts_ratio": 1.1152802785494327,
+      "sigma0": 1854.8825518895728,
+      "vs": 0.004589054024226829,
+      "K_cable": 1.6667318163904148,
+      "theta0_cable_deg": -2.0466124550268265
+     }
+    },
+    "cv_median": 85.53030310560857,
+    "cv_mean_square": 0.6071747472740985,
+    "fit_median": 85.64009004110311
+   },
+   "S1 sigma0, vs, b_{\\theta,h} fixed": {
+    "label": "Dahl + Stribeck + cable spring, all fitted; sigma0 fixed at 1942, vs fixed at 0.015, b_{\\theta,h} fixed at 0",
+    "free": [
+     "scale",
+     "Tc",
+     "Ts_ratio",
+     "K_cable",
+     "theta0_cable_deg"
+    ],
+    "fixed": {
+     "sigma0": 1941.8804993297908,
+     "vs": 0.015,
+     "b_{\\theta,h}": 0.0
+    },
+    "values": {
+     "scale": 1.0211885521789348,
+     "Tc": 0.38019993413593295,
+     "Ts_ratio": 1.1507661582615163,
+     "sigma0": 1941.8804993297908,
+     "vs": 0.015,
+     "K_cable": 1.598939228330428,
+     "theta0_cable_deg": -2.03783137610543,
+     "b_{\\theta,h}": 0.0
+    },
+    "se": {
+     "scale": 0.20557744789712376,
+     "Tc": 0.13794254659617897,
+     "Ts_ratio": 0.7075171026875539,
+     "K_cable": 0.6907269494790371,
+     "theta0_cable_deg": 3.2689717219712917
+    },
+    "cost": 1.28690255726891,
+    "nfev": 7,
+    "fits": {
+     "V2/MPCLucy_doublets_elevation_01deg_minus01deg elevation 1.10 s": 65.58844042604267,
+     "V2/MPCLucy_doublets_elevation_01deg_minus01deg elevation 48.64 s": 87.27033829778529,
+     "V2/MPCLucy_doublets_elevation_01deg_minus01deg elevation 82.83 s": 20.680300225958604,
+     "V2/MPCLucy_doublets_elevation_05deg_minus05deg elevation 7.84 s": 92.0922963654101,
+     "V2/MPCLucy_doublets_elevation_05deg_minus05deg elevation 48.80 s": 70.47069959661167,
+     "V2/MPCLucy_doublets_elevation_05deg_minus05deg elevation 87.66 s": 50.47658027131801,
+     "V2/MPCLucy_doublets_elevation_1deg_minus1deg elevation 3.60 s": 79.37161243028439,
+     "V2/MPCLucy_doublets_elevation_1deg_minus1deg elevation 33.51 s": 78.0670244787306,
+     "V2/MPCLucy_doublets_elevation_1deg_minus1deg elevation 77.69 s": 82.2845621453636,
+     "V2/MPCLucy_doublets_elevation_3deg_minus3deg elevation 8.62 s": 92.86440572868527,
+     "V2/MPCLucy_doublets_elevation_3deg_minus3deg elevation 44.85 s": 74.73584721438833,
+     "V2/MPCLucy_doublets_elevation_3deg_minus3deg elevation 82.38 s": 84.72414016612187,
+     "V2/MPCLucy_doublets_elevation_5deg_minus5deg elevation 4.78 s": 93.90649599333894,
+     "V2/MPCLucy_doublets_elevation_5deg_minus5deg elevation 43.13 s": 83.91298141378456,
+     "V2/MPCLucy_doublets_elevation_5deg_minus5deg elevation 77.41 s": 85.38695426894641,
+     "V2/MPCLucy_doublets_elevation_8deg_minus8deg elevation 3.26 s": 88.45453828181515,
+     "V2/MPCLucy_doublets_elevation_8deg_minus8deg elevation 44.84 s": 91.1531260966773,
+     "V2/MPCLucy_doublets_elevation_8deg_minus8deg elevation 76.14 s": 93.01048936403107,
+     "V2/MPCLucy_doublets_elevation_10deg_minus10deg elevation 5.88 s": 92.63265903193904,
+     "V2/MPCLucy_doublets_elevation_10deg_minus10deg elevation 40.09 s": 93.19155172808597,
+     "V2/MPCLucy_doublets_elevation_10deg_minus10deg elevation 81.39 s": 97.51824403256016,
+     "V2/MPCLucy_doublets_elevation_15deg_minus15deg elevation 2.11 s": 93.51698742752328,
+     "V2/MPCLucy_doublets_elevation_15deg_minus15deg elevation 42.69 s": 81.69767704510794,
+     "V2/MPCLucy_doublets_elevation_15deg_minus15deg elevation 82.57 s": 83.14912282194344
+    },
+    "cv_fits": {
+     "V2/MPCLucy_doublets_elevation_01deg_minus01deg elevation 1.10 s": 67.46862355565773,
+     "V2/MPCLucy_doublets_elevation_01deg_minus01deg elevation 48.64 s": 47.054939064323975,
+     "V2/MPCLucy_doublets_elevation_01deg_minus01deg elevation 82.83 s": -390.5157379938877,
+     "V2/MPCLucy_doublets_elevation_05deg_minus05deg elevation 7.84 s": 91.89917053035333,
+     "V2/MPCLucy_doublets_elevation_05deg_minus05deg elevation 48.80 s": 71.85332281542179,
+     "V2/MPCLucy_doublets_elevation_05deg_minus05deg elevation 87.66 s": 50.779427282694066,
+     "V2/MPCLucy_doublets_elevation_10deg_minus10deg elevation 5.88 s": 91.47820769719274,
+     "V2/MPCLucy_doublets_elevation_10deg_minus10deg elevation 40.09 s": 93.03127651664596,
+     "V2/MPCLucy_doublets_elevation_10deg_minus10deg elevation 81.39 s": 97.59816218305113,
+     "V2/MPCLucy_doublets_elevation_15deg_minus15deg elevation 2.11 s": 92.55547611384326,
+     "V2/MPCLucy_doublets_elevation_15deg_minus15deg elevation 42.69 s": 80.97855230385723,
+     "V2/MPCLucy_doublets_elevation_15deg_minus15deg elevation 82.57 s": 81.35456609511652,
+     "V2/MPCLucy_doublets_elevation_1deg_minus1deg elevation 3.60 s": 77.07156284301901,
+     "V2/MPCLucy_doublets_elevation_1deg_minus1deg elevation 33.51 s": 79.45840422685083,
+     "V2/MPCLucy_doublets_elevation_1deg_minus1deg elevation 77.69 s": 83.83755862533117,
+     "V2/MPCLucy_doublets_elevation_3deg_minus3deg elevation 8.62 s": 91.78207140503858,
+     "V2/MPCLucy_doublets_elevation_3deg_minus3deg elevation 44.85 s": 75.886964006588,
+     "V2/MPCLucy_doublets_elevation_3deg_minus3deg elevation 82.38 s": 85.8583140234456,
+     "V2/MPCLucy_doublets_elevation_5deg_minus5deg elevation 4.78 s": 92.63013707958946,
+     "V2/MPCLucy_doublets_elevation_5deg_minus5deg elevation 43.13 s": 84.87216084780353,
+     "V2/MPCLucy_doublets_elevation_5deg_minus5deg elevation 77.41 s": 86.18438927249461,
+     "V2/MPCLucy_doublets_elevation_8deg_minus8deg elevation 3.26 s": 86.75332229261114,
+     "V2/MPCLucy_doublets_elevation_8deg_minus8deg elevation 44.84 s": 91.26233738725423,
+     "V2/MPCLucy_doublets_elevation_8deg_minus8deg elevation 76.14 s": 93.64454036694802
+    },
+    "cv_values": {
+     "V2/MPCLucy_doublets_elevation_01deg_minus01deg": {
+      "scale": 1.1267637739202983,
+      "Tc": 0.4280935213529795,
+      "Ts_ratio": 1.0730489650899226,
+      "K_cable": 1.692505222730249,
+      "theta0_cable_deg": -2.8200187510429156
+     },
+     "V2/MPCLucy_doublets_elevation_05deg_minus05deg": {
+      "scale": 1.033521920869954,
+      "Tc": 0.38608368791253056,
+      "Ts_ratio": 1.1496831936827998,
+      "K_cable": 1.6077031980975842,
+      "theta0_cable_deg": -2.096898880947315
+     },
+     "V2/MPCLucy_doublets_elevation_10deg_minus10deg": {
+      "scale": 1.0324746945751104,
+      "Tc": 0.3845334255318877,
+      "Ts_ratio": 1.1500837578516971,
+      "K_cable": 1.6081138627506175,
+      "theta0_cable_deg": -2.0491397010171495
+     },
+     "V2/MPCLucy_doublets_elevation_15deg_minus15deg": {
+      "scale": 1.0351280948947472,
+      "Tc": 0.3862694233596985,
+      "Ts_ratio": 1.1532336612405218,
+      "K_cable": 1.6221612024541208,
+      "theta0_cable_deg": -1.9827086404783896
+     },
+     "V2/MPCLucy_doublets_elevation_1deg_minus1deg": {
+      "scale": 1.0335377330602724,
+      "Tc": 0.384509092635189,
+      "Ts_ratio": 1.149936131396807,
+      "K_cable": 1.6095107968638411,
+      "theta0_cable_deg": -2.040257359648266
+     },
+     "V2/MPCLucy_doublets_elevation_3deg_minus3deg": {
+      "scale": 1.0343381533200495,
+      "Tc": 0.3859085634322209,
+      "Ts_ratio": 1.1496730205597823,
+      "K_cable": 1.6083387367622872,
+      "theta0_cable_deg": -2.065129127586595
+     },
+     "V2/MPCLucy_doublets_elevation_5deg_minus5deg": {
+      "scale": 1.033669375255929,
+      "Tc": 0.38544281853405243,
+      "Ts_ratio": 1.1498166307709814,
+      "K_cable": 1.6064594786217663,
+      "theta0_cable_deg": -2.0720982603009506
+     },
+     "V2/MPCLucy_doublets_elevation_8deg_minus8deg": {
+      "scale": 1.0326566317613979,
+      "Tc": 0.3845762005044864,
+      "Ts_ratio": 1.150063463113233,
+      "K_cable": 1.604027497757688,
+      "theta0_cable_deg": -2.048729470745827
+     }
+    },
+    "cv_median": 85.36523743562456,
+    "cv_mean_square": 1.047765124631752,
+    "fit_median": 85.05554721753414
+   }
+  }
+ },
+ "selection": {
+  "azimuth": {
+   "step1": "S1 spring",
+   "accepted_fixings": {
+    "sigma0": 4513.249888662102
+   },
+   "selected": "S1 sigma0 fixed x3",
+   "compared": [
+    "S1 spring",
+    "S1 sigma0 fixed x0.333",
+    "S1 sigma0 fixed x1",
+    "S1 sigma0 fixed x3",
+    "S1 vs fixed x0.333",
+    "S1 vs fixed x1",
+    "S1 vs fixed x3"
+   ]
+  },
+  "elevation": {
+   "step1": "S1 spring",
+   "accepted_fixings": {
+    "sigma0": 1941.8804993297908,
+    "vs": 0.015,
+    "b_{\\theta,h}": 0.0
+   },
+   "selected": "S1 vs fixed x3",
+   "compared": [
+    "S1 spring",
+    "S1 sigma0 fixed x0.333",
+    "S1 sigma0 fixed x1",
+    "S1 sigma0 fixed x3",
+    "S1 vs fixed x0.333",
+    "S1 vs fixed x1",
+    "S1 vs fixed x3",
+    "S1 b_{\\theta,h} fixed 0",
+    "S1 sigma0, vs, b_{\\theta,h} fixed"
+   ]
+  }
+ },
+ "full": {
+  "azimuth": {
+   "values": {
+    "scale": 0.9643542943278754,
+    "Tc": 0.23164718452468275,
+    "Ts_ratio": 7.933971242101985,
+    "sigma0": 4513.249888662102,
+    "vs": 0.005815716297880016,
+    "K_cable": 0.9278644802875702,
+    "theta0_cable_deg": -2.6782908910621095
+   },
+   "se": {
+    "scale": 0.302886723271555,
+    "Tc": 0.33564437170966366,
+    "Ts_ratio": 3.4822529354077836,
+    "vs": 1.1565343678512843,
+    "K_cable": 2.6425136591808087,
+    "theta0_cable_deg": 11.602939931697431
+   },
+   "cost": 1.7880872895146644,
+   "nfev": 6
+  },
+  "elevation": {
+   "values": {
+    "scale": 1.0713117236952077,
+    "Tc": 0.4072922393201249,
+    "Ts_ratio": 1.1393903475417886,
+    "sigma0": 1703.0477790473333,
+    "vs": 0.015,
+    "K_cable": 1.6605870078249125,
+    "theta0_cable_deg": -2.1564261374199716,
+    "b_{\\theta,h}": 0.0004712131948621041
+   },
+   "se": {
+    "scale": 0.38348542669177366,
+    "Tc": 0.1005193484191302,
+    "Ts_ratio": 1.5130972838543106,
+    "sigma0": 3.3049264472004842,
+    "b_{\\theta,h}": 3446.148327790818,
+    "K_cable": 0.8309721090730837,
+    "theta0_cable_deg": 3.1995145257562396
+   },
+   "cost": 1.140398518712766,
+   "nfev": 7
+  }
+ },
+ "final": {
+  "azimuth": {
+   "scale": 0.9643542943278754,
+   "Tc": 0.23164718452468275,
+   "Ts_ratio": 7.933971242101985,
+   "sigma0": 4513.249888662102,
+   "vs": 0.005815716297880016,
+   "K_cable": 0.9278644802875702,
+   "theta0_cable_deg": -2.6782908910621095
+  },
+  "elevation": {
+   "scale": 1.0713117236952077,
+   "Tc": 0.4072922393201249,
+   "Ts_ratio": 1.1393903475417886,
+   "sigma0": 1703.0477790473333,
+   "vs": 0.015,
+   "K_cable": 1.6605870078249125,
+   "theta0_cable_deg": -2.1564261374199716,
+   "b_{\\theta,h}": 0.0004712131948621041
+  }
+ },
+ "fits": {
+  "identification": {
+   "V2/MPCLucy_doublets_azimut_01deg_minus01deg azimuth 6.28 s": 66.1660975748817,
+   "V2/MPCLucy_doublets_azimut_01deg_minus01deg azimuth 41.98 s": -2.5394165011899394,
+   "V2/MPCLucy_doublets_azimut_01deg_minus01deg azimuth 75.93 s": 26.211929296104486,
+   "V2/MPCLucy_doublets_azimut_05deg_minus05deg azimuth 5.97 s": 52.34256183432255,
+   "V2/MPCLucy_doublets_azimut_05deg_minus05deg azimuth 39.58 s": 90.25756766464337,
+   "V2/MPCLucy_doublets_azimut_05deg_minus05deg azimuth 77.97 s": 95.00099474824272,
+   "V2/MPCLucy_doublets_azimut_1deg_minus1deg azimuth 8.89 s": 82.38692313646084,
+   "V2/MPCLucy_doublets_azimut_1deg_minus1deg azimuth 47.21 s": 92.72450725695259,
+   "V2/MPCLucy_doublets_azimut_1deg_minus1deg azimuth 82.83 s": 82.47832809272255,
+   "V2/MPCLucy_doublets_azimut_3deg_minus3deg azimuth 4.19 s": 97.30563821511022,
+   "V2/MPCLucy_doublets_azimut_3deg_minus3deg azimuth 46.97 s": 94.32967386699066,
+   "V2/MPCLucy_doublets_azimut_3deg_minus3deg azimuth 92.32 s": 91.18398498278829,
+   "V2/MPCLucy_doublets_azimut_5deg_minus5deg azimuth 1.95 s": 89.55140364220698,
+   "V2/MPCLucy_doublets_azimut_5deg_minus5deg azimuth 49.53 s": 86.97783626759654,
+   "V2/MPCLucy_doublets_azimut_5deg_minus5deg azimuth 88.30 s": 90.22097557834462,
+   "V2/MPCLucy_doublets_azimut_8deg_minus8deg azimuth 35.14 s": 78.05775121585398,
+   "V2/MPCLucy_doublets_azimut_8deg_minus8deg azimuth 81.42 s": 94.73110664615943,
+   "V2/MPCLucy_doublets_azimut_1deg_15deg azimuth 1.74 s": 95.40182214622676,
+   "V2/MPCLucy_doublets_azimut_1deg_15deg azimuth 15.21 s": 78.20718950227166,
+   "V2/MPCLucy_doublets_azimut_1deg_15deg azimuth 25.70 s": 95.37778005672946,
+   "V2/MPCLucy_doublets_azimut_1deg_15deg azimuth 36.39 s": 84.32788970216443,
+   "V2/MPCLucy_doublets_azimut_1deg_15deg azimuth 49.62 s": 91.9543674695853,
+   "V2/MPCLucy_doublets_azimut_1deg_15deg azimuth 65.04 s": 90.89772024888723,
+   "V2/MPCLucy_doublets_azimut_1deg_15deg azimuth 74.79 s": 78.79262595547145,
+   "V2/MPCLucy_doublets_azimut_1deg_15deg azimuth 90.55 s": 89.22999642316567,
+   "V2/MPCLucy_doublets_elevation_01deg_minus01deg elevation 1.10 s": 68.54519340127077,
+   "V2/MPCLucy_doublets_elevation_01deg_minus01deg elevation 48.64 s": 76.99585983474631,
+   "V2/MPCLucy_doublets_elevation_01deg_minus01deg elevation 82.83 s": 26.84750677167126,
+   "V2/MPCLucy_doublets_elevation_05deg_minus05deg elevation 7.84 s": 89.85398430000366,
+   "V2/MPCLucy_doublets_elevation_05deg_minus05deg elevation 48.80 s": 75.98709297770486,
+   "V2/MPCLucy_doublets_elevation_05deg_minus05deg elevation 87.66 s": 53.92629176417976,
+   "V2/MPCLucy_doublets_elevation_1deg_minus1deg elevation 3.60 s": 74.81157013751884,
+   "V2/MPCLucy_doublets_elevation_1deg_minus1deg elevation 33.51 s": 84.3080063377359,
+   "V2/MPCLucy_doublets_elevation_1deg_minus1deg elevation 77.69 s": 87.67186310402136,
+   "V2/MPCLucy_doublets_elevation_3deg_minus3deg elevation 8.62 s": 91.78431833289304,
+   "V2/MPCLucy_doublets_elevation_3deg_minus3deg elevation 44.85 s": 79.22130033162283,
+   "V2/MPCLucy_doublets_elevation_3deg_minus3deg elevation 82.38 s": 88.92706227035355,
+   "V2/MPCLucy_doublets_elevation_5deg_minus5deg elevation 4.78 s": 91.19426217987387,
+   "V2/MPCLucy_doublets_elevation_5deg_minus5deg elevation 43.13 s": 86.50126709871887,
+   "V2/MPCLucy_doublets_elevation_5deg_minus5deg elevation 77.41 s": 88.30119310490623,
+   "V2/MPCLucy_doublets_elevation_8deg_minus8deg elevation 3.26 s": 88.00973446538035,
+   "V2/MPCLucy_doublets_elevation_8deg_minus8deg elevation 44.84 s": 90.2356272027858,
+   "V2/MPCLucy_doublets_elevation_8deg_minus8deg elevation 76.14 s": 93.32654248663363,
+   "V2/MPCLucy_doublets_elevation_10deg_minus10deg elevation 5.88 s": 93.68564578603011,
+   "V2/MPCLucy_doublets_elevation_10deg_minus10deg elevation 40.09 s": 90.87941607235817,
+   "V2/MPCLucy_doublets_elevation_10deg_minus10deg elevation 81.39 s": 95.76523990868692,
+   "V2/MPCLucy_doublets_elevation_15deg_minus15deg elevation 2.11 s": 95.86126965113053,
+   "V2/MPCLucy_doublets_elevation_15deg_minus15deg elevation 42.69 s": 79.66524642681867,
+   "V2/MPCLucy_doublets_elevation_15deg_minus15deg elevation 82.57 s": 85.39935833871796
+  },
+  "validation": {
+   "MPCLucy_step_1deg azimuth 5.76 s": 72.16601588999734,
+   "MPCLucy_step_1deg azimuth 8.04 s": 87.13918825810923,
+   "MPCLucy_step_1deg azimuth 10.37 s": 67.20794908610539,
+   "MPCLucy_step_1deg azimuth 12.01 s": 86.79740964362087,
+   "MPCLucy_step_1deg elevation 15.77 s": 54.900272426893004,
+   "MPCLucy_step_1deg elevation 18.95 s": 30.33279366073749,
+   "MPCLucy_step_1deg elevation 20.16 s": -83.47254722224466,
+   "MPCLucy_step_1deg elevation 21.30 s": 48.68454313779868,
+   "MPCLucy_step_1deg elevation 22.50 s": -64.09646390657507,
+   "MPCLucy_step_1deg elevation 23.32 s": 55.00606774370746,
+   "MPCLucy_1degAz_zeroAz_1degPol__zeroPol azimuth 3.57 s": 77.53031089665546,
+   "MPCLucy_1degAz_zeroAz_1degPol__zeroPol azimuth 10.29 s": 96.59391371074969,
+   "MPCLucy_1degAz_zeroAz_1degPol__zeroPol azimuth 27.94 s": 74.1464887508688,
+   "MPCLucy_1degAz_zeroAz_1degPol__zeroPol azimuth 33.30 s": 96.62128224823347,
+   "MPCLucy_1degAz_zeroAz_1degPol__zeroPol elevation 17.00 s": -21.471279019998192,
+   "MPCLucy_1degAz_zeroAz_1degPol__zeroPol elevation 21.87 s": 54.6724494629814,
+   "MPCLucy_1degAz_zeroAz_1degPol__zeroPol elevation 37.85 s": -1.0128877496207167,
+   "MPCLucy_1degAz_zeroAz_1degPol__zeroPol elevation 58.75 s": 56.335689331677386,
+   "MPCLucy_2degAz_2degPol_zeroAz_zeroPol azimuth 18.31 s": 84.45611587954421,
+   "MPCLucy_2degAz_2degPol_zeroAz_zeroPol azimuth 37.70 s": 97.57601226928016,
+   "MPCLucy_2degAz_2degPol_zeroAz_zeroPol elevation 23.56 s": 47.07228785267752,
+   "MPCLucy_2degAz_2degPol_zeroAz_zeroPol elevation 40.79 s": 50.68995935932526,
+   "MPCLucy_2degPol_zeroPol_2degAz_zeroAz azimuth 19.95 s": 83.90426074443623,
+   "MPCLucy_2degPol_zeroPol_2degAz_zeroAz azimuth 22.95 s": 97.22171971571866,
+   "MPCLucy_2degPol_zeroPol_2degAz_zeroAz elevation 8.19 s": 54.305076807320354,
+   "MPCLucy_2degPol_zeroPol_2degAz_zeroAz elevation 14.17 s": 58.55707249976688
+  },
+  "validation_theta0_per_sequence": {
+   "MPCLucy_step_1deg azimuth 5.76 s": 92.68805611216338,
+   "MPCLucy_step_1deg azimuth 8.04 s": 90.0672243644817,
+   "MPCLucy_step_1deg azimuth 10.37 s": 87.6983137277331,
+   "MPCLucy_step_1deg azimuth 12.01 s": 90.31087252583741,
+   "MPCLucy_1degAz_zeroAz_1degPol__zeroPol azimuth 3.57 s": 89.45017091915496,
+   "MPCLucy_1degAz_zeroAz_1degPol__zeroPol azimuth 10.29 s": 87.81153512532781,
+   "MPCLucy_1degAz_zeroAz_1degPol__zeroPol azimuth 27.94 s": 85.85623589332107,
+   "MPCLucy_1degAz_zeroAz_1degPol__zeroPol azimuth 33.30 s": 87.18689722078895,
+   "MPCLucy_2degAz_2degPol_zeroAz_zeroPol azimuth 18.31 s": 93.29306728960609,
+   "MPCLucy_2degAz_2degPol_zeroAz_zeroPol azimuth 37.70 s": 90.80772485231347,
+   "MPCLucy_2degPol_zeroPol_2degAz_zeroAz azimuth 19.95 s": 91.20922007836857,
+   "MPCLucy_2degPol_zeroPol_2degAz_zeroAz azimuth 22.95 s": 91.20099691354999,
+   "MPCLucy_step_1deg elevation 15.77 s": 93.60379161809384,
+   "MPCLucy_step_1deg elevation 18.95 s": 91.1495961571595,
+   "MPCLucy_step_1deg elevation 20.16 s": 78.88699989411657,
+   "MPCLucy_step_1deg elevation 21.30 s": 87.11438175601131,
+   "MPCLucy_step_1deg elevation 22.50 s": 77.73296792246728,
+   "MPCLucy_step_1deg elevation 23.32 s": 83.67327574387996,
+   "MPCLucy_1degAz_zeroAz_1degPol__zeroPol elevation 17.00 s": 87.39805656893951,
+   "MPCLucy_1degAz_zeroAz_1degPol__zeroPol elevation 21.87 s": 86.73943143431799,
+   "MPCLucy_1degAz_zeroAz_1degPol__zeroPol elevation 37.85 s": 84.62822127714188,
+   "MPCLucy_1degAz_zeroAz_1degPol__zeroPol elevation 58.75 s": 84.61840711287584,
+   "MPCLucy_2degAz_2degPol_zeroAz_zeroPol elevation 23.56 s": 87.4078477063146,
+   "MPCLucy_2degAz_2degPol_zeroAz_zeroPol elevation 40.79 s": 86.0092207425004,
+   "MPCLucy_2degPol_zeroPol_2degAz_zeroAz elevation 8.19 s": 88.35114460430096,
+   "MPCLucy_2degPol_zeroPol_2degAz_zeroAz elevation 14.17 s": 86.05135540151379
+  },
+  "validation_theta0_one_file": {
+   "step_1deg -> MPCLucy_1degAz_zeroAz_1degPol__zeroPol azimuth 3.57 s": 97.13650879391703,
+   "step_1deg -> MPCLucy_1degAz_zeroAz_1degPol__zeroPol azimuth 10.29 s": 77.87965967181879,
+   "step_1deg -> MPCLucy_1degAz_zeroAz_1degPol__zeroPol azimuth 27.94 s": 94.94417796980402,
+   "step_1deg -> MPCLucy_1degAz_zeroAz_1degPol__zeroPol azimuth 33.30 s": 77.26118261649195,
+   "step_1deg -> MPCLucy_2degAz_2degPol_zeroAz_zeroPol azimuth 18.31 s": 97.28281271783847,
+   "step_1deg -> MPCLucy_2degAz_2degPol_zeroAz_zeroPol azimuth 37.70 s": 83.41026630728999,
+   "step_1deg -> MPCLucy_2degPol_zeroPol_2degAz_zeroAz azimuth 19.95 s": 97.30668240470646,
+   "step_1deg -> MPCLucy_2degPol_zeroPol_2degAz_zeroAz azimuth 22.95 s": 82.08552782579798,
+   "1degAz_zeroAz_1degPol__zeroPol -> MPCLucy_step_1deg azimuth 5.76 s": 83.11455117560641,
+   "1degAz_zeroAz_1degPol__zeroPol -> MPCLucy_step_1deg azimuth 8.04 s": 96.25233308401185,
+   "1degAz_zeroAz_1degPol__zeroPol -> MPCLucy_step_1deg azimuth 10.37 s": 77.96119915151178,
+   "1degAz_zeroAz_1degPol__zeroPol -> MPCLucy_step_1deg azimuth 12.01 s": 96.58985615718201,
+   "1degAz_zeroAz_1degPol__zeroPol -> MPCLucy_2degAz_2degPol_zeroAz_zeroPol azimuth 18.31 s": 93.29361581648573,
+   "1degAz_zeroAz_1degPol__zeroPol -> MPCLucy_2degAz_2degPol_zeroAz_zeroPol azimuth 37.70 s": 90.80645570495875,
+   "1degAz_zeroAz_1degPol__zeroPol -> MPCLucy_2degPol_zeroPol_2degAz_zeroAz azimuth 19.95 s": 92.88143157685545,
+   "1degAz_zeroAz_1degPol__zeroPol -> MPCLucy_2degPol_zeroPol_2degAz_zeroAz azimuth 22.95 s": 89.49169941509798,
+   "2degAz_2degPol_zeroAz_zeroPol -> MPCLucy_step_1deg azimuth 5.76 s": 83.11311616051799,
+   "2degAz_2degPol_zeroAz_zeroPol -> MPCLucy_step_1deg azimuth 8.04 s": 96.25200684189723,
+   "2degAz_2degPol_zeroAz_zeroPol -> MPCLucy_step_1deg azimuth 10.37 s": 77.95946032680149,
+   "2degAz_2degPol_zeroAz_zeroPol -> MPCLucy_step_1deg azimuth 12.01 s": 96.5893554842808,
+   "2degAz_2degPol_zeroAz_zeroPol -> MPCLucy_1degAz_zeroAz_1degPol__zeroPol azimuth 3.57 s": 89.44856709640605,
+   "2degAz_2degPol_zeroAz_zeroPol -> MPCLucy_1degAz_zeroAz_1degPol__zeroPol azimuth 10.29 s": 87.8130083725624,
+   "2degAz_2degPol_zeroAz_zeroPol -> MPCLucy_1degAz_zeroAz_1degPol__zeroPol azimuth 27.94 s": 85.85488533528195,
+   "2degAz_2degPol_zeroAz_zeroPol -> MPCLucy_1degAz_zeroAz_1degPol__zeroPol azimuth 33.30 s": 87.1882658679871,
+   "2degAz_2degPol_zeroAz_zeroPol -> MPCLucy_2degPol_zeroPol_2degAz_zeroAz azimuth 19.95 s": 92.88046542923797,
+   "2degAz_2degPol_zeroAz_zeroPol -> MPCLucy_2degPol_zeroPol_2degAz_zeroAz azimuth 22.95 s": 89.49278947427919,
+   "2degPol_zeroPol_2degAz_zeroAz -> MPCLucy_step_1deg azimuth 5.76 s": 80.90917436714776,
+   "2degPol_zeroPol_2degAz_zeroAz -> MPCLucy_step_1deg azimuth 8.04 s": 95.20279400497247,
+   "2degPol_zeroPol_2degAz_zeroAz -> MPCLucy_step_1deg azimuth 10.37 s": 75.85042711650527,
+   "2degPol_zeroPol_2degAz_zeroAz -> MPCLucy_step_1deg azimuth 12.01 s": 95.3034726031692,
+   "2degPol_zeroPol_2degAz_zeroAz -> MPCLucy_1degAz_zeroAz_1degPol__zeroPol azimuth 3.57 s": 87.18409957964009,
+   "2degPol_zeroPol_2degAz_zeroAz -> MPCLucy_1degAz_zeroAz_1degPol__zeroPol azimuth 10.29 s": 90.01373047385798,
+   "2degPol_zeroPol_2degAz_zeroAz -> MPCLucy_1degAz_zeroAz_1degPol__zeroPol azimuth 27.94 s": 83.5756721595771,
+   "2degPol_zeroPol_2degAz_zeroAz -> MPCLucy_1degAz_zeroAz_1degPol__zeroPol azimuth 33.30 s": 89.40444580230785,
+   "2degPol_zeroPol_2degAz_zeroAz -> MPCLucy_2degAz_2degPol_zeroAz_zeroPol azimuth 18.31 s": 91.7000712000731,
+   "2degPol_zeroPol_2degAz_zeroAz -> MPCLucy_2degAz_2degPol_zeroAz_zeroPol azimuth 37.70 s": 92.496445949432,
+   "step_1deg -> MPCLucy_1degAz_zeroAz_1degPol__zeroPol elevation 17.00 s": 88.34344191033573,
+   "step_1deg -> MPCLucy_1degAz_zeroAz_1degPol__zeroPol elevation 21.87 s": 85.84035180183254,
+   "step_1deg -> MPCLucy_1degAz_zeroAz_1degPol__zeroPol elevation 37.85 s": 85.59268239100585,
+   "step_1deg -> MPCLucy_1degAz_zeroAz_1degPol__zeroPol elevation 58.75 s": 83.62268915231853,
+   "step_1deg -> MPCLucy_2degAz_2degPol_zeroAz_zeroPol elevation 23.56 s": 82.68907782448824,
+   "step_1deg -> MPCLucy_2degAz_2degPol_zeroAz_zeroPol elevation 40.79 s": 90.30419568788005,
+   "step_1deg -> MPCLucy_2degPol_zeroPol_2degAz_zeroAz elevation 8.19 s": 86.20110178299805,
+   "step_1deg -> MPCLucy_2degPol_zeroPol_2degAz_zeroAz elevation 14.17 s": 87.86959821186397,
+   "1degAz_zeroAz_1degPol__zeroPol -> MPCLucy_step_1deg elevation 15.77 s": 94.01698682357616,
+   "1degAz_zeroAz_1degPol__zeroPol -> MPCLucy_step_1deg elevation 18.95 s": 91.79609551021393,
+   "1degAz_zeroAz_1degPol__zeroPol -> MPCLucy_step_1deg elevation 20.16 s": 77.98770349888431,
+   "1degAz_zeroAz_1degPol__zeroPol -> MPCLucy_step_1deg elevation 21.30 s": 88.08576085516742,
+   "1degAz_zeroAz_1degPol__zeroPol -> MPCLucy_step_1deg elevation 22.50 s": 76.65485615083479,
+   "1degAz_zeroAz_1degPol__zeroPol -> MPCLucy_step_1deg elevation 23.32 s": 84.81468888900179,
+   "1degAz_zeroAz_1degPol__zeroPol -> MPCLucy_2degAz_2degPol_zeroAz_zeroPol elevation 23.56 s": 81.7097724992514,
+   "1degAz_zeroAz_1degPol__zeroPol -> MPCLucy_2degAz_2degPol_zeroAz_zeroPol elevation 40.79 s": 91.19734410526361,
+   "1degAz_zeroAz_1degPol__zeroPol -> MPCLucy_2degPol_zeroPol_2degAz_zeroAz elevation 8.19 s": 85.30687570984225,
+   "1degAz_zeroAz_1degPol__zeroPol -> MPCLucy_2degPol_zeroPol_2degAz_zeroAz elevation 14.17 s": 88.62525583757918,
+   "2degAz_2degPol_zeroAz_zeroPol -> MPCLucy_step_1deg elevation 15.77 s": 88.97877911280561,
+   "2degAz_2degPol_zeroAz_zeroPol -> MPCLucy_step_1deg elevation 18.95 s": 87.28174558090447,
+   "2degAz_2degPol_zeroAz_zeroPol -> MPCLucy_step_1deg elevation 20.16 s": 83.4259873974532,
+   "2degAz_2degPol_zeroAz_zeroPol -> MPCLucy_step_1deg elevation 21.30 s": 81.98669491196632,
+   "2degAz_2degPol_zeroAz_zeroPol -> MPCLucy_step_1deg elevation 22.50 s": 82.372026613355,
+   "2degAz_2degPol_zeroAz_zeroPol -> MPCLucy_step_1deg elevation 23.32 s": 77.79339638335433,
+   "2degAz_2degPol_zeroAz_zeroPol -> MPCLucy_1degAz_zeroAz_1degPol__zeroPol elevation 17.00 s": 92.6242880001235,
+   "2degAz_2degPol_zeroAz_zeroPol -> MPCLucy_1degAz_zeroAz_1degPol__zeroPol elevation 21.87 s": 81.16107695276224,
+   "2degAz_2degPol_zeroAz_zeroPol -> MPCLucy_1degAz_zeroAz_1degPol__zeroPol elevation 37.85 s": 90.17678124416588,
+   "2degAz_2degPol_zeroAz_zeroPol -> MPCLucy_1degAz_zeroAz_1degPol__zeroPol elevation 58.75 s": 78.70067116589766,
+   "2degAz_2degPol_zeroAz_zeroPol -> MPCLucy_2degPol_zeroPol_2degAz_zeroAz elevation 8.19 s": 90.55920420564193,
+   "2degAz_2degPol_zeroAz_zeroPol -> MPCLucy_2degPol_zeroPol_2degAz_zeroAz elevation 14.17 s": 84.19345675424267,
+   "2degPol_zeroPol_2degAz_zeroAz -> MPCLucy_step_1deg elevation 15.77 s": 91.71296880562427,
+   "2degPol_zeroPol_2degAz_zeroAz -> MPCLucy_step_1deg elevation 18.95 s": 89.35944830343546,
+   "2degPol_zeroPol_2degAz_zeroAz -> MPCLucy_step_1deg elevation 20.16 s": 81.10185472918629,
+   "2degPol_zeroPol_2degAz_zeroAz -> MPCLucy_step_1deg elevation 21.30 s": 84.65745039531586,
+   "2degPol_zeroPol_2degAz_zeroAz -> MPCLucy_step_1deg elevation 22.50 s": 80.13127244931843,
+   "2degPol_zeroPol_2degAz_zeroAz -> MPCLucy_step_1deg elevation 23.32 s": 80.84605378441914,
+   "2degPol_zeroPol_2degAz_zeroAz -> MPCLucy_1degAz_zeroAz_1degPol__zeroPol elevation 17.00 s": 90.54871731466989,
+   "2degPol_zeroPol_2degAz_zeroAz -> MPCLucy_1degAz_zeroAz_1degPol__zeroPol elevation 21.87 s": 83.57555838109559,
+   "2degPol_zeroPol_2degAz_zeroAz -> MPCLucy_1degAz_zeroAz_1degPol__zeroPol elevation 37.85 s": 87.88817090762244,
+   "2degPol_zeroPol_2degAz_zeroAz -> MPCLucy_1degAz_zeroAz_1degPol__zeroPol elevation 58.75 s": 81.19042171104094,
+   "2degPol_zeroPol_2degAz_zeroAz -> MPCLucy_2degAz_2degPol_zeroAz_zeroPol elevation 23.56 s": 85.030424366374,
+   "2degPol_zeroPol_2degAz_zeroAz -> MPCLucy_2degAz_2degPol_zeroAz_zeroPol elevation 40.79 s": 88.16945415616111
+  }
+ },
+ "theta0_per_sequence": {
+  "azimuth": {
+   "MPCLucy_step_1deg": 2.2068999227275214,
+   "MPCLucy_1degAz_zeroAz_1degPol__zeroPol": 0.0002050623795055178,
+   "MPCLucy_2degAz_2degPol_zeroAz_zeroPol": -0.00013274643728838318,
+   "MPCLucy_2degPol_zeroPol_2degAz_zeroAz": -0.5061796415309814
+  },
+  "elevation": {
+   "MPCLucy_step_1deg": 2.2821424536664234,
+   "MPCLucy_1degAz_zeroAz_1degPol__zeroPol": 2.1624476005694806,
+   "MPCLucy_2degAz_2degPol_zeroAz_zeroPol": 2.8554610703887096,
+   "MPCLucy_2degPol_zeroPol_2degAz_zeroAz": 2.567382772944869
+  }
+ },
+ "windows": {
+  "amplitude_deg": {
+   "V2/MPCLucy_doublets_azimut_01deg_minus01deg azimuth 6.28 s": 0.09999996100000001,
+   "V2/MPCLucy_doublets_azimut_01deg_minus01deg azimuth 41.98 s": -0.19999992200000002,
+   "V2/MPCLucy_doublets_azimut_01deg_minus01deg azimuth 75.93 s": 0.09999996100000001,
+   "V2/MPCLucy_doublets_azimut_05deg_minus05deg azimuth 5.97 s": 0.49999997,
+   "V2/MPCLucy_doublets_azimut_05deg_minus05deg azimuth 39.58 s": -0.99999994,
+   "V2/MPCLucy_doublets_azimut_05deg_minus05deg azimuth 77.97 s": 0.49999997,
+   "V2/MPCLucy_doublets_azimut_1deg_minus1deg azimuth 8.89 s": 0.99999994,
+   "V2/MPCLucy_doublets_azimut_1deg_minus1deg azimuth 47.21 s": -1.99999988,
+   "V2/MPCLucy_doublets_azimut_1deg_minus1deg azimuth 82.83 s": 0.99999994,
+   "V2/MPCLucy_doublets_azimut_3deg_minus3deg azimuth 4.19 s": 2.9999999890000004,
+   "V2/MPCLucy_doublets_azimut_3deg_minus3deg azimuth 46.97 s": -5.999999978000001,
+   "V2/MPCLucy_doublets_azimut_3deg_minus3deg azimuth 92.32 s": 2.9999999890000004,
+   "V2/MPCLucy_doublets_azimut_5deg_minus5deg azimuth 1.95 s": 4.99999987,
+   "V2/MPCLucy_doublets_azimut_5deg_minus5deg azimuth 49.53 s": -9.99999974,
+   "V2/MPCLucy_doublets_azimut_5deg_minus5deg azimuth 88.30 s": 4.99999987,
+   "V2/MPCLucy_doublets_azimut_8deg_minus8deg azimuth 35.14 s": -15.999999716,
+   "V2/MPCLucy_doublets_azimut_8deg_minus8deg azimuth 81.42 s": 7.999999858,
+   "V2/MPCLucy_doublets_azimut_1deg_15deg azimuth 1.74 s": -9.99999974,
+   "V2/MPCLucy_doublets_azimut_1deg_15deg azimuth 15.21 s": 12.999999728,
+   "V2/MPCLucy_doublets_azimut_1deg_15deg azimuth 25.70 s": -15.999999716,
+   "V2/MPCLucy_doublets_azimut_1deg_15deg azimuth 36.39 s": 17.999999765000002,
+   "V2/MPCLucy_doublets_azimut_1deg_15deg azimuth 49.62 s": -19.999999814000002,
+   "V2/MPCLucy_doublets_azimut_1deg_15deg azimuth 65.04 s": 24.999999851000002,
+   "V2/MPCLucy_doublets_azimut_1deg_15deg azimuth 74.79 s": -29.999999888,
+   "V2/MPCLucy_doublets_azimut_1deg_15deg azimuth 90.55 s": 14.999999944,
+   "V2/MPCLucy_doublets_elevation_01deg_minus01deg elevation 1.10 s": 0.09999996100000001,
+   "V2/MPCLucy_doublets_elevation_01deg_minus01deg elevation 48.64 s": -0.19999992200000002,
+   "V2/MPCLucy_doublets_elevation_01deg_minus01deg elevation 82.83 s": 0.09999996100000001,
+   "V2/MPCLucy_doublets_elevation_05deg_minus05deg elevation 7.84 s": 0.49999997,
+   "V2/MPCLucy_doublets_elevation_05deg_minus05deg elevation 48.80 s": -0.99999994,
+   "V2/MPCLucy_doublets_elevation_05deg_minus05deg elevation 87.66 s": 0.49999997,
+   "V2/MPCLucy_doublets_elevation_1deg_minus1deg elevation 3.60 s": 0.99999994,
+   "V2/MPCLucy_doublets_elevation_1deg_minus1deg elevation 33.51 s": -1.99999988,
+   "V2/MPCLucy_doublets_elevation_1deg_minus1deg elevation 77.69 s": 0.99999994,
+   "V2/MPCLucy_doublets_elevation_3deg_minus3deg elevation 8.62 s": 2.9999999890000004,
+   "V2/MPCLucy_doublets_elevation_3deg_minus3deg elevation 44.85 s": -5.999999978000001,
+   "V2/MPCLucy_doublets_elevation_3deg_minus3deg elevation 82.38 s": 2.9999999890000004,
+   "V2/MPCLucy_doublets_elevation_5deg_minus5deg elevation 4.78 s": 4.99999987,
+   "V2/MPCLucy_doublets_elevation_5deg_minus5deg elevation 43.13 s": -9.99999974,
+   "V2/MPCLucy_doublets_elevation_5deg_minus5deg elevation 77.41 s": 4.99999987,
+   "V2/MPCLucy_doublets_elevation_8deg_minus8deg elevation 3.26 s": 7.999999858,
+   "V2/MPCLucy_doublets_elevation_8deg_minus8deg elevation 44.84 s": -15.999999716,
+   "V2/MPCLucy_doublets_elevation_8deg_minus8deg elevation 76.14 s": 7.999999858,
+   "V2/MPCLucy_doublets_elevation_10deg_minus10deg elevation 5.88 s": 9.999999907000001,
+   "V2/MPCLucy_doublets_elevation_10deg_minus10deg elevation 40.09 s": -19.999999814000002,
+   "V2/MPCLucy_doublets_elevation_10deg_minus10deg elevation 81.39 s": 9.999999907000001,
+   "V2/MPCLucy_doublets_elevation_15deg_minus15deg elevation 2.11 s": 14.999999944,
+   "V2/MPCLucy_doublets_elevation_15deg_minus15deg elevation 42.69 s": -29.999999888,
+   "V2/MPCLucy_doublets_elevation_15deg_minus15deg elevation 82.57 s": 14.999999944,
+   "MPCLucy_step_1deg azimuth 5.76 s": 0.99999994,
+   "MPCLucy_step_1deg azimuth 8.04 s": -0.99999994,
+   "MPCLucy_step_1deg azimuth 10.37 s": 0.99999994,
+   "MPCLucy_step_1deg azimuth 12.01 s": -0.99999994,
+   "MPCLucy_step_1deg elevation 15.77 s": 0.5708464980000001,
+   "MPCLucy_step_1deg elevation 18.95 s": -0.99999994,
+   "MPCLucy_step_1deg elevation 20.16 s": 0.99999994,
+   "MPCLucy_step_1deg elevation 21.30 s": -0.99999994,
+   "MPCLucy_step_1deg elevation 22.50 s": 0.99999994,
+   "MPCLucy_step_1deg elevation 23.32 s": -0.99999994,
+   "MPCLucy_1degAz_zeroAz_1degPol__zeroPol azimuth 3.57 s": 0.99999994,
+   "MPCLucy_1degAz_zeroAz_1degPol__zeroPol azimuth 10.29 s": -0.99999994,
+   "MPCLucy_1degAz_zeroAz_1degPol__zeroPol azimuth 27.94 s": 0.99999994,
+   "MPCLucy_1degAz_zeroAz_1degPol__zeroPol azimuth 33.30 s": -0.99999994,
+   "MPCLucy_1degAz_zeroAz_1degPol__zeroPol elevation 17.00 s": 0.99999994,
+   "MPCLucy_1degAz_zeroAz_1degPol__zeroPol elevation 21.87 s": -0.99999994,
+   "MPCLucy_1degAz_zeroAz_1degPol__zeroPol elevation 37.85 s": 0.99999994,
+   "MPCLucy_1degAz_zeroAz_1degPol__zeroPol elevation 58.75 s": -0.99999994,
+   "MPCLucy_2degAz_2degPol_zeroAz_zeroPol azimuth 18.31 s": 1.9999998810000001,
+   "MPCLucy_2degAz_2degPol_zeroAz_zeroPol azimuth 37.70 s": -1.9999998810000001,
+   "MPCLucy_2degAz_2degPol_zeroAz_zeroPol elevation 23.56 s": 1.9999998810000001,
+   "MPCLucy_2degAz_2degPol_zeroAz_zeroPol elevation 40.79 s": -1.9999998810000001,
+   "MPCLucy_2degPol_zeroPol_2degAz_zeroAz azimuth 19.95 s": 1.9999998810000001,
+   "MPCLucy_2degPol_zeroPol_2degAz_zeroAz azimuth 22.95 s": -1.9999998810000001,
+   "MPCLucy_2degPol_zeroPol_2degAz_zeroAz elevation 8.19 s": 1.9999998810000001,
+   "MPCLucy_2degPol_zeroPol_2degAz_zeroAz elevation 14.17 s": -1.9999998810000001
+  }
+ },
+ "wall_time_s": 9251.864752054214
+}

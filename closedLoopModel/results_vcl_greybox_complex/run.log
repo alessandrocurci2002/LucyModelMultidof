@@ -1,0 +1,53 @@
+azimuth: BodeMeasurement_azimuth.csv, 131 points
+  azimuth: start {'k_{\\psi,3}': 30000.0} -> loss 0.00046345, fit 55.4 %, 3000 evaluations, 143 s
+  azimuth: start {'k_{\\psi,3}': 60000.0} -> loss 0.00041617, fit 57.7 %, 3000 evaluations, 132 s
+  azimuth: start {'k_{\\psi,3}': 120000.0} -> loss 0.000807, fit 41.1 %, 52 evaluations, 2 s
+  azimuth: start {'k_{\\psi,3}': 300000.0} -> loss 0.00059951, fit 49.2 %, 3000 evaluations, 130 s
+greyest: trf, maximum evaluations reached (The maximum number of function evaluations is exceeded.), 3000 evaluations
+fit [%]: 57.7
+MSE 4.839e-06  FPE 6.563e-06  AIC -782.5  AICc -777.4  BIC -750.6
+loss 1.409e+04 -> 0.0004162, data 86, free parameters 13, Jacobian condition 2.69e+08
+       parameter        value        std std/|value|      initial  free
+      J_{\psi,e}   0.00018656    0.00113     608.23%   0.00018494  yes
+      J_{\psi,m}   0.00029744    0.00103     344.67%   0.00029414  yes
+      J_{\psi,L}        1.002      0.264      26.37%       1.2522  yes
+          J^{ax}      0.04265   0.000479       1.12%     0.053312  yes (at bound)
+            I_zz       1.0294      0.269      26.13%      0.85782  yes
+      k_{\psi,1}       9660.2   4.36e+04     450.83%       9547.6  yes
+      k_{\psi,2}        15064   1.93e+03      12.81%        13091  yes
+      k_{\psi,3}        55193   2.58e+03       4.68%        60000  yes
+      c_{\psi,1}      0.18716      0.356     190.28%      0.40341  yes
+      c_{\psi,2}      0.27127       1.41     518.69%      0.55312  yes
+      c_{\psi,3}       5.3771        3.3      61.45%       4.9013  yes
+           kg_az       147.03       13.8       9.36%         1418  yes
+          eta_az       1.8334      0.173       9.46%         0.32  yes
+elevation: BodeMeasurement_elevation.csv, 131 points
+  elevation: start {'k_{\\theta,4}': 60000.0, 'ring': 1.0} -> loss 1.62e+06, fit 38.6 %, 2 evaluations, 0 s
+  elevation: start {'k_{\\theta,4}': 60000.0, 'ring': 1000.0} -> loss 0.0003343, fit 54.5 %, 33 evaluations, 1 s
+  elevation: start {'k_{\\theta,4}': 150000.0, 'ring': 1.0} -> loss 1.62e+06, fit 49.7 %, 3 evaluations, 0 s
+  elevation: start {'k_{\\theta,4}': 150000.0, 'ring': 1000.0} -> loss 0.00033405, fit 54.5 %, 251 evaluations, 14 s
+  elevation: start {'k_{\\theta,4}': 400000.0, 'ring': 1.0} -> loss 1.62e+06, fit 52.9 %, 3 evaluations, 0 s
+  elevation: start {'k_{\\theta,4}': 400000.0, 'ring': 1000.0} -> loss 0.0003355, fit 54.4 %, 40 evaluations, 2 s
+  elevation: start {'k_{\\theta,4}': 1000000.0, 'ring': 1.0} -> loss 1.62e+06, fit 53.5 %, 3 evaluations, 0 s
+  elevation: start {'k_{\\theta,4}': 1000000.0, 'ring': 1000.0} -> loss 0.00033472, fit 54.4 %, 38 evaluations, 1 s
+greyest: trf, converged (`ftol` termination condition is satisfied.), 251 evaluations
+fit [%]: 54.5
+MSE 3.884e-06  FPE 5.66e-06  AIC -795.4  AICc -787.5  BIC -756.1
+loss 8.462e+04 -> 0.000334, data 86, free parameters 16, Jacobian condition 2.3e+06
+       parameter        value        std std/|value|      initial  free
+    J_{\theta,e}   9.1093e-06      0.222 2439598.58%   8.9416e-06  yes
+    J_{\theta,h}     0.032939    1.2e+04 36527916.99%      0.03227  yes
+    J_{\theta,m}   0.00088631       39.1 4407728.57%   0.00073859  yes (at bound)
+    J_{\theta,r}   0.00077298       21.3 2750966.34%   0.00064415  yes (at bound)
+            I_yy      0.98766    1.2e+04 1218368.00%      0.86621  yes
+k_{\theta,1}^{geo}        48878   1.71e+09 3493401.28%        47978  yes
+k_{\theta,2}^{geo}       8138.7   1.17e+08 1433691.73%        10173  yes (at bound)
+    k_{\theta,3}       7755.4   4.46e+08 5744529.78%       9694.2  yes (at bound)
+    k_{\theta,4}   2.1282e+08   1.05e+13 4913208.89%      1.5e+05  yes
+            ring         2010   1.68e+08 8334652.92%         1000  yes
+    c_{\theta,1}      0.13255   4.63e+04 34938344.97%      0.50533  yes
+    c_{\theta,2}      0.59816   9.42e+03 1575631.69%      0.10938  yes
+    c_{\theta,3}      0.20881   2.49e+04 11946562.71%      0.10482  yes
+    c_{\theta,4}      0.28468   8.08e+04 28367769.26%       1.2542  yes
+           kg_el       173.06       21.1      12.21%          164  yes
+          eta_el       2.4983      0.297      11.89%         3.11  yes

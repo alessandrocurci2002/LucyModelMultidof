@@ -1,0 +1,22 @@
+# AVVISO: result from placeholder parameters
+ordine,f_Hz,asse,modo,tipo,tenuto
+1,0,azimut,0,rigido,si
+2,0,polare,0,rigido,si
+3,87.5063,polare,1,flessibile,si
+4,336.31,polare,2,flessibile,si
+5,752.185,azimut,1,flessibile,si
+6,3506.35,polare,3,flessibile,si
+7,4595.13,azimut,2,flessibile,si
+8,10718.9,polare,4,flessibile,no
+9,21343.7,azimut,3,flessibile,no
+10,29518.9,azimut,4,flessibile,no
+11,39994.3,polare,5,flessibile,no
+12,47898.7,azimut,5,flessibile,no
+13,63122.7,polare,6,flessibile,no
+14,68636.4,polare,7,flessibile,no
+15,70977.5,polare,8,flessibile,no
+16,80543.4,polare,9,flessibile,no
+17,83337,azimut,6,flessibile,no
+18,85155.5,azimut,7,flessibile,no
+19,156977,polare,10,flessibile,no
+20,166227,azimut,8,flessibile,no

@@ -1,0 +1,67 @@
+# =====================================================================
+# GREY-BOX ESTIMATE OF THE PLANT ON THE VClosedLoop FREQUENCY RESPONSES (20 Oct 2026), 2026-10-27
+# Model: H7, 9 DOF (gimbal_mdof config_hub_telescopeonring_alhub_fit_ground_aztel.yaml)
+#   elevation: chain e - h - m - r, telescope p hung from the hub h by k_theta,4, ground constraint on h;
+#   azimuth:   chain e - m - L - p, telescope p hung from the fork L by k_psi,3, ground constraint on L.
+# Data: LucyIdentification/VClosedLoop/BodeMeasurement_{azimuth,elevation}.csv, trace "Plant"
+#   (encoder velocity / current command): the responses on which the earlier model matched well.
+# Constraints (user, 2026-10-27):
+#   - band 1-150 Hz on both axes;
+#   - inertias within +-20 % of CAD / geometry, geometric springs within +-20 %;
+#   - telescope-hub (k_theta,4), ring factor, telescope-fork (k_psi,3), ground constraints free;
+#   - damping limited to physical values: damping ratio <= 0.1 on every mode (soft constraint).
+#     The loss factor eta of the ground constraints (pre-sliding friction of the bearings, ~3 below 5 Hz) is not
+#     structural damping and stays free.
+# Run (from this folder):
+#   ../.venv/bin/python -I greybox_fit.py --config config_vcl_greybox.yaml
+# =====================================================================
+results_dir: results_vcl_greybox
+label: "H7 (9 DOF) estimated on the VClosedLoop plant responses (20 Oct 2026)"
+
+plant:
+  config: ../config_hub_telescopeonring_alhub_fit_ground_aztel.yaml
+  theta0_deg: 0.0
+  balanced_telescope: true
+  zeta_first_flexible: null       # start: damping of the configuration (zeta_1 = 0.01, stiffness proportional)
+  bearing_friction: {model: none}
+
+motor:
+  file: data/motor_TBM7646A.yaml
+  temperature: cold
+  cogging: false
+
+drives:
+  azimuth:
+    parameters: ../../LucyIdentification/VClosedLoop/Parameters_azimuth.akd
+    measurement: ../../LucyIdentification/VClosedLoop/BodeMeasurement_azimuth.csv
+  elevation:
+    parameters: ../../LucyIdentification/VClosedLoop/Parameters_elevation.akd
+    measurement: ../../LucyIdentification/VClosedLoop/BodeMeasurement_elevation.csv
+  feedforward: false
+  observer: from_parameters
+  delay_s: 0.0
+  position_gain_unit: hz
+
+fit:
+  band_Hz: [1.0, 150.0]
+  frequency_error: log
+  loss: soft_l1
+  f_scale: 0.5
+  max_iterations: 600
+  covariance: robust
+  max_damping_ratio: 0.1
+  damping_check_fmax_Hz: null     # all the modes: with a cut at 300 Hz the search moved modes just above it
+                                  # and overdamped them (first run, 2026-10-27)
+  damping_penalty_weight: 1000.0
+  bounds:
+    relative: 0.2
+    free_stiffness: [1.0, 1.0e+9]
+    ring: [1.0e-3, 1.0e+6]
+    damper: [1.0e-6, 1.0e+4]
+    eta: [1.0e-4, 100.0]
+  starts:
+    azimuth:
+      "k_{\\psi,3}": [3.0e+4, 6.0e+4, 1.2e+5, 3.0e+5]
+    elevation:
+      "k_{\\theta,4}": [6.0e+4, 1.5e+5, 4.0e+5, 1.0e+6]
+      ring: [1.0, 1000.0]

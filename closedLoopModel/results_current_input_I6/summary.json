@@ -1,0 +1,354 @@
+{
+  "config": "config_current_input_I6.yaml",
+  "first_guess": {
+    "azimuth": {
+      "scale": 0.9062488780335707,
+      "sigma0": 202.79047580449608,
+      "Tc": 0.22785017024789467,
+      "Ts_ratio": 1.4771199006428022,
+      "vs": 0.001,
+      "c_{\\psi,1}": 0.3696234205543212,
+      "c_{\\psi,2}": 6.58668033054929,
+      "d_x_mm": 0.0
+    },
+    "elevation": {
+      "scale": 0.9373976805737716,
+      "sigma0": 413.3299684750071,
+      "Tc": 0.3959026250477038,
+      "Ts_ratio": 5.1957731869932715,
+      "vs": 0.006637296362611333,
+      "d_x_mm": 0.0,
+      "k_b": 197179.61979178208,
+      "ring": 1.9230199443460287,
+      "c_{\\theta,1}": 5.039685119431714,
+      "c_{\\theta,2}": 0.07975334021841715,
+      "c_{\\theta,3}": 0.8986583599715091,
+      "c_{\\theta,4}": 24.601148606563704
+    }
+  },
+  "windows": {
+    "identification": [
+      "MPCLucy_step_1deg azimuth 5.76 s",
+      "MPCLucy_step_1deg azimuth 8.04 s",
+      "MPCLucy_step_1deg azimuth 10.37 s",
+      "MPCLucy_step_1deg azimuth 12.01 s",
+      "MPCLucy_step_1deg elevation 15.77 s",
+      "MPCLucy_step_1deg elevation 18.95 s",
+      "MPCLucy_step_1deg elevation 20.16 s",
+      "MPCLucy_step_1deg elevation 21.30 s",
+      "MPCLucy_step_1deg elevation 22.50 s",
+      "MPCLucy_step_1deg elevation 23.32 s",
+      "MPCLucy_1degAz_zeroAz_1degPol__zeroPol azimuth 3.57 s",
+      "MPCLucy_1degAz_zeroAz_1degPol__zeroPol azimuth 10.29 s",
+      "MPCLucy_1degAz_zeroAz_1degPol__zeroPol azimuth 27.94 s",
+      "MPCLucy_1degAz_zeroAz_1degPol__zeroPol azimuth 33.30 s",
+      "MPCLucy_1degAz_zeroAz_1degPol__zeroPol elevation 17.00 s",
+      "MPCLucy_1degAz_zeroAz_1degPol__zeroPol elevation 21.87 s",
+      "MPCLucy_1degAz_zeroAz_1degPol__zeroPol elevation 37.85 s",
+      "MPCLucy_1degAz_zeroAz_1degPol__zeroPol elevation 58.75 s"
+    ],
+    "validation": [
+      "MPCLucy_2degAz_2degPol_zeroAz_zeroPol azimuth 18.31 s",
+      "MPCLucy_2degAz_2degPol_zeroAz_zeroPol azimuth 37.70 s",
+      "MPCLucy_2degAz_2degPol_zeroAz_zeroPol elevation 23.56 s",
+      "MPCLucy_2degAz_2degPol_zeroAz_zeroPol elevation 40.79 s",
+      "MPCLucy_2degPol_zeroPol_2degAz_zeroAz azimuth 19.95 s",
+      "MPCLucy_2degPol_zeroPol_2degAz_zeroAz azimuth 22.95 s",
+      "MPCLucy_2degPol_zeroPol_2degAz_zeroAz elevation 8.19 s",
+      "MPCLucy_2degPol_zeroPol_2degAz_zeroAz elevation 14.17 s"
+    ]
+  },
+  "first_guess_fits": {
+    "identification": [
+      98.26278660505758,
+      90.75231478455525,
+      91.6041728824831,
+      94.34309241929448,
+      85.35560386921813,
+      82.55595610428817,
+      82.1929782390313,
+      89.50361724336857,
+      80.72848630619782,
+      94.32872361143352,
+      96.60395632678238,
+      96.08014863435476,
+      97.32355514868063,
+      96.2795819076855,
+      86.77662809700708,
+      88.62056290462274,
+      84.94732994790289,
+      91.61110466086959
+    ],
+    "validation": [
+      97.3609405433536,
+      91.58118015338373,
+      57.57329365849895,
+      86.20461652796641,
+      97.72169445598642,
+      91.48067492435739,
+      75.79288735367086,
+      94.84660051181802
+    ]
+  },
+  "axes": {
+    "elevation": {
+      "screening": {
+        "scale": 43.9324327139927,
+        "sigma0": 0.9220176874334826,
+        "Tc": 17.809574425059246,
+        "Ts_ratio": 0.008369886610609745,
+        "vs": 0.013469916831018324,
+        "d_x_mm": 97.19712266516414
+      },
+      "kept": [
+        "scale",
+        "sigma0",
+        "Tc",
+        "d_x_mm"
+      ],
+      "grid": {
+        "points": [
+          [
+            0.9,
+            1.2
+          ],
+          [
+            0.9,
+            2.0
+          ],
+          [
+            0.9,
+            4.0
+          ],
+          [
+            1.0,
+            1.2
+          ],
+          [
+            1.0,
+            2.0
+          ],
+          [
+            1.0,
+            4.0
+          ],
+          [
+            1.1,
+            1.2
+          ],
+          [
+            1.1,
+            2.0
+          ],
+          [
+            1.1,
+            4.0
+          ],
+          [
+            1.2,
+            1.2
+          ],
+          [
+            1.2,
+            2.0
+          ],
+          [
+            1.2,
+            4.0
+          ]
+        ],
+        "costs": [
+          0.30865624885635035,
+          0.291866630687147,
+          0.274799747481249,
+          0.5061058899684687,
+          0.5060159547011924,
+          0.531631653914543,
+          3.23594827320293,
+          2.840743223928756,
+          2.966157906092983,
+          9.810386447340168,
+          7.427577863928813,
+          7.564154542078487
+        ]
+      },
+      "start": {
+        "scale": 0.9,
+        "sigma0": 413.3299684750071,
+        "Tc": 0.3959026250477038,
+        "Ts_ratio": 4.0,
+        "vs": 0.006637296362611333,
+        "d_x_mm": 0.0,
+        "k_b": 197179.61979178208,
+        "ring": 1.9230199443460287,
+        "c_{\\theta,1}": 5.039685119431714,
+        "c_{\\theta,2}": 0.07975334021841715,
+        "c_{\\theta,3}": 0.8986583599715091,
+        "c_{\\theta,4}": 24.601148606563704
+      },
+      "names": [
+        "scale",
+        "sigma0",
+        "Tc",
+        "d_x_mm",
+        "Ts_ratio"
+      ],
+      "values": {
+        "scale": 0.9268218509126088,
+        "sigma0": 620.4000322325553,
+        "Tc": 0.32773343158695084,
+        "Ts_ratio": 9.98765849250505,
+        "vs": 0.006637296362611333,
+        "d_x_mm": -0.2687155726563034,
+        "k_b": 197179.61979178208,
+        "ring": 1.9230199443460287,
+        "c_{\\theta,1}": 5.039685119431714,
+        "c_{\\theta,2}": 0.07975334021841715,
+        "c_{\\theta,3}": 0.8986583599715091,
+        "c_{\\theta,4}": 24.601148606563704
+      },
+      "cost": [
+        0.19508772901667146,
+        0.05077896124469312
+      ]
+    }
+  },
+  "final": {
+    "azimuth": {
+      "scale": 0.9062488780335707,
+      "sigma0": 202.79047580449608,
+      "Tc": 0.22785017024789467,
+      "Ts_ratio": 1.4771199006428022,
+      "vs": 0.001,
+      "c_{\\psi,1}": 0.3696234205543212,
+      "c_{\\psi,2}": 6.58668033054929,
+      "d_x_mm": 0.0
+    },
+    "elevation": {
+      "scale": 0.9268218509126088,
+      "sigma0": 620.4000322325553,
+      "Tc": 0.32773343158695084,
+      "Ts_ratio": 9.98765849250505,
+      "vs": 0.006637296362611333,
+      "d_x_mm": -0.2687155726563034,
+      "k_b": 197179.61979178208,
+      "ring": 1.9230199443460287,
+      "c_{\\theta,1}": 5.039685119431714,
+      "c_{\\theta,2}": 0.07975334021841715,
+      "c_{\\theta,3}": 0.8986583599715091,
+      "c_{\\theta,4}": 24.601148606563704
+    }
+  },
+  "fits": {
+    "identification/azimuth": {
+      "first_guess": [
+        98.26278660505758,
+        90.75231478455525,
+        91.6041728824831,
+        94.34309241929448,
+        96.60395632678238,
+        96.08014863435476,
+        97.32355514868063,
+        96.2795819076855
+      ],
+      "fitted": [
+        98.26246702970948,
+        90.7523220085046,
+        91.60390716219126,
+        94.34355991801107,
+        96.60421625976902,
+        96.08057490715481,
+        97.32343853816701,
+        96.28003861152592
+      ],
+      "moves": [
+        "MPCLucy_step_1deg azimuth 5.76 s",
+        "MPCLucy_step_1deg azimuth 8.04 s",
+        "MPCLucy_step_1deg azimuth 10.37 s",
+        "MPCLucy_step_1deg azimuth 12.01 s",
+        "MPCLucy_1degAz_zeroAz_1degPol__zeroPol azimuth 3.57 s",
+        "MPCLucy_1degAz_zeroAz_1degPol__zeroPol azimuth 10.29 s",
+        "MPCLucy_1degAz_zeroAz_1degPol__zeroPol azimuth 27.94 s",
+        "MPCLucy_1degAz_zeroAz_1degPol__zeroPol azimuth 33.30 s"
+      ]
+    },
+    "identification/elevation": {
+      "first_guess": [
+        85.35560386921813,
+        82.55595610428817,
+        82.1929782390313,
+        89.50361724336857,
+        80.72848630619782,
+        94.32872361143352,
+        86.77662809700708,
+        88.62056290462274,
+        84.94732994790289,
+        91.61110466086959
+      ],
+      "fitted": [
+        87.72194649533664,
+        93.16301469933582,
+        91.40850451239679,
+        95.62300590607208,
+        90.39986179939395,
+        94.63100024642095,
+        95.40901170641574,
+        95.81187513916298,
+        95.00401109858991,
+        94.27667104904835
+      ],
+      "moves": [
+        "MPCLucy_step_1deg elevation 15.77 s",
+        "MPCLucy_step_1deg elevation 18.95 s",
+        "MPCLucy_step_1deg elevation 20.16 s",
+        "MPCLucy_step_1deg elevation 21.30 s",
+        "MPCLucy_step_1deg elevation 22.50 s",
+        "MPCLucy_step_1deg elevation 23.32 s",
+        "MPCLucy_1degAz_zeroAz_1degPol__zeroPol elevation 17.00 s",
+        "MPCLucy_1degAz_zeroAz_1degPol__zeroPol elevation 21.87 s",
+        "MPCLucy_1degAz_zeroAz_1degPol__zeroPol elevation 37.85 s",
+        "MPCLucy_1degAz_zeroAz_1degPol__zeroPol elevation 58.75 s"
+      ]
+    },
+    "validation/azimuth": {
+      "first_guess": [
+        97.3609405433536,
+        91.58118015338373,
+        97.72169445598642,
+        91.48067492435739
+      ],
+      "fitted": [
+        97.36093375683498,
+        91.58122278896758,
+        97.72166004557596,
+        91.48073132581922
+      ],
+      "moves": [
+        "MPCLucy_2degAz_2degPol_zeroAz_zeroPol azimuth 18.31 s",
+        "MPCLucy_2degAz_2degPol_zeroAz_zeroPol azimuth 37.70 s",
+        "MPCLucy_2degPol_zeroPol_2degAz_zeroAz azimuth 19.95 s",
+        "MPCLucy_2degPol_zeroPol_2degAz_zeroAz azimuth 22.95 s"
+      ]
+    },
+    "validation/elevation": {
+      "first_guess": [
+        57.57329365849895,
+        86.20461652796641,
+        75.79288735367086,
+        94.84660051181802
+      ],
+      "fitted": [
+        74.53105618148778,
+        82.85991921477601,
+        91.29321856406727,
+        90.67959116131225
+      ],
+      "moves": [
+        "MPCLucy_2degAz_2degPol_zeroAz_zeroPol elevation 23.56 s",
+        "MPCLucy_2degAz_2degPol_zeroAz_zeroPol elevation 40.79 s",
+        "MPCLucy_2degPol_zeroPol_2degAz_zeroAz elevation 8.19 s",
+        "MPCLucy_2degPol_zeroPol_2degAz_zeroAz elevation 14.17 s"
+      ]
+    }
+  }
+}

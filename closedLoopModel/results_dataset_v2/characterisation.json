@@ -1,0 +1,726 @@
+[
+ {
+  "file": "MPCLucy_1degAz_zeroAz_1degPol__zeroPol",
+  "duration_s": 65.967,
+  "azimuth": {
+   "moves": 4,
+   "usable_windows": 4,
+   "amplitudes_deg": [
+    -1.0,
+    1.0
+   ],
+   "vmax_deg_s": [
+    10.0,
+    10.0
+   ],
+   "acc_deg_s2": 119.0,
+   "move_s": [
+    0.18,
+    0.18
+   ],
+   "rest_s": [
+    5.2,
+    17.5
+   ],
+   "angle_range_deg": [
+    -0.01,
+    1.01
+   ],
+   "i_max_A": 10.8
+  },
+  "elevation": {
+   "moves": 4,
+   "usable_windows": 4,
+   "amplitudes_deg": [
+    -1.0,
+    1.0
+   ],
+   "vmax_deg_s": [
+    10.0,
+    10.0
+   ],
+   "acc_deg_s2": 119.0,
+   "move_s": [
+    0.18,
+    0.18
+   ],
+   "rest_s": [
+    4.7,
+    20.7
+   ],
+   "angle_range_deg": [
+    -0.01,
+    1.0
+   ],
+   "i_max_A": 5.3
+  }
+ },
+ {
+  "file": "MPCLucy_2degAz_2degPol_zeroAz_zeroPol",
+  "duration_s": 49.559,
+  "azimuth": {
+   "moves": 2,
+   "usable_windows": 2,
+   "amplitudes_deg": [
+    -2.0,
+    2.0
+   ],
+   "vmax_deg_s": [
+    10.0,
+    10.0
+   ],
+   "acc_deg_s2": 119.0,
+   "move_s": [
+    0.28,
+    0.28
+   ],
+   "rest_s": [
+    19.1,
+    19.1
+   ],
+   "angle_range_deg": [
+    -0.0,
+    2.0
+   ],
+   "i_max_A": 10.4
+  },
+  "elevation": {
+   "moves": 2,
+   "usable_windows": 2,
+   "amplitudes_deg": [
+    -2.0,
+    2.0
+   ],
+   "vmax_deg_s": [
+    10.0,
+    10.0
+   ],
+   "acc_deg_s2": 119.0,
+   "move_s": [
+    0.28,
+    0.28
+   ],
+   "rest_s": [
+    17.0,
+    17.0
+   ],
+   "angle_range_deg": [
+    -0.01,
+    2.0
+   ],
+   "i_max_A": 5.7
+  }
+ },
+ {
+  "file": "MPCLucy_2degPol_zeroPol_2degAz_zeroAz",
+  "duration_s": 30.625,
+  "azimuth": {
+   "moves": 2,
+   "usable_windows": 2,
+   "amplitudes_deg": [
+    -2.0,
+    2.0
+   ],
+   "vmax_deg_s": [
+    10.0,
+    10.0
+   ],
+   "acc_deg_s2": 119.0,
+   "move_s": [
+    0.28,
+    0.28
+   ],
+   "rest_s": [
+    2.7,
+    2.7
+   ],
+   "angle_range_deg": [
+    -0.0,
+    2.0
+   ],
+   "i_max_A": 10.5
+  },
+  "elevation": {
+   "moves": 2,
+   "usable_windows": 2,
+   "amplitudes_deg": [
+    -2.0,
+    2.0
+   ],
+   "vmax_deg_s": [
+    10.0,
+    10.0
+   ],
+   "acc_deg_s2": 119.0,
+   "move_s": [
+    0.28,
+    0.28
+   ],
+   "rest_s": [
+    5.7,
+    5.7
+   ],
+   "angle_range_deg": [
+    -0.01,
+    2.0
+   ],
+   "i_max_A": 6.3
+  }
+ },
+ {
+  "file": "MPCLucy_step_1deg",
+  "duration_s": 26.144,
+  "azimuth": {
+   "moves": 4,
+   "usable_windows": 4,
+   "amplitudes_deg": [
+    -1.0,
+    1.0
+   ],
+   "vmax_deg_s": [
+    10.0,
+    10.0
+   ],
+   "acc_deg_s2": 119.0,
+   "move_s": [
+    0.18,
+    0.18
+   ],
+   "rest_s": [
+    1.5,
+    2.1
+   ],
+   "angle_range_deg": [
+    -0.01,
+    1.01
+   ],
+   "i_max_A": 10.9
+  },
+  "elevation": {
+   "moves": 6,
+   "usable_windows": 6,
+   "amplitudes_deg": [
+    -1.0,
+    0.57,
+    1.0
+   ],
+   "vmax_deg_s": [
+    8.2,
+    10.0
+   ],
+   "acc_deg_s2": 119.0,
+   "move_s": [
+    0.14,
+    0.18
+   ],
+   "rest_s": [
+    0.6,
+    3.0
+   ],
+   "angle_range_deg": [
+    0.0,
+    1.0
+   ],
+   "i_max_A": 5.3
+  }
+ },
+ {
+  "file": "V2/MPCLucy_doublets_azimut_01deg_minus01deg",
+  "duration_s": 97.383,
+  "azimuth": {
+   "moves": 3,
+   "usable_windows": 3,
+   "amplitudes_deg": [
+    -0.2,
+    0.1
+   ],
+   "vmax_deg_s": [
+    3.4,
+    4.8
+   ],
+   "acc_deg_s2": 119.0,
+   "move_s": [
+    0.06,
+    0.08
+   ],
+   "rest_s": [
+    33.9,
+    35.6
+   ],
+   "angle_range_deg": [
+    -0.11,
+    0.11
+   ],
+   "i_max_A": 5.0
+  },
+  "elevation": null
+ },
+ {
+  "file": "V2/MPCLucy_doublets_azimut_05deg_minus05deg",
+  "duration_s": 98.502,
+  "azimuth": {
+   "moves": 3,
+   "usable_windows": 3,
+   "amplitudes_deg": [
+    -1.0,
+    0.5
+   ],
+   "vmax_deg_s": [
+    7.6,
+    10.0
+   ],
+   "acc_deg_s2": 119.0,
+   "move_s": [
+    0.13,
+    0.18
+   ],
+   "rest_s": [
+    33.5,
+    38.2
+   ],
+   "angle_range_deg": [
+    -0.51,
+    0.52
+   ],
+   "i_max_A": 10.7
+  },
+  "elevation": null
+ },
+ {
+  "file": "V2/MPCLucy_doublets_azimut_1deg_15deg",
+  "duration_s": 99.7885,
+  "azimuth": {
+   "moves": 8,
+   "usable_windows": 8,
+   "amplitudes_deg": [
+    -30.0,
+    -20.0,
+    -16.0,
+    -10.0,
+    13.0,
+    15.0,
+    18.0,
+    25.0
+   ],
+   "vmax_deg_s": [
+    10.0,
+    10.0
+   ],
+   "acc_deg_s2": 119.0,
+   "move_s": [
+    1.08,
+    3.08
+   ],
+   "rest_s": [
+    7.2,
+    13.3
+   ],
+   "angle_range_deg": [
+    -15.0,
+    15.0
+   ],
+   "i_max_A": 10.3
+  },
+  "elevation": null
+ },
+ {
+  "file": "V2/MPCLucy_doublets_azimut_1deg_15deg_v2",
+  "duration_s": 99.9895,
+  "azimuth": {
+   "moves": 1,
+   "usable_windows": 1,
+   "amplitudes_deg": [
+    15.0
+   ],
+   "vmax_deg_s": [
+    10.0,
+    10.0
+   ],
+   "acc_deg_s2": 119.0,
+   "move_s": [
+    1.58,
+    1.58
+   ],
+   "rest_s": null,
+   "angle_range_deg": [
+    -15.0,
+    0.0
+   ],
+   "i_max_A": 9.0
+  },
+  "elevation": null
+ },
+ {
+  "file": "V2/MPCLucy_doublets_azimut_1deg_minus1deg",
+  "duration_s": 99.787,
+  "azimuth": {
+   "moves": 3,
+   "usable_windows": 3,
+   "amplitudes_deg": [
+    -2.0,
+    1.0
+   ],
+   "vmax_deg_s": [
+    10.0,
+    10.0
+   ],
+   "acc_deg_s2": 119.0,
+   "move_s": [
+    0.18,
+    0.28
+   ],
+   "rest_s": [
+    35.3,
+    38.1
+   ],
+   "angle_range_deg": [
+    -1.0,
+    1.01
+   ],
+   "i_max_A": 10.7
+  },
+  "elevation": null
+ },
+ {
+  "file": "V2/MPCLucy_doublets_azimut_3deg_minus3deg",
+  "duration_s": 99.989,
+  "azimuth": {
+   "moves": 3,
+   "usable_windows": 3,
+   "amplitudes_deg": [
+    -6.0,
+    3.0
+   ],
+   "vmax_deg_s": [
+    10.0,
+    10.0
+   ],
+   "acc_deg_s2": 119.0,
+   "move_s": [
+    0.38,
+    0.68
+   ],
+   "rest_s": [
+    42.4,
+    44.7
+   ],
+   "angle_range_deg": [
+    -3.0,
+    3.0
+   ],
+   "i_max_A": 10.4
+  },
+  "elevation": null
+ },
+ {
+  "file": "V2/MPCLucy_doublets_azimut_5deg_minus5deg",
+  "duration_s": 99.989,
+  "azimuth": {
+   "moves": 3,
+   "usable_windows": 3,
+   "amplitudes_deg": [
+    -10.0,
+    5.0
+   ],
+   "vmax_deg_s": [
+    10.0,
+    10.0
+   ],
+   "acc_deg_s2": 119.0,
+   "move_s": [
+    0.58,
+    1.08
+   ],
+   "rest_s": [
+    37.7,
+    47.0
+   ],
+   "angle_range_deg": [
+    -5.0,
+    5.0
+   ],
+   "i_max_A": 10.6
+  },
+  "elevation": null
+ },
+ {
+  "file": "V2/MPCLucy_doublets_azimut_8deg_minus8deg",
+  "duration_s": 99.9895,
+  "azimuth": {
+   "moves": 3,
+   "usable_windows": 2,
+   "amplitudes_deg": [
+    -16.0,
+    1.22,
+    8.0
+   ],
+   "vmax_deg_s": [
+    10.0,
+    10.0
+   ],
+   "acc_deg_s2": 119.0,
+   "move_s": [
+    0.16,
+    1.68
+   ],
+   "rest_s": [
+    35.0,
+    44.6
+   ],
+   "angle_range_deg": [
+    -8.0,
+    8.0
+   ],
+   "i_max_A": 10.1
+  },
+  "elevation": null
+ },
+ {
+  "file": "V2/MPCLucy_doublets_elevation_01deg_minus01deg",
+  "duration_s": 99.989,
+  "azimuth": null,
+  "elevation": {
+   "moves": 3,
+   "usable_windows": 3,
+   "amplitudes_deg": [
+    -0.2,
+    0.1
+   ],
+   "vmax_deg_s": [
+    3.4,
+    4.8
+   ],
+   "acc_deg_s2": 119.0,
+   "move_s": [
+    0.06,
+    0.08
+   ],
+   "rest_s": [
+    34.1,
+    47.5
+   ],
+   "angle_range_deg": [
+    -0.1,
+    0.1
+   ],
+   "i_max_A": 1.9
+  }
+ },
+ {
+  "file": "V2/MPCLucy_doublets_elevation_05deg_minus05deg",
+  "duration_s": 99.788,
+  "azimuth": null,
+  "elevation": {
+   "moves": 3,
+   "usable_windows": 3,
+   "amplitudes_deg": [
+    -1.0,
+    0.5
+   ],
+   "vmax_deg_s": [
+    7.6,
+    10.0
+   ],
+   "acc_deg_s2": 119.0,
+   "move_s": [
+    0.13,
+    0.18
+   ],
+   "rest_s": [
+    38.7,
+    40.8
+   ],
+   "angle_range_deg": [
+    -0.5,
+    0.51
+   ],
+   "i_max_A": 4.3
+  }
+ },
+ {
+  "file": "V2/MPCLucy_doublets_elevation_10deg_minus10deg",
+  "duration_s": 99.9905,
+  "azimuth": null,
+  "elevation": {
+   "moves": 3,
+   "usable_windows": 3,
+   "amplitudes_deg": [
+    -20.0,
+    10.0
+   ],
+   "vmax_deg_s": [
+    10.0,
+    10.0
+   ],
+   "acc_deg_s2": 119.0,
+   "move_s": [
+    1.08,
+    2.08
+   ],
+   "rest_s": [
+    33.1,
+    39.2
+   ],
+   "angle_range_deg": [
+    -10.0,
+    10.0
+   ],
+   "i_max_A": 6.1
+  }
+ },
+ {
+  "file": "V2/MPCLucy_doublets_elevation_15deg_minus15deg",
+  "duration_s": 99.9885,
+  "azimuth": null,
+  "elevation": {
+   "moves": 3,
+   "usable_windows": 3,
+   "amplitudes_deg": [
+    -30.0,
+    15.0
+   ],
+   "vmax_deg_s": [
+    10.0,
+    10.0
+   ],
+   "acc_deg_s2": 119.0,
+   "move_s": [
+    1.58,
+    3.08
+   ],
+   "rest_s": [
+    36.8,
+    39.0
+   ],
+   "angle_range_deg": [
+    -15.0,
+    15.0
+   ],
+   "i_max_A": 6.2
+  }
+ },
+ {
+  "file": "V2/MPCLucy_doublets_elevation_1deg_minus1deg",
+  "duration_s": 98.4875,
+  "azimuth": null,
+  "elevation": {
+   "moves": 3,
+   "usable_windows": 3,
+   "amplitudes_deg": [
+    -2.0,
+    1.0
+   ],
+   "vmax_deg_s": [
+    10.0,
+    10.0
+   ],
+   "acc_deg_s2": 119.0,
+   "move_s": [
+    0.18,
+    0.28
+   ],
+   "rest_s": [
+    29.7,
+    43.9
+   ],
+   "angle_range_deg": [
+    -1.0,
+    1.0
+   ],
+   "i_max_A": 6.1
+  }
+ },
+ {
+  "file": "V2/MPCLucy_doublets_elevation_3deg_minus3deg",
+  "duration_s": 99.711,
+  "azimuth": null,
+  "elevation": {
+   "moves": 3,
+   "usable_windows": 3,
+   "amplitudes_deg": [
+    -6.0,
+    3.0
+   ],
+   "vmax_deg_s": [
+    10.0,
+    10.0
+   ],
+   "acc_deg_s2": 119.0,
+   "move_s": [
+    0.38,
+    0.68
+   ],
+   "rest_s": [
+    35.8,
+    36.8
+   ],
+   "angle_range_deg": [
+    -3.0,
+    3.0
+   ],
+   "i_max_A": 6.0
+  }
+ },
+ {
+  "file": "V2/MPCLucy_doublets_elevation_5deg_minus5deg",
+  "duration_s": 99.9895,
+  "azimuth": null,
+  "elevation": {
+   "moves": 3,
+   "usable_windows": 3,
+   "amplitudes_deg": [
+    -10.0,
+    5.0
+   ],
+   "vmax_deg_s": [
+    10.0,
+    10.0
+   ],
+   "acc_deg_s2": 119.0,
+   "move_s": [
+    0.58,
+    1.08
+   ],
+   "rest_s": [
+    33.2,
+    37.8
+   ],
+   "angle_range_deg": [
+    -5.0,
+    5.0
+   ],
+   "i_max_A": 6.0
+  }
+ },
+ {
+  "file": "V2/MPCLucy_doublets_elevation_8deg_minus8deg",
+  "duration_s": 99.7375,
+  "azimuth": null,
+  "elevation": {
+   "moves": 3,
+   "usable_windows": 3,
+   "amplitudes_deg": [
+    -16.0,
+    8.0
+   ],
+   "vmax_deg_s": [
+    10.0,
+    10.0
+   ],
+   "acc_deg_s2": 119.0,
+   "move_s": [
+    0.88,
+    1.68
+   ],
+   "rest_s": [
+    29.6,
+    40.7
+   ],
+   "angle_range_deg": [
+    -8.0,
+    8.0
+   ],
+   "i_max_A": 6.1
+  }
+ }
+]

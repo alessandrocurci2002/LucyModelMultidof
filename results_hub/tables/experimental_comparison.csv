@@ -1,0 +1,47 @@
+# AVVISO: result from placeholder parameters
+file,misura,caratteristica,f_misura_Hz,modulo_dB_o_scarto,f_modello_Hz,canale_modello,rapporto_f
+Azimuth_BodeMeasurement_Po_0.csv,"azimuth, polar at 0 deg, 3.5 A",risonanza,3.7975,-36.05,,,
+Azimuth_BodeMeasurement_Po_0.csv,"azimuth, polar at 0 deg, 3.5 A",antirisonanza,11.9182,-83.48,12.2558,psi_e,0.9725
+Azimuth_BodeMeasurement_Po_0.csv,"azimuth, polar at 0 deg, 3.5 A",risonanza,37.4043,-39.16,,,
+Azimuth_BodeMeasurement_Po_0.csv,"azimuth, polar at 0 deg, 3.5 A",antirisonanza,45.2593,-57.5,,,
+Azimuth_BodeMeasurement_Po_0.csv,"azimuth, polar at 0 deg, 3.5 A",risonanza,490.371,-9.897,774.044,psi_e,0.6335
+Azimuth_BodeMeasurement_Po_0.csv,"azimuth, polar at 0 deg, 3.5 A",livello psi_e,,-4.6,,psi_e,
+Azimuth_BodeMeasurement_Po_0.csv,"azimuth, polar at 0 deg, 3.5 A",livello psi_m,,-4.56,,psi_m,
+Azimuth_BodeMeasurement_Po_0_dep.csv,"azimuth, polar at 0 deg, 2.36 A",risonanza,4.17725,-37.57,,,
+Azimuth_BodeMeasurement_Po_0_dep.csv,"azimuth, polar at 0 deg, 2.36 A",antirisonanza,11.9182,-82.6,12.2558,psi_e,0.9725
+Azimuth_BodeMeasurement_Po_0_dep.csv,"azimuth, polar at 0 deg, 2.36 A",risonanza,37.4043,-39.46,,,
+Azimuth_BodeMeasurement_Po_0_dep.csv,"azimuth, polar at 0 deg, 2.36 A",antirisonanza,45.2593,-54.48,,,
+Azimuth_BodeMeasurement_Po_0_dep.csv,"azimuth, polar at 0 deg, 2.36 A",risonanza,490.371,-13.19,774.044,psi_e,0.6335
+Azimuth_BodeMeasurement_Po_0_dep.csv,"azimuth, polar at 0 deg, 2.36 A",livello psi_e,,-5.47,,psi_e,
+Azimuth_BodeMeasurement_Po_0_dep.csv,"azimuth, polar at 0 deg, 2.36 A",livello psi_m,,-5.43,,psi_m,
+Azimuth_BodeMeasurement_Po_30.csv,"azimuth, polar at 30 deg, 3.5 A",risonanza,3.81975,-35.11,,,
+Azimuth_BodeMeasurement_Po_30.csv,"azimuth, polar at 30 deg, 3.5 A",antirisonanza,12.2505,-82.32,12.7059,psi_e,0.9642
+Azimuth_BodeMeasurement_Po_30.csv,"azimuth, polar at 30 deg, 3.5 A",risonanza,37.065,-38.82,,,
+Azimuth_BodeMeasurement_Po_30.csv,"azimuth, polar at 30 deg, 3.5 A",antirisonanza,44.145,-57.48,,,
+Azimuth_BodeMeasurement_Po_30.csv,"azimuth, polar at 30 deg, 3.5 A",risonanza,481.306,-5.907,774.049,psi_e,0.6218
+Azimuth_BodeMeasurement_Po_30.csv,"azimuth, polar at 30 deg, 3.5 A",livello psi_e,,-4.67,,psi_e,
+Azimuth_BodeMeasurement_Po_30.csv,"azimuth, polar at 30 deg, 3.5 A",livello psi_m,,-4.49,,psi_m,
+Elevation_BodeMeasurement_bode_New_16_10_26.csv,"elevation, 3.5 A, 1-2000 Hz",antirisonanza,8.40002,-53.97,16.7822,theta_e,0.5005
+Elevation_BodeMeasurement_bode_New_16_10_26.csv,"elevation, 3.5 A, 1-2000 Hz",risonanza,9.17893,-44.18,,,
+Elevation_BodeMeasurement_bode_New_16_10_26.csv,"elevation, 3.5 A, 1-2000 Hz",antirisonanza,18.1154,-80.85,16.7822,theta_e,1.079
+Elevation_BodeMeasurement_bode_New_16_10_26.csv,"elevation, 3.5 A, 1-2000 Hz",antirisonanza,152.17,-53.39,,,
+Elevation_BodeMeasurement_bode_New_16_10_26.csv,"elevation, 3.5 A, 1-2000 Hz",risonanza,192.764,-40.36,179.216,theta_e,1.076
+Elevation_BodeMeasurement_bode_New_16_10_26.csv,"elevation, 3.5 A, 1-2000 Hz",antirisonanza,300.32,-81.48,,,
+Elevation_BodeMeasurement_bode_New_16_10_26.csv,"elevation, 3.5 A, 1-2000 Hz",risonanza,348.153,-53.15,179.216,theta_e,1.943
+Elevation_BodeMeasurement_bode_New_16_10_26.csv,"elevation, 3.5 A, 1-2000 Hz",antirisonanza,358.598,-56.63,617.424,theta_e,0.5808
+Elevation_BodeMeasurement_bode_New_16_10_26.csv,"elevation, 3.5 A, 1-2000 Hz",risonanza,380.436,-52.86,,,
+Elevation_BodeMeasurement_bode_New_16_10_26.csv,"elevation, 3.5 A, 1-2000 Hz",antirisonanza,403.605,-59.22,617.424,theta_e,0.6537
+Elevation_BodeMeasurement_bode_New_16_10_26.csv,"elevation, 3.5 A, 1-2000 Hz",risonanza,428.185,-46.21,,,
+Elevation_BodeMeasurement_bode_New_16_10_26.csv,"elevation, 3.5 A, 1-2000 Hz",risonanza,454.261,-44.99,886.405,theta_e,0.5125
+Elevation_BodeMeasurement_bode_New_16_10_26.csv,"elevation, 3.5 A, 1-2000 Hz",antirisonanza,526.613,-75.11,617.424,theta_e,0.8529
+Elevation_BodeMeasurement_bode_New_16_10_26.csv,"elevation, 3.5 A, 1-2000 Hz",risonanza,667.098,-42.69,886.405,theta_e,0.7526
+Elevation_BodeMeasurement_bode_New_16_10_26.csv,"elevation, 3.5 A, 1-2000 Hz",risonanza,707.724,-42.17,886.405,theta_e,0.7984
+Elevation_BodeMeasurement_bode_New_16_10_26.csv,"elevation, 3.5 A, 1-2000 Hz",risonanza,773.349,-41.32,886.405,theta_e,0.8725
+Elevation_BodeMeasurement_bode_New_16_10_26.csv,"elevation, 3.5 A, 1-2000 Hz",antirisonanza,1039.32,-52.14,774.044,theta_e,1.343
+Elevation_BodeMeasurement_bode_New_16_10_26.csv,"elevation, 3.5 A, 1-2000 Hz",livello theta_e,,-7.44,,theta_e,
+Elevation_BodeMeasurement_bode_New_16_10_26.csv,"elevation, 3.5 A, 1-2000 Hz",livello theta_m,,-28.3,,theta_m,
+BodeMeasurement_NoTelescope.csv,"elevation without telescope, 2.5 A",antirisonanza,404.114,-44.24,617.424,theta_e,0.6545
+BodeMeasurement_NoTelescope.csv,"elevation without telescope, 2.5 A",risonanza,428.361,-33.17,,,
+BodeMeasurement_NoTelescope.csv,"elevation without telescope, 2.5 A",antirisonanza,510.185,-60.74,617.424,theta_e,0.8263
+BodeMeasurement_NoTelescope.csv,"elevation without telescope, 2.5 A",livello theta_e,,-5.09,,theta_e,
+BodeMeasurement_NoTelescope.csv,"elevation without telescope, 2.5 A",livello theta_m,,-14.6,,theta_m,

@@ -1,0 +1,5 @@
+model,measurement,fit_all,fit_1-5 Hz,fit_5-100 Hz,fit_>100 Hz,rms_dB,rms_deg
+modal LS: H7 + 2 stator masses,"elevation, 1 % grid (1-600 Hz)",59.6,66.9,31.7,73.7,2.72,18.4
+modal LS: H7 + 2 stator masses,"elevation, 1 % grid (30-150 Hz)",68.5,nan,67.3,76.8,2.49,11.2
+modal LS: H7 + 2 stator masses,"elevation, 16 screws, 4 A (30-300 Hz)",65.2,nan,64.2,68.4,2.01,8.6
+modal LS: flexible load,"azimuth, 3 % grid (1-600 Hz)",84.0,90.6,77.8,23.4,1.55,12.8

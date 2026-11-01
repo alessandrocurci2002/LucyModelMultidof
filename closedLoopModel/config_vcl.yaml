@@ -1,0 +1,77 @@
+# =====================================================================
+# CLOSED-LOOP MODEL OF LUCY (2026-10-19)
+# Plant (lumped model of gimbal_mdof, default H6) + 2 x Kollmorgen TBM(S)-7646-A motors
+# + 2 x Kollmorgen AKD2G drives (position, velocity and current loops).
+# Traceability: each variant has its own config file and results directory.
+#   config.yaml          -> results_H6/          H6 as identified (zeta_1 = 0.01, placeholder Q8)
+#   config_zeta10.yaml   -> results_H6_zeta10/   H6 with zeta_1 = 0.10 (damping sensitivity)
+#   config_vcl.yaml      -> results_VClosedLoop_H6_zeta10/   as config_zeta10.yaml, drives and Bode
+#                           measurements of the October 2026 tests (LucyIdentification/VClosedLoop)
+# Run (from this folder):
+#   ../.venv/bin/python main.py --config config.yaml
+# Paths are relative to this file.
+# =====================================================================
+results_dir: results_VClosedLoop_H6_zeta10
+label: "H6 with zeta_1 = 0.10, drive parameters and Bode measurements of the VClosedLoop tests (October 2026)"
+
+plant:
+  # any configuration of gimbal_mdof can be used (7-DOF baseline: ../config.yaml)
+  config: ../config_hub_telescopeonring_alhub_fit_ground.yaml
+  theta0_deg: 0.0                 # elevation of the operating point (measurements at 0 deg)
+  # The telescope CG in the CAD is 73 mm from the polar axis: gravity moment 11 N m, more than the
+  # motor torque at the current limit of the drive (0.258 x 18 A = 4.6 N m). The real telescope is
+  # balanced: g = 0 (the inertia of the offset CG is kept).
+  balanced_telescope: true
+  # H6 as identified predicts an unstable elevation loop at ~300 Hz with zeta_1 = 0.01 (results_H6);
+  # the measured loop is stable. Sensitivity variant: zeta_1 = 0.10 on both axes.
+  zeta_first_flexible: 0.10
+  bearing_friction:
+    # time-domain counterpart of the H6 ground constraint k (1 + j eta): Dahl element on the bearing
+    # node, equivalent to k (1 + j eta) at the amplitude of the test (|G(f_ref)| I / (2 pi f_ref)),
+    # f_ref = geometric centre of the 1-5 Hz fit band
+    model: dahl                   # dahl | none
+    reference_frequency_Hz: 2.236
+    velocity_smoothing_rad_s: 1.0e-6  # |v| -> sqrt(v^2 + eps^2) - eps in the integration (1/70 of sidereal)
+    # amplitude from the measurements on which H6 fitted k and eta (the new azimuth Bode differs below 10 Hz)
+    amplitude_measurement:
+      azimuth: ../../LucyIdentification/Azimuth_BodeMeasurement_Po_0.csv
+      elevation: ../../LucyIdentification/VAntiRes/BodeMeasurement_12viti_dueDecimiOmogeneo.csv
+
+motor:
+  file: data/motor_TBM7646A.yaml
+  temperature: cold               # cold (25 C, Kt 0.258) | hot (155 C, Kt 0.235); gimbal_mdof uses cold
+  cogging: false                  # datasheet gives the amplitude only
+
+drives:
+  azimuth:
+    parameters: ../../LucyIdentification/VClosedLoop/Parameters_azimuth.akd
+    measurement: ../../LucyIdentification/VClosedLoop/BodeMeasurement_azimuth.csv
+  elevation:
+    parameters: ../../LucyIdentification/VClosedLoop/Parameters_elevation.akd
+    measurement: ../../LucyIdentification/VClosedLoop/BodeMeasurement_elevation.csv
+  feedforward: false              # LUCY uses no feedforward (VL.KVFF = 1 in the files is ignored)
+  observer: from_parameters       # from_parameters (OBS.ENABLE) | on | off
+  delay_s: 0.0                    # extra pure delay of the digital loops (frequency domain only)
+  position_gain_unit: hz          # hz: 2 pi PL.KP (WorkBench Controller trace) | per_s: PL.KP in 1/s
+
+analysis:
+  f_min_Hz: 0.5
+  f_max_Hz: 2000.0
+  n_points: 4000
+  zeta_sweep: [0.01, 0.02, 0.05, 0.10, 0.20]
+  max_cpu_per_scenario_s: 300     # stops a simulation in a limit cycle (unstable loop)
+
+# Position commands, relative to the start position. step: value_deg; ramp: value_deg_s.
+# Sidereal rate 15 deg/h = 0.004167 deg/s.
+scenarios:
+  - {name: az_step_10mdeg, t_end_s: 1.0, commands: {azimuth: {kind: step, value_deg: 0.01}},
+     compare_linear: true, description: "azimuth step 0.01 deg (pre-sliding range)"}
+  - {name: el_step_10mdeg, t_end_s: 6.0, commands: {elevation: {kind: step, value_deg: 0.01}},
+     compare_linear: true, description: "elevation step 0.01 deg (pre-sliding range)"}
+  - {name: az_step_500mdeg, t_end_s: 1.0, commands: {azimuth: {kind: step, value_deg: 0.5}},
+     description: "azimuth step 0.5 deg (current limit)"}
+  - {name: el_step_500mdeg, t_end_s: 6.0, commands: {elevation: {kind: step, value_deg: 0.5}},
+     description: "elevation step 0.5 deg"}
+  - {name: sidereal_ramp, t_end_s: 6.0,
+     commands: {azimuth: {kind: ramp, value_deg_s: 0.004167}, elevation: {kind: ramp, value_deg_s: 0.004167}},
+     description: "both axes at the sidereal rate (bearing friction at low speed)"}

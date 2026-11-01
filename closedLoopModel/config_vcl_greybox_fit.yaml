@@ -1,0 +1,60 @@
+# Closed-loop configuration with the plant estimated by greybox_fit.py from config_vcl_greybox.yaml.
+results_dir: results_vcl_greybox_closed_loop
+label: H7 (9 DOF) estimated on the VClosedLoop plant responses (20 Oct 2026), estimated
+  values (greybox_fit.py)
+plant:
+  config: ../config_hub_telescopeonring_alhub_fit_ground_aztel.yaml
+  theta0_deg: 0.0
+  balanced_telescope: true
+  zeta_first_flexible: null
+  bearing_friction:
+    model: none
+  parameter_overrides:
+    J_{\psi,e}: 0.00014795447447072036
+    J_{\psi,m}: 0.00023531557212793836
+    J_{\psi,L}: 1.4945415439618066
+    J_{\psi,p}: 0.0
+    k_{\psi,1}: 11457.060921752169
+    k_{\psi,2}: 15206.713075875192
+    k_{\psi,3}: 73977.67178138458
+    c_{\psi,1}: 1.3182885652392433e-06
+    c_{\psi,2}: 0.7290021532058246
+    c_{\psi,3}: 1.5265502035990464
+    J^{ax}: 0.06366046623806598
+    I_zz: 1.0293559166563975
+    J_{\theta,e}: 1.0728954426223138e-05
+    J_{\theta,h}: 0.02999008996156847
+    J_{\theta,m}: 0.0008842193074124674
+    J_{\theta,r}: 0.0007699470677015653
+    J_{\theta,p}: 0.0
+    k_{\theta,1}: 1986.8806684356107
+    k_{\theta,2}: 1655.7357287224668
+    k_{\theta,3}: 7832.888367105082
+    k_{\theta,4}: 10744808.032110475
+    c_{\theta,1}: 1.068706579702439e-06
+    c_{\theta,2}: 0.18214034967895806
+    c_{\theta,3}: 0.3247516160957968
+    c_{\theta,4}: 30.38979424233542
+    I_yy: 0.7200791277845452
+  ground_override:
+    azimuth:
+      k: 214.7343009322545
+      eta: 1.2206648671285347
+    elevation:
+      k: 128.9379879337893
+      eta: 4.139029828004296
+motor:
+  file: data/motor_TBM7646A.yaml
+  temperature: cold
+  cogging: false
+drives:
+  azimuth:
+    parameters: ../../LucyIdentification/VClosedLoop/Parameters_azimuth.akd
+    measurement: ../../LucyIdentification/VClosedLoop/BodeMeasurement_azimuth.csv
+  elevation:
+    parameters: ../../LucyIdentification/VClosedLoop/Parameters_elevation.akd
+    measurement: ../../LucyIdentification/VClosedLoop/BodeMeasurement_elevation.csv
+  feedforward: false
+  observer: from_parameters
+  delay_s: 0.0
+  position_gain_unit: hz
