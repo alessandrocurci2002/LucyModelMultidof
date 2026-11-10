@@ -1,0 +1,29 @@
+[build-system]
+requires = ["setuptools>=64"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "lucy-sim"
+version = "1.0.0"
+description = "LUCY gimbal simulator: coupled non-linear plant with Dahl bearings, AKD2G cascade and LQG-PI (thesis version)"
+requires-python = ">=3.10"
+authors = [{ name = "Alessandro Curci" }]
+dependencies = [
+    "numpy>=1.26",
+    "scipy>=1.11",
+    "sympy>=1.12",
+    "control>=0.10",
+    "pyyaml>=6.0",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=7.4"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["tests"]
+addopts = "-q -m 'not slow'"
+markers = ["slow: full simulations of the thesis campaign and of the tuning (minutes)"]

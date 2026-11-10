@@ -1,0 +1,22 @@
+# Controllers of LUCY (thesis version).
+#
+# master: the position loop runs in the master at 1 kHz; the command reaches the drive one period later (EtherCAT).
+# design_model: modes of the velocity loop kept in the internal model of the LQG (no bearings).
+# lqg: weights of the LQG-PI of Gawronski with the PI on the measured error (Fig. 8.4b), tuned with
+#   lucy_sim.tuning (steps 2-4 of the book, current below 18 A on the doublets, min |1 + L| >= 0.5, stable with the
+#   bearings sliding and stuck, bandwidth below the fundamental, low authority q_p / q_f >= 10).
+#   Q = diag(q_i, q_p, q_f) with q_f = base_flexible_weight on every flexible state and q_f[k] on the two states of the
+#   k-th lightly damped mode (zeta < 0.1) of the design model; V = rho Q (8.26), V as the intensity of the FARE (8.8).
+
+master:
+  period_s: 1.0e-3
+  delay_periods: 1
+design_model:
+  f_max_Hz: 150.0
+  hinf_min: 1.0e-5
+lqg:
+  pi_on: measured                 # measured (Fig. 8.4b, thesis) | estimated (eq. 8.15)
+  base_flexible_weight: 0.1
+  axes:
+    azimuth: {q_p: 645.5049255739092, q_i: 0.24582440689201981, q_f: {}, rho: 1.0}
+    polar: {q_p: 486432.0557305324, q_i: 7233.9416273667475, q_f: {0: 10000.0}, rho: 1.0}

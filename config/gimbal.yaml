@@ -1,0 +1,165 @@
+# =====================================================================================================
+# Mechanical model of the LUCY alt-azimuth gimbal (thesis configuration "H7").
+#
+# Units in this file: lengths and diameters in mm, inertias in kg m^2, masses in kg, stiffnesses in N m/rad,
+# densities in kg/m^3, moduli in Pa. The conversion to SI happens only in lucy_sim/structure/config.py.
+#
+# Topology:
+#   azimuth: encoder (node 1) - shafts - motor (node 5) - shafts - load L (node 9: fork + polar shafts + hub + ring),
+#            telescope P hanging from L through azimuth.telescope_attachment (spring about z_hat);
+#   polar:   encoder (node 1) - shaft - half hub - hub centre H - half hub - shafts - motor (node 7) - rear end (node 11),
+#            telescope P hanging from H through polar.hub.telescope_attachment.
+# The chain is reduced to the master nodes (lumped parameters), coupled through the telescope with the Lagrange
+# equations (SymPy) and linearised at theta = 0. The fork model of lucy_sim.plant.fork then scales these CAD values
+# with the factors identified on the measured frequency responses (config/plant.yaml).
+#
+# Element in mode geometry: segments IN SERIES from node i to node i+1, each with COAXIAL layers IN PARALLEL:
+#   shape: solid (d_out_mm) | hollow (d_in_mm < d_out_mm), material, carries_torque (false: inertia only).
+#   Optional: k_Nm_rad (replaces the stiffness of the segments), k_joint_Nm_rad (in series), extra_inertias.
+# Element in mode manual: J_kgm2, k_Nm_rad, length_mm (optional m_kg, I_t_kgm2, y_c_mm for J^ax).
+# Element in mode telescope: no shaft, the rigid telescope joins its two nodes (inertia in the payload section).
+# =====================================================================================================
+
+# --- Reference frames (De Donatis convention) ----------------------------------------------------------
+# N inertial, origin O_N at the centre of the base of the azimuth shaft, axes of the Onshape assembly, z_hat up.
+# Body 1 (fork): origin o_1 on the azimuth axis, turns with psi about z_hat.
+# Body 2 (telescope): origin o_2 = centre of rotation of the polar shaft, K_hat pointing (towards the optics),
+# I_hat up with the telescope horizontal, J_hat = K_hat x I_hat polar axis; theta > 0 raises the pointing.
+frames:
+  o1_z_mm: 59.695               # dist(O_N, o_1) along z_hat
+  o2_z_mm: 548.865              # dist(O_N, o_2)
+  azimuth_axis_xy_mm: [0.0, 0.0]
+  pointing_cad: "+Y"            # pointing direction in the CAD pose
+  polar_axis_cad: "+X"          # J_hat in the CAD pose (must be J_hat = i_hat x z_hat)
+  theta_cad_deg: 0.0            # elevation of the CAD pose
+
+materials:
+  steel:     {rho: 8000.0, G: 77.0e+9}    # stainless, 300 series
+  aluminium: {rho: 2810.0, G: 26.9e+9}    # about 7075
+
+# --- Azimuth axis: node 1 at the bottom (encoder), node 9 at the top (fork) ----------------------------
+azimuth:
+  n_nodes: 9
+  encoder_node: 1
+  torque_node: 5
+  load_node: 9
+  masters: [1, 5, 9]
+  elements:
+    - {id: 1, mode: geometry, segments: [{length_mm: 29.0, layers: [{shape: solid, d_out_mm: 16.0, material: steel, carries_torque: true}]}]}
+    - id: 2
+      mode: geometry
+      segments:
+        - length_mm: 20.0
+          layers:
+            - {shape: solid, d_out_mm: 36.0, material: steel, carries_torque: true}
+            - {shape: hollow, d_in_mm: 36.0, d_out_mm: 87.85, material: aluminium, carries_torque: true}
+    - {id: 3, mode: geometry, segments: [{length_mm: 22.59, layers: [{shape: solid, d_out_mm: 16.0, material: steel, carries_torque: true}]}]}
+    - {id: 4, mode: geometry, segments: [{length_mm: 10.0, layers: [{shape: solid, d_out_mm: 40.67, material: steel, carries_torque: true}]}]}
+    - {id: 5, mode: geometry, segments: [{length_mm: 10.0, layers: [{shape: solid, d_out_mm: 40.67, material: steel, carries_torque: true}]}]}
+    - {id: 6, mode: geometry, segments: [{length_mm: 30.88, layers: [{shape: solid, d_out_mm: 16.0, material: steel, carries_torque: true}]}]}
+    - {id: 7, mode: geometry, segments: [{length_mm: 35.53, layers: [{shape: solid, d_out_mm: 25.0, material: steel, carries_torque: true}]}]}
+    - {id: 8, mode: geometry, segments: [{length_mm: 17.5, layers: [{shape: solid, d_out_mm: 35.0, material: steel, carries_torque: true}]}]}
+  node_inertias:
+    # Load of the fork from Onshape ("Mass and section properties", instance "Tavola Rotante [DEF] <1>", without mate
+    # connector): tensor about the centre of mass, axes parallel to N, centre of mass r_G from O_N. The code uses
+    # J = I_zz,G + m d^2, d = distance of the centre of mass from the azimuth axis. It includes the polar shafts
+    # (not the telescope), so J^ax is not added a second time.
+    - node: 9
+      name: "load (fork + polar shafts)"
+      frame: cad_cg
+      m_kg: 27.831
+      r_G_mm: [12.212, -2.801e-5, 465.983]
+      I_kgm2:
+        - [ 0.534260108, -0.57e-6,     -0.027998721]
+        - [-0.57e-6,      1.592,        2.44e-6    ]
+        - [-0.027998721,  2.44e-6,      1.248      ]
+      includes_polar_shafts: true
+  bearing_b: {}                 # viscous bearing friction to ground {element: N m s/rad}
+  # Telescope node P after node 9: massless spring between L (fork + polar shafts + hub + ring) and the telescope,
+  # about z_hat, independent of theta. First try: k_b of the polar axis (12 ring-telescope screws).
+  telescope_attachment:
+    enabled: true
+    k_Nm_rad: 1.16e+5
+
+# --- Polar axis: node 1 on the left (encoder), node 11 on the right (end) -------------------------------
+polar:
+  n_nodes: 11
+  encoder_node: 1
+  torque_node: 7
+  end_node: 11
+  payload_element: 3            # the telescope joins nodes 3 and 4 (hub centre H)
+  masters: [1, "P", 7, 11]
+  nodes_increase_along: "+J_hat"
+  y_node1_from_o2_mm: null      # position of node 1 along J_hat from o_2 (only for J^ax, unused with the CAD load)
+  elements:
+    - {id: 1, mode: geometry, segments: [{length_mm: 58.29, layers: [{shape: solid, d_out_mm: 25.0, material: steel, carries_torque: true}]}]}
+    - id: 2                     # left hub (replaced by the hub model below)
+      mode: geometry
+      segments:
+        - {length_mm: 42.0, layers: [{shape: hollow, d_out_mm: 90.0, d_in_mm: 84.0, material: aluminium, carries_torque: true}]}
+        - {length_mm: 17.0, layers: [{shape: solid, d_out_mm: 90.0, material: aluminium, carries_torque: true}]}
+    - {id: 3, mode: telescope, length_mm: 1.0}
+    - id: 4                     # right hub (replaced by the hub model below)
+      mode: geometry
+      segments:
+        - {length_mm: 17.0, layers: [{shape: solid, d_out_mm: 90.0, material: aluminium, carries_torque: true}]}
+        - {length_mm: 42.0, layers: [{shape: hollow, d_out_mm: 90.0, d_in_mm: 84.0, material: aluminium, carries_torque: true}]}
+    - {id: 5, mode: geometry, segments: [{length_mm: 47.9, layers: [{shape: solid, d_out_mm: 16.0, material: steel, carries_torque: true}]}]}
+    - {id: 6, mode: geometry, segments: [{length_mm: 10.5, layers: [{shape: solid, d_out_mm: 40.7, material: steel, carries_torque: true}]}]}
+    - {id: 7, mode: geometry, segments: [{length_mm: 10.5, layers: [{shape: solid, d_out_mm: 40.7, material: steel, carries_torque: true}]}]}
+    - {id: 8, mode: geometry, segments: [{length_mm: 38.74, layers: [{shape: solid, d_out_mm: 16.0, material: steel, carries_torque: true}]}]}
+    - {id: 9, mode: geometry, segments: [{length_mm: 27.0, layers: [{shape: solid, d_out_mm: 87.85, material: steel, carries_torque: true}]}]}
+    - {id: 10, mode: geometry, segments: [{length_mm: 12.084, layers: [{shape: solid, d_out_mm: 16.0, material: steel, carries_torque: true}]}]}
+  bearing_b: {2: 0.0, 4: 0.0}   # viscous bearing friction towards the fork {element: N m s/rad}
+  # Hub: (tube + flange) - (support ring of the telescope) - (flange + tube), springs in series. The ring has its axis
+  # along the telescope: the polar torque loads it as two half rings in parallel (out-of-plane bending + wall torsion).
+  hub:
+    enabled: true
+    side_elements: [2, 4]       # elements replaced by the two halves of the hub
+    center_element: 3           # telescope element: its nodes coincide with the hub centre H
+    inertia:                    # Onshape, mass properties without mate connector (about the centre of mass)
+      frame: cad_cg
+      m_kg: 2.0539              # corrected for the aluminium of the side hubs
+      r_G_mm: [0.0, 0.0, 548.865]
+      I_kgm2:
+        - [ 0.016994479, -1.5e-8,      2.0e-9      ]
+        - [-1.5e-8,       0.051729850,  2.438e-6   ]
+        - [ 2.0e-9,       2.438e-6,     0.038058745]
+      in_azimuth_load: false    # the azimuth load of Onshape does not contain the hub: its inertia about z_hat is added to J^ax
+    side:                       # each side hub, one aluminium body
+      tube:   {d_out_mm: 90.0, d_in_mm: 84.0, length_mm: 42.0, material: aluminium}
+      flange: {d_out_mm: 90.0, length_mm: 17.0, material: aluminium}
+    ring:
+      d_out_mm: 310.0
+      d_in_mm: 300.0            # the diameter of the telescope
+      width_mm: 100.0
+      material: aluminium
+      poisson: 0.33             # E = 2 G (1 + nu)
+      stiffness_factor: 1000.0  # rigid ring (above ~300 the first mode does not change)
+    telescope_on_ring:          # stretch of the telescope tube clamped in the ring, rigid with the hub
+      enabled: true
+      d_out_mm: 300.0
+      d_in_mm: 290.0
+      length_mm: 100.0
+      material: aluminium
+    telescope_attachment:       # spring between the hub centre H and the telescope P (12 screws, 0.2 mm gap, 58.2 Hz antiresonance)
+      k_b_Nm_rad: 1.16e+5
+
+# --- Telescope (payload, body 2) ------------------------------------------------------------------------
+# Onshape "Mass and section properties", instance "Telescopio LAMERA <1>", without mate connector: centre of mass
+# from O_N, tensor about the centre of mass with axes parallel to the assembly (exported in the CAD pose of frames).
+payload:
+  frame: cad_cg
+  m_kg: 16.61
+  r_G_mm: [-4.821e-4, 67.392, 544.07495]
+  I_kgm2:
+    - [ 0.805643247, -1.679e-6,      0.751e-6     ]
+    - [-1.679e-6,     0.284157252,  -0.012869781  ]
+    - [ 0.751e-6,    -0.012869781,   0.79763717447]
+  products_sign: tensor         # tensor: off-diagonal terms are -int(x_i x_j dm); positive: +int(x_i x_j dm)
+
+damping:
+  model: stiffness_proportional
+  zeta_first_flexible: 0.01     # of the lumped CAD chains (the plant uses the identified modal damping)
+
+g: 9.80665

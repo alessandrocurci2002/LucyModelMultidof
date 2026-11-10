@@ -1,0 +1,29 @@
+# Kollmorgen TBM(S)-7646-A frameless torque motor, used on both axes of LUCY.
+# Source: Kollmorgen "TBM Frameless Motor Selection Guide", page 9,
+# "TBM(S) 76 Series Performance Data and Motor Parameters", column TBM(S)-7646-X, winding A
+# (sim/LucyIdentification/Kollmorgen_TBM_Frameless_Motor_7646A.pdf).
+# Hot values at 155 C winding temperature, cold values at 25 C (notes 1-2 of the page).
+# R and L are line-line values (the same as MOTOR.R and MOTOR.LQLL of the drive parameter files).
+name: TBM(S)-7646-A
+continuous_stall_torque_Nm: 2.18     # Tc
+continuous_current_Arms: 9.63        # Ic (11.8 Adc)
+peak_stall_torque_Nm: 6.74           # Tp, 25 C winding
+peak_current_Arms: 29.4              # Ip (36.0 Adc)
+rated_power_W: 335
+speed_at_rated_power_rpm: 1850
+design_bus_voltage_Vdc: 48.0         # Vbus
+design_voltage_Vrms: 33.9            # Vac
+torque_constant_hot_Nm_per_Arms: 0.235    # Kt (hot), +/-10 %
+torque_constant_cold_Nm_per_Arms: 0.258   # Kt (cold, 25 C), +/-10 %
+back_emf_hot_Vrms_per_krpm: 14.2          # Kb (hot), line-line rms
+back_emf_cold_Vrms_per_krpm: 15.6         # Kb (cold), line-line rms
+motor_constant_cold_Nm_per_sqrtW: 0.360   # Km (cold)
+resistance_ohm: 0.387                # Rm at 25 C, +/-10 %, line-line
+inductance_mH: 0.63                  # Lm, +/-30 %, line-line
+rotor_inertia_kgm2: 8.19e-5          # Jm (max thru-bore, note 3)
+weight_g: 1079
+max_static_friction_Nm: 0.068        # Tf
+cogging_peak_to_peak_Nm: 0.020       # Tcog
+viscous_damping_Nm_per_krpm: 2.81e-2 # Fi
+thermal_resistance_C_per_W: 1.62
+poles: 12

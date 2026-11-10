@@ -1,0 +1,28 @@
+# Tuning of the LQG-PI (Gawronski 2008, par. 8.2) as in the thesis: lucy_sim.tuning.gawronski, scripts/tune_lqg.py.
+#
+# Internal model without bearings (Q = V); transfer functions and 1 deg step on the reduced model; doublets and full
+# plants as constraints. Step 2: q_p is raised until the bandwidth reaches the fundamental. Step 3: q_i is raised until
+# oscillations appear, within the critical gain (7.9). Step 4: the weights of the modes whose peaks are too high are
+# raised. Then fine tuning on the index (8.27) reduced to settling time and bandwidth, q_p raised again, and V = rho Q.
+
+first_try: {q_i: 0.1, q_p: 0.3}     # book, par. 8.4.2 item 2
+base_flexible_weight: 0.1           # small weight on every flexible state (8.22)
+frequency_grid_Hz: {start: 0.005, stop: 150.0, n: 3000}
+step: {amplitude_deg: 1.0, start_s: 0.5, duration_s: 20.0}
+# bands of the lightly damped modes of the design model (peak of T_ry checked inside each band)
+resonance_bands_Hz:
+  azimuth: [[48.0, 62.0], [62.0, 72.0]]
+  polar: [[48.0, 64.0], [90.0, 110.0]]
+limits:
+  current_A: 18.0                   # current limit of the drive on the doublets (plant with Dahl bearings)
+  min_modulus: 0.5                  # min |1 + L|
+  peak_dB: -6.0                     # peak left by the book in Fig. 8.5
+  low_authority_ratio: 10.0         # q_p / q_f >= this for every raised mode (low-authority tracking, par. 8.1.4)
+improvement: 0.05                   # change of the index below which another iteration is not worth it
+scales:
+  q_p: [0.3, 1.0, 3.0, 10.0, 30.0, 100.0, 300.0, 1.0e+3, 3.0e+3, 1.0e+4, 3.0e+4, 1.0e+5, 3.0e+5, 1.0e+6, 3.0e+6, 1.0e+7, 3.0e+7, 1.0e+8]
+  q_f: [1.0e+3, 3.0e+3, 1.0e+4, 3.0e+4, 1.0e+5, 3.0e+5, 1.0e+6, 3.0e+6, 1.0e+7]
+  rho: [1.0e-4, 1.0e-3, 1.0e-2, 0.1, 0.3, 1.0, 3.0, 10.0, 100.0, 1.0e+3]
+  q_p_raise: [1.0, 1.2, 1.5, 2.0, 3.0, 5.0, 10.0, 20.0, 50.0, 100.0]
+  fine_q_p: [0.15, 0.3, 0.5, 0.7, 1.0, 1.4]
+bisection_steps: 5

@@ -1,0 +1,68 @@
+# Identified plant of LUCY (thesis version).
+#
+# fork: factors of the modal fork model (lucy_sim.plant.fork) on the CAD chains of config/gimbal.yaml, fitted on the
+#   measured frequency responses (WorkBench "Plant", least squares on real and imaginary parts, uniform grid in ln f;
+#   CAD factors within +-20 %, K_t within +-10 %, modal damping zeta_k <= 0.05; zeta_1, the rigid mode, is fixed).
+# bearings: Dahl friction of the bearings; sigma0 from the frequency responses, T_c (Coulomb) from the V2 doublets.
+# drive_gains: effective gains of the AKD2G cascade fitted on the tracking error of the V2 doublets (the gains of the
+#   .akd files do not reproduce them); the filters and the other drive parameters come from the files in data/drive.
+
+motor: data/motor/TBM7646A.yaml
+motor_temperature: cold          # K_t = 0.258 N m/A (25 C)
+simulation_step_s: 1.0e-4
+
+axes:
+  azimuth:
+    los_node: AP           # node of the model that carries the telescope
+    drive_parameters: data/drive/Parameters_azimuth.akd
+    drive_workbench_export: data/drive/BodeMeasurement_azimuth.csv
+    drive_gains:
+      Kpp: 7.924146523210916   # 1/s
+      Kpv: 187.40051057060495   # A/(rad/s)
+      Kiv_hz: 0.3675007873770187   # Hz
+    bearings:
+      sigma0: 1570.848763369819   # N m/rad
+      Tc: 0.23164718452468275   # N m
+    fork:
+      s_J_e: 0.8000000000000002   # CAD factor, encoder inertia
+      s_J_m: 0.8000000000000002   # CAD factor, motor rotor inertia
+      s_J_L: 1.135342515221921   # CAD factor, load and telescope inertia (azimuth)
+      s_k_1: 1.1999999999999997   # CAD factor, first shaft spring
+      s_k_2: 1.1999999999999997   # CAD factor, second shaft spring
+      alpha: 0.6066381044592635   # share of the CAD load inertia in the fork top
+      k_LA: 54740.91976467125   # fork base - fork top stiffness, N m/rad
+      tau_d: 0.0004780572850927655   # equivalent drive delay of the FRF fit, s (frequency domain only)
+      g_Kt: 0.9000000000000001   # factor on the catalogue K_t
+      zeta_2: 0.02818095253998912   # viscous modal damping of mode 2
+      zeta_3: 0.00010000000000000026   # viscous modal damping of mode 3
+      zeta_4: 0.04999999999999998   # viscous modal damping of mode 4
+  polar:
+    los_node: hp           # node of the model that carries the telescope
+    drive_parameters: data/drive/Parameters_elevation.akd
+    drive_workbench_export: data/drive/BodeMeasurement_elevation.csv
+    drive_gains:
+      Kpp: 8.022173596679174   # 1/s
+      Kpv: 53.513844697180495   # A/(rad/s)
+      Kiv_hz: 1.278592445892379   # Hz
+    bearings:
+      sigma0: 17836.6131383837   # N m/rad
+      Tc: 0.4072922393201249   # N m
+    fork:
+      s_J_e: 1.1567909878516816   # CAD factor, encoder inertia
+      s_J_hp: 1.0006971982401398   # CAD factor, hub + telescope inertia
+      s_J_m: 0.8000000013830981   # CAD factor, motor rotor inertia
+      s_J_r: 0.8000000008277042   # CAD factor, rear-end inertia
+      s_k_1: 1.0517999997087553   # CAD factor, first shaft spring
+      s_k_2: 1.1999999998043427   # CAD factor, second shaft spring
+      s_k_3: 1.1799987727643408   # CAD factor, third shaft spring
+      tau_d: 0.0004684746713138547   # equivalent drive delay of the FRF fit, s (frequency domain only)
+      f_1: 56.12834821324113   # stator mass 1, Hz
+      a_1: -0.5484076726899103   # stator mass 1, kappa/J, 1/(kg m^2)
+      f_2: 98.28945509606719   # stator mass 2, Hz
+      a_2: 0.5909135220818187   # stator mass 2, kappa/J, 1/(kg m^2)
+      g_Kt: 1.0510983450076967   # factor on the catalogue K_t
+      zeta_2: 0.020649278388752593   # viscous modal damping of mode 2
+      zeta_3: 0.030358536345736594   # viscous modal damping of mode 3
+      zeta_4: 0.00010000000000000044   # viscous modal damping of mode 4
+      zeta_5: 0.00010000000000379314   # viscous modal damping of mode 5
+      zeta_6: 0.00010165500267958677   # viscous modal damping of mode 6
