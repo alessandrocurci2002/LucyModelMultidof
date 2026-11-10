@@ -23,6 +23,82 @@ measurements were used to identify it, not to compare controllers.
 The regression tests check that the code reproduces the thesis results exactly: plant matrices, LQG gains, tuning
 points and the metrics of the HIL campaign.
 
+## The repository at a glance
+
+You never need to edit the code to run a simulation: you change the files in `config/`, run a script and read the
+results.
+
+```mermaid
+flowchart LR
+    subgraph EDIT["1. What you edit"]
+        G["config/gimbal.yaml<br/>geometry and CAD inertias"]
+        P["config/plant.yaml<br/>identified plant, friction,<br/>drive gains"]
+        C["config/controllers.yaml<br/>LQG weights, master timing"]
+        D["data/<br/>drive files, motor,<br/>doublets, drone flights"]
+    end
+    subgraph BUILD["2. What the code builds (src/lucy_sim)"]
+        S["structure<br/>mechanics of the two axes"]
+        PL["plant<br/>each axis: structure + bearings<br/>+ motor + drive"]
+        CT["control<br/>LQG-PI of each axis"]
+        M["GimbalModel<br/>everything assembled"]
+    end
+    subgraph RUN["3. What you run"]
+        Q["examples/quickstart.py<br/>first try, 1 minute"]
+        H["scripts/run_hil.py<br/>thesis campaign"]
+        T["scripts/tune_lqg.py<br/>re-tune the LQG"]
+    end
+    subgraph GET["4. What you get (results/)"]
+        R1["pointing error, miss distance,<br/>currents, time series"]
+        R2["new LQG weights"]
+    end
+    G --> S --> PL
+    P --> PL
+    D --> PL
+    PL --> CT
+    C --> CT
+    PL --> M
+    CT --> M
+    M --> Q & H & T
+    Q --> R1
+    H --> R1
+    T --> R2
+    R2 -.->|copy into| C
+```
+
+What happens inside one simulation, for each of the two axes:
+
+```mermaid
+flowchart LR
+    REF["Reference<br/>where the drone is<br/>(circle or recorded flight)"] --> CTRL
+    subgraph AXIS["One axis (azimuth or polar)"]
+        CTRL["Controller<br/>cascade in the drive, or<br/>LQG-PI in the master at 1 kHz"] --> DRV["Drive AKD2G<br/>velocity and current loops"]
+        DRV --> MOT["Motor<br/>current to torque"]
+        MOT --> STR["Structure<br/>shafts, fork, telescope"]
+        BRG["Bearings<br/>Dahl friction"] <--> STR
+        DIST["Disturbance torque<br/>(optional)"] --> STR
+        STR -->|encoder| CTRL
+    end
+    STR -->|telescope line of sight| ERR["Pointing error<br/>against the true<br/>drone position"]
+    STR <-.->|coupling torques through the telescope| OTHER["The other axis"]
+```
+
+| I want to... | Do this |
+|---|---|
+| check that everything works | `.venv/bin/python -m pytest` (10 s, all green) |
+| see a first result | `.venv/bin/python examples/quickstart.py`: cascade and LQG-PI on the test circle |
+| reproduce the thesis campaign | `.venv/bin/python scripts/run_hil.py`, results in `results/hil/` |
+| try other LQG weights | edit `lqg.axes` in `config/controllers.yaml`, run again |
+| try a stronger disturbance or more friction | change `Disturbance(...)` in your script (see *Changing the model*) |
+| simulate my own trajectory | pass azimuth and elevation arrays to `model.simulate` (see *Quick start*) |
+| change the mechanics | edit `config/gimbal.yaml` (every field is explained in the file) |
+| re-tune the LQG after a change of the plant | `.venv/bin/python scripts/tune_lqg.py`, copy `results/tuning/controllers_weights.yaml` into `config/controllers.yaml` |
+
+Rules of thumb:
+- After editing a `config/` file, run the tests. If they fail, the model no longer matches the thesis, which is
+  expected when you change it on purpose.
+- Everything in `results/` can be deleted and regenerated; it is not saved in git.
+- Do not edit `tests/reference/`: those are the thesis values.
+
 ## Install
 
 Python 3.10 or newer.
