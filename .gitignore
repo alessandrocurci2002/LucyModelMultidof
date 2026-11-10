@@ -8,13 +8,23 @@ __pycache__/
 # I risultati sono rigenerabili con `python run_all.py`.
 results/
 
-# Figure: PNG ovunque, cartelle figures/ (PNG e PDF vettoriali).
-# I PDF dei report e di results*/latex/ restano versionabili.
+# Figure e documenti compilati: nessun PNG o PDF viene versionato.
 *.png
+*.PNG
+*.pdf
+*.PDF
 figures/
 
-# PDF vettoriali di figure salvati fuori da figures/.
-results_fork_modes_k2_test/*.pdf
-results_fork_modes_time_domain/*.pdf
-results_fork_modes_2masses/bearing_friction/*.pdf
-closedLoopModel/results_vcl_study/imbalance/*.pdf
+# File ausiliari di compilazione LaTeX.
+*.aux
+*.fls
+*.fdb_latexmk
+*.out
+*.toc
+*.synctex.gz
+report*/**/*.log
+report*/*.log
+
+# Cartelle con dati pesanti, non versionate.
+results_lqg_tuning/
+sviluppi_futuri/

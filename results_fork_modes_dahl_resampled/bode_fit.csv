@@ -1,0 +1,13 @@
+axis,parameters,measurement,complex,magnitude,phase,complex_1-5,magnitude_1-5,phase_1-5,complex_5-30,magnitude_5-30,phase_5-30,complex_30-150,magnitude_30-150,phase_30-150
+elevation,report,"elevation, 1 % grid (1-600 Hz)",77.91,78.31,83.84,82.50,81.21,71.23,35.00,42.27,49.10,73.08,62.87,91.15
+elevation,report,"elevation, 1 % grid (30-150 Hz)",76.94,62.60,91.72,nan,nan,nan,nan,nan,nan,76.94,62.60,91.72
+elevation,report,"elevation, 16 screws, 4 A (30-300 Hz)",79.67,75.14,93.43,nan,nan,nan,nan,nan,nan,79.67,75.14,93.43
+elevation,uniform_lnf,"elevation, 1 % grid (1-600 Hz)",78.05,78.51,83.99,82.77,81.53,71.63,34.73,41.96,49.28,74.88,63.70,91.25
+elevation,uniform_lnf,"elevation, 1 % grid (30-150 Hz)",78.08,63.10,91.74,nan,nan,nan,nan,nan,nan,78.08,63.10,91.74
+elevation,uniform_lnf,"elevation, 16 screws, 4 A (30-300 Hz)",75.73,73.49,92.89,nan,nan,nan,nan,nan,nan,75.73,73.49,92.89
+elevation,uniform_f,"elevation, 1 % grid (1-600 Hz)",76.66,78.54,83.65,77.03,66.41,71.17,38.18,45.03,49.56,77.47,68.11,90.66
+elevation,uniform_f,"elevation, 1 % grid (30-150 Hz)",79.49,67.52,91.07,nan,nan,nan,nan,nan,nan,79.49,67.52,91.07
+elevation,uniform_f,"elevation, 16 screws, 4 A (30-300 Hz)",74.71,73.75,91.27,nan,nan,nan,nan,nan,nan,74.71,73.75,91.27
+azimuth,report,"azimuth, 3 % grid (1-600 Hz)",75.29,82.33,77.37,89.83,89.23,91.11,87.08,79.07,72.48,52.89,52.87,60.65
+azimuth,uniform_lnf,"azimuth, 3 % grid (1-600 Hz)",75.29,82.33,77.37,89.83,89.23,91.11,87.08,79.07,72.48,52.89,52.87,60.65
+azimuth,uniform_f,"azimuth, 3 % grid (1-600 Hz)",72.61,86.42,82.15,79.20,90.19,85.38,88.43,87.90,79.40,51.22,57.50,69.81

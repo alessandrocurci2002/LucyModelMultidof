@@ -23,13 +23,13 @@ Aggiornato al 2026-11-01.
 | Osservatore di disturbo (Hilkert), continuo | fatto, solo simulazione | `results_dob_tracking/` | `report_dob/` |
 | Stesso con EtherCAT 1 ms e ADIS16507 | fatto, solo simulazione | `results_dob_ethercat/` | `report_dob/` |
 | Stimatore grey-box in stile `greyest` | fatto | `results_vtesi_greybox/`, `results_vcl_greybox*/` | nessuno; vedi `STATO_LAVORI.md` |
-| **LQG alla Gawronski** | **audit fatto, sintesi e simulazione da fare** | nessuno | `LQG_GAWRONSKI_AUDIT.md` |
+| LQG alla Gawronski (PI + flexible mode controller, maglia di velocità come plant) | fatto, solo simulazione | `../results_lqg_gawronski/` | `../report_lqg_gawronski/`, `LQG_GAWRONSKI_AUDIT.md` |
 
 Nessun controllore di questa cartella risulta provato sull'hardware: osservatore, EtherCAT e giroscopio sono
 simulazioni.
 
-Nel codice non c'è alcuna sintesi LQG o LQR. Il prossimo passo, definito in `prompt.txt`, è sintetizzare e simulare il
-controllore, con accuratezza e jitter sulla stessa circonferenza dell'osservatore. La mappatura verso il drive è già
+La sintesi LQG è in `lucy_cl/lqg.py` (con `control.dlqr` e `control.dlqe`), lo studio in `../analisi_lqg_gawronski.py`. Sostituisce il solo
+anello di posizione. La variante con il PI di velocità ricavato dalla sintesi (LP/LL) non è sviluppata; la mappatura verso il drive è
 ricavata nell'audit:
 
 - K_pv = k_D;

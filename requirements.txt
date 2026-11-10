@@ -13,5 +13,5 @@ pytest>=7.4
 # Modello rigido a 2 GdL: dati CAD, preprocessing inerziale, convenzioni.
 -e ../gimbal_2dof
 
-# Facoltativa: solo per controlli incrociati su poli e zeri.
-# control>=0.9
+# Sintesi LQG di Gawronski (dlqr, dlqe, c2d); senza Slycot usa SciPy.
+control>=0.10.2

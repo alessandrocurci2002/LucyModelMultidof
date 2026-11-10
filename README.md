@@ -50,7 +50,7 @@ Aggiornato al 2026-11-01.
 | Cuscinetti di Dahl, identificazione ibrida | fatto | `analisi_cuscinetti_dahl_tempo.py`, `report_dahl_bearings/` |
 | Anello chiuso con il modello ibrido | fatto, due fenomeni non riprodotti | `analisi_anello_chiuso_ibrido.py` |
 | Osservatore di disturbo con giroscopio | simulato | `closedLoopModel/report_dob/` |
-| LQG alla Gawronski | **solo audit di progetto, non implementato** | `closedLoopModel/LQG_GAWRONSKI_AUDIT.md` |
+| LQG alla Gawronski (PI + flexible mode controller) | fatto, solo simulazione | `analisi_lqg_gawronski.py`, `closedLoopModel/lucy_cl/lqg.py`, `report_lqg_gawronski/` |
 
 ## Installazione
 
@@ -129,7 +129,7 @@ gimbal_multidof/
 ├── results/, results_hub*/                      uscite di run_all.py, una cartella per configurazione
 ├── results_fork_modes*/, results_20261028/, results_V2_coupling/    uscite di analisi_*.py
 ├── saved_fork_modes_modal_20261031_cad20_kt10/  copia di sicurezza; è un ingresso di altri script
-├── development_report/, report_fork_modes/, report_dahl_bearings/   report LaTeX generati
+├── development_report/, report_fork_modes/, report_dahl_bearings/, report_dahl_resampled/, report_lqg_gawronski/   report LaTeX generati
 └── closedLoopModel/                             anello chiuso, identificazione, controllo
 ```
 
@@ -169,6 +169,18 @@ Si eseguono dalla radice con `.venv/bin/python -I <script>`. Salvo diversa indic
 | `analisi_cuscinetti_dahl_tempo.py` | FRF con Dahl dal tempo, stima ibrida di T_c e σ₀ | `results_fork_modes_dahl/time_domain_bearings/` | |
 | `analisi_tempo_dahl_ibrido.py` | Modello ibrido nel tempo, ingresso corrente misurata | `results_fork_modes_dahl/time_domain_check/` | |
 | `analisi_anello_chiuso_ibrido.py` | Modello ibrido in anello chiuso, ingresso riferimento di posizione | `results_fork_modes_dahl/closed_loop_check/{stima,akd}/` | `--guadagni stima\|akd` |
+| `analisi_dahl_ricampionato.py` | Stima ibrida senza pesi, FRF interpolate e campionate uniformemente in ln f e in f | `results_fork_modes_dahl_resampled/` | |
+| `analisi_fit_bode_ricampionato.py` | Fit su G complessa, modulo e fase, figure in frequenza | `results_fork_modes_dahl_resampled/` | |
+| `analisi_tempo_ricampionato.py` | Doppietti in anello aperto e chiuso con i parametri delle griglie uniformi | `results_fork_modes_dahl_resampled/` | |
+| `analisi_lqg_gawronski.py` | Sintesi, taratura e confronto LQG/cascata sui doppietti | `results_lqg_gawronski/` | `--riusa-taratura` |
+| `analisi_lqg_punto_lavoro.py` | Punto di lavoro dei cuscinetti nel modello di sintesi LQG | `results_lqg_tuning/` | |
+| `analisi_lqg_passo1_flessibili.py` | Passo 1 di §8.2: pesi dei modi flessibili, primo tentativo e processo | `results_lqg_tuning/step1_flexible/` | |
+| `analisi_lqg_passi_2_4.py` | Passi 2-4 di §8.2, iterazione e prova su $V$ | `results_lqg_tuning/steps_2_4/` | |
+| `analisi_lqg_confronto_misure.py` | Confronto LQG-PI con i doppietti misurati, indagine in azimut, verifiche in elevazione | `results_lqg_tuning/comparison_measured/` | `--rumore` |
+| `analisi_lqg_equivalenza_cascata.py` | LQG senza cuscinetti a parità di errore con la cascata | `results_lqg_tuning/comparison_measured/` | |
+| `analisi_lqg_circonferenza.py` | Circonferenza con LQG-PI senza cuscinetti, disturbi e rumore | `results_lqg_tuning/no_bearings/circle/` | `--extra` |
+| `analisi_maxwell_tempo.py` | Doppietti in anello aperto e chiuso con Maxwell al posto di Dahl | `results_lqg_tuning/time_domain_maxwell/` | |
+| `analisi_lqg_dahl_risonanze.py` | Dahl linearizzato con priorità alle risonanze, confronto | `results_lqg_tuning/resonance_priority/` | |
 
 ### Ordine di esecuzione della catena attuale
 
@@ -182,6 +194,12 @@ analisi_cuscinetti_dahl_tempo.py            (legge results_fork_modes_dahl e res
 analisi_tempo_dahl_ibrido.py                (legge time_domain_bearings/summary.json)
 analisi_anello_chiuso_ibrido.py             (idem, più lucy_cl e VClosedLoop)
 report_dahl_bearings/build_dahl_report.py
+analisi_dahl_ricampionato.py                (legge results_fork_modes_dahl e results_v2_identification)
+analisi_fit_bode_ricampionato.py            (legge results_fork_modes_dahl_resampled/summary.json)
+analisi_tempo_ricampionato.py               (legge results_fork_modes_dahl_resampled/summary.json)
+report_dahl_resampled/build_dahl_resampled_report.py
+analisi_lqg_gawronski.py                    (legge results_fork_modes_dahl_resampled)
+report_lqg_gawronski/build_lqg_report.py
 ```
 
 (\*) Il comando che ha prodotto `results_fork_modes_2masses/` non è registrato; il `summary.md` è quello di
@@ -203,6 +221,9 @@ rifanno le stime, tranne `build_development_report.py`, che ricalcola dai file d
 | `development_report/development_report.pdf` | 31 | da 7 a 8 GdL, prova delle viti, H5 e H6 | `.venv/bin/python development_report/build_development_report.py` |
 | `report_fork_modes/fork_modes_report.pdf` | 15 | stima modale dei modi della forcella | `cd report_fork_modes && ../.venv/bin/python -I build_fork_modes_report.py` |
 | `report_dahl_bearings/dahl_bearings_report.pdf` | 14 | Dahl, stima ibrida, verifica in frequenza, tempo e anello chiuso | `cd report_dahl_bearings && ../.venv/bin/python -I build_dahl_report.py` |
+| `report_dahl_resampled/dahl_resampled_report.pdf` | 15 | Come sopra, con il costo senza pesi su FRF campionate uniformemente | `cd report_dahl_resampled && ../.venv/bin/python -I build_dahl_resampled_report.py` |
+| `report_lqg_gawronski/lqg_report.pdf` | 12 | Modello, architettura LQG di Gawronski, prima taratura, confronto con la cascata sui doppietti | `cd report_lqg_gawronski && ../.venv/bin/python -I build_lqg_report.py` |
+| `report_lqg_tuning/lqg_tuning_report.pdf` | in corso | Taratura LQG-PI secondo Gawronski, aggiornato a ogni passo | `cd report_lqg_tuning && ../.venv/bin/python -I build_lqg_tuning_report.py` |
 | `results*/latex/multidof_fem_model.pdf` | | analisi FEM con la geometria in TikZ | `run_all.py` senza `--no-latex` |
 
 `--no-latex` è disponibile su tutti e tre gli script. `report_fork_modes/previous_logfit/` conserva la versione

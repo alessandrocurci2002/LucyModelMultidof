@@ -1,0 +1,95 @@
+\section{Model}\label{sec:model}
+\subsection{Structure in modal form}
+Each axis is the lumped model of \path{report_fork_modes}: elevation with the telescope rigid on the ring and two modal masses on the motor stator, azimuth with the load split into fork base and fork top. The bearings are removed from the stiffness:
+\begin{equation}
+\mathbf M\ddot{\mathbf x}+\mathbf C\dot{\mathbf x}+\mathbf K_0\mathbf x=\mathbf e\,\tau_m-\mathbf v\,T_b,\qquad \theta_\mathrm{enc}=\mathbf c^T\mathbf x,\qquad \delta=\mathbf v^T\mathbf x .\label{eq:struct}
+\end{equation}
+\begin{itemize}
+\item $\tau_m$ is the motor torque. $\mathbf e$ applies it to the rotor and, in elevation, its reaction to the stator modal masses.
+\item $\delta$ is the bearing deflection: hub minus stator structure in elevation, fork base minus ground in azimuth. $T_b$ is the friction torque that the bearings transmit.
+\item The modes of $(\mathbf M,\mathbf K_0)$, $\mathbf K_0\bm\phi_k=\omega_k^2\mathbf M\bm\phi_k$ with $\bm\Phi^T\mathbf M\bm\Phi=\mathbf I$, now include the rigid rotation of the axis ($\omega_1\simeq0$). Each mode has its own viscous modal damping, so that $\mathbf C=\mathbf M\bm\Phi\,\mathrm{diag}(2\zeta_k\omega_k)\,\bm\Phi^T\mathbf M$.
+\end{itemize}
+
+\subsection{Dahl friction in the bearings}
+The bearings are a Dahl element acting on $\delta$. Its internal state $z$ is the mean deflection of the contact asperities (the ``bristles''):
+\begin{equation}
+\frac{dz}{dt}=\dot\delta-\frac{\sigma_0\,|\dot\delta|}{T_c}\,z,\qquad T_b=\sigma_0 z .\label{eq:dahl}
+\end{equation}
+\begin{itemize}
+\item \textbf{Pre-sliding.} For small motion, $|\sigma_0 z|\ll T_c$, the element is a spring of stiffness $\sigma_0$.
+\item \textbf{Sliding.} For motion well beyond the pre-sliding scale $T_c/\sigma_0$, $T_b\to T_c\,\mathrm{sign}(\dot\delta)$: Coulomb friction.
+\item The transition between the two regimes is smooth and hysteretic. The dissipation per cycle depends on the amplitude, not on the frequency.
+\end{itemize}
+The Dahl model is the LuGre model with static torque equal to the Coulomb torque ($T_s=T_c$) and no micro-damping or viscous term ($\sigma_1=\sigma_2=0$). LuGre with all six parameters was also identified; it fits the frequency responses only slightly better and its parameters are not identifiable (\path{report_dahl_bearings}).
+
+\subsection{Frequency domain: describing function}\label{sec:df}
+\paragraph{Describing function.} Under a sinusoidal deflection $\delta=A\sin\omega t$, the first harmonic of $T_b$ defines a complex, amplitude-dependent bearing stiffness:
+\begin{equation}
+K_b(A,\omega)=\frac{\frac{1}{\pi}\int_0^{2\pi}T_b(\varphi)\,e^{-j\varphi}\,d\varphi}{-jA},\qquad \varphi=\omega t .\label{eq:df}
+\end{equation}
+It is computed by integrating~\eqref{eq:dahl} over three cycles, 256 steps per cycle, with the exact update of $z$ at constant velocity over each step, and taking the last cycle. Its limits are:
+\begin{equation}
+K_b\to\sigma_0\quad\bigl(A\ll T_c/\sigma_0\bigr),\qquad K_b\to j\,\frac{4T_c}{\pi A}\quad\bigl(A\gg T_c/\sigma_0\bigr).
+\end{equation}
+The linear hysteretic element of \path{report_fork_modes}, $k_g(1+j\eta_g)$, is one value of $K_b$ at one amplitude.
+
+\paragraph{Plant.} The bearings act on the single deflection $\delta=\mathbf w^T\mathbf z$, with $\mathbf w=\bm\Phi^T\mathbf v$, and enter the modal superposition as an exact rank-one term (Sherman--Morrison). With $D_k=s^2+2\zeta_k\omega_ks+\omega_k^2$, $\mathbf b=\bm\Phi^T\mathbf e$, $\mathbf g=\bm\Phi^T\mathbf c$ and $h=K_b(A,\omega)$:
+\begin{equation}
+G_\theta=\sum_k\frac{g_kb_k}{D_k}-\frac{h\Bigl(\sum_k\dfrac{g_kw_k}{D_k}\Bigr)\Bigl(\sum_k\dfrac{w_kb_k}{D_k}\Bigr)}{1+h\displaystyle\sum_k\frac{w_k^2}{D_k}},\qquad
+G(s)=s\,g_{K_t}K_t\,G_\theta(s)\,\frac{\omega_i}{s+\omega_i}\,e^{-s\tau_d}, \label{eq:plant}
+\end{equation}
+\begin{itemize}
+\item $K_t=\Kt$\,N\,m/A$_\mathrm{rms}$ is the catalogue torque constant of the TBM(S)-7646-A at 25\,$^\circ$C, and $g_{K_t}$ its tolerance factor;
+\item $\omega_i/(s+\omega_i)$ is the current loop (1.5\,kHz), and $\tau_d$ an equivalent delay.
+\end{itemize}
+
+\paragraph{Amplitude of the bearings.} The tests are run in closed loop: WorkBench injects $I_\mathrm{exc}$ at the current command while the position and velocity loops are active, so that the motor carries $I_\mathrm{exc}S$ with $S=1/(1+L)$. Below the fork modes the stator barely moves and the encoder reads the bearing deflection, so its amplitude follows from the measured traces:
+\begin{equation}
+A(\omega)=\frac{|G_\mathrm{mis}(j\omega)|\,I_\mathrm{exc}\,|S_\mathrm{mis}(j\omega)|}{\omega},\qquad S_\mathrm{mis}=\frac{1}{1+L_\mathrm{mis}} .\label{eq:amp}
+\end{equation}
+During the frequency responses the bearing amplitude ranges over \ArangeA\,$\mu$rad in azimuth and \ArangeP\,$\mu$rad in elevation (Figure~\ref{fig:df_amp}), across the pre-sliding scale. The amplitude is taken from the measurement for each measurement and frequency. This introduces a partial circularity, discussed in Section~\ref{sec:limits}.
+
+\subsection{Time domain, open loop: measured current in}\label{sec:ol}
+The current $i$ measured during the doublets drives the structure, $\tau_m=g_{K_t}K_t\,i$, with $i=\texttt{AMPS}/2$ filtered at 150\,Hz. With the state $\mathbf s=[\mathbf x;\dot{\mathbf x}]$, the linear part of~\eqref{eq:struct} is discretised exactly with step $\Delta t=0.5$\,ms (zero-order hold of $\tau_m$ and $T_b$):
+\begin{equation}
+\mathbf s_{k+1}=\mathbf A_d\mathbf s_k+\mathbf B_d\begin{bmatrix}\tau_{m,k}\\ T_{b,k}\end{bmatrix},\qquad \mathbf A_d=e^{\mathbf A\Delta t},\quad \mathbf B_d=\int_0^{\Delta t}e^{\mathbf A t}\,dt\,\mathbf B .
+\end{equation}
+The Dahl state is advanced exactly at the mean bearing velocity $\bar{\dot\delta}$ of the step:
+\begin{equation}
+z_{k+1}=z_k\,e^{-a\Delta t}+\frac{\bar{\dot\delta}}{a}\bigl(1-e^{-a\Delta t}\bigr),\qquad a=\frac{\sigma_0|\bar{\dot\delta}|}{T_c} .\label{eq:zupdate}
+\end{equation}
+\paragraph{Initial condition.} At rest the friction holds the measured holding torque; it is limited to $T_c$, the largest torque a Dahl element can hold.
+
+\subsection{Time domain, closed loop: position reference in}\label{sec:cl}
+The measured position reference $p_\mathrm{cmd}$ drives the model of the AKD2G drive of \path{closedLoopModel/lucy_cl}, which gives the motor voltage; the current follows from the motor electrical equation (Figure~\ref{fig:cl}):
+\begin{gather}
+v_\mathrm{cmd}=K_{pp}(p_\mathrm{cmd}-\theta_\mathrm{enc}),\qquad
+i_\mathrm{cmd}=K_{pv}\Bigl(1+\frac{2\pi K_{iv}}{s}\Bigr)H_\mathrm{fwd}(s)\bigl(v_\mathrm{cmd}-H_\mathrm{fb}(s)\,\dot\theta_\mathrm{enc}\bigr),\\
+u=K_{pi}\Bigl(1+\frac{R}{Ls}\Bigr)(i_\mathrm{cmd}-i),\qquad L_\mathrm{ph}\frac{di}{dt}=\frac u2-R_\mathrm{ph}\,i-K_{e,\mathrm{ph}}\,\omega_r,\qquad \tau_m=g_{K_t}K_t\,i-b\,\omega_r .\label{eq:drive}
+\end{gather}
+\begin{itemize}
+\item $H_\mathrm{fwd}$ and $H_\mathrm{fb}$ are the biquad filters of the drive (and the observer in elevation), from the WorkBench exports of the V2 session.
+\item The current PI has its zero on the electrical pole $R/L$, which gives a 1.5\,kHz current loop. Motor data are those of the TBM(S)-7646-A datasheet; $\omega_r=\mathbf e^T\dot{\mathbf x}$ is the rotor speed relative to the stator.
+\end{itemize}
+Below the limits of the drive (current 18\,A, velocity integrator, phase voltage) the drive is linear. Its matrices are taken from \texttt{Drive.step} of \path{lucy_cl}. Structure, motor and drive are discretised together exactly, with step 0.1\,ms and inputs $p_\mathrm{cmd}$ and $T_b$; the Dahl state is updated with~\eqref{eq:zupdate}. The largest current command in the simulations is \icmdMaxA\,A in azimuth and \icmdMaxP\,A in elevation, so the limits are never reached. The initial state is the equilibrium of the loop with the friction holding the measured holding torque (limited to $T_c$).
+
+\begin{figure}[H]\centering
+\begin{tikzpicture}[node distance=6mm]
+\node (p) {$p_\mathrm{cmd}$};
+\node[sum, right=of p] (s1) {};
+\node[blk, right=of s1] (kp) {$K_{pp}$};
+\node[sum, right=of kp] (s2) {};
+\node[blk, right=of s2] (cv) {$K_{pv}\bigl(1+\frac{2\pi K_{iv}}{s}\bigr)$\\ $H_\mathrm{fwd}$};
+\node[blk, right=of cv] (ci) {current loop\\ PI + motor};
+\node[blk, right=of ci, text width=3.0cm] (pl) {modal structure\\ + Dahl bearings};
+\node[right=7mm of pl] (y) {$\theta_\mathrm{enc}$};
+\node[blk, below=7mm of cv] (hf) {$H_\mathrm{fb}\,s$};
+\draw[sig] (p) -- (s1); \draw[sig] (s1) -- (kp); \draw[sig] (kp) -- node[above, lab]{$v_\mathrm{cmd}$} (s2);
+\draw[sig] (s2) -- (cv); \draw[sig] (cv) -- node[above, lab]{$i_\mathrm{cmd}$} (ci);
+\draw[sig] (ci) -- node[above, lab]{$\tau_m$} (pl); \draw[sig] (pl) -- (y);
+\draw[sig] ($(pl.east)!0.5!(y.west)$) |- (hf.east); \draw[sig] (hf.west) -| node[pos=0.9, left, lab]{$-$} (s2.south);
+\draw[sig] ($(pl.east)!0.5!(y.west)$) -- ++(0,-1.75) -| node[pos=0.95, left, lab]{$-$} (s1.south);
+\draw[sig, dashed] (pl.north) -- ++(0,0.45) -| node[pos=0.25, above, lab]{$\omega_r$ (back e.m.f.)} (ci.north);
+\end{tikzpicture}
+\caption{Closed loop of one axis (Section~\ref{sec:cl}). In open loop (Section~\ref{sec:ol}) the measured current replaces the drive and the motor: $\tau_m=g_{K_t}K_t\,i$.}\label{fig:cl}
+\end{figure}

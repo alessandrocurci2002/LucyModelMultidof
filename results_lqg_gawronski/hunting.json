@@ -1,0 +1,96 @@
+{
+ "azimuth": [
+  {
+   "final": false,
+   "k_p": 17.969107627273583,
+   "k_i": 2.4128469631670035,
+   "e_max_last_3s_mdeg": 0.2442303222010526,
+   "moving_fraction": 0.04500732677412602,
+   "sign_changes": 1,
+   "modulus_stuck": 0.8162528227413713
+  },
+  {
+   "final": false,
+   "k_p": 18.193031591770076,
+   "k_i": 8.04231925048301,
+   "e_max_last_3s_mdeg": 0.5590975245233046,
+   "moving_fraction": 0.44044379317563326,
+   "sign_changes": 2,
+   "modulus_stuck": 0.8133742939065691
+  },
+  {
+   "final": false,
+   "k_p": 19.002737471207116,
+   "k_i": 28.14175394011607,
+   "e_max_last_3s_mdeg": 0.19352458480743426,
+   "moving_fraction": 0.4984299769729956,
+   "sign_changes": 4,
+   "modulus_stuck": 0.8031871006158134
+  },
+  {
+   "final": false,
+   "k_p": 21.194036060139947,
+   "k_i": 80.35659425226223,
+   "e_max_last_3s_mdeg": 0.04113954420829873,
+   "moving_fraction": 0.428218547205359,
+   "sign_changes": 6,
+   "modulus_stuck": 0.7773680282383533
+  },
+  {
+   "final": true,
+   "k_p": 14.750267500872004,
+   "k_i": 24.066420139522645,
+   "e_max_last_3s_mdeg": 0.1532836950959938,
+   "moving_fraction": 0.4833577559137534,
+   "sign_changes": 4,
+   "modulus_stuck": 0.6308387054584349
+  }
+ ],
+ "elevation": [
+  {
+   "final": false,
+   "k_p": 17.94243593462869,
+   "k_i": 2.410996043898785,
+   "e_max_last_3s_mdeg": 1.2214326433788094,
+   "moving_fraction": 0.33761775172702535,
+   "sign_changes": 2,
+   "modulus_stuck": 0.7044109613614792
+  },
+  {
+   "final": false,
+   "k_p": 18.135417226389578,
+   "k_i": 8.03623126913943,
+   "e_max_last_3s_mdeg": 6.182942893908596,
+   "moving_fraction": 0.47184425371572114,
+   "sign_changes": 3,
+   "modulus_stuck": 0.43995900125749426
+  },
+  {
+   "final": false,
+   "k_p": 18.824683933759612,
+   "k_i": 28.121468663402343,
+   "e_max_last_3s_mdeg": 23.168805534320715,
+   "moving_fraction": 0.9385388319028679,
+   "sign_changes": 8,
+   "modulus_stuck": 0.3035257931414276
+  },
+  {
+   "final": false,
+   "k_p": 20.655018236993065,
+   "k_i": 80.30574676135231,
+   "e_max_last_3s_mdeg": 52.93006716921663,
+   "moving_fraction": 0.9846765752564371,
+   "sign_changes": 16,
+   "modulus_stuck": 0.27753186458799156
+  },
+  {
+   "final": true,
+   "k_p": 129.35277080815325,
+   "k_i": 123.11202914775731,
+   "e_max_last_3s_mdeg": 3.1477171387850142,
+   "moving_fraction": 0.6702951643290769,
+   "sign_changes": 4,
+   "modulus_stuck": 0.5333860296529497
+  }
+ ]
+}

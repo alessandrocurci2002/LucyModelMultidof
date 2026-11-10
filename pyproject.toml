@@ -20,7 +20,7 @@ dependencies = [
 
 [project.optional-dependencies]
 dev = ["pytest>=7.4"]
-control = ["control>=0.9"]
+control = ["control>=0.10.2"]
 
 [tool.setuptools.packages.find]
 where = ["src"]

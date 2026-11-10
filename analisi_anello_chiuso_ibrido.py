@@ -80,7 +80,7 @@ STIMA = "1deg_minus1deg"
 PASSO_STIMA = 2e-4
 
 
-def stima_guadagni(m, p0: DriveParams, mot, att, finestre_stima) -> tuple[dict[str, float], float]:
+def stima_guadagni(m, p0: DriveParams, mot, att, finestre_stima, anello=None) -> tuple[dict[str, float], float]:
     """Kpp, Kpv, Kiv_hz sull'errore di inseguimento (residuo normalizzato come il fit NRMSE di ogni finestra)."""
     nomi = ("Kpp", "Kpv", "Kiv_hz")
     dati = []
@@ -96,7 +96,7 @@ def stima_guadagni(m, p0: DriveParams, mot, att, finestre_stima) -> tuple[dict[s
 
     def res(x):
         p = dataclasses.replace(p0, **dict(zip(nomi, np.exp(x))))
-        an = AnelloChiuso(m, Drive(p), mot, att, PASSO_STIMA)
+        an = (anello or AnelloChiuso)(m, Drive(p), mot, att, PASSO_STIMA)
         out = []
         for t, pc, I0, tt, err in dati:
             r = an.corri(pc, I0)
@@ -161,17 +161,19 @@ class AnelloChiuso:
         """Stato a riposo con p_cmd = 0 e coppia d'attrito Tb (il velocity integrator regge Tb / (g K_t))."""
         return solve(self.A, -self.B @ np.array([0.0, Tb]))
 
-    def corri(self, p_cmd: np.ndarray, I0: float) -> dict[str, np.ndarray]:
+    def corri(self, p_cmd: np.ndarray, I0: float, coppia: np.ndarray | None = None, riga: np.ndarray | None = None) -> dict[str, np.ndarray]:
         att, s0, n, v = self.att, self.att.sigma0, self.n, self.m.v
         Tb0 = float(np.clip(self.m.Kt * I0, -att.Tc, att.Tc))
         z = Tb0 / s0
         s = self.equilibrio(Tb0)
         p0 = self.uscite["p"] @ s
-        P, I, IC, VP, VI = (np.empty(len(p_cmd)) for _ in range(5))
+        P, I, IC, VP, VI, L = (np.empty(len(p_cmd)) for _ in range(6))
         vv = np.r_[np.zeros(n), v, np.zeros(self.N - 2 * n)]
+        l0 = riga @ s if riga is not None else 0.0
         for k, pc in enumerate(p_cmd):
-            u = np.array([pc, s0 * z])
+            u = np.array([pc, s0 * z + (coppia[k] if coppia is not None else 0.0)])
             P[k], I[k] = self.uscite["p"] @ s - p0, self.uscite["i"] @ s
+            L[k] = riga @ s - l0 if riga is not None else P[k]
             IC[k], VP[k], VI[k] = self.ic_row @ s + self.ic_in @ u, self.vp_row @ s + self.vp_in @ u, self.vint_row @ s
             s_new = self.Ad @ s + self.Bd @ u
             vd = 0.5 * (vv @ s + vv @ s_new)
@@ -180,7 +182,7 @@ class AnelloChiuso:
                 e = np.exp(-a * self.passo)
                 z = z * e + vd / a * (1 - e)
             s = s_new
-        return {"p": P, "i": I, "i_cmd": IC, "v_phase": VP, "i_int": VI, "Tb0": Tb0}
+        return {"p": P, "i": I, "i_cmd": IC, "v_phase": VP, "i_int": VI, "Tb0": Tb0, "los": L}
 
 
 def main() -> None:

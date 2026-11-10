@@ -1,0 +1,152 @@
+\section{Pointing performance on a circle and on real trajectories}\label{sec:thesis}
+This section compares the cascade tuned on the doublets with the tuned LQG-PI of Gawronski, on a circular trajectory and on two real trajectories recorded with the drone, without and with a disturbance torque. The result of interest is how often a laser beam of 8\,cm radius actually covers the drone.
+
+\subsection{Definition of the pointing error}\label{sec:tp_def}
+The pointing error follows Attorrese (2026), Section~5.3, where it is the coupling quantity of the pointer-drone problem. With the fixed position of the pointer $p^{[p]}$ and the \emph{actual} position of the drone $p^{[d]}$,
+\begin{equation}
+r=p^{[d]}-p^{[p]},\quad\hat r=\frac{r}{\sqrt{\lVert r\rVert^2+\varepsilon}},\quad
+\hat n(\psi,\theta)=\begin{bmatrix}\cos\theta\cos\psi\\\cos\theta\sin\psi\\\sin\theta\end{bmatrix},\quad
+\bm E=\hat n(\psi,\theta)\times\hat r,
+\end{equation}
+which are equations (5.21)--(5.23) of that work. Four remarks on how it is used here:
+\begin{itemize}
+\item Equation (5.23) defines a vector, and the cost of that work penalises its norm. The scalar reported here is $E=\lVert\bm E\rVert=\sin\alpha$, where $\alpha$ is the angle between the line of sight and the drone. At these errors $\sin\alpha$ and $\alpha$ coincide.
+\item The regularisation $\varepsilon$ only prevents a singularity near the pointer. At 100\,m it has no effect, and it is set to zero.
+\item In (5.22) $\theta$ is measured from the horizontal, although the text calls it polar and equation (5.3) of the same work measures it from the vertical. Here $\theta$ is the elevation, as in (5.22) and in the model.
+\item The angles $(\psi,\theta)$ are those of the node that carries the telescope, not of the encoders, so structural deflections are included.
+\end{itemize}
+The same work uses a limit of $0.2^\circ$, or 3.49\,mrad, set by the company. The beam considered here is more demanding. Since $\lVert r\rVert E$ is exactly the distance of the drone from the line of sight, the \emph{miss distance} is $d=\lVert r\rVert E$, and the \emph{effective pointing} is the fraction of the evaluated time in which the drone lies inside the beam:
+\begin{equation}
+\eta=\frac{\text{time with }d\le R_b}{\text{evaluated time}},\qquad R_b=8\text{\,cm},
+\end{equation}
+which at 100\,m corresponds to about 0.8\,mrad. The drone is treated as a point.
+
+\subsection{Simulation setup}\label{sec:tp_setup}
+\paragraph{Plant.} The nonlinear model of the mount with Dahl bearings, the proxy of the real system in this study. The two axes are simulated together at 0.1\,ms and exchange the Coriolis, gyroscopic and inertial torques of the telescope, whose azimuth inertia depends on elevation (Section~\ref{sec:coupling}). There is no measurement noise and no current limit.
+
+\paragraph{Controllers.} The present cascade, with $K_{pp}=7.92$ and 8.02\,1/s in azimuth and elevation, and the LQG-PI tuned in Section~\ref{sec:nb}, with $k_p=25.2$ and $k_i=0.49$ in azimuth, $k_p=799$ and $k_i=29.4$ in elevation. The gains of both stop at the current limit of the doublets, which is the application case that sizes the drive (decision D16). Neither has feedforward.
+
+\paragraph{Trajectories.} The circle has radius 10\,m, height 5\,m and centre at 100\,m, at 0.2\,rad/s, so a speed of 2\,m/s. The real trajectories are \texttt{dataset\_7} and \texttt{dataset\_8}, recorded with the motors running, about 30 and 40\,m long at a mean speed of 0.17\,m/s. They are shown in Figure~\ref{fig:tp_traj}.
+
+\begin{figure}[H]\centering\includegraphics[width=0.82\linewidth]{figures/tp_trajectories.pdf}\caption{Real trajectories seen from above, after alignment of the estimates to the ground truth. LUCY lies 100\,m away along $-x$, so the long side of each trajectory is seen as lateral motion.}\label{fig:tp_traj}\end{figure}
+
+\paragraph{Reference and error.} The pointer follows the estimates, and the error is computed against the ground truth:
+\begin{itemize}
+\item \textbf{Estimators:} EKF2 at 100\,Hz and OpenVINS with \texttt{config\_v3} at 30\,Hz, first run of each.
+\item \textbf{Ground truth:} the TagSLAM reference. Its folder \texttt{truths} has a frame attached to a tag, with $z$ horizontal. The same data rigidly rotated with $z$ up (\texttt{truths\_leveled}) are used, as in the evaluation of the estimators, since the elevation axis of the mount needs the vertical.
+\item \textbf{Alignment:} each estimate is aligned to the ground truth with a single rigid transformation in position and yaw, computed on the whole window as in the evaluation of the estimators. This reproduces its ATE of 2.6 and 7.8\,cm for \texttt{config\_v3}. The transformation uses the future of the run, so it is the favourable case; Section~\ref{sec:tp_limits} gives the alternative.
+\item \textbf{Position of LUCY:} 100\,m from the first ground-truth point of each trajectory, with the drone 5\,m above it, as on the circle, along the $x$ axis of the leveled frame.
+\item \textbf{Command:} the azimuth and elevation of the last estimate, held between estimates, without added latency.
+\item \textbf{Window:} the interval common to the two estimators, which excludes the initialisation of OpenVINS: 151\,s and 209\,s. The first 5\,s of each run are left out of all metrics.
+\end{itemize}
+
+\paragraph{Disturbance.} A torque $\tau_w$ acts at the bearing of each axis, independent between the axes, Gaussian with zero mean, 0.1\,N\,m rms and band 0.1--50\,Hz (Figure~\ref{fig:tp_dist}). On LUCY the source is not known in advance, so the level is a plausible order of magnitude and not a measured value. The peaks, about 0.4\,N\,m, are of the order of the Coulomb friction of the axes, 0.23 and 0.41\,N\,m. As a reference, 0.1\,N\,m is about 2\,N at an arm of 5\,cm, the force of a 5\,m/s wind on about 0.1\,m$^2$ with a drag coefficient of about 1.2. Three realisations are used, the same for every trajectory and controller. Each has zero sample mean by construction, and over 60\,s the excess kurtosis is below 0.1.
+
+\paragraph{Static part of the disturbance.} A second case adds a mean of 0.2\,N\,m, with the same sign on both axes, to the same realisations. It stands for torques that the simulator does not contain and that do not average to zero, such as cable springs and imbalance. The value is plausible as an upper estimate:
+\begin{itemize}
+\item it is 0.78\,A at the nominal torque constant of 0.258\,N\,m/A, 4\,\% of the current limit of 18\,A;
+\item the cable springs identified on the V2 sequences (\path{closedLoopModel/results_v2_identification}), 0.93 and 1.66\,N\,m/rad with neutral angles of $-2.7$ and $-2.2^\circ$, give 0.04--0.06\,N\,m near the measured positions. They reach 0.2\,N\,m only 12 and $7^\circ$ away from the neutral angle;
+\item the identification found no imbalance of the telescope, with an offset of the centre of gravity of about 0.3\,mm. With the 151\,N of the telescope this is 0.05\,N\,m, and 0.2\,N\,m would take 1.3\,mm.
+\end{itemize}
+Errors in friction and in the dynamics do not belong to this term: they change with the velocity and with the frequency, and a constant does not represent them. The static torque already acts before tracking starts, so these runs start from the equilibrium in which the velocity integrator of the drive holds it. A torque that appears suddenly is the step of Section~\ref{sec:circle}.
+
+\begin{figure}[H]\centering\includegraphics[width=0.9\linewidth]{figures/tp_disturbance.pdf}\caption{Disturbance torque on the two axes. Left: two seconds of one realisation. Right: distribution over 60\,s against the Gaussian with the same variance.}\label{fig:tp_dist}\end{figure}
+
+\subsection{Results}\label{sec:tp_results}
+Table~\ref{tab:tp_main} and Figure~\ref{fig:tp_eff} collect the results. The percentages of Figure~\ref{fig:tp_eff} are the main result of this section.
+
+\begin{table}[H]\centering\footnotesize\setlength{\tabcolsep}{3pt}
+\caption{Pointing error and effective pointing $\eta$. $E$: rms and largest value [mrad]. $d$: rms and 95th percentile of the miss distance [cm]. With disturbance: mean of three realisations, with the range of $\eta$; effect: rms difference of the line of sight from the same run without disturbance [$\mu$rad].}\label{tab:tp_main}
+\resizebox{\textwidth}{!}{\begin{tabular}{lllrrrrrrrrr}\toprule
+& & & \multicolumn{5}{c}{no disturbance} & \multicolumn{4}{c}{disturbance, $\sigma_\tau=0.1$\,N\,m} \\
+\cmidrule(lr){4-8}\cmidrule(lr){9-12}
+trajectory & estimator & controller & $E_\mathrm{rms}$ & $E_\mathrm{max}$ & $d_\mathrm{rms}$ & $d_{95}$ & $\eta$ [\%] & $E_\mathrm{rms}$ & $d_\mathrm{rms}$ & $\eta$ [\%] & effect \\ \midrule
+\input{generated/tab_tp_main}\\ \bottomrule
+\end{tabular}}\end{table}
+
+\begin{figure}[H]\centering\includegraphics[width=0.92\linewidth]{figures/tp_effective_pointing.pdf}\caption{Effective pointing for a beam of 8\,cm radius. The horizontal line shows the limit given by the estimator: a pointer that follows the estimate with no error.}\label{fig:tp_eff}\end{figure}
+
+\paragraph{Circle.} On the circle the reference is exact, so the whole error comes from the loop (Figure~\ref{fig:tp_circle}). The LQG-PI lowers $E_\mathrm{rms}$ from 1.83 to 1.12\,mrad and raises $\eta$ from 13.8 to 29.1\,\%. Both remain low because the error is almost entirely the velocity lag in azimuth. The azimuth rate of the line of sight reaches 22\,mrad/s, with 14\,mrad/s rms, against 1.8--1.9\,mrad/s rms on the real trajectories. A least-squares fit of the azimuth error on this rate gives $e_\psi \approx \dot\psi/K_v$, with $K_v = 7.8\,\mathrm{s^{-1}}$ for the cascade, practically its $K_{pp} = 7.92$ ($R^2 = 0.996$), and $K_v = 12.9\,\mathrm{s^{-1}}$ for the LQG-PI ($R^2 = 0.974$). The beam has a half-width of about 0.8\,mrad at 100\,m, so the line of sight stays inside only while $|\dot\psi| < 0.8\,\mathrm{mrad} \times K_v$, that is 6.3 and 10.3\,mrad/s. This happens only around the reversals of azimuth, for 20 and 35\,\% of the orbit. There the bearing friction adds its peak: the fit residual is about 250 and 290\,$\mu$rad rms, against 40 and 74\,$\mu$rad elsewhere, so $\eta$ drops to 13.8 and 29.1\,\%. Keeping the lag below 0.8\,mrad over the whole orbit would require $K_v \approx 28\,\mathrm{s^{-1}}$. With a beam radius of 16\,cm $\eta$ would be 43 and 100\,\%; with 35\,cm, the radius equivalent to $0.2^\circ$, it is 100\,\% for both. Both controllers stay within the limit of $0.2^\circ$, with largest values of 2.81 and 1.70\,mrad.
+
+\begin{figure}[H]\centering\includegraphics[width=0.92\linewidth]{figures/tp_circle_miss.pdf}\caption{Circle: miss distance over one orbit, without disturbance and with one realisation of the disturbance.}\label{fig:tp_circle}\end{figure}
+
+\paragraph{Real trajectories, no disturbance.} The estimator sets the limit (Figures~\ref{fig:tp_ds7} and~\ref{fig:tp_ds8}, Table~\ref{tab:tp_loop}).
+\begin{itemize}
+\item \textbf{EKF2.} Its error in position, 0.81--0.86\,m ATE on these windows, is about ten times the beam radius. $\eta$ stays at 0.8--2.9\,\% with either controller, against 1.1--2.8\,\% of the estimator alone, and the two controllers cannot be told apart. The largest values of $E$, 16--19\,mrad, exceed the limit of $0.2^\circ$.
+\item \textbf{\texttt{config\_v3} on \texttt{dataset\_7}.} The estimator alone would give 100\,\%. The cascade reaches 96.3\,\% and the LQG-PI 99.5\,\%.
+\item \textbf{\texttt{config\_v3} on \texttt{dataset\_8}.} The ATE of 7.8\,cm, mostly in height, is close to the beam radius, so the limit is 66.3\,\%. The cascade reaches 53.5\,\% and the LQG-PI 61.0\,\%. The largest value of $E$ falls from 3.48\,mrad, at the limit of $0.2^\circ$, to 1.99\,mrad. The height error of the estimate is a drift, not an offset: after the alignment it is about $-15$\,cm in the first 30\,s and $+8$\,cm in the last 40\,s, and the estimate leaves the beam almost only in these two intervals. It also stays between 5 and 8\,cm, near the edge of the beam, for 17\,\% of the time, against never on \texttt{dataset\_7}. There a small loop error is enough to leave the beam, and 80 to 90\,\% of the time lost to the loop falls in these instants. The loop error itself is close to that of \texttt{dataset\_7}, except in elevation with the cascade, 2.7 against 1.8\,cm rms, because the elevation moves more: 0.87 against 0.32\,mrad/s rms.
+\end{itemize}
+
+\begin{figure}[H]\centering\includegraphics[width=\linewidth]{figures/tp_dataset_7_miss.pdf}\caption{\texttt{dataset\_7}: miss distance with the two estimators, without and with one realisation of the disturbance. The grey line is the estimator alone. Note the different vertical scales.}\label{fig:tp_ds7}\end{figure}
+
+\begin{figure}[H]\centering\includegraphics[width=\linewidth]{figures/tp_dataset_8_miss.pdf}\caption{\texttt{dataset\_8}: miss distance with the two estimators, without and with one realisation of the disturbance. The grey line is the estimator alone. Note the different vertical scales.}\label{fig:tp_ds8}\end{figure}
+
+\begin{table}[H]\centering\footnotesize\setlength{\tabcolsep}{4pt}
+\caption{Sources of error, no disturbance. Estimator alone: ATE on the window [cm], miss distance rms [cm] and $\eta$ [\%] of an ideal pointer. Loop: rms angle between the line of sight and the command [mrad], and its parts in azimuth and elevation. Largest current [A] in azimuth and elevation, without and with disturbance.}\label{tab:tp_loop}
+\resizebox{\textwidth}{!}{\begin{tabular}{lllrrrrrrrrrr}\toprule
+& & & \multicolumn{3}{c}{estimator alone} & \multicolumn{3}{c}{loop} & \multicolumn{2}{c}{$i_\mathrm{max}$, none} & \multicolumn{2}{c}{$i_\mathrm{max}$, disturbance} \\
+\cmidrule(lr){4-6}\cmidrule(lr){7-9}\cmidrule(lr){10-11}\cmidrule(lr){12-13}
+trajectory & estimator & controller & ATE & $d_\mathrm{rms}$ & $\eta$ & total & az & el & az & el & az & el \\ \midrule
+\input{generated/tab_tp_loop}\\ \bottomrule
+\end{tabular}}\end{table}
+
+The loop adds 0.33--0.40\,mrad with the cascade and 0.20--0.24\,mrad with the LQG-PI on \texttt{config\_v3}. The difference comes mostly from elevation: 0.18--0.27 against 0.06--0.07\,mrad. The short peaks of the cascade in the figures, up to 35\,cm, coincide with reversals of the elevation motion. There the current has to reach the friction level, about 1.6\,A, and with the low gain of the cascade this takes an error of 1.5--2.4\,mrad. At the same instants the LQG-PI stays close to the estimator alone. The cost is on the current. The largest elevation current rises from about 1.6--1.9\,A to 3--8\,A, with the largest value at a jump of the estimate on \texttt{dataset\_8}, still far from the limit of 18\,A used on the doublets.
+
+\begin{figure}[H]\centering\includegraphics[width=0.92\linewidth]{figures/tp_miss_cdf.pdf}\caption{Cumulative distribution of the miss distance, no disturbance. The value at the dashed line is the effective pointing.}\label{fig:tp_cdf}\end{figure}
+
+\paragraph{Effect of the disturbance.} The disturbance displaces the line of sight by 157--339\,$\mu$rad with the cascade and 69--118\,$\mu$rad with the LQG-PI, so the LQG-PI rejects it 2.1 to 2.9 times better. Even so, $\eta$ hardly moves, and by at most 2.2 points in any case. At 100\,m, 100\,$\mu$rad is 1\,cm, which adds in quadrature to an error of several centimetres. With the cascade $\eta$ even rises slightly, from 96.3 to 97.8\,\% and from 53.5 to 55.7\,\% on \texttt{config\_v3}: the small torque keeps the bearing moving and reduces the peaks at the reversals, the dither effect already seen in Section~\ref{sec:circle}. The LQG-PI, which has smaller peaks, does not show it.
+
+\paragraph{Effect of the static part.} Table~\ref{tab:tp_mean} repeats the runs with disturbance with the mean of 0.2\,N\,m. Against the same realisation with zero mean, the line of sight moves by a constant: $-12.7\,\mu$rad in azimuth and zero in elevation. The value is the same for every trajectory, controller and realisation, and its largest value equals its mean. The current rises by 0.86\,A in azimuth and 0.74\,A in elevation. $\eta$ changes by at most 0.4 points, and the rms miss distance by less than 0.03\,cm.
+
+The reason is the velocity integrator of the drive, which both schemes have. It holds a constant torque with zero velocity error, and the rest of the loop does not depend on its state. The Dahl friction does not either, since it depends only on the velocity. What remains is the static deflection between the encoder, which the loop brings to the command, and the node of the telescope: 12.7\,$\mu$rad for 0.2\,N\,m in azimuth, that is 1.3\,mm at 100\,m. A torque of the same size appearing suddenly would give the response of the step of Section~\ref{sec:circle}, which peaks at about 1.1\,mrad with 0.5\,N\,m, so at about 0.45\,mrad with 0.2\,N\,m, and then decays.
+
+\begin{table}[H]\centering\footnotesize\setlength{\tabcolsep}{3pt}
+\caption{Static part of the disturbance: runs with $\sigma_\tau=0.1$\,N\,m and a mean of 0.2\,N\,m, against the same realisations with zero mean. $\eta$: mean of three realisations, with the range for the case with the mean; $\Delta\eta$ in points. Change of the line of sight from the run with zero mean: mean in azimuth and in elevation, and largest value of the total [$\mu$rad]. Increase of the mean current [A].}\label{tab:tp_mean}
+\resizebox{\textwidth}{!}{\begin{tabular}{lllrrrrrrrr}\toprule
+& & & \multicolumn{3}{c}{$\eta$ [\%]} & \multicolumn{3}{c}{change of the line of sight} & \multicolumn{2}{c}{current} \\
+\cmidrule(lr){4-6}\cmidrule(lr){7-9}\cmidrule(lr){10-11}
+trajectory & estimator & controller & zero mean & mean 0.2\,N\,m & $\Delta\eta$ & az & el & largest & az & el \\ \midrule
+\input{generated/tab_tp_mean}\\ \bottomrule
+\end{tabular}}\end{table}
+
+\paragraph{Higher speed.} The real trajectories are slow, 0.19\,m/s on average. To see whether faster motion separates the two controllers more, the same paths with \texttt{config\_v3} are run 2, 3, 5 and 10 times faster, up to 1.9\,m/s, the speed of the circle (Table~\ref{tab:tp_speed}, Figure~\ref{fig:tp_speed}). Truth and estimate are compressed in time. The estimator keeps its rate of 30\,Hz, so each estimate is held over a longer distance, and the error of the estimate is that of the original run. The transient left out scales with the speed; leaving out 2\,s more changes $\eta$ by at most 1.2 points.
+\begin{itemize}
+\item \textbf{The gap between the controllers grows.} At twice the speed $\eta$ on \texttt{dataset\_7} falls from 96.3 to 58.7\,\% with the cascade and from 99.5 to 83.9\,\% with the LQG-PI; on \texttt{dataset\_8} from 53.5 to 27.7 and from 61.0 to 47.0\,\%. The gap is largest at 2 to 3 times the speed, 17 to 25 points, against 3 to 8 at the recorded speed. Beyond that both controllers fall, and at 1.9\,m/s they are of the same order as on the circle.
+\item \textbf{The loop error grows almost in proportion to the speed} and is mostly in azimuth: it is the velocity lag of the circle. The ratio LQG-PI/cascade stays between 0.57 and 0.65, so the gap in $\eta$ is largest where the error of the cascade has just crossed the beam half-angle and that of the LQG-PI has not.
+\item \textbf{The cost is the current in elevation.} Each new estimate is a step of the command, up to 0.9\,mrad at five times the speed, and the stiff elevation of the LQG-PI answers with a current peak 2\,ms later. The peaks exceed the 18\,A of the drive on \texttt{dataset\_8} from three times the speed and on \texttt{dataset\_7} at ten times, for 0.01 to 0.06\,\% of the time, and 0.6\,\% on \texttt{dataset\_8} at ten times. The model has no current limit, so these points, hollow in the figure, are not reachable as computed. The cascade stays below 2.3\,A in elevation and 4.1\,A in azimuth.
+\item \textbf{The estimator alone falls at 1.9\,m/s}, to 87.8 and 51.4\,\%, because an estimate held for 33\,ms lags the drone by up to 6\,cm.
+\end{itemize}
+
+\begin{figure}[H]\centering\includegraphics[width=0.92\linewidth]{figures/tp_speed.pdf}\caption{Same paths with \texttt{config\_v3} at higher speed, no disturbance: effective pointing and rms angle between the line of sight and the command. Hollow markers: the LQG-PI asks for more than the 18\,A of the drive, which the model does not limit.}\label{fig:tp_speed}\end{figure}
+
+\begin{table}[H]\centering\footnotesize\setlength{\tabcolsep}{4pt}
+\caption{Same paths with \texttt{config\_v3} at higher speed, no disturbance. Factor on the speed and mean speed [m/s]; $\eta$ [\%] of the estimator alone, the cascade and the LQG-PI, and their difference [points]; rms loop error [mrad]; largest elevation current [A], in bold when above 18\,A.}\label{tab:tp_speed}
+\begin{tabular}{lrrrrrrrrrr}\toprule
+& & & \multicolumn{4}{c}{$\eta$ [\%]} & \multicolumn{2}{c}{loop [mrad]} & \multicolumn{2}{c}{$i_\mathrm{max}$, el [A]} \\
+\cmidrule(lr){4-7}\cmidrule(lr){8-9}\cmidrule(lr){10-11}
+trajectory & factor & speed & estimator & cascade & LQG-PI & $\Delta\eta$ & cascade & LQG-PI & cascade & LQG-PI \\ \midrule
+\input{generated/tab_tp_speed}\\ \bottomrule
+\end{tabular}\end{table}
+
+\subsection{Discussion}\label{sec:tp_discussion}
+\begin{itemize}
+\item \textbf{The sources of error have a clear order: estimator, then velocity lag, then disturbance.} With EKF2 no controller can help. With \texttt{config\_v3} the control matters, because estimator and beam are of the same size.
+\item \textbf{The LQG-PI brings the pointer close to the limit of the estimator.} It leaves 0.5\,\% of the time out of the beam against 3.7\,\% on \texttt{dataset\_7}, and covers 61.0 of the 66.3\,\% available on \texttt{dataset\_8}, against 53.5.
+\item \textbf{Its better disturbance rejection does not change the coverage} at this level of torque. It would matter with a much better estimator or a much narrower beam.
+\item \textbf{A static torque does not change the coverage with either controller.} The velocity integrator of the drive holds it, and only a deflection of 1.3\,mm at the drone remains. A constant offset is therefore not the way unmodelled torques would show up; position- and velocity-dependent terms, and torques that appear suddenly, are.
+\item \textbf{The result on the circle shows the other limit.} At 2\,m/s the velocity lag dominates, and even the LQG-PI stays out of the beam for 70\,\% of the time, since the gains stop at the doublets and there is no feedforward.
+\item \textbf{Speed decides how much the controller matters.} On the same paths the gap grows from 3--8 points at the recorded speed to 17--25 points at 0.4--0.6\,m/s, and then both controllers fall as the velocity lag exceeds the beam. At these speeds the stiff elevation of the LQG-PI would also need a smoother command than estimates held at 30\,Hz, or it exceeds the current of the drive.
+\end{itemize}
+
+\subsection{Limits}\label{sec:tp_limits}
+\begin{itemize}
+\item \textbf{Alignment of the estimates.} It uses the whole run, as in the evaluation of the estimators. Computing it from the first 5\,s only, as a real system would have to, changes the limit given by the estimator alone: from 66.4 to 14.0\,\% with \texttt{config\_v3} on \texttt{dataset\_8}, where the ATE grows to 17\,cm, while \texttt{dataset\_7} stays at 100\,\%. EKF2 stays low, 3.4 and 4.1\,\%. The registration between estimator and pointer is therefore as important as the estimator itself. Closed-loop runs with this alignment were not made.
+\item \textbf{Latency.} Processing and communication delays are not modelled. At 0.17\,m/s, 50\,ms are about 1\,cm, but they would matter in faster motion.
+\item \textbf{Geometry.} One position of LUCY. Placing it along $y$ leaves \texttt{config\_v3} unchanged (100 and 66.2\,\%) and gives 6.1 and 1.3\,\% with EKF2, for the estimator alone.
+\item \textbf{Faster paths.} They keep the error of the estimate of the original run, while an estimator at higher speed would err differently, and they ignore the current limit of the drive.
+\item \textbf{Trajectories.} Slow and at low elevation, about $3^\circ$. They do not exercise the azimuth inertia at high elevation, nor flight conditions.
+\item \textbf{Ground truth.} TagSLAM has an uncertainty of about 1\,cm, which is not small against the ATE of 2.6\,cm.
+\item \textbf{Model.} No measurement noise, no current limit, Dahl plant as the proxy of the real system. The coupling measured between the axes is not modelled (Section~\ref{sec:coupling}). The disturbance level is assumed, and three realisations give only an indication of its spread. The cable springs identified on V2 are not in the simulator, so the dependence of their torque on the position is not tested. The margin of the tuned LQG-PI with stuck bearings at 57.8\,Hz is low (Section~\ref{sec:twymodes}), and these runs do not exercise it specifically.
+\item \textbf{Effective pointing.} It counts time with the centre of the drone inside the beam, and does not consider beam divergence, atmospheric effects or the size of the receiver.
+\end{itemize}
+

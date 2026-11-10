@@ -1,0 +1,118 @@
+{
+ "elevation": {
+  "e2": {
+   "report": {
+    "uniform_lnf": 0.0005939606903972655,
+    "uniform_f": 0.00023226554547849847
+   },
+   "uniform_lnf": {
+    "uniform_lnf": 0.0005908801058080362,
+    "uniform_f": 0.00022406635281350783
+   },
+   "uniform_f": {
+    "uniform_lnf": 0.0006599936027135007,
+    "uniform_f": 0.0002078952933988139
+   }
+  },
+  "elevation, 1 % grid (1-600 Hz)": {
+   "n": 504,
+   "f_min": 1.0,
+   "f_max": 149.159532210053,
+   "old_weight_squared_median": 0.9950330853168098,
+   "lnf_max_offset_from_measured_pct": 6.772360450213455e-13,
+   "step_lnf_pct": 1.0000000000000009,
+   "step_f_Hz": 0.2945517538967257,
+   "points": {
+    "uniform_lnf": {
+     "1-5": 162,
+     "5-30": 180,
+     "30-150": 162
+    },
+    "uniform_f": {
+     "1-5": 14,
+     "5-30": 85,
+     "30-150": 405
+    }
+   }
+  },
+  "elevation, 1 % grid (30-150 Hz)": {
+   "n": 162,
+   "f_min": 30.0,
+   "f_max": 148.88893853046,
+   "old_weight_squared_median": 0.9950330853168098,
+   "lnf_max_offset_from_measured_pct": 5.773159728050814e-13,
+   "step_lnf_pct": 1.0000000000000009,
+   "step_f_Hz": 0.7384406119904341,
+   "points": {
+    "uniform_lnf": {
+     "1-5": 0,
+     "5-30": 0,
+     "30-150": 162
+    },
+    "uniform_f": {
+     "1-5": 0,
+     "5-30": 0,
+     "30-150": 162
+    }
+   }
+  },
+  "elevation, 16 screws, 4 A (30-300 Hz)": {
+   "n": 82,
+   "f_min": 30.0,
+   "f_max": 149.18843817655,
+   "old_weight_squared_median": 1.9802627296179762,
+   "lnf_max_offset_from_measured_pct": 5.551115123125783e-13,
+   "step_lnf_pct": 2.0000000000000018,
+   "step_f_Hz": 1.4714621997104942,
+   "points": {
+    "uniform_lnf": {
+     "1-5": 0,
+     "5-30": 0,
+     "30-150": 82
+    },
+    "uniform_f": {
+     "1-5": 0,
+     "5-30": 0,
+     "30-150": 82
+    }
+   }
+  }
+ },
+ "azimuth": {
+  "e2": {
+   "report": {
+    "uniform_lnf": 0.00017822143085339447,
+    "uniform_f": 0.0004885410879222334
+   },
+   "uniform_lnf": {
+    "uniform_lnf": 0.0001782214308508767,
+    "uniform_f": 0.00048853986544342
+   },
+   "uniform_f": {
+    "uniform_lnf": 0.00021905215745194744,
+    "uniform_f": 0.00045522791165706814
+   }
+  },
+  "azimuth, 3 % grid (1-600 Hz)": {
+   "n": 170,
+   "f_min": 1.0,
+   "f_max": 147.737578076726,
+   "old_weight_squared_median": 2.9558802241544413,
+   "lnf_max_offset_from_measured_pct": 4.662936703425657e-13,
+   "step_lnf_pct": 3.0000000000000027,
+   "step_f_Hz": 0.8682696927616924,
+   "points": {
+    "uniform_lnf": {
+     "1-5": 55,
+     "5-30": 61,
+     "30-150": 54
+    },
+    "uniform_f": {
+     "1-5": 5,
+     "5-30": 29,
+     "30-150": 136
+    }
+   }
+  }
+ }
+}
